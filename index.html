@@ -1,243 +1,387 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>YIGA GERALD|ICT Professional</title>
-  <meta name="description" content="YIGA GERALD — ICT professional, web developer, and digital creator. Modern, accessible, and high-performance personal site.">
+  <title>Yiga Gerald | ICT Teacher & Digital Learning Creator</title>
+
+  <meta name="description" content="Yiga Gerald — ICT Teacher and Digital Learning Creator. Designing digital lessons, school websites, and educational systems.">
   <meta name="theme-color" content="#0f172a">
-  <link rel="manifest" href="/manifest.json">
-  <link rel="icon" href="/assets/icon-192.svg" sizes="192x192">
+
+  <!-- ===== EMBEDDED STYLES ===== -->
   <style>
     :root{
       --bg:#0b1220;
       --panel:#0f172a;
+      --text:#e6eef8;
       --muted:#9ca3af;
       --accent:#7c3aed;
-      --glass: rgba(255,255,255,0.04);
-      --text:#e6eef8;
+      --glass:rgba(255,255,255,0.05);
       --radius:12px;
       --max-width:1100px;
     }
+
+    :root[data-theme="light"]{
+      --bg:#f8fafc;
+      --panel:#ffffff;
+      --text:#0f172a;
+      --muted:#475569;
+      --glass:rgba(0,0,0,0.05);
+    }
+
     *{box-sizing:border-box}
-    html,body{height:100%;}
-    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial; background:linear-gradient(180deg,#071028 0%,#07142a 100%);color:var(--text);-webkit-font-smoothing:antialiased;}
-    .container{max-width:var(--max-width);margin:0 auto;padding:28px}
-    .site-header{backdrop-filter: blur(6px);}
-    .header-grid{display:flex;justify-content:space-between;align-items:center}
-    .brand a{color:var(--text);font-weight:700;font-size:1.1rem;text-decoration:none}
-    .brand small{display:block;color:var(--muted);font-size:.8rem}
-    .nav a{color:var(--muted);text-decoration:none;margin-right:18px}
-    .nav{display:flex;align-items:center;gap:8px}
-    .hero{padding:48px 0}
-    .hero-grid{display:grid;grid-template-columns:1fr 340px;gap:24px;align-items:center}
-    .headline{font-size:2.2rem;margin:0}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,Segoe UI,Roboto,Arial;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.6;
+    }
+
+    a{text-decoration:none;color:inherit}
+
+    .container{
+      max-width:var(--max-width);
+      margin:auto;
+      padding:28px;
+    }
+
+    /* Header */
+    .site-header{
+      position:sticky;
+      top:0;
+      background:rgba(0,0,0,0.3);
+      backdrop-filter:blur(6px);
+      z-index:10;
+    }
+
+    .header-grid{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+
+    .brand a{
+      font-weight:700;
+      font-size:1.1rem;
+    }
+
+    .brand small{
+      display:block;
+      color:var(--muted);
+      font-size:.8rem;
+    }
+
+    .nav{
+      display:flex;
+      gap:14px;
+      align-items:center;
+    }
+
+    .nav a{
+      color:var(--muted);
+      font-size:.95rem;
+    }
+
+    /* Hero */
+    .hero{
+      padding:56px 0;
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1fr 320px;
+      gap:24px;
+      align-items:center;
+    }
+
+    .headline{
+      font-size:2.3rem;
+      margin:0;
+    }
+
     .accent{color:var(--accent)}
-    .lead{color:var(--muted);max-width:58ch}
-    .profile-card img{width:100%;height:auto;border-radius:14px;display:block}
-    .btn{display:inline-block;padding:10px 16px;border-radius:10px;text-decoration:none}
-    .btn.primary{background:linear-gradient(90deg,var(--accent),#5eead4);color:#042;box-shadow:0 6px 22px rgba(124,58,237,0.18)}
-    .btn.ghost{border:1px solid rgba(255,255,255,0.06);color:var(--text);background:transparent}
-    .about,.projects,.services,.contact{padding:36px 0}
-    .skills{display:flex;flex-wrap:wrap;gap:10px;padding:0;margin:12px 0 0;list-style:none}
-    .skills li{background:var(--glass);padding:8px 10px;border-radius:8px;color:var(--muted);font-size:.9rem}
-    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-    .card{background:var(--panel);padding:18px;border-radius:12px}
-    .site-footer{border-top:1px solid rgba(255,255,255,0.03);padding:18px 0;margin-top:36px}
 
-    /* project-card host styles via container query-like sizing */
-    project-card{display:block}
+    .lead{
+      color:var(--muted);
+      max-width:60ch;
+    }
 
-    /* responsive */
-    @media (max-width:900px){
-      .hero-grid{grid-template-columns:1fr;}
+    .cta-row{
+      margin-top:18px;
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      padding:10px 18px;
+      border-radius:10px;
+      font-weight:500;
+      display:inline-block;
+    }
+
+    .btn.primary{
+      background:linear-gradient(90deg,var(--accent),#5eead4);
+      color:#042;
+    }
+
+    .btn.ghost{
+      border:1px solid var(--glass);
+    }
+
+    .profile-card img{
+      width:100%;
+      border-radius:14px;
+    }
+
+    /* Sections */
+    section{padding:40px 0}
+
+    h2,h3{margin-top:0}
+
+    .skills{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      list-style:none;
+      padding:0;
+    }
+
+    .skills li{
+      background:var(--glass);
+      padding:8px 12px;
+      border-radius:8px;
+      font-size:.9rem;
+      color:var(--muted);
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+    }
+
+    .card{
+      background:var(--panel);
+      padding:18px;
+      border-radius:var(--radius);
+    }
+
+    /* Availability */
+    .availability{
+      background:linear-gradient(90deg,rgba(124,58,237,.15),rgba(94,234,212,.12));
+      text-align:center;
+      border-top:1px solid var(--glass);
+      border-bottom:1px solid var(--glass);
+    }
+
+    /* Contact */
+    form label{
+      display:block;
+      margin-bottom:12px;
+    }
+
+    input,textarea{
+      width:100%;
+      padding:10px;
+      border-radius:8px;
+      border:1px solid var(--glass);
+      background:transparent;
+      color:var(--text);
+    }
+
+    /* Footer */
+    .site-footer{
+      border-top:1px solid var(--glass);
+      padding:18px 0;
+      margin-top:40px;
+    }
+
+    /* WhatsApp Float */
+    .whatsapp-float{
+      position:fixed;
+      bottom:18px;
+      right:18px;
+      width:52px;
+      height:52px;
+      border-radius:50%;
+      background:#25D366;
+      color:#fff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:1.6rem;
+      box-shadow:0 10px 30px rgba(0,0,0,.3);
+      z-index:999;
+    }
+
+    /* Responsive */
+    @media(max-width:900px){
+      .hero-grid{grid-template-columns:1fr}
       .grid{grid-template-columns:repeat(2,1fr)}
     }
-    @media (max-width:560px){
-      .container{padding:18px}
+    @media(max-width:560px){
       .grid{grid-template-columns:1fr}
       .nav a{display:none}
     }
-
-    /* subtle entrance */
-    [hidden]{display:none !important}
-    .reveal{opacity:0;transform:translateY(14px);transition:var(--t,all .48s cubic-bezier(.2,.9,.2,1))}
-    .reveal.in{opacity:1;transform:none}
   </style>
-  <meta property="og:title" content="YIGA GERALD — ICT Professional">
-  <meta property="og:description" content="Modern portfolio and contact site showcasing projects, skills and services.">
-  <meta property="og:type" content="website">
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "YIGA GERALD",
-    "url": "https://example.com",
-    "jobTitle": "ICT Professional",
-    "sameAs": []
-  }
-  </script>
 </head>
+
 <body>
-  <header class="site-header">
-    <div class="container header-grid">
-      <div class="brand">
-        <a href="#">YIGA GERALD</a>
-        <small>ICT • Web • Cloud</small>
-      </div>
-      <nav class="nav" aria-label="Main navigation">
-        <a href="#about">About</a>
-        <a href="#projects">Projects</a>
-        <a href="#services">Services</a>
-        <a href="#contact">Contact</a>
-        <button id="theme-toggle" aria-label="Toggle theme">🌙</button>
-      </nav>
+
+<header class="site-header">
+  <div class="container header-grid">
+    <div class="brand">
+      <a href="#">YIGA GERALD</a>
+      <small>ICT Education • Digital Learning • Web Systems</small>
     </div>
-  </header>
+    <nav class="nav">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+      <button id="theme-toggle" aria-label="Toggle theme">🌙</button>
+    </nav>
+  </div>
+</header>
 
-  <main>
-    <section class="hero" id="home">
-      <div class="container hero-grid">
-        <div>
-          <h1 class="headline">Hi — I'm <span class="accent">YIGA GERALD</span></h1>
-          <p class="lead">ICT professional building future-ready web experiences: performance-focused, accessible, and delightful.</p>
-          <p class="cta-row">
-            <a class="btn primary" href="#projects">See my work</a>
-            <a class="btn ghost" href="#contact">Hire me</a>
-          </p>
-        </div>
-        <div class="profile-card" role="img" aria-label="Profile illustration">
-          <img alt="Yiga Gerald" loading="lazy" src="/YigaG.png">
-        </div>
-      </div>
-    </section>
+<main>
 
-    <section id="about" class="container about">
-      <h1>ICT Teacher & Digital Learning Creator</h1>
-      <p>I design digital Lessons, educational content, websites, and systems that make learning practical, engaging, and accessible.</p>
-      <ul class="skills">
-        <li>HTML & CSS (modern layout)</li>
-        <li>JavaScript (ES2023+), Web Components</li>
-        <li>Progressive Web Apps & Service Workers</li>
-        <li>CI/CD, Cloud (Azure/AWS)</li>
-        <li>Accessibility & Performance</li>
-      </ul>
-    </section>
-	
-	<section class="approach">
-		<h3>My Approach</h3>
-		<p>I believe ICT should be practical, learner-centered, and purposeful. My work focuses on clarity, real-world application, and continuous improvement.</p>
-	</section>
-
-    <section id="projects" class="container projects">
-		
-      <h2>Projects</h2>
-		<p>From digital lessons and classroom resources to websites and educational systems, my work reflects a commitment to quality and meaningful impact.</p>
-	<a class="btn primary" href="gallery.html" class="btn">View Gallery</a>
-      <div class="grid" id="projects-grid">
-        <project-card title="Smart Dashboard" desc="Realtime dashboards with WebSockets and serverless backends." tags="React,Serverless,Realtime" link="#"></project-card>
-        <project-card title="Learning Platform" desc="Accessible LMS with offline support and analytics." tags="PWA,Accessibility,Analytics" link="#"></project-card>
-        <project-card title="Automation Suite" desc="DevOps automation and infra-as-code for reproducible environments." tags="Terraform,CI/CD" link="#"></project-card>
-      </div>
-    </section>
-
-    <section id="services" class="container services">
-      <h2>What I do</h2>
-      <div class="cards">
-		  <div class="card"><h3>ICT teaching and Training</h3>
-			<p>I teach ICT concepts such as Microsoft office, Internet skills, digital litracy, and applied technology for learners and teachers.</p>
-		</div>
-        <div class="card"><h3>Website and system development</h3>
-			<p>I design and develop websites, dashboards, and simple systems that solve real educational and organisational needs</p>
-		</div>
-        <div class="card"><h3>Educational Teachnology Support</h3>
-			<p>I help schools and teachers integrate technology into teaching, assessment, and learning management systems.</p>
-		</div>
-      </div>
-    </section>
-
-    <section id="contact" class="container contact">
-      <h2>Contact</h2>
-      <p>Want to collaborate? Send a quick message.</p>
-      <form action="https://formspree.io/f/placeholder" method="POST">
-        <label>Full name<input name="name" required></label>
-        <label>Email<input name="email" type="email" required></label>
-        <label>Message<textarea name="message" rows="6" required></textarea></label>
-        <div class="form-row"><button class="btn primary" type="submit">Send</button></div>
-      </form>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container footer-grid">
-      <div>© <span id="year"></span> YIGA GERALD|ICT Professional</div>
-      <div class="footer-links">
-        <a href="#">Privacy</a>
-        <a href="#">Resume</a>
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <h1 class="headline">Hi — I'm <span class="accent">Yiga Gerald</span></h1>
+      <p class="lead">
+        ICT teacher and digital learning creator designing practical lessons,
+        educational systems, and modern websites for schools and institutions.
+      </p>
+      <div class="cta-row">
+        <a class="btn primary" href="#projects">View My Work</a>
+        <a class="btn ghost"
+           href="https://wa.me/256757995125?text=Hello%20Yiga%20Gerald,%20I%20am%20interested%20in%20your%20ICT%20services."
+           target="_blank">WhatsApp Me</a>
       </div>
     </div>
-  </footer>
+    <div class="profile-card">
+      <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=600&auto=format&fit=crop" alt="Profile">
+    </div>
+  </div>
+</section>
 
-  <script>
-    const elYear = document.getElementById('year');
-    if(elYear) elYear.textContent = new Date().getFullYear();
+<section id="about" class="container">
+  <h2>ICT Teacher & Digital Learning Creator</h2>
+  <p>
+    I design digital lessons, educational content, websites, and systems that
+    make learning practical, engaging, and accessible in real classroom and
+    institutional settings.
+  </p>
+  <ul class="skills">
+    <li>Digital lesson design & voice-over</li>
+    <li>Google Classroom & LMS workflows</li>
+    <li>ICT teaching & training</li>
+    <li>Educational websites & systems</li>
+    <li>Accessibility & learner-centered design</li>
+  </ul>
+</section>
 
-    // Theme toggle (prefers-color-scheme aware)
-    const themeToggle = document.getElementById('theme-toggle');
-    const preferDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const saved = localStorage.getItem('theme');
-    const theme = saved || (preferDark ? 'dark' : 'light');
-    document.documentElement.dataset.theme = theme;
-    if(themeToggle){themeToggle.addEventListener('click',()=>{
-      const now = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
-      document.documentElement.dataset.theme = now;
-      localStorage.setItem('theme', now);
-      themeToggle.textContent = now === 'dark' ? '🌙' : '☀️';
-    });}
+<section id="projects" class="container">
+  <h2>Projects</h2>
+  <p>Examples of work aligned with education and ICT integration.</p>
 
-    // Reveal on scroll
-    const obs = new IntersectionObserver(entries=>{
-      for(const e of entries){
-        if(e.isIntersecting){
-          e.target.classList.add('in');
-          obs.unobserve(e.target);
-        }
-      }
-    },{threshold:.12});
-    document.querySelectorAll('.reveal').forEach(n=>obs.observe(n));
+  <div class="grid">
+    <project-card
+      title="School Performance & Records Dashboard"
+      desc="Web-based dashboard for tracking learner performance and academic records."
+      tags="Education, Dashboards, ICT">
+    </project-card>
 
-    // Simple Web Component for project cards
-    class ProjectCard extends HTMLElement{
-      constructor(){super();this.attachShadow({mode:'open'});}
-      connectedCallback(){
-        const title=this.getAttribute('title')||'Project';
-        const desc=this.getAttribute('desc')||'';
-        const tags=this.getAttribute('tags')||'';
-        const link=this.getAttribute('link')||'#';
-        this.shadowRoot.innerHTML = `
-          <style>
-            :host{display:block}
-            .card{background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);padding:16px;border-radius:10px;min-height:120px;display:flex;flex-direction:column;gap:8px}
-            .title{font-weight:700}
-            .tags{margin-top:auto;color:var(--muted);font-size:.85rem}
-            a{color:inherit;text-decoration:none}
-          </style>
-          <a href="${link}" class="card" rel="noopener">
-            <div class="title">${title}</div>
-            <div class="desc">${desc}</div>
-            <div class="tags">${tags}</div>
-          </a>
-        `;
-      }
+    <project-card
+      title="Digital Learning & ICT Lesson Platform"
+      desc="Platform for delivering ICT lessons using slides, voice-over, and activities."
+      tags="Digital Learning, ICT, LMS">
+    </project-card>
+
+    <project-card
+      title="School ICT Automation & Support Tools"
+      desc="Simple systems supporting school administration and ICT workflows."
+      tags="School Systems, ICT Support">
+    </project-card>
+  </div>
+</section>
+
+<section class="availability">
+  <div class="container">
+    <p><strong>Available for school ICT projects</strong> — digital lessons, school websites,
+    ICT systems, and technology integration.</p>
+  </div>
+</section>
+
+<section id="services" class="container">
+  <h2>What I Do</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>ICT Teaching & Training</h3>
+      <p>Teaching Microsoft Office, internet skills, digital literacy, and applied ICT.</p>
+    </div>
+    <div class="card">
+      <h3>Website & System Development</h3>
+      <p>Designing websites and simple systems for schools and organizations.</p>
+    </div>
+    <div class="card">
+      <h3>Educational Technology Support</h3>
+      <p>Helping schools integrate technology into teaching and assessment.</p>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="container">
+  <h2>Contact</h2>
+  <p>Interested in working together? Send a message.</p>
+  <form>
+    <label>Full Name<input required></label>
+    <label>Email<input type="email" required></label>
+    <label>Message<textarea rows="5" required></textarea></label>
+    <button class="btn primary" type="submit">Send</button>
+  </form>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    © <span id="year"></span> Yiga Gerald — ICT Teacher
+  </div>
+</footer>
+
+<a class="whatsapp-float"
+   href="https://wa.me/256757995125"
+   target="_blank">💬</a>
+
+<!-- ===== EMBEDDED SCRIPT ===== -->
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  const toggle = document.getElementById('theme-toggle');
+  toggle.onclick = () => {
+    const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+    document.documentElement.dataset.theme = next;
+    toggle.textContent = next === 'dark' ? '🌙' : '☀️';
+  };
+
+  class ProjectCard extends HTMLElement{
+    connectedCallback(){
+      this.innerHTML = `
+        <div class="card">
+          <h3>${this.getAttribute('title')}</h3>
+          <p>${this.getAttribute('desc')}</p>
+          <small>${this.getAttribute('tags')}</small>
+        </div>
+      `;
     }
-    customElements.define('project-card',ProjectCard);
+  }
+  customElements.define('project-card', ProjectCard);
+</script>
 
-    // Register service worker for offline and PWA features
-    if('serviceWorker' in navigator){
-      window.addEventListener('load',()=>{
-        navigator.serviceWorker.register('/sw.js').catch(()=>{});
-      });
-    }
-  </script>
 </body>
 </html>
