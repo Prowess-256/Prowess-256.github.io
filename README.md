@@ -1,4 +1,4 @@
-# Personal Website — Jane Doe (sample)
+# Personal Website — Yiga Gerald 
 
 This folder contains a modern, minimal personal website scaffold showcasing up-to-date web practices: semantic HTML, CSS variables, Web Components, and a simple PWA service worker.
 
