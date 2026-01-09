@@ -1,0 +1,11 @@
+{
+  "name": "Jane Doe — ICT",
+  "short_name": "Jane",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#071028",
+  "theme_color": "#0f172a",
+  "icons":[
+    {"src":"/assets/icon-192.svg","sizes":"192x192","type":"image/svg+xml"}
+  ]
+}
