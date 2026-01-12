@@ -10,336 +10,1164 @@
 
 <!-- PWA -->
 <link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <style>
-:root{
-  --bg:#0b1220;
-  --panel:#0f172a;
-  --muted:#9ca3af;
-  --accent:#7c3aed;
-  --glass:rgba(255,255,255,.05);
-  --text:#e6eef8;
-  --radius:12px;
-  --max-width:1100px;
+/* ===== RESET & BASE ===== */
+:root {
+  --bg: #0b1220;
+  --panel: #0f172a;
+  --muted: #a0aec0;
+  --accent: #7c3aed;
+  --accent-glow: rgba(124, 58, 237, 0.4);
+  --secondary: #0ea5e9;
+  --glass: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --text: #f1f5f9;
+  --radius: 16px;
+  --max-width: 1200px;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.12);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.15);
+  --shadow-lg: 0 10px 40px rgba(0,0,0,0.3);
+  --shadow-glow: 0 0 20px var(--accent-glow);
 }
 
-*{box-sizing:border-box}
-body{
-  margin:0;
-  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
-  background:linear-gradient(180deg,#071028,#07142a);
-  color:var(--text);
-}
-a{text-decoration:none;color:inherit}
-
-.container{
-  max-width:var(--max-width);
-  margin:auto;
-  padding:24px;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-/* HEADER */
-.site-header{
-  position:sticky;
-  top:0;
-  background:rgba(7,16,40,.85);
-  backdrop-filter:blur(6px);
-  z-index:100;
-}
-.header-grid{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
-.brand a{font-weight:700;font-size:1.1rem}
-.brand small{display:block;color:var(--muted);font-size:.8rem}
-
-.nav{
-  display:flex;
-  align-items:center;
-  gap:14px;
-}
-.nav a{color:var(--muted)}
-.hamburger{
-  display:none;
-  font-size:1.6rem;
-  background:none;
-  border:none;
-  color:var(--text);
-  cursor:pointer;
+html {
+  scroll-behavior: smooth;
 }
 
-/* MOBILE MENU */
-.mobile-menu{
-  position:fixed;
-  top:64px;
-  right:0;
-  width:220px;
-  background:var(--panel);
-  padding:16px;
-  display:flex;
-  flex-direction:column;
-  gap:14px;
-  box-shadow:-8px 0 20px rgba(0,0,0,.4);
-  z-index:200;
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+  background: linear-gradient(180deg, #071028 0%, #0b172e 30%, #0d1b36 100%);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+  line-height: 1.6;
 }
 
-/* HERO */
-.hero{
-  padding:48px 0;
-}
-.hero-grid{
-  display:grid;
-  grid-template-columns:1fr;
-  gap:24px;
-}
-.headline{font-size:2.2rem;margin:0}
-.accent{color:var(--accent)}
-.lead{color:var(--muted);max-width:60ch}
-
-.availability{
-  margin-top:16px;
-  display:flex;
-  align-items:center;
-  gap:8px;
-  background:var(--glass);
-  padding:10px 14px;
-  border-radius:999px;
-  width:max-content;
-  font-size:.9rem;
-  color:#9ef5c4;
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 24px;
 }
 
-/* BUTTONS */
-.btn{
-  display:inline-block;
-  padding:10px 16px;
-  border-radius:10px;
-  margin-right:10px;
-}
-.primary{
-  background:linear-gradient(90deg,var(--accent),#5eead4);
-  color:#042;
-  box-shadow:0 6px 20px rgba(124,58,237,.25);
-}
-.ghost{
-  border:1px solid rgba(255,255,255,.1);
+/* ===== ANIMATION KEYFRAMES ===== */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-/* SECTIONS */
-section{padding:36px 0}
-.skills{
-  list-style:none;
-  padding:0;
-  display:flex;
-  flex-wrap:wrap;
-  gap:10px;
-}
-.skills li{
-  background:var(--glass);
-  padding:8px 10px;
-  border-radius:8px;
-  color:var(--muted);
-  font-size:.9rem;
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
 }
 
-/* PROJECTS */
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-  gap:18px;
-}
-.project-card{
-  background:linear-gradient(180deg,rgba(255,255,255,.05),transparent);
-  padding:18px;
-  border-radius:var(--radius);
-  transition:.3s;
-}
-.project-card:hover{
-  transform:translateY(-4px);
-  box-shadow:0 14px 30px rgba(0,0,0,.35);
-}
-.project-card h3{margin-top:8px}
-.project-card p{color:var(--muted);font-size:.95rem}
-
-.icon{
-  width:36px;
-  height:36px;
-  color:var(--accent);
+@keyframes glowPulse {
+  0%, 100% { box-shadow: var(--shadow-lg), 0 0 15px var(--accent-glow); }
+  50% { box-shadow: var(--shadow-lg), 0 0 25px var(--accent-glow); }
 }
 
-/* SERVICES */
-.card{
-  background:var(--panel);
-  padding:18px;
-  border-radius:var(--radius);
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
-/* FOOTER */
-.site-footer{
-  border-top:1px solid rgba(255,255,255,.05);
-  padding:18px 0;
-  margin-top:40px;
-  color:var(--muted);
-  font-size:.9rem;
+@keyframes slideInRight {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
 }
 
-/* WHATSAPP */
-.whatsapp-float{
-  position:fixed;
-  bottom:18px;
-  right:18px;
-  width:56px;
-  height:56px;
-  background:#25D366;
-  color:#fff;
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  box-shadow:0 10px 22px rgba(0,0,0,.4);
-  z-index:300;
+/* ===== HEADER & NAVIGATION ===== */
+.site-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(11, 18, 32, 0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--glass-border);
+  z-index: 1000;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* RESPONSIVE */
-@media(max-width:600px){
-  .nav a{display:none}
-  .hamburger{display:block}
+.site-header.scrolled {
+  background: rgba(7, 16, 40, 0.95);
+  box-shadow: var(--shadow-lg);
+}
+
+.header-grid {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 72px;
+}
+
+.brand a {
+  font-weight: 800;
+  font-size: 1.4rem;
+  background: linear-gradient(90deg, var(--accent), var(--secondary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  letter-spacing: -0.5px;
+  transition: all 0.3s ease;
+}
+
+.brand a:hover {
+  filter: brightness(1.2);
+}
+
+.brand small {
+  display: block;
+  color: var(--muted);
+  font-size: 0.8rem;
+  font-weight: 400;
+  margin-top: 2px;
+  letter-spacing: 0.5px;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.nav a {
+  position: relative;
+  color: var(--muted);
+  font-weight: 500;
+  font-size: 0.95rem;
+  padding: 8px 0;
+  transition: color 0.3s ease;
+}
+
+.nav a:hover {
+  color: var(--text);
+}
+
+.nav a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--secondary));
+  border-radius: 2px;
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav a:hover::after {
+  width: 100%;
+}
+
+.nav a.active {
+  color: var(--text);
+}
+
+.nav a.active::after {
+  width: 100%;
+}
+
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--text);
+  font-size: 1.8rem;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.hamburger:hover {
+  background: var(--glass);
+}
+
+/* ===== MOBILE MENU ===== */
+.mobile-menu {
+  position: fixed;
+  top: 72px;
+  right: 0;
+  width: 280px;
+  height: calc(100vh - 72px);
+  background: rgba(15, 23, 42, 0.98);
+  backdrop-filter: blur(20px);
+  padding: 32px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  box-shadow: -8px 0 40px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  transform: translateX(100%);
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  border-left: 1px solid var(--glass-border);
+}
+
+.mobile-menu.open {
+  transform: translateX(0);
+}
+
+.mobile-menu a {
+  color: var(--text);
+  font-size: 1.1rem;
+  font-weight: 500;
+  padding: 12px 16px;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.mobile-menu a i {
+  width: 24px;
+  text-align: center;
+  color: var(--accent);
+}
+
+.mobile-menu a:hover {
+  background: var(--glass);
+  transform: translateX(8px);
+}
+
+/* ===== HERO SECTION ===== */
+.hero {
+  padding: 160px 0 100px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -100px;
+  right: -100px;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+  opacity: 0.4;
+  z-index: 0;
+  animation: float 6s ease-in-out infinite;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 720px;
+  animation: fadeIn 1s ease-out;
+}
+
+/* ===== PROFILE PHOTO ===== */
+.hero-grid {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  justify-content: space-between;
+}
+
+.profile-wrap {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-photo,
+.profile-photo img {
+  width: clamp(120px, 18vw, 220px);
+  height: clamp(120px, 18vw, 220px);
+  border-radius: 9999px;
+  display: block;
+  object-fit: cover;
+  box-shadow: 0 12px 30px rgba(2,6,23,0.6), 0 0 30px rgba(124,58,237,0.12);
+  border: 4px solid rgba(255,255,255,0.06);
+  transition: transform 0.45s cubic-bezier(0.2,0.8,0.2,1), box-shadow 0.45s ease;
+}
+
+.profile-photo {
+  background: linear-gradient(135deg, rgba(124,58,237,0.06), rgba(14,165,233,0.04));
+  overflow: hidden;
+  position: relative;
+  animation: float 6s ease-in-out infinite;
+}
+
+.profile-photo:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 20px 50px rgba(2,6,23,0.6), 0 0 40px rgba(124,58,237,0.18);
+}
+
+.profile-fallback {
+  width: clamp(120px, 18vw, 220px);
+  height: clamp(120px, 18vw, 220px);
+  border-radius: 9999px;
+  background: linear-gradient(135deg, var(--accent), var(--secondary));
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: clamp(28px, 5vw, 44px);
+  box-shadow: 0 12px 30px rgba(2,6,23,0.6);
+}
+
+.headline {
+  font-size: 3.5rem;
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 24px;
+  background: linear-gradient(90deg, #f1f5f9, var(--accent), var(--secondary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  background-size: 200% auto;
+  animation: gradientShift 4s ease-in-out infinite;
+}
+
+.accent {
+  color: var(--accent);
+  text-shadow: 0 0 20px var(--accent-glow);
+}
+
+.lead {
+  font-size: 1.25rem;
+  color: var(--muted);
+  max-width: 60ch;
+  margin-bottom: 32px;
+  line-height: 1.7;
+}
+
+.availability {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(20, 184, 166, 0.1);
+  color: #5eead4;
+  padding: 12px 20px;
+  border-radius: 50px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  margin-bottom: 32px;
+  border: 1px solid rgba(20, 184, 166, 0.2);
+  backdrop-filter: blur(4px);
+  animation: fadeIn 1s ease-out 0.3s both;
+}
+
+.availability::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  background: #5eead4;
+  border-radius: 50%;
+  animation: glowPulse 2s ease-in-out infinite;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  animation: fadeIn 1s ease-out 0.6s both;
+}
+
+/* ===== BUTTONS ===== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 28px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  border: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.7s ease;
+}
+
+.btn:hover::before {
+  left: 100%;
+}
+
+.primary {
+  background: linear-gradient(135deg, var(--accent), #5b21b6);
+  color: white;
+  box-shadow: var(--shadow-md), 0 6px 20px rgba(124, 58, 237, 0.3);
+}
+
+.primary:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg), 0 10px 30px rgba(124, 58, 237, 0.5);
+  animation: glowPulse 2s infinite;
+}
+
+.ghost {
+  background: transparent;
+  color: var(--text);
+  border: 2px solid var(--glass-border);
+}
+
+.ghost:hover {
+  background: var(--glass);
+  border-color: var(--accent);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md), 0 0 15px var(--accent-glow);
+}
+
+/* ===== SECTIONS ===== */
+section {
+  padding: 100px 0;
+  position: relative;
+}
+
+section h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 40px;
+  position: relative;
+  display: inline-block;
+}
+
+section h2::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--accent), var(--secondary));
+  border-radius: 2px;
+}
+
+/* ===== SKILLS ===== */
+.skills {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.skills li {
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  padding: 12px 20px;
+  border-radius: 50px;
+  color: var(--text);
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  cursor: default;
+}
+
+.skills li:hover {
+  background: rgba(124, 58, 237, 0.1);
+  border-color: var(--accent);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* ===== PROJECTS ===== */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 30px;
+}
+
+.project-card {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.01));
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius);
+  padding: 30px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+}
+
+.project-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(to bottom, var(--accent), var(--secondary));
+  transform: scaleY(0);
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.project-card:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--shadow-lg), 0 20px 40px rgba(0, 0, 0, 0.4);
+  border-color: rgba(124, 58, 237, 0.3);
+}
+
+.project-card:hover::before {
+  transform: scaleY(1);
+}
+
+.icon-container {
+  width: 56px;
+  height: 56px;
+  background: linear-gradient(135deg, rgba(124, 58, 237, 0.1), rgba(14, 165, 233, 0.1));
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.icon {
+  width: 28px;
+  height: 28px;
+  color: var(--accent);
+}
+
+.project-card h3 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--text);
+}
+
+.project-card p {
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.project-tags span {
+  background: rgba(124, 58, 237, 0.1);
+  color: var(--accent);
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+/* ===== SERVICES ===== */
+.service-card {
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius);
+  padding: 30px;
+  transition: all 0.4s ease;
+}
+
+.service-card:hover {
+  background: rgba(124, 58, 237, 0.05);
+  border-color: var(--accent);
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md), 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.service-card h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.service-card h3 i {
+  color: var(--accent);
+}
+
+.service-card p {
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* ===== CONTACT ===== */
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.contact-item {
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius);
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  transition: all 0.3s ease;
+}
+
+.contact-item:hover {
+  background: rgba(124, 58, 237, 0.05);
+  border-color: var(--accent);
+  transform: translateY(-5px);
+}
+
+.contact-icon {
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg, rgba(124, 58, 237, 0.1), rgba(14, 165, 233, 0.1));
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: var(--accent);
+}
+
+.contact-details h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.contact-details p {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+/* ===== FOOTER ===== */
+.site-footer {
+  border-top: 1px solid var(--glass-border);
+  padding: 40px 0;
+  margin-top: 60px;
+  color: var(--muted);
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.social-links {
+  display: flex;
+  gap: 20px;
+}
+
+.social-links a {
+  width: 40px;
+  height: 40px;
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text);
+  transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+  background: var(--accent);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+/* ===== WHATSAPP FLOAT ===== */
+.whatsapp-float {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #25D366, #128C7E);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-lg), 0 10px 25px rgba(37, 211, 102, 0.4);
+  z-index: 1000;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: float 3s ease-in-out infinite;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1);
+  box-shadow: 0 15px 35px rgba(37, 211, 102, 0.6);
+}
+
+/* ===== SCROLL PROGRESS ===== */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), var(--secondary));
+  z-index: 1001;
+  transition: width 0.2s ease;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .header-grid {
+    height: 64px;
+  }
+  
+  .hero-grid {
+    flex-direction: column-reverse;
+    gap: 24px;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .hero-content {
+    max-width: 100%;
+  }
+  
+  .nav a:not(.hamburger) {
+    display: none;
+  }
+  
+  .hamburger {
+    display: block;
+  }
+  
+  .headline {
+    font-size: 2.5rem;
+  }
+  
+  .lead {
+    font-size: 1.1rem;
+  }
+  
+  section {
+    padding: 70px 0;
+  }
+  
+  section h2 {
+    font-size: 2rem;
+  }
+  
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .cta-buttons {
+    flex-direction: column;
+  }
+  
+  .btn {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .whatsapp-float {
+    bottom: 20px;
+    right: 20px;
+    width: 56px;
+    height: 56px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 16px;
+  }
+  
+  .headline {
+    font-size: 2rem;
+  }
+  
+  .hero {
+    padding: 120px 0 70px;
+  }
+}
+
+/* ===== UTILITY ANIMATIONS ===== */
+.fade-in {
+  animation: fadeIn 1s ease-out;
+}
+
+.stagger-item {
+  opacity: 0;
+  animation: fadeIn 0.8s ease-out forwards;
 }
 </style>
 </head>
 
 <body>
 
-<header class="site-header">
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<header class="site-header" id="siteHeader">
   <div class="container header-grid">
     <div class="brand">
       <a href="#">YIGA GERALD</a>
-      <small>ICT • Digital Learning • Web</small>
+      <small>ICT • Digital Learning • Web Development</small>
     </div>
 
     <nav class="nav">
-      <a href="#about">About</a>
+      <a href="#about" class="active">About</a>
       <a href="#projects">Projects</a>
       <a href="#services">Services</a>
       <a href="#contact">Contact</a>
-      <button class="hamburger" id="menu-toggle">☰</button>
+      <button class="hamburger" id="menu-toggle">
+        <i class="fas fa-bars"></i>
+      </button>
     </nav>
   </div>
 </header>
 
-<div class="mobile-menu" id="mobile-menu" hidden>
-  <a href="#about">About</a>
-  <a href="#projects">Projects</a>
-  <a href="#services">Services</a>
-  <a href="#contact">Contact</a>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#about"><i class="fas fa-user"></i> About</a>
+  <a href="#projects"><i class="fas fa-code"></i> Projects</a>
+  <a href="#services"><i class="fas fa-cogs"></i> Services</a>
+  <a href="#contact"><i class="fas fa-envelope"></i> Contact</a>
 </div>
 
 <main>
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-content">
+        <h1 class="headline fade-in">Hi, I'm <span class="accent">Yiga Gerald</span></h1>
+        <p class="lead">
+          ICT Teacher and Digital Creator crafting immersive learning experiences,
+          intuitive school systems, and beautiful, functional websites.
+        </p>
+        
+        <div class="availability">
+          <i class="fas fa-circle-check"></i> Available for School ICT Projects
+        </div>
+        
+        <div class="cta-buttons">
+          <a href="#projects" class="btn primary">
+            <i class="fas fa-eye"></i> View My Work
+          </a>
+          <a href="#contact" class="btn ghost">
+            <i class="fas fa-paper-plane"></i> Contact Me
+          </a>
+        </div>
+        </div>
 
-<section class="hero container">
-  <h1 class="headline">Hi, I’m <span class="accent">Yiga Gerald</span></h1>
-  <p class="lead">
-    ICT Teacher and Digital Creator designing practical learning solutions,
-    school systems, and modern websites.
-  </p>
-
-  <div class="availability">
-    ✔ Available for School ICT Projects
-  </div>
-
-  <p style="margin-top:20px">
-    <a class="btn primary" href="#projects">View My Work</a>
-    <a class="btn ghost" href="#contact">Contact Me</a>
-  </p>
-</section>
-
-<section id="about" class="container">
-  <h2>About Me</h2>
-  <p>
-    I design digital lessons, educational systems, and websites that make ICT
-    practical, engaging, and accessible for schools and institutions.
-  </p>
-  <ul class="skills">
-    <li>HTML & CSS</li>
-    <li>JavaScript</li>
-    <li>PWA Development</li>
-    <li>Digital Lesson Design</li>
-    <li>School ICT Systems</li>
-  </ul>
-</section>
-
-<section id="projects" class="container">
-  <h2>Projects</h2>
-  <div class="grid">
-
-    <div class="project-card">
-      <svg class="icon" viewBox="0 0 24 24">
-        <rect x="4" y="5" width="16" height="14" fill="none" stroke="currentColor" stroke-width="2"/>
-      </svg>
-      <h3>Digital Learning Platforms</h3>
-      <p>Interactive ICT lessons, offline PWAs, and classroom resources.</p>
+        <div class="profile-wrap">
+          <picture class="profile-photo" aria-hidden="false">
+            <source srcset="images/YigaG.png" type="image/png">
+            <img src="YigaG.png" alt="Yiga Gerald — profile photo" loading="lazy" decoding="async" onerror="this.style.display='none'; this.closest('.profile-wrap').querySelector('.profile-fallback').style.display='flex'">
+          </picture>
+          <div class="profile-fallback" style="display:none">YG</div>
+        </div>
+      </div>
     </div>
+  </section>
 
-    <div class="project-card">
-      <svg class="icon" viewBox="0 0 24 24">
-        <rect x="3" y="4" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="2"/>
-      </svg>
-      <h3>School ICT Systems</h3>
-      <p>Report cards, dashboards, Excel automation, and school tools.</p>
+  <!-- ABOUT SECTION -->
+  <section id="about">
+    <div class="container">
+      <h2>About Me</h2>
+      <p>
+        I design and develop digital learning solutions that make ICT practical, engaging, 
+        and accessible for schools and educational institutions. With a focus on user experience
+        and modern web technologies, I create tools that enhance teaching and learning.
+      </p>
+      
+      <ul class="skills">
+        <li>HTML5 & CSS3</li>
+        <li>JavaScript & PWAs</li>
+        <li>Digital Lesson Design</li>
+        <li>School ICT Systems</li>
+        <li>Responsive Web Design</li>
+        <li>Educational Technology</li>
+        <li>UI/UX Design</li>
+        <li>System Automation</li>
+      </ul>
     </div>
+  </section>
 
-    <div class="project-card">
-      <svg class="icon" viewBox="0 0 24 24">
-        <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/>
-      </svg>
-      <h3>Websites for Schools & NGOs</h3>
-      <p>Responsive, fast, and easy-to-manage websites.</p>
+  <!-- PROJECTS SECTION -->
+  <section id="projects">
+    <div class="container">
+      <h2>Featured Projects</h2>
+      <div class="grid">
+        
+        <div class="project-card stagger-item" style="animation-delay: 0.1s">
+          <div class="icon-container">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="3" width="20" height="14" rx="2"></rect>
+              <path d="M8 21h8"></path>
+              <path d="M12 17v4"></path>
+            </svg>
+          </div>
+          <h3>Digital Learning Platforms</h3>
+          <p>Interactive ICT lessons, offline PWAs, and classroom resources designed for engaging digital learning experiences.</p>
+          <div class="project-tags">
+            <span>PWA</span>
+            <span>Interactive</span>
+            <span>Education</span>
+          </div>
+        </div>
+        
+        <div class="project-card stagger-item" style="animation-delay: 0.2s">
+          <div class="icon-container">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+              <path d="M2 17l10 5 10-5"></path>
+              <path d="M2 12l10 5 10-5"></path>
+            </svg>
+          </div>
+          <h3>School ICT Systems</h3>
+          <p>Automated report cards, administrative dashboards, Excel automation, and school management tools.</p>
+          <div class="project-tags">
+            <span>Automation</span>
+            <span>Dashboards</span>
+            <span>Excel</span>
+          </div>
+        </div>
+        
+        <div class="project-card stagger-item" style="animation-delay: 0.3s">
+          <div class="icon-container">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="M12 8v8"></path>
+              <path d="M8 12h8"></path>
+            </svg>
+          </div>
+          <h3>Websites for Schools & NGOs</h3>
+          <p>Responsive, fast, and easy-to-manage websites that effectively communicate mission and services.</p>
+          <div class="project-tags">
+            <span>Responsive</span>
+            <span>Fast</span>
+            <span>Modern</span>
+          </div>
+        </div>
+        
+      </div>
     </div>
+  </section>
 
-  </div>
-</section>
+  <!-- SERVICES SECTION -->
+  <section id="services">
+    <div class="container">
+      <h2>What I Do</h2>
+      <div class="grid">
+        
+        <div class="service-card stagger-item" style="animation-delay: 0.1s">
+          <h3><i class="fas fa-chalkboard-teacher"></i> ICT Teaching & Training</h3>
+          <p>Comprehensive ICT instruction and professional development for educators, focusing on practical digital skills.</p>
+        </div>
+        
+        <div class="service-card stagger-item" style="animation-delay: 0.2s">
+          <h3><i class="fas fa-laptop-code"></i> Website & System Development</h3>
+          <p>Custom web solutions and management systems tailored to educational institutions and organizations.</p>
+        </div>
+        
+        <div class="service-card stagger-item" style="animation-delay: 0.3s">
+          <h3><i class="fas fa-tools"></i> Educational Technology Support</h3>
+          <p>Integration, troubleshooting, and optimization of ed-tech tools and platforms for effective learning.</p>
+        </div>
+        
+      </div>
+    </div>
+  </section>
 
-<section id="services" class="container">
-  <h2>What I Do</h2>
-  <div class="grid">
-    <div class="card">ICT Teaching & Training</div>
-    <div class="card">Website & System Development</div>
-    <div class="card">Educational Technology Support</div>
-  </div>
-</section>
-
-<section id="contact" class="container">
-  <h2>Contact</h2>
-  <p>Email: <strong>your@email.com</strong></p>
-</section>
-
+  <!-- CONTACT SECTION -->
+  <section id="contact">
+    <div class="container">
+      <h2>Get In Touch</h2>
+      <p>Interested in collaborating or have a project in mind? Let's connect and create something amazing together.</p>
+      
+      <div class="contact-grid">
+        <div class="contact-item stagger-item" style="animation-delay: 0.1s">
+          <div class="contact-icon">
+            <i class="fas fa-envelope"></i>
+          </div>
+          <div class="contact-details">
+            <h3>Email</h3>
+              <p><a href="mailto:yigagerald98@gmail.com">yigagerald98@gmail.com</a></p>
+          </div>
+        </div>
+        
+        <div class="contact-item stagger-item" style="animation-delay: 0.2s">
+          <div class="contact-icon">
+            <i class="fas fa-phone"></i>
+          </div>
+          <div class="contact-details">
+            <h3>Phone</h3>
+            <p>+256 757 995 116</p>
+          </div>
+        </div>
+        
+        <div class="contact-item stagger-item" style="animation-delay: 0.3s">
+          <div class="contact-icon">
+            <i class="fas fa-map-marker-alt"></i>
+          </div>
+          <div class="contact-details">
+            <h3>Location</h3>
+            <p>Kampala, Uganda</p>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </section>
 </main>
 
-<footer class="site-footer container">
-  © <span id="year"></span> Yiga Gerald — ICT Professional
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-content">
+      <p>© <span id="year"></span> Yiga Gerald — ICT Professional & Digital Creator</p>
+      
+      <div class="social-links">
+        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.linkedin.com/in/yiga-gerald" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://github.com/Prowess-256" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      </div>
+      
+      <p>Designed with <i class="fas fa-heart" style="color: #ef4444"></i> and modern web magic</p>
+    </div>
+  </div>
 </footer>
 
-<a class="whatsapp-float" href="https://wa.me/256757995116" target="_blank" aria-label="WhatsApp">
-  <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor">
-    <path d="M12 2a10 10 0 00-8.6 15.1L2 22l5-1.3A10 10 0 1012 2z"/>
-  </svg>
+<a class="whatsapp-float" href="https://wa.me/256757995116" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+  <i class="fab fa-whatsapp" style="font-size: 1.8rem"></i>
 </a>
 
 <script>
-document.getElementById('year').textContent=new Date().getFullYear();
-
-const toggle=document.getElementById('menu-toggle');
-const menu=document.getElementById('mobile-menu');
-toggle.onclick=()=>{
-  menu.toggleAttribute('hidden');
-  toggle.textContent=menu.hasAttribute('hidden')?'☰':'✕';
-};
-
-// SERVICE WORKER
-if('serviceWorker'in navigator){
-  navigator.serviceWorker.register('sw.js');
-}
+document.addEventListener('DOMContentLoaded', function() {
+  // Set current year
+  document.getElementById('year').textContent = new Date().getFullYear();
+  
+  // Mobile menu toggle
+  const toggle = document.getElementById('menu-toggle');
+  const menu = document.getElementById('mobile-menu');
+  const hamburgerIcon = toggle.querySelector('i');
+  
+  toggle.addEventListener('click', () => {
+    menu.classList.toggle('open');
+    hamburgerIcon.className = menu.classList.contains('open') ? 'fas fa-times' : 'fas fa-bars';
+    
+    // Add animation to menu items
+    const menuItems = menu.querySelectorAll('a');
+    if (menu.classList.contains('open')) {
+      menuItems.forEach((item, index) => {
+        item.style.animationDelay = `${index * 0.1}s`;
+        item.classList.add('stagger-item');
+      });
+    }
+  });
+  
+  // Close mobile menu when clicking a link
+  const menuLinks = document.querySelectorAll('.mobile-menu a');
+  menuLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      menu.classList.remove('open');
+      hamburgerIcon.className = 'fas fa-bars';
+    });
+  });
+  
+  // Scroll progress indicator
+  const scrollProgress = document.getElementById('scrollProgress');
+  window.addEventListener('scroll', () => {
+    const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrolled = (winScroll / height) * 100;
+    scrollProgress.style.width = scrolled + '%';
+  });
+  
+  // Header scroll effect
+  const header = document.getElementById('siteHeader');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
+  });
+  
+  // Active navigation link highlighting
+  const sections = document.querySelectorAll('section');
+  const navLinks = document.querySelectorAll('.nav a:not(.hamburger)');
+  
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.clientHeight;
+      if (scrollY >= sectionTop - 200) {
+        current = section.getAttribute('id');
+      }
+    });
+    
+    navLinks.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href') === `#${current}`) {
+        link.classList.add('active');
+      }
+    });
+  });
+  
+  // Stagger animation for project cards on scroll
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.animationPlayState = 'running';
+      }
+    });
+  }, observerOptions);
+  
+  // Observe all stagger items
+  document.querySelectorAll('.stagger-item').forEach(item => {
+    item.style.animationPlayState = 'paused';
+    observer.observe(item);
+  });
+  
+  // Add hover sound effects (optional - uncomment if you want sounds)
+  const buttons = document.querySelectorAll('.btn');
+  buttons.forEach(button => {
+  button.addEventListener('mouseenter', () => {
+      const audio = new Audio('https://assets.mixkit.co/sfx/preview/mixkit-select-click-1109.mp3');
+      audio.volume = 0.3;
+     audio.play();
+     });
+   });
+  
+  // SERVICE WORKER
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('sw.js');
+  }
+});
 </script>
 
 </body>
