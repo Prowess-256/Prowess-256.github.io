@@ -1,4 +1,4 @@
-const CACHE = 'personal-site-v1';
+const CACHE = 'personal-site-v2';
 const ASSETS = [
   '/', '/index.html', '/styles.css', '/script.js', '/manifest.json'
 ];
@@ -15,3 +15,4 @@ self.addEventListener('fetch', e => {
     return caches.open(CACHE).then(cache => { cache.put(e.request, res.clone()); return res; });
   }).catch(()=>caches.match('/'))));
 });
+
