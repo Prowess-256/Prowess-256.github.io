@@ -1,4 +1,4 @@
-const CACHE = 'personal-site-v2';
+const CACHE = 'personal-site-v' + new Date().getTime();
 const ASSETS = [
   '/', '/index.html', '/styles.css', '/script.js', '/manifest.json'
 ];
@@ -7,7 +7,11 @@ self.addEventListener('install', e => {
   self.skipWaiting();
 });
 self.addEventListener('activate', e => {
-  e.waitUntil(self.clients.claim());
+  e.waitUntil(
+    caches.keys().then(keys => 
+      Promise.all(keys.map(key => key !== CACHE && caches.delete(key)))
+    ).then(() => self.clients.claim())
+  );
 });
 self.addEventListener('fetch', e => {
   if (e.request.method !== 'GET') return;
@@ -15,4 +19,3 @@ self.addEventListener('fetch', e => {
     return caches.open(CACHE).then(cache => { cache.put(e.request, res.clone()); return res; });
   }).catch(()=>caches.match('/'))));
 });
-
