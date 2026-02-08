@@ -1,0 +1,1305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Information Access, Sharing & Security — Practical Guide (Uganda examples)</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #1abc9c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --gray: #7f8c8d;
+            --success: #27ae60;
+            --warning: #f39c12;
+            --danger: #e74c3c;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --border-radius: 8px;
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary), #1a2530);
+            color: white;
+            padding: 2rem 0;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+            opacity: 0.1;
+            z-index: 0;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 1rem;
+        }
+        
+        .logo-icon {
+            font-size: 2.5rem;
+            color: var(--accent);
+        }
+        
+        h1 {
+            font-family: 'Merriweather', serif;
+            font-size: 2.8rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto 1.5rem;
+        }
+        
+        /* Navigation */
+        .page-nav {
+            background-color: white;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.8rem 0;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            padding: 0.5rem 0;
+            position: relative;
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent);
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--dark);
+            cursor: pointer;
+        }
+        
+        /* Main Content */
+        .content-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        main {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 2.5rem;
+            box-shadow: var(--shadow);
+        }
+        
+        /* Sidebar */
+        .sidebar {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+        }
+        
+        .sidebar h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--light);
+        }
+        
+        .lesson-progress {
+            margin-bottom: 2rem;
+        }
+        
+        .progress-bar {
+            height: 8px;
+            background-color: var(--light);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 0.5rem;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background-color: var(--accent);
+            width: 0%;
+            transition: width 1s ease;
+        }
+        
+        .progress-text {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+        
+        .quick-nav {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+        
+        .quick-nav li {
+            margin-bottom: 0.7rem;
+        }
+        
+        .quick-nav a {
+            text-decoration: none;
+            color: var(--dark);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: var(--transition);
+        }
+        
+        .quick-nav a:hover {
+            color: var(--secondary);
+            transform: translateX(5px);
+        }
+        
+        .quick-nav i {
+            color: var(--accent);
+        }
+        
+        .resource-links {
+            list-style: none;
+        }
+        
+        .resource-links li {
+            margin-bottom: 0.7rem;
+        }
+        
+        .resource-links a {
+            text-decoration: none;
+            color: var(--secondary);
+            font-size: 0.95rem;
+            display: block;
+            padding: 0.5rem;
+            border-radius: 4px;
+            transition: var(--transition);
+            border: 1px solid transparent;
+        }
+        
+        .resource-links a:hover {
+            background-color: rgba(52, 152, 219, 0.1);
+            border-color: var(--secondary);
+        }
+        
+        /* Content Sections */
+        .section {
+            margin-bottom: 3rem;
+            scroll-margin-top: 100px;
+        }
+        
+        h2 {
+            color: var(--primary);
+            font-family: 'Merriweather', serif;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--light);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        h2 i {
+            color: var(--accent);
+        }
+        
+        h3 {
+            color: var(--dark);
+            font-size: 1.5rem;
+            margin: 1.5rem 0 1rem;
+        }
+        
+        h4 {
+            color: var(--dark);
+            font-size: 1.2rem;
+            margin: 1.2rem 0 0.8rem;
+        }
+        
+        p {
+            margin-bottom: 1.2rem;
+        }
+        
+        .highlight {
+            background-color: rgba(26, 188, 156, 0.1);
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            border-left: 4px solid var(--accent);
+            margin: 1.5rem 0;
+        }
+        
+        .highlight p:last-child {
+            margin-bottom: 0;
+        }
+        
+        /* Info Boxes */
+        .info-box {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            box-shadow: var(--shadow);
+            border-top: 4px solid;
+        }
+        
+        .info-box.access {
+            border-color: var(--secondary);
+        }
+        
+        .info-box.sharing {
+            border-color: var(--success);
+        }
+        
+        .info-box.security {
+            border-color: var(--danger);
+        }
+        
+        .info-box h4 {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 0;
+        }
+        
+        .info-box i {
+            font-size: 1.3rem;
+        }
+        
+        .info-box.access h4 i {
+            color: var(--secondary);
+        }
+        
+        .info-box.sharing h4 i {
+            color: var(--success);
+        }
+        
+        .info-box.security h4 i {
+            color: var(--danger);
+        }
+        
+        /* Triad Visualization */
+        .triad-visualization {
+            display: flex;
+            justify-content: center;
+            margin: 2rem 0;
+        }
+        
+        .triad-svg {
+            max-width: 400px;
+            height: auto;
+        }
+        
+        .triad-node {
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .triad-node:hover {
+            filter: brightness(1.1);
+            transform: scale(1.02);
+        }
+        
+        /* Video Container */
+        .video-container {
+            margin: 2rem 0;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            background-color: #000;
+        }
+        
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .video-caption {
+            background-color: white;
+            padding: 1rem;
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+        
+        /* Image Gallery */
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .gallery-item {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .gallery-caption {
+            padding: 1rem;
+            background-color: white;
+        }
+        
+        /* Tabs */
+        .tabs {
+            margin: 2rem 0;
+        }
+        
+        .tab-headers {
+            display: flex;
+            border-bottom: 1px solid var(--light);
+            margin-bottom: 1rem;
+        }
+        
+        .tab-header {
+            padding: 0.8rem 1.5rem;
+            background: none;
+            border: none;
+            font-weight: 600;
+            color: var(--gray);
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .tab-header.active {
+            color: var(--primary);
+        }
+        
+        .tab-header.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--accent);
+        }
+        
+        .tab-content {
+            display: none;
+            padding: 1.5rem;
+            background-color: rgba(236, 240, 241, 0.3);
+            border-radius: var(--border-radius);
+        }
+        
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            box-shadow: var(--shadow);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+        }
+        
+        th {
+            background-color: var(--primary);
+            color: white;
+            padding: 1rem;
+            text-align: left;
+        }
+        
+        td {
+            padding: 1rem;
+            border-bottom: 1px solid var(--light);
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        
+        tr:hover {
+            background-color: rgba(52, 152, 219, 0.05);
+        }
+        
+        /* Interactive Quiz */
+        .quiz-container {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: var(--shadow);
+        }
+        
+        .quiz-question {
+            margin-bottom: 1.5rem;
+        }
+        
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .quiz-option {
+            padding: 1rem;
+            border: 2px solid var(--light);
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .quiz-option:hover {
+            border-color: var(--secondary);
+            background-color: rgba(52, 152, 219, 0.05);
+        }
+        
+        .quiz-option.selected {
+            border-color: var(--accent);
+            background-color: rgba(26, 188, 156, 0.1);
+        }
+        
+        .quiz-feedback {
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            display: none;
+        }
+        
+        .quiz-feedback.correct {
+            background-color: rgba(39, 174, 96, 0.1);
+            color: var(--success);
+            display: block;
+        }
+        
+        .quiz-feedback.incorrect {
+            background-color: rgba(231, 76, 60, 0.1);
+            color: var(--danger);
+            display: block;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--primary);
+            color: white;
+            padding: 3rem 0 1.5rem;
+            margin-top: 3rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-section h3 {
+            color: white;
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent);
+            padding-left: 5px;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .content-wrapper {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                position: static;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                height: 100vh;
+                background-color: white;
+                flex-direction: column;
+                padding: 2rem;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+                transition: var(--transition);
+                z-index: 1000;
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .mobile-toggle {
+                display: block;
+            }
+            
+            .nav-overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.5);
+                z-index: 999;
+                display: none;
+            }
+            
+            .nav-overlay.active {
+                display: block;
+            }
+            
+            .tab-headers {
+                flex-direction: column;
+            }
+            
+            .tab-header {
+                border-bottom: 1px solid var(--light);
+            }
+            
+            .tab-header.active::after {
+                width: 5px;
+                height: 100%;
+                bottom: 0;
+            }
+        }
+        
+        /* Print Styles */
+        @media print {
+            .page-nav, .sidebar, footer, .video-container, .quiz-container {
+                display: none;
+            }
+            
+            .content-wrapper {
+                grid-template-columns: 1fr;
+            }
+            
+            main {
+                box-shadow: none;
+                padding: 0;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="navigation.css">
+</head>
+<body>
+    <!-- GLOBAL NAVIGATION WITH SUBMENUS -->
+<nav class="global-nav">
+    <div class="global-nav-container">
+        <a href="learning-hub.html" class="global-nav-brand">
+            <i class="fas fa-graduation-cap"></i> ICT Learning Hub
+        </a>
+        
+        <button class="nav-mobile-toggle" title="Toggle menu">
+            <i class="fas fa-bars"></i>
+        </button>
+        
+        <ul class="global-nav-menu">
+            <!-- Home -->
+            <li class="nav-item">
+                <a href="index.html">
+                    <i class="fas fa-home"></i> Home
+                </a>
+            </li>
+            
+            <!-- Office Applications -->
+            <li class="nav-item">
+                <a href="#" class="nav-dropdown-toggle">
+                    <i class="fas fa-file"></i> Office Applications
+                </a>
+                <ul class="nav-submenu">
+                    <li><a href="word processingone.html" class="submenu-item"><i class="fas fa-file-word"></i> Word Processing</a></li>
+                    <li><a href="word 2.html" class="submenu-item"><i class="fas fa-file-word"></i> Word Processing 2</a></li>
+                    <li><a href="word processingone.html" class="submenu-item"><i class="fas fa-file-word"></i> Word Processing</a></li>
+                    <li class="submenu-divider"></li>
+                    <li><a href="PowerPoint.html" class="submenu-item"><i class="fas fa-presentation"></i> Presentations</a></li>
+                    <li class="submenu-divider"></li>
+                    <li><a href="spreadsheets 1.html" class="submenu-item"><i class="fas fa-table"></i> Spreadsheets 1</a></li>
+                    <li><a href="spreadsheets 2.html" class="submenu-item"><i class="fas fa-table"></i> Spreadsheets 2</a></li>
+                </ul>
+            </li>
+            
+            <!-- System & Data -->
+            <li class="nav-item">
+                <a href="#" class="nav-dropdown-toggle">
+                    <i class="fas fa-server"></i> System & Data
+                </a>
+                <ul class="nav-submenu">
+                    <li><a href="DBMS.html" class="submenu-item"><i class="fas fa-database"></i> Database Management</a></li>
+                    <li><a href="software.html" class="submenu-item"><i class="fas fa-box"></i> Software Management</a></li>
+                    <li class="submenu-divider"></li>
+                    <li><a href="system security and data security .html" class="submenu-item"><i class="fas fa-lock"></i> System & Data Security</a></li>
+                    <li><a href="information_access_and_sharing_and_security.html" class="submenu-item"><i class="fas fa-share"></i> Information Sharing</a></li>
+                </ul>
+            </li>
+            
+            <!-- Design & Web -->
+            <li class="nav-item">
+                <a href="#" class="nav-dropdown-toggle">
+                    <i class="fas fa-palette"></i> Design & Web
+                </a>
+                <ul class="nav-submenu">
+                    <li><a href="web design.html" class="submenu-item"><i class="fas fa-globe"></i> Web Design</a></li>
+                    <li><a href="desktop publishing.html" class="submenu-item"><i class="fas fa-paint-brush"></i> Desktop Publishing</a></li>
+                </ul>
+            </li>
+            
+            <!-- Hardware & IT -->
+            <li class="nav-item">
+                <a href="#" class="nav-dropdown-toggle">
+                    <i class="fas fa-microchip"></i> Hardware & IT
+                </a>
+                <ul class="nav-submenu">
+                    <li><a href="computer hardware.html" class="submenu-item"><i class="fas fa-computer"></i> Computer Hardware</a></li>
+                    <li><a href="file and folder management.html" class="submenu-item"><i class="fas fa-folder"></i> File Management</a></li>
+                    <li><a href="Access-and-sharing.html" class="submenu-item"><i class="fas fa-users"></i> Access & Sharing</a></li>
+                </ul>
+            </li>
+            
+            <!-- Information & Safety -->
+            <li class="nav-item">
+                <a href="#" class="nav-dropdown-toggle">
+                    <i class="fas fa-shield"></i> Info & Safety
+                </a>
+                <ul class="nav-submenu">
+                    <li><a href="Health and safety .html" class="submenu-item"><i class="fas fa-heartbeat"></i> Health & Safety</a></li>
+                    <li><a href="Waste management.html" class="submenu-item"><i class="fas fa-recycle"></i> Waste Management</a></li>
+                </ul>
+            </li>
+            
+            <!-- General -->
+            <li class="nav-item">
+                <a href="#" class="nav-dropdown-toggle">
+                    <i class="fas fa-book"></i> General
+                </a>
+                <ul class="nav-submenu">
+                    <li><a href="introduction to ICT.html" class="submenu-item"><i class="fas fa-book-open"></i> Introduction to ICT</a></li>
+                    <li><a href="ticking timer..html" class="submenu-item"><i class="fas fa-clock"></i> Ticking Timer</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</nav>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <i class="fas fa-shield-alt logo-icon"></i>
+                <div>
+                    <h1>Information: Access • Share • Secure</h1>
+                    <p class="subtitle">A practical guide with local examples and activities</p>
+                </div>
+            </div>
+            <p>Practical lessons, activities and local examples for communities and organisations</p>
+        </div>
+    </header>
+    
+    <!-- Navigation -->
+    <nav class="page-nav">
+        <div class="container nav-container">
+            <div class="mobile-toggle" id="mobileToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#introduction"><i class="fas fa-info-circle"></i> Introduction</a></li>
+                <li><a href="#part1"><i class="fas fa-unlock-alt"></i> Information Access</a></li>
+                <li><a href="#part2"><i class="fas fa-share-alt"></i> Information Sharing</a></li>
+                <li><a href="#part3"><i class="fas fa-shield-alt"></i> Information Security</a></li>
+                <li><a href="#part4"><i class="fas fa-balance-scale"></i> Tensions & Balances</a></li>
+                <li><a href="#part5"><i class="fas fa-crystal-ball"></i> Future Challenges</a></li>
+            </ul>
+            <div class="nav-overlay" id="navOverlay"></div>
+        </div>
+    </nav>
+    
+    <!-- Main Content Area -->
+    <div class="container content-wrapper">
+        <!-- Main Content -->
+        <main>
+            <section id="introduction" class="section">
+                <h2><i class="fas fa-info-circle"></i> About This Course</h2>
+                <p>This course covers three linked topics: information access, information sharing, and information security. The content uses examples and resources that work in Uganda (government agencies, schools, NGOs, and businesses). The goal is to give learners one week of guided activities with practical tasks, readings, and projects.</p>
+                <div class="highlight">
+                    <p>Structure: seven days of guided learning. Each day has short readings, practical tasks, group activities, and a small quiz or reflection.</p>
+                </div>
+            </section>
+
+            <section id="week-plan" class="section">
+                <h2><i class="fas fa-calendar-alt"></i> 7-Day Learning Plan (Overview)</h2>
+                <ol>
+                    <li><strong>Day 1:</strong> What is information? Sources in your community.</li>
+                    <li><strong>Day 2:</strong> Getting information: schools, radio, libraries, internet.</li>
+                    <li><strong>Day 3:</strong> Sharing information: groups, WhatsApp, radio and community notice boards.</li>
+                    <li><strong>Day 4:</strong> Using data: for schools, small businesses, NGOs.</li>
+                    <li><strong>Day 5:</strong> Security basics: passwords, scams, mobile money safety.</li>
+                    <li><strong>Day 6:</strong> Policies and responsible sharing: IDs, privacy, and public data.</li>
+                    <li><strong>Day 7:</strong> Project day: community plan and showcase.</li>
+                </ol>
+            </section>
+
+            <section id="day1" class="section">
+                <h2><i class="fas fa-book-open"></i> Day 1 — What is information?</h2>
+                <p>Time: ~3 hours. Aim: understand what counts as information and where it comes from locally.</p>
+                <h3>Step 1 (40–60 min): Read & Discuss</h3>
+                <p>Read the short notes below. Then discuss in pairs: what local sources of information do you use?</p>
+                <h4>Short notes</h4>
+                <ul>
+                    <li>Information = facts, news, data, instructions, or stories that help people act.</li>
+                    <li>Sources: schools, radio stations, Ministry announcements, community leaders, NGOs, WhatsApp groups, official websites (e.g., Ministry of Education and Sports).</li>
+                </ul>
+                <h3>Step 2 (60–90 min): Mapping activity</h3>
+                <p>Task: In small groups, list all information sources in your village or town. Classify each as: reliable, sometimes reliable, or not reliable. Bring 3 examples to present.</p>
+                <h3>Step 3 (30–45 min): Practical task</h3>
+                <p>Visit or call a local information point (school office, radio station, community leader). Ask: How do they share news? How often? Record answers.</p>
+                <h3>Reflection (15 min)</h3>
+                <p>Write one paragraph: Which source helped you most this week and why?</p>
+            </section>
+
+            <section id="day2" class="section">
+                <h2><i class="fas fa-wifi"></i> Day 2 — Getting information</h2>
+                <p>Time: ~3 hours. Aim: learn how to access information and tools that help access.</p>
+                <h3>Read (30 min)</h3>
+                <p>Read about key local services: Ministry of Education and Sports (learning resources), National Identification and Registration Authority (NIRA), Uganda Communications Commission (UCC) for connectivity rules, and NITA-U for ICT services.</p>
+                <h3>Watch (30–45 min)</h3>
+                <p>Watch a short video about using the internet safely; discuss what parts apply where you live.</p>
+                <h3>Hands-on (60–90 min)</h3>
+                <ul>
+                    <li>Practice finding a government document: visit the Ministry of Education website and find the latest guidance for schools.</li>
+                    <li>Search UBOS (Uganda Bureau of Statistics) for one statistic useful to a small business (e.g., population of a district).</li>
+                </ul>
+                <h3>Group task (30 min)</h3>
+                <p>Make a one-page poster (paper or digital) that shows where community members can get reliable information.</p>
+            </section>
+
+            <section id="day3" class="section">
+                <h2><i class="fas fa-share-alt"></i> Day 3 — Sharing information</h2>
+                <p>Time: ~3 hours. Aim: practice safe, useful sharing for learning and business.</p>
+                <h3>Short reading (20 min)</h3>
+                <p>How people in Uganda share: radio talk-shows, WhatsApp groups, school notice boards, community meetings, and NGO reports.</p>
+                <h3>Practice (60–90 min)</h3>
+                <ol>
+                    <li>Create clear messages for three audiences: students, farmers, customers (for a small business). Keep messages short and accurate.</li>
+                    <li>Role-play: one person is a radio presenter; others call in with questions.</li>
+                </ol>
+                <h3>Ethics & checks (40 min)</h3>
+                <p>Create a checklist to check facts before sharing: source, date, supporting evidence, trusted local authority (e.g., Ministry, UWA for wildlife info).</p>
+            </section>
+
+            <section id="day4" class="section">
+                <h2><i class="fas fa-briefcase"></i> Day 4 — Using information (Schools, Businesses, NGOs)</h2>
+                <p>Time: ~3 hours. Aim: use information to solve local problems.</p>
+                <h3>Schools (45–60 min)</h3>
+                <p>Activity: teachers collect learning materials (syllabus, sample exams, videos). Plan a week of lessons using open resources and a local example.</p>
+                <h3>Small businesses (45–60 min)</h3>
+                <p>Activity: find market prices, make a simple price tracker using a notebook or spreadsheet. Use UBOS or local market radio reports.</p>
+                <h3>NGOs & larger projects (45–60 min)</h3>
+                <p>Activity: find an NGO report about water or health in your area. Summarize findings and suggest one small project idea using the data.</p>
+            </section>
+
+            <section id="day5" class="section">
+                <h2><i class="fas fa-shield-alt"></i> Day 5 — Security basics</h2>
+                <p>Time: ~3 hours. Aim: learn practical steps to protect people, money and data.</p>
+                <h3>Read & watch (45 min)</h3>
+                <p>Topics: strong passwords, two-step verification, phishing and scam messages, mobile money safety.</p>
+                <h3>Hands-on (60–75 min)</h3>
+                <ol>
+                    <li>Make a strong password and set up two-step verification on a sample account.</li>
+                    <li>Practice spotting a fake SMS or WhatsApp message — list signs of fraud.</li>
+                </ol>
+                <h3>Local action (30–45 min)</h3>
+                <p>Talk to a local shop or school about securing their money and records. Share a simple checklist (see 'Checklists' section below).</p>
+            </section>
+
+            <section id="day6" class="section">
+                <h2><i class="fas fa-balance-scale"></i> Day 6 — Policy, privacy and responsible sharing</h2>
+                <p>Time: ~3 hours. Aim: understand rules and responsibilities for handling people's data.</p>
+                <h3>Read (45 min)</h3>
+                <p>Find and read short summaries: Uganda Data Protection laws, NIRA guidance on ID data, and NITA-U advisories.</p>
+                <h3>Case study (45–60 min)</h3>
+                <p>Study a local case: how a community used data to plan a school or conserve wildlife (use Uganda Wildlife Authority materials). Discuss risks if data were shared carelessly.</p>
+                <h3>Activity (45–60 min)</h3>
+                <p>Create a one-page data-use policy for a small school or business. Include: what data to collect, who can see it, and how long to keep it.</p>
+            </section>
+
+            <section id="day7" class="section">
+                <h2><i class="fas fa-trophy"></i> Day 7 — Project day & showcase</h2>
+                <p>Time: ~3 hours. Aim: present a short project that shows learning from the week.</p>
+                <h3>Project ideas</h3>
+                <ul>
+                    <li>A community information poster that lists reliable sources and emergency contacts.</li>
+                    <li>A price tracker notebook or simple spreadsheet for a local market.</li>
+                    <li>A short report on how a local school can protect student records.</li>
+                </ul>
+                <h3>Presentation (60–90 min)</h3>
+                <p>Each group presents their project. Peers ask 2 questions. Vote on the most useful local project.</p>
+                <h3>Next steps (30 min)</h3>
+                <p>Plan how to keep the project alive: who will update it, where it will be stored, and how to share results with the community or local authorities.</p>
+            </section>
+
+            <section id="for-schools" class="section">
+                <h2><i class="fas fa-school"></i> For Schools</h2>
+                <p>Suggested week-long lesson plans, printable checklists, and links to Ministry of Education and Sports materials. Ideas:</p>
+                <ul>
+                    <li>Weekly reading club using radio lessons and local newspapers.</li>
+                    <li>Collect local stories and make a class fact sheet (verify with local sources).</li>
+                    <li>Protect student records: keep a paper backup and a password-protected spreadsheet.</li>
+                </ul>
+            </section>
+
+            <section id="for-small-business" class="section">
+                <h2><i class="fas fa-store"></i> For Small Businesses</h2>
+                <p>Practical tips:</p>
+                <ul>
+                    <li>Find customers: use local radio adverts, notice boards, and WhatsApp groups.</li>
+                    <li>Record sales: a simple notebook or spreadsheet helps track stock and prices.</li>
+                    <li>Protect money: use official mobile money channels, never share PINs, and keep paper receipts.</li>
+                </ul>
+            </section>
+
+            <section id="for-large-business" class="section">
+                <h2><i class="fas fa-building"></i> For Larger Businesses</h2>
+                <p>Focus on policies and systems:</p>
+                <ul>
+                    <li>Data retention and backups: schedule regular backups and test restores.</li>
+                    <li>Staff training: regular sessions on phishing and secure handling of customer data.</li>
+                    <li>Work with NITA-U and UCC for guidance on compliance and secure networks.</li>
+                </ul>
+            </section>
+
+            <section id="for-ngos" class="section">
+                <h2><i class="fas fa-hands-helping"></i> For NGOs and Community Groups</h2>
+                <p>Use data responsibly to help communities:</p>
+                <ul>
+                    <li>Collect only what you need; get consent before sharing personal data.</li>
+                    <li>Share public data (e.g., service locations, meeting times) widely using radio and community agents.</li>
+                    <li>Coordinate with local government offices (district offices, ministry contacts) when possible.</li>
+                </ul>
+            </section>
+
+            <section id="case-studies" class="section">
+                <h2><i class="fas fa-book-reader"></i> Case Studies & Local Examples</h2>
+                <h3>1. NIRA and ID data</h3>
+                <p>NIRA issues national IDs used for many services. Think about how ID data should be protected and who can access it. Discuss when it is okay to share ID information and when not to.</p>
+                <h3>2. Uganda Wildlife Authority (UWA)</h3>
+                <p>UWA shares wildlife reports and park information. This data helps tourism businesses and conservation groups. Consider how open data supports local livelihoods while protecting sensitive locations.</p>
+                <h3>3. Ministry of Education and Sports</h3>
+                <p>The ministry provides curricula and learning resources. Teachers can use official materials and adapt them to local contexts while crediting sources.</p>
+            </section>
+
+            <section id="checklists" class="section">
+                <h2><i class="fas fa-check-circle"></i> Checklists & Tools</h2>
+                <h3>Simple security checklist</h3>
+                <ul>
+                    <li>Use strong passwords and different passwords for key accounts.</li>
+                    <li>Enable two-step verification where available.</li>
+                    <li>Do not share PINs or passwords by phone or message.</li>
+                    <li>Keep backups of important records (paper and digital).</li>
+                </ul>
+                <h3>Fact-check checklist before sharing</h3>
+                <ul>
+                    <li>Where did this information come from?</li>
+                    <li>Is there a date and source?</li>
+                    <li>Can a trusted local authority confirm it (Ministry, UWA, school)?</li>
+                </ul>
+            </section>
+
+            <section id="local-resources" class="section">
+                <h2><i class="fas fa-link"></i> Useful Local Links & Resources</h2>
+                <ul>
+                    <li><a href="https://www.education.go.ug" target="_blank">Ministry of Education and Sports</a></li>
+                    <li><a href="https://www.nira.go.ug" target="_blank">NIRA (National Identification and Registration Authority)</a></li>
+                    <li><a href="https://www.nita.go.ug" target="_blank">NITA-U (National Information Technology Authority, Uganda)</a></li>
+                    <li><a href="https://www.uwa.or.ug" target="_blank">Uganda Wildlife Authority</a></li>
+                    <li><a href="https://www.ubos.org" target="_blank">Uganda Bureau of Statistics (UBOS)</a></li>
+                    <li><a href="https://www.ucc.co.ug" target="_blank">Uganda Communications Commission (UCC)</a></li>
+                    <li><a href="https://www.unicef.org/uganda" target="_blank">UNICEF Uganda</a></li>
+                    <li><a href="https://www.mak.ac.ug" target="_blank">Makerere University</a></li>
+                </ul>
+            </section>
+
+            <section id="quiz" class="section">
+                <h2><i class="fas fa-question-circle"></i> Quick Quiz</h2>
+                <div class="quiz-container">
+                    <div class="quiz-question">
+                        <h4>Why keep a paper backup of important records?</h4>
+                        <p>Choose the best answer:</p>
+                    </div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-correct="true">Digital systems can fail or be offline; paper stays accessible.</div>
+                        <div class="quiz-option" data-correct="false">Paper is always more secure than digital systems.</div>
+                        <div class="quiz-option" data-correct="false">Paper backups are cheaper than any other backup.</div>
+                    </div>
+                    <div class="quiz-feedback" id="quizFeedbackLocal"></div>
+                </div>
+            </section>
+
+            <section id="conclusion" class="section">
+                <h2><i class="fas fa-flag-checkered"></i> Final Notes</h2>
+                <p>This course is a practical, local-first guide. Use the week plan, adapt activities for your community, and share results with local leaders. If you want, I can expand any day into a printable lesson, add classroom handouts, or produce teacher notes.</p>
+            </section>
+        </main>
+        
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="lesson-progress">
+                <h3>Lesson Progress</h3>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <div class="progress-text">
+                    <span>0%</span>
+                    <span id="progressPercent">0%</span>
+                    <span>100%</span>
+                </div>
+            </div>
+            
+            <div class="quick-nav-container">
+                <h3>Quick Navigation</h3>
+                <ul class="quick-nav">
+                    <li><a href="#introduction"><i class="fas fa-chevron-right"></i> Introduction</a></li>
+                    <li><a href="#part1"><i class="fas fa-chevron-right"></i> Information Access</a></li>
+                    <li><a href="#part2"><i class="fas fa-chevron-right"></i> Information Sharing</a></li>
+                    <li><a href="#part3"><i class="fas fa-chevron-right"></i> Information Security</a></li>
+                    <li><a href="#part4"><i class="fas fa-chevron-right"></i> Tensions & Balances</a></li>
+                    <li><a href="#part5"><i class="fas fa-chevron-right"></i> Future Challenges</a></li>
+                    <li><a href="#conclusion"><i class="fas fa-chevron-right"></i> Conclusion</a></li>
+                </ul>
+            </div>
+            
+            <div class="resource-links-container">
+                <h3>Additional Resources</h3>
+                <ul class="resource-links">
+                    <li><a href="https://www.nita.go.ug" target="_blank"><i class="fas fa-external-link-alt"></i> NITA-U (National Information Technology Authority, Uganda)</a></li>
+                    <li><a href="https://www.education.go.ug" target="_blank"><i class="fas fa-external-link-alt"></i> Ministry of Education and Sports</a></li>
+                    <li><a href="https://www.nira.go.ug" target="_blank"><i class="fas fa-external-link-alt"></i> NIRA (National Identification & Registration Authority)</a></li>
+                    <li><a href="https://www.ucc.co.ug" target="_blank"><i class="fas fa-external-link-alt"></i> Uganda Communications Commission</a></li>
+                    <li><a href="https://www.ubos.org" target="_blank"><i class="fas fa-external-link-alt"></i> Uganda Bureau of Statistics (UBOS)</a></li>
+                    <li><a href="https://www.uwa.or.ug" target="_blank"><i class="fas fa-external-link-alt"></i> Uganda Wildlife Authority (UWA)</a></li>
+                    <li><a href="https://www.unicef.org/uganda" target="_blank"><i class="fas fa-external-link-alt"></i> UNICEF Uganda</a></li>
+                    <li><a href="https://www.eff.org/issues/digital-privacy" target="_blank"><i class="fas fa-external-link-alt"></i> Electronic Frontier Foundation</a></li>
+                    <li><a href="https://www.nist.gov/cybersecurity" target="_blank"><i class="fas fa-external-link-alt"></i> NIST Cybersecurity Framework</a></li>
+                    <li><a href="https://creativecommons.org/about/" target="_blank"><i class="fas fa-external-link-alt"></i> Creative Commons Licensing</a></li>
+                </ul>
+            </div>
+            
+            <div class="download-section">
+                <h3>Download Lesson</h3>
+                <button id="downloadPDF" class="btn-download"><i class="fas fa-file-pdf"></i> Download as PDF</button>
+                <button id="printPage" class="btn-download"><i class="fas fa-print"></i> Print Lesson</button>
+            </div>
+        </aside>
+    </div>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About This Lesson</h3>
+                    <p>This comprehensive lesson on the Information Age Triad was developed to provide a thorough understanding of the interconnected concepts of information access, sharing, and security.</p>
+                    <p>Suitable for students, professionals, and anyone interested in digital literacy and information studies.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Related Topics</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Digital Literacy Fundamentals</a></li>
+                        <li><a href="#">Cybersecurity Basics</a></li>
+                        <li><a href="#">Data Privacy Laws</a></li>
+                        <li><a href="#">Open Source Movement</a></li>
+                        <li><a href="#">Digital Divide Solutions</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Connect</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
+                        <li><a href="#"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+                        <li><a href="#"><i class="fab fa-github"></i> GitHub</a></li>
+                        <li><a href="#"><i class="fas fa-envelope"></i> Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>© 2023 Information Studies Lesson. This content is available under a Creative Commons Attribution-NonCommercial 4.0 International License.</p>
+                <p>Designed for educational purposes. Images from Unsplash, videos embedded from YouTube.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Mobile navigation toggle
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navLinks = document.getElementById('navLinks');
+        const navOverlay = document.getElementById('navOverlay');
+        
+        mobileToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            navOverlay.classList.toggle('active');
+            document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : 'auto';
+        });
+        
+        navOverlay.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+            navOverlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                navOverlay.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+        });
+        
+        // Tab functionality
+        document.querySelectorAll('.tab-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const tabId = header.getAttribute('data-tab');
+                const tabContent = document.getElementById(tabId);
+                const parent = header.closest('.tabs');
+                
+                // Deactivate all tabs in this group
+                parent.querySelectorAll('.tab-header').forEach(h => h.classList.remove('active'));
+                parent.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                
+                // Activate selected tab
+                header.classList.add('active');
+                tabContent.classList.add('active');
+            });
+        });
+        
+        // Progress tracking
+        function updateProgress() {
+            const sections = document.querySelectorAll('.section');
+            const viewportHeight = window.innerHeight;
+            const documentHeight = document.documentElement.scrollHeight - viewportHeight;
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const scrollPercent = Math.min(100, Math.round((scrollTop / documentHeight) * 100));
+            
+            document.getElementById('progressFill').style.width = `${scrollPercent}%`;
+            document.getElementById('progressPercent').textContent = `${scrollPercent}%`;
+        }
+        
+        window.addEventListener('scroll', updateProgress);
+        window.addEventListener('load', updateProgress);
+        
+        // Quiz functionality
+        document.querySelectorAll('.quiz-option').forEach(option => {
+            option.addEventListener('click', function() {
+                // Clear previous selections
+                this.parentElement.querySelectorAll('.quiz-option').forEach(opt => {
+                    opt.classList.remove('selected');
+                });
+                
+                // Select this option
+                this.classList.add('selected');
+                
+                // Show feedback
+                const feedback = document.getElementById('quizFeedback');
+                const isCorrect = this.getAttribute('data-correct') === 'true';
+                
+                feedback.textContent = isCorrect 
+                    ? 'Correct! The encryption backdoor debate is indeed a classic example of the tension between access (for law enforcement) and security (for all users).' 
+                    : 'Not quite. While this tension is involved, the encryption backdoor debate is primarily about balancing access needs with security requirements.';
+                
+                feedback.className = `quiz-feedback ${isCorrect ? 'correct' : 'incorrect'}`;
+            });
+        });
+        
+        // Triad visualization interaction
+        function showInfo(type) {
+            const info = {
+                access: 'Information Access: The ability to obtain, retrieve, and utilize information resources. It encompasses availability, findability, and usability.',
+                sharing: 'Information Sharing: The distribution and exchange of information between individuals, groups, organizations, or systems.',
+                security: 'Information Security: The practice of protecting information from unauthorized access, use, disclosure, disruption, modification, or destruction.'
+            };
+            
+            alert(info[type]);
+        }
+        
+        // Print functionality
+        document.getElementById('printPage').addEventListener('click', () => {
+            window.print();
+        });
+        
+        // Download as PDF (simulated)
+        document.getElementById('downloadPDF').addEventListener('click', () => {
+            alert('PDF download would be implemented with a server-side PDF generation service in a real application.');
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Initialize first tab as active on page load
+        document.querySelectorAll('.tabs').forEach(tabGroup => {
+            const firstHeader = tabGroup.querySelector('.tab-header');
+            const firstTab = tabGroup.querySelector('.tab-content');
+            
+            if (firstHeader && firstTab) {
+                firstHeader.classList.add('active');
+                firstTab.classList.add('active');
+            }
+        });
+    </script>
+    <script src="navigation.js"></script>
+</body>

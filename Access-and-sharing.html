@@ -1,0 +1,2993 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Information Access and Sharing - Complete Learning Module</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2a6ebb;
+            --secondary: #34a853;
+            --accent: #ea4335;
+            --warning: #fbbc05;
+            --light: #f8f9fa;
+            --dark: #202124;
+            --gray: #5f6368;
+            --border-radius: 10px;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: #f5f7fa;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary), #1a4f8c);
+            color: white;
+            padding: 2rem 0;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+            opacity: 0.1;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .course-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.8rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+        
+        .course-subtitle {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
+            max-width: 800px;
+        }
+        
+        .keywords {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 1rem;
+        }
+        
+        .keyword {
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .learning-outcomes {
+            background-color: rgba(255, 255, 255, 0.15);
+            border-radius: var(--border-radius);
+            padding: 1.2rem;
+            margin-top: 1.5rem;
+        }
+        
+        .learning-outcomes h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+        }
+        
+        .outcomes-list {
+            list-style: none;
+        }
+        
+        .outcomes-list li {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .outcomes-list i {
+            margin-right: 10px;
+            margin-top: 3px;
+            color: var(--warning);
+        }
+        
+        /* Navigation */
+        .module-nav {
+            background-color: white;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 0.5rem 0;
+            position: relative;
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--dark);
+            cursor: pointer;
+        }
+        
+        /* Main Content */
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .content-area {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 2.5rem;
+            box-shadow: var(--shadow);
+        }
+        
+        /* Sidebar */
+        .sidebar {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+        }
+        
+        .sidebar h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--light);
+            font-size: 1.3rem;
+        }
+        
+        .module-progress {
+            margin-bottom: 2rem;
+        }
+        
+        .progress-bar {
+            height: 8px;
+            background-color: #e0e0e0;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 0.5rem;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background-color: var(--secondary);
+            width: 0%;
+            transition: width 1s ease;
+        }
+        
+        .progress-text {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+        
+        .sidebar-nav {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+        
+        .sidebar-nav li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .sidebar-nav a {
+            text-decoration: none;
+            color: var(--dark);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: var(--transition);
+            padding: 0.5rem;
+            border-radius: 5px;
+        }
+        
+        .sidebar-nav a:hover {
+            background-color: rgba(42, 110, 187, 0.1);
+            color: var(--primary);
+            transform: translateX(5px);
+        }
+        
+        .sidebar-nav i {
+            color: var(--primary);
+            width: 20px;
+            text-align: center;
+        }
+        
+        .assessment-info {
+            background-color: rgba(251, 188, 5, 0.1);
+            border-radius: var(--border-radius);
+            padding: 1.2rem;
+            border-left: 4px solid var(--warning);
+        }
+        
+        .assessment-info h4 {
+            color: var(--dark);
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .assessment-info ul {
+            padding-left: 1.2rem;
+            font-size: 0.9rem;
+        }
+        
+        .assessment-info li {
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Section Styling */
+        .section {
+            margin-bottom: 3rem;
+            scroll-margin-top: 100px;
+        }
+        
+        h2 {
+            color: var(--primary);
+            font-family: 'Poppins', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--light);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        h2 i {
+            color: var(--primary);
+        }
+        
+        h3 {
+            color: var(--dark);
+            font-size: 1.6rem;
+            margin: 1.8rem 0 1rem;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        h4 {
+            color: var(--dark);
+            font-size: 1.3rem;
+            margin: 1.5rem 0 0.8rem;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        p {
+            margin-bottom: 1.2rem;
+        }
+        
+        .key-term {
+            background-color: rgba(52, 168, 83, 0.1);
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            font-weight: 600;
+            color: var(--secondary);
+        }
+        
+        /* Activity Box */
+        .activity {
+            background-color: #f8f9fa;
+            border-radius: var(--border-radius);
+            padding: 1.8rem;
+            margin: 2rem 0;
+            border-left: 5px solid var(--primary);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+        
+        .activity-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.2rem;
+        }
+        
+        .activity-icon {
+            background-color: var(--primary);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-weight: bold;
+        }
+        
+        .activity-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.4rem;
+            color: var(--primary);
+        }
+        
+        .activity-instructions {
+            background-color: white;
+            padding: 1.2rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            border: 1px dashed #ddd;
+        }
+        
+        .activity-steps {
+            list-style: decimal;
+            padding-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .activity-steps li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .discussion-points {
+            background-color: rgba(234, 67, 53, 0.05);
+            padding: 1.2rem;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+            border-left: 4px solid var(--accent);
+        }
+        
+        .discussion-points h5 {
+            color: var(--accent);
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
+        }
+        
+        .discussion-points ul {
+            padding-left: 1.2rem;
+        }
+        
+        .discussion-points li {
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Information Boxes */
+        .info-box {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            box-shadow: var(--shadow);
+            border-top: 4px solid;
+        }
+        
+        .info-box.primary {
+            border-color: var(--primary);
+        }
+        
+        .info-box.secondary {
+            border-color: var(--secondary);
+        }
+        
+        .info-box.accent {
+            border-color: var(--accent);
+        }
+        
+        .info-box h4 {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 0;
+        }
+        
+        .info-box i {
+            font-size: 1.3rem;
+        }
+        
+        .info-box.primary h4 i {
+            color: var(--primary);
+        }
+        
+        .info-box.secondary h4 i {
+            color: var(--secondary);
+        }
+        
+        .info-box.accent h4 i {
+            color: var(--accent);
+        }
+        
+        /* Image/Diagram Container */
+        .diagram-container {
+            margin: 2rem 0;
+            text-align: center;
+        }
+        
+        .diagram {
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+        
+        .diagram-caption {
+            margin-top: 0.8rem;
+            font-style: italic;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        /* Table Styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+        }
+        
+        th {
+            background-color: var(--primary);
+            color: white;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        td {
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        tr:hover {
+            background-color: rgba(42, 110, 187, 0.05);
+        }
+        
+        /* Interactive Quiz */
+        .quiz {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: var(--shadow);
+            border: 2px solid var(--primary);
+        }
+        
+        .quiz-question {
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .quiz-option {
+            padding: 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .quiz-option:hover {
+            border-color: var(--primary);
+            background-color: rgba(42, 110, 187, 0.05);
+        }
+        
+        .quiz-option.selected {
+            border-color: var(--secondary);
+            background-color: rgba(52, 168, 83, 0.1);
+        }
+        
+        .quiz-option input {
+            margin-right: 10px;
+        }
+        
+        .quiz-feedback {
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            display: none;
+            margin-top: 1rem;
+        }
+        
+        .quiz-feedback.correct {
+            background-color: rgba(52, 168, 83, 0.1);
+            color: var(--secondary);
+            display: block;
+            border-left: 4px solid var(--secondary);
+        }
+        
+        .quiz-feedback.incorrect {
+            background-color: rgba(234, 67, 53, 0.1);
+            color: var(--accent);
+            display: block;
+            border-left: 4px solid var(--accent);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 3rem 0 1.5rem;
+            margin-top: 3rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-section h3 {
+            color: white;
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+            border-bottom: none;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 0.95rem;
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary);
+            padding-left: 5px;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                position: static;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .course-title {
+                font-size: 2.2rem;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                height: 100vh;
+                background-color: white;
+                flex-direction: column;
+                padding: 2rem;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+                transition: var(--transition);
+                z-index: 1000;
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .mobile-toggle {
+                display: block;
+            }
+            
+            .nav-overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.5);
+                z-index: 999;
+                display: none;
+            }
+            
+            .nav-overlay.active {
+                display: block;
+            }
+            
+            .content-area {
+                padding: 1.5rem;
+            }
+        }
+        
+        /* Print Styles */
+        @media print {
+            .module-nav, .sidebar, footer, .quiz, .activity {
+                display: none;
+            }
+            
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .content-area {
+                box-shadow: none;
+                padding: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <h1 class="course-title">Information Access and Sharing</h1>
+            <p class="course-subtitle">A comprehensive module on accessing, sharing, and securing information in the digital age</p>
+            
+            <div class="keywords">
+                <span class="keyword">Cloud</span>
+                <span class="keyword">Email</span>
+                <span class="keyword">Internet</span>
+                <span class="keyword">Network</span>
+                <span class="keyword">URL</span>
+                <span class="keyword">Website</span>
+            </div>
+            
+            <div class="learning-outcomes">
+                <h3><i class="fas fa-bullseye"></i> Learning Outcomes</h3>
+                <ul class="outcomes-list">
+                    <li><i class="fas fa-check-circle"></i> Use online and offline platforms to search for information</li>
+                    <li><i class="fas fa-check-circle"></i> Use various ICT tools to share information</li>
+                    <li><i class="fas fa-check-circle"></i> Explain safety practices while using the Internet (netiquette)</li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Navigation -->
+    <nav class="module-nav">
+        <div class="container nav-container">
+            <div class="mobile-toggle" id="mobileToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#introduction"><i class="fas fa-home"></i> Introduction</a></li>
+                <li><a href="#information-access"><i class="fas fa-search"></i> Information Access</a></li>
+                <li><a href="#offline-access"><i class="fas fa-book"></i> Offline Access</a></li>
+                <li><a href="#information-sharing"><i class="fas fa-share-alt"></i> Information Sharing</a></li>
+                <li><a href="#technologies"><i class="fas fa-tools"></i> Technologies</a></li>
+                <li><a href="#safety"><i class="fas fa-shield-alt"></i> Safety Practices</a></li>
+                <li><a href="#laws"><i class="fas fa-gavel"></i> Laws</a></li>
+                <li><a href="#integration"><i class="fas fa-puzzle-piece"></i> Integration</a></li>
+            </ul>
+            <div class="nav-overlay" id="navOverlay"></div>
+        </div>
+    </nav>
+    
+    <!-- Main Content Area -->
+    <div class="container main-content">
+        <!-- Main Content -->
+        <main class="content-area">
+            <!-- Introduction -->
+            <section id="introduction" class="section">
+                <h2><i class="fas fa-home"></i> Introduction to Information Access and Sharing</h2>
+                
+                <p>Welcome to the comprehensive module on <span class="key-term">Information Access and Sharing</span>. In today's digital world, information is everywhere around us. It comes in many forms - text, images, videos, audio, and data. The ability to find, access, and share information effectively is one of the most important skills in the 21st century.</p>
+                
+                <div class="info-box primary">
+                    <h4><i class="fas fa-lightbulb"></i> What is Information?</h4>
+                    <p>Information is processed data that has meaning and context. When we organize, structure, or present data in a way that gives it meaning, it becomes information. For example, the numbers "25, 30, 35" are just data, but when we say "The temperatures this week were 25°C, 30°C, and 35°C," it becomes meaningful information.</p>
+                </div>
+                
+                <h3>Why Information Matters</h3>
+                <p>Information is power. It helps us make decisions, solve problems, learn new things, and communicate with others. In our daily lives, we access and share information constantly:</p>
+                
+                <ul>
+                    <li>Reading news on a website</li>
+                    <li>Watching educational videos on YouTube</li>
+                    <li>Sharing photos with friends on social media</li>
+                    <li>Searching for information for school projects</li>
+                    <li>Sending emails to teachers or classmates</li>
+                </ul>
+                
+                <div class="diagram-container">
+                    <svg class="diagram" viewBox="0 0 600 300" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="50" y="50" width="150" height="60" rx="10" fill="#2a6ebb" opacity="0.8"/>
+                        <text x="125" y="85" text-anchor="middle" fill="white" font-weight="bold">Data</text>
+                        <text x="125" y="115" text-anchor="middle" fill="white" font-size="14">(Facts & Figures)</text>
+                        
+                        <rect x="250" y="50" width="150" height="60" rx="10" fill="#34a853" opacity="0.8"/>
+                        <text x="325" y="85" text-anchor="middle" fill="white" font-weight="bold">Information</text>
+                        <text x="325" y="115" text-anchor="middle" fill="white" font-size="14">(Organized Data)</text>
+                        
+                        <rect x="450" y="50" width="150" height="60" rx="10" fill="#ea4335" opacity="0.8"/>
+                        <text x="525" y="85" text-anchor="middle" fill="white" font-weight="bold">Knowledge</text>
+                        <text x="525" y="115" text-anchor="middle" fill="white" font-size="14">(Applied Information)</text>
+                        
+                        <!-- Arrows -->
+                        <path d="M200 80 L240 80" stroke="#5f6368" stroke-width="2" fill="none"/>
+                        <polygon points="240 80, 235 75, 235 85" fill="#5f6368"/>
+                        
+                        <path d="M400 80 L440 80" stroke="#5f6368" stroke-width="2" fill="none"/>
+                        <polygon points="440 80, 435 75, 435 85" fill="#5f6368"/>
+                        
+                        <!-- Process labels -->
+                        <text x="220" y="75" text-anchor="middle" fill="#5f6368" font-size="14">Processing</text>
+                        <text x="420" y="75" text-anchor="middle" fill="#5f6368" font-size="14">Understanding</text>
+                    </svg>
+                    <p class="diagram-caption">Figure 1: The Data-Information-Knowledge Continuum</p>
+                </div>
+                
+                <h3>The Digital Revolution</h3>
+                <p>The way we access and share information has changed dramatically with technology. In the past, people mainly used books, newspapers, and face-to-face conversations. Today, we have:</p>
+                
+                <div class="info-box secondary">
+                    <h4><i class="fas fa-globe"></i> Digital Information Sources</h4>
+                    <ul>
+                        <li><strong>Websites:</strong> Billions of pages of information on every topic</li>
+                        <li><strong>Online Databases:</strong> Collections of organized information</li>
+                        <li><strong>Social Media:</strong> Platforms for sharing information with others</li>
+                        <li><strong>Cloud Storage:</strong> Online spaces to store and access files</li>
+                        <li><strong>Mobile Apps:</strong> Applications that provide specific information</li>
+                    </ul>
+                </div>
+            </section>
+            
+            <!-- Activity 1 -->
+            <div class="activity" id="activity-1">
+                <div class="activity-header">
+                    <div class="activity-icon">1</div>
+                    <h3 class="activity-title">Activity: Understanding Information Sharing</h3>
+                </div>
+                
+                <div class="activity-instructions">
+                    <p><strong>Instructions:</strong> Work in groups of 3-4 students. Discuss and complete the following tasks about information sharing.</p>
+                </div>
+                
+                <ol class="activity-steps">
+                    <li><strong>List four things</strong> you would want to share with your parents or peers about your school.</li>
+                    <li><strong>Describe how</strong> you might be able to share this information (what tools or methods would you use?).</li>
+                    <li><strong>Explain the benefits</strong> of each method you mentioned.</li>
+                    <li><strong>In your own words</strong>, explain what "information sharing" means.</li>
+                    <li><strong>Share your findings</strong> with the class in a 2-minute presentation.</li>
+                </ol>
+                
+                <div class="discussion-points">
+                    <h5><i class="fas fa-comments"></i> Discussion Questions</h5>
+                    <ul>
+                        <li>Which method of sharing information do you use most often? Why?</li>
+                        <li>What are the advantages of sharing information digitally compared to traditional methods?</li>
+                        <li>Are there any disadvantages to sharing information online?</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Information Access -->
+            <section id="information-access" class="section">
+                <h2><i class="fas fa-search"></i> Information Access</h2>
+                
+                <p><span class="key-term">Information access</span> refers to the ability to obtain, retrieve, and view information from various sources. In the digital age, we have more ways to access information than ever before.</p>
+                
+                <h3>Online Information Access</h3>
+                <p>Accessing information online involves using the Internet to find and view digital content. The most common ways include:</p>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Method</th>
+                            <th>Description</th>
+                            <th>Examples</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Search Engines</strong></td>
+                            <td>Tools that help find information on the web by searching for keywords</td>
+                            <td>Google, Bing, DuckDuckGo</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Websites</strong></td>
+                            <td>Collections of web pages on specific topics</td>
+                            <td>Wikipedia, educational sites, news portals</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Online Databases</strong></td>
+                            <td>Organized collections of digital information</td>
+                            <td>Library catalogs, research databases, government data</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Social Media</strong></td>
+                            <td>Platforms where users create and share content</td>
+                            <td>Facebook, Twitter, Instagram, YouTube</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Online Libraries</strong></td>
+                            <td>Digital versions of traditional libraries</td>
+                            <td>Project Gutenberg, Google Books, Open Library</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <h3>How Search Engines Work</h3>
+                <p>Search engines like Google use automated programs called "spiders" or "crawlers" to:</p>
+                
+                <div class="info-box primary">
+                    <h4><i class="fas fa-spider"></i> The Search Process</h4>
+                    <ol>
+                        <li><strong>Crawl:</strong> Explore the web by following links from page to page</li>
+                        <li><strong>Index:</strong> Store information about web pages in a massive database</li>
+                        <li><strong>Rank:</strong> Determine which pages are most relevant to a search query</li>
+                        <li><strong>Retrieve:</strong> Present the most relevant results when someone searches</li>
+                    </ol>
+                </div>
+                
+                <div class="diagram-container">
+                    <svg class="diagram" viewBox="0 0 600 250" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="50" y="100" width="100" height="50" rx="10" fill="#2a6ebb" opacity="0.8"/>
+                        <text x="100" y="130" text-anchor="middle" fill="white" font-weight="bold">1. Crawl</text>
+                        
+                        <rect x="200" y="100" width="100" height="50" rx="10" fill="#34a853" opacity="0.8"/>
+                        <text x="250" y="130" text-anchor="middle" fill="white" font-weight="bold">2. Index</text>
+                        
+                        <rect x="350" y="100" width="100" height="50" rx="10" fill="#ea4335" opacity="0.8"/>
+                        <text x="400" y="130" text-anchor="middle" fill="white" font-weight="bold">3. Rank</text>
+                        
+                        <rect x="500" y="100" width="100" height="50" rx="10" fill="#fbbc05" opacity="0.8"/>
+                        <text x="550" y="130" text-anchor="middle" fill="white" font-weight="bold">4. Retrieve</text>
+                        
+                        <!-- Arrows -->
+                        <path d="M150 125 L190 125" stroke="#5f6368" stroke-width="2" fill="none"/>
+                        <polygon points="190 125, 185 120, 185 130" fill="#5f6368"/>
+                        
+                        <path d="M300 125 L340 125" stroke="#5f6368" stroke-width="2" fill="none"/>
+                        <polygon points="340 125, 335 120, 335 130" fill="#5f6368"/>
+                        
+                        <path d="M450 125 L490 125" stroke="#5f6368" stroke-width="2" fill="none"/>
+                        <polygon points="490 125, 485 120, 485 130" fill="#5f6368"/>
+                        
+                        <!-- User -->
+                        <circle cx="100" y="40" r="20" fill="#5f6368"/>
+                        <text x="100" y="45" text-anchor="middle" fill="white" font-weight="bold">User</text>
+                        
+                        <path d="M100 60 L100 90" stroke="#5f6368" stroke-width="2" fill="none"/>
+                        
+                        <!-- Search box -->
+                        <rect x="30" y="200" width="140" height="40" rx="5" fill="#f1f3f4" stroke="#ddd" stroke-width="2"/>
+                        <text x="100" y="225" text-anchor="middle" fill="#5f6368" font-weight="bold">Search Query</text>
+                        
+                        <path d="M170 220 L200 125" stroke="#5f6368" stroke-width="2" fill="none" stroke-dasharray="5,5"/>
+                        
+                        <!-- Results -->
+                        <rect x="450" y="200" width="140" height="40" rx="5" fill="#f1f3f4" stroke="#ddd" stroke-width="2"/>
+                        <text x="520" y="225" text-anchor="middle" fill="#5f6368" font-weight="bold">Search Results</text>
+                        
+                        <path d="M450 220 L420 125" stroke="#5f6368" stroke-width="2" fill="none" stroke-dasharray="5,5"/>
+                    </svg>
+                    <p class="diagram-caption">Figure 2: How Search Engines Process Information</p>
+                </div>
+            </section>
+            
+            <!-- Activity 2 -->
+            <div class="activity" id="activity-2">
+                <div class="activity-header">
+                    <div class="activity-icon">2</div>
+                    <h3 class="activity-title">Activity: Search Engine Scavenger Hunt</h3>
+                </div>
+                
+                <div class="activity-instructions">
+                    <p><strong>Instructions:</strong> Using a search engine (with teacher supervision), find the following information. Record the search terms you used and the websites where you found the answers.</p>
+                </div>
+                
+                <ol class="activity-steps">
+                    <li>Find the capital city of Japan and its population.</li>
+                    <li>What year was the first computer invented?</li>
+                    <li>Find three facts about Nelson Mandela.</li>
+                    <li>What is the chemical formula for water?</li>
+                    <li>Find a picture of the national flag of Kenya.</li>
+                    <li>What is the distance from Nairobi to Mombasa in kilometers?</li>
+                </ol>
+                
+                <div class="discussion-points">
+                    <h5><i class="fas fa-comments"></i> Discussion Questions</h5>
+                    <ul>
+                        <li>Which search terms gave you the best results? Why?</li>
+                        <li>How did you know if a website was trustworthy?</li>
+                        <li>What challenges did you face while searching?</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Offline Information Access -->
+            <section id="offline-access" class="section">
+                <h2><i class="fas fa-book"></i> Offline Information Access</h2>
+                
+                <p>Not all information is accessed online. <span class="key-term">Offline information access</span> refers to obtaining information without an Internet connection. This is important because:</p>
+                
+                <ul>
+                    <li>Not everyone has reliable Internet access</li>
+                    <li>Some information is only available in physical form</li>
+                    <li>Offline sources can be more reliable and in-depth</li>
+                    <li>They don't require electricity or Internet connectivity</li>
+                </ul>
+                
+                <h3>Common Offline Information Sources</h3>
+                
+                <div class="info-box secondary">
+                    <h4><i class="fas fa-book-open"></i> Books and Textbooks</h4>
+                    <p>Printed books remain one of the most important sources of information. They provide:</p>
+                    <ul>
+                        <li>Comprehensive coverage of topics</li>
+                        <li>Carefully reviewed and edited content</li>
+                        <li>No need for electricity or Internet</li>
+                        <li>Can be used anywhere</li>
+                    </ul>
+                </div>
+                
+                <div class="info-box primary">
+                    <h4><i class="fas fa-newspaper"></i> Newspapers and Magazines</h4>
+                    <p>Print media provides current information on news, events, and trends:</p>
+                    <ul>
+                        <li>Daily or weekly updates on current events</li>
+                        <li>Specialized magazines for specific interests</li>
+                        <li>Local news that might not be online</li>
+                        <li>Can be saved for future reference</li>
+                    </ul>
+                </div>
+                
+                <h3>Using Offline Encyclopedias</h3>
+                <p>An <span class="key-term">encyclopedia</span> is a comprehensive reference work containing articles on various topics. Before the Internet, encyclopedias were the main source of general knowledge.</p>
+                
+                <div class="info-box accent">
+                    <h4><i class="fas fa-info-circle"></i> How to Use an Encyclopedia</h4>
+                    <ol>
+                        <li><strong>Find the right volume:</strong> Encyclopedias are organized alphabetically by topic.</li>
+                        <li><strong>Use the index:</strong> Most encyclopedias have an index volume that lists all topics and where to find them.</li>
+                        <li><strong>Look for cross-references:</strong> Articles often reference related topics that might provide more information.</li>
+                        <li><strong>Check publication date:</strong> Older encyclopedias might not have current information.</li>
+                        <li><strong>Take notes:</strong> Since you can't copy and paste, write down important information.</li>
+                    </ol>
+                </div>
+            </section>
+            
+            <!-- Activity 3 -->
+            <div class="activity" id="activity-3">
+                <div class="activity-header">
+                    <div class="activity-icon">3</div>
+                    <h3 class="activity-title">Activity: Encyclopedia Exploration</h3>
+                </div>
+                
+                <div class="activity-instructions">
+                    <p><strong>Instructions:</strong> Using a physical encyclopedia or an offline digital encyclopedia, find information about the following topics. If using a physical encyclopedia, note the volume number and page number.</p>
+                </div>
+                
+                <ol class="activity-steps">
+                    <li>What is the solar system and how many planets does it have?</li>
+                    <li>Find information about the human heart and its function.</li>
+                    <li>What are the main types of ecosystems?</li>
+                    <li>Who was William Shakespeare and what did he write?</li>
+                    <li>What is photosynthesis and why is it important?</li>
+                    <li>Find three inventions from the Industrial Revolution.</li>
+                </ol>
+                
+                <div class="discussion-points">
+                    <h5><i class="fas fa-comments"></i> Discussion Questions</h5>
+                    <ul>
+                        <li>How was using an encyclopedia different from searching online?</li>
+                        <li>What advantages do encyclopedias have over online search?</li>
+                        <li>What disadvantages did you notice?</li>
+                        <li>When might an encyclopedia be more useful than the Internet?</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Activity 4 -->
+            <div class="activity" id="activity-4">
+                <div class="activity-header">
+                    <div class="activity-icon">4</div>
+                    <h3 class="activity-title">Activity: Comparing Information Sources</h3>
+                </div>
+                
+                <div class="activity-instructions">
+                    <p><strong>Instructions:</strong> Work in pairs. Choose one topic (e.g., "climate change," "ancient Egypt," "renewable energy"). Find information about this topic from THREE different sources: 1) A physical book, 2) An online website, 3) A printed newspaper or magazine article. Compare what you find.</p>
+                </div>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Source Type</th>
+                            <th>Information Found</th>
+                            <th>Advantages</th>
+                            <th>Disadvantages</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Physical Book</strong></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Online Website</strong></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Newspaper/Magazine</strong></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="discussion-points">
+                    <h5><i class="fas fa-comments"></i> Discussion Questions</h5>
+                    <ul>
+                        <li>Which source had the most reliable information? Why?</li>
+                        <li>Which source was easiest to use?</li>
+                        <li>Which source had the most current information?</li>
+                        <li>When would you choose each type of source?</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Information Sharing -->
+            <section id="information-sharing" class="section">
+                <h2><i class="fas fa-share-alt"></i> Information Sharing</h2>
+                
+                <p><span class="key-term">Information sharing</span> is the process of distributing information to others. In the digital age, we can share information instantly with people around the world.</p>
+                
+                <div class="info-box primary">
+                    <h4><i class="fas fa-exchange-alt"></i> What is Information Sharing?</h4>
+                    <p>Information sharing involves transferring knowledge, data, or content from one person or group to another. This can happen through:</p>
+                    <ul>
+                        <li><strong>Verbal communication:</strong> Talking to someone</li>
+                        <li><strong>Written communication:</strong> Letters, emails, messages</li>
+                        <li><strong>Visual communication:</strong> Photos, videos, diagrams</li>
+                        <li><strong>Digital communication:</strong> Social media, websites, cloud sharing</li>
+                    </ul>
+                </div>
+                
+                <h3>Why We Share Information</h3>
+                <p>People share information for many reasons:</p>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Purpose</th>
+                            <th>Example</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Education</strong></td>
+                            <td>Teachers sharing knowledge with students</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Collaboration</strong></td>
+                            <td>Team members sharing files for a project</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Entertainment</strong></td>
+                            <td>Sharing funny videos with friends</td>
+                        </tr>
+                        <tr>
+                            <td><strong>News</strong></td>
+                            <td>Media sharing information about current events</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Social Connection</strong></td>
+                            <td>Sharing life updates with family and friends</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Problem Solving</strong></td>
+                            <td>Sharing solutions to common problems</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <h3>The Evolution of Information Sharing</h3>
+                
+                <div class="diagram-container">
+                    <svg class="diagram" viewBox="0 0 600 350" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Timeline -->
+                        <line x1="50" y1="300" x2="550" y2="300" stroke="#5f6368" stroke-width="3"/>
+                        
+                        <!-- Points on timeline -->
+                        <circle cx="80" cy="300" r="8" fill="#2a6ebb"/>
+                        <text x="80" y="290" text-anchor="middle" fill="#5f6368" font-size="14">Oral</text>
+                        <text x="80" y="320" text-anchor="middle" fill="#5f6368" font-size="12">Traditions</text>
+                        
+                        <circle cx="170" cy="300" r="8" fill="#2a6ebb"/>
+                        <text x="170" y="280" text-anchor="middle" fill="#5f6368" font-size="14">Written</text>
+                        <text x="170" y="320" text-anchor="middle" fill="#5f6368" font-size="12">Scrolls/Books</text>
+                        
+                        <circle cx="260" cy="300" r="8" fill="#2a6ebb"/>
+                        <text x="260" y="280" text-anchor="middle" fill="#5f6368" font-size="14">Printing</text>
+                        <text x="260" y="320" text-anchor="middle" fill="#5f6368" font-size="12">Press (1440)</text>
+                        
+                        <circle cx="350" cy="300" r="8" fill="#2a6ebb"/>
+                        <text x="350" y="280" text-anchor="middle" fill="#5f6368" font-size="14">Telecommunications</text>
+                        <text x="350" y="320" text-anchor="middle" fill="#5f6368" font-size="12">(1800s)</text>
+                        
+                        <circle cx="440" cy="300" r="8" fill="#2a6ebb"/>
+                        <text x="440" y="280" text-anchor="middle" fill="#5f6368" font-size="14">Internet</text>
+                        <text x="440" y="320" text-anchor="middle" fill="#5f6368" font-size="12">(1990s)</text>
+                        
+                        <circle cx="530" cy="300" r="8" fill="#2a6ebb"/>
+                        <text x="530" y="280" text-anchor="middle" fill="#5f6368" font-size="14">Social Media</text>
+                        <text x="530" y="320" text-anchor="middle" fill="#5f6368" font-size="12">(2000s+)</text>
+                        
+                        <!-- Arrows showing progression -->
+                        <path d="M50 250 Q150 150, 250 200" stroke="#34a853" stroke-width="2" fill="none" stroke-dasharray="5,5"/>
+                        <text x="150" y="140" text-anchor="middle" fill="#34a853" font-size="14">Speed</text>
+                        
+                        <path d="M50 270 Q300 100, 550 150" stroke="#ea4335" stroke-width="2" fill="none" stroke-dasharray="5,5"/>
+                        <text x="300" y="80" text-anchor="middle" fill="#ea4335" font-size="14">Reach</text>
+                    </svg>
+                    <p class="diagram-caption">Figure 3: The Evolution of Information Sharing Methods</p>
+                </div>
+            </section>
+            
+            <!-- Activity 5 -->
+            <div class="activity" id="activity-5">
+                <div class="activity-header">
+                    <div class="activity-icon">5</div>
+                    <h3 class="activity-title">Activity: Information Sharing Scenarios</h3>
+                </div>
+                
+                <div class="activity-instructions">
+                    <p><strong>Instructions:</strong> In small groups, read each scenario below and discuss the best way to share the information. Consider factors like speed, cost, privacy, and reliability.</p>
+                </div>
+                
+                <ol class="activity-steps">
+                    <li>You need to share a 50-page project report with your group members who live in different parts of the city.</li>
+                    <li>You want to tell your grandparents about your school sports day. They don't use smartphones or computers.</li>
+                    <li>Your class needs to share photos from a field trip with parents.</li>
+                    <li>You discovered an important safety issue in your neighborhood that everyone should know about immediately.</li>
+                    <li>You want to share a complex diagram that explains a science concept with your study group.</li>
+                    <li>Your teacher needs to distribute reading materials to 40 students before the weekend.</li>
+                </ol>
+                
+                <div class="discussion-points">
+                    <h5><i class="fas fa-comments"></i> Discussion Questions</h5>
+                    <ul>
+                        <li>How did you decide which method was best for each scenario?</li>
+                        <li>What factors are most important when choosing how to share information?</li>
+                        <li>When is digital sharing better than physical sharing?</li>
+                        <li>When is physical sharing better than digital sharing?</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Technologies for Information Sharing -->
+            <section id="technologies" class="section">
+                <h2><i class="fas fa-tools"></i> Technologies Used to Share Information on the Internet</h2>
+                
+                <p>The Internet provides many technologies for sharing information. Understanding these technologies helps us use them effectively and safely.</p>
+                
+                <h3>Email</h3>
+                <p><span class="key-term">Email</span> (electronic mail) is one of the oldest and most widely used Internet technologies. It allows users to send messages and files to anyone with an email address.</p>
+                
+                <div class="info-box secondary">
+                    <h4><i class="fas fa-envelope"></i> How Email Works</h4>
+                    <ol>
+                        <li>You compose a message in an email program (Gmail, Outlook, etc.)</li>
+                        <li>Your email program sends the message to your email server</li>
+                        <li>The server finds the recipient's email server and sends the message there</li>
+                        <li>The recipient's email program retrieves the message from their server</li>
+                        <li>The recipient reads your message</li>
+                    </ol>
+                </div>
+                
+                <h3>Cloud Storage and Sharing</h3>
+                <p><span class="key-term">Cloud storage</span> allows you to store files on Internet servers instead of your computer. You can then access these files from any device with Internet access and share them with others.</p>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Service</th>
+                            <th>What It Does</th>
+                            <th>Example</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>File Storage</strong></td>
+                            <td>Store files online for access from anywhere</td>
+                            <td>Google Drive, Dropbox, OneDrive</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Document Collaboration</strong></td>
+                            <td>Multiple people work on the same document at once</td>
+                            <td>Google Docs, Microsoft 365 Online</td>
+                        </tr>
+                        <tr>
+                            <td><strong>File Sharing</strong></td>
+                            <td>Send large files that are too big for email</td>
+                            <td>WeTransfer, Google Drive links</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Photo Sharing</strong></td>
+                            <td>Share photos and albums with specific people</td>
+                            <td>Google Photos, Flickr, Instagram</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <h3>Social Media Platforms</h3>
+                <p><span class="key-term">Social media</span> platforms allow users to create and share content with networks of people. Different platforms are designed for different types of sharing:</p>
+                
+                <div class="info-box primary">
+                    <h4><i class="fas fa-users"></i> Types of Social Media</h4>
+                    <ul>
+                        <li><strong>Facebook:</strong> General sharing with friends and family</li>
+                        <li><strong>Twitter:</strong> Short updates and news sharing</li>
+                        <li><strong>Instagram:</strong> Photo and video sharing</li>
+                        <li><strong>YouTube:</strong> Video sharing and viewing</li>
+                        <li><strong>WhatsApp:</strong> Private messaging and group chats</li>
+                        <li><strong>TikTok:</strong> Short video creation and sharing</li>
+                    </ul>
+                </div>
+                
+                <h3>Websites and Blogs</h3>
+                <p><span class="key-term">Websites</span> are collections of web pages that anyone with Internet access can visit. <span class="key-term">Blogs</span> (web logs) are websites where individuals or groups regularly post articles or entries.</p>
+                
+                <div class="diagram-container">
+                    <svg class="diagram" viewBox="0 0 600 250" xmlns="http://www.w3.org/2000/svg">
+                        <!-- User -->
+                        <circle cx="100" cy="125" r="25" fill="#2a6ebb"/>
+                        <text x="100" y="130" text-anchor="middle" fill="white" font-weight="bold">User</text>
+                        
+                        <!-- Browser -->
+                        <rect x="180" y="100" width="80" height="50" rx="5" fill="#34a853"/>
+                        <text x="220" y="130" text-anchor="middle" fill="white" font-weight="bold">Browser</text>
+                        
+                        <!-- Internet -->
+                        <circle cx="350" cy="125" r="40" fill="#ea4335" opacity="0.8"/>
+                        <text x="350" y="125" text-anchor="middle" fill="white" font-weight="bold">Internet</text>
+                        
+                        <!-- Server -->
+                        <rect x="460" y="100" width="80" height="50" rx="5" fill="#fbbc05"/>
+                        <text x="500" y="130" text-anchor="middle" fill="white" font-weight="bold">Server</text>
+                        
+                        <!-- Arrows -->
+                        <path d="M125 125 L170 125" stroke="#5f6368" stroke-width="2" fill="none"/>
+                        <polygon points="170 125, 165 120, 165 130" fill="#5f6368"/>
+                        
+                        <path d="M260 125 L310 125" stroke="#5f6368" stroke-width="2" fill="none"/>
+                        <polygon points="310 125, 305 120, 305 130" fill="#5f6368"/>
+                        
+                        <path d="M390 125 L450 125" stroke="#5f6368" stroke-width="2" fill="none"/>
+                        <polygon points="450 125, 445 120, 445 130" fill="#5f6368"/>
+                        
+                        <!-- Request/Response labels -->
+                        <text x="145" y="110" text-anchor="middle" fill="#5f6368" font-size="12">Request</text>
+                        <text x="285" y="110" text-anchor="middle" fill="#5f6368" font-size="12">Request</text>
+                        <text x="420" y="110" text-anchor="middle" fill="#5f6368" font-size="12">Response</text>
+                        
+                        <text x="285" y="170" text-anchor="middle" fill="#5f6368" font-size="12">Response</text>
+                        <text x="145" y="170" text-anchor="middle" fill="#5f6368" font-size="12">Response</text>
+                        
+                        <!-- Return arrows -->
+                        <path d="M450 125 L390 125" stroke="#5f6368" stroke-width="2" fill="none" stroke-dasharray="5,5"/>
+                        <path d="M310 125 L260 125" stroke="#5f6368" stroke-width="2" fill="none" stroke-dasharray="5,5"/>
+                        <path d="M170 125 L125 125" stroke="#5f6368" stroke-width="2" fill="none" stroke-dasharray="5,5"/>
+                    </svg>
+                    <p class="diagram-caption">Figure 4: How Web Browsing Works - Request and Response Cycle</p>
+                </div>
+            </section>
+            
+            <!-- Activity 6 -->
+            <div class="activity" id="activity-6">
+                <div class="activity-header">
+                    <div class="activity-icon">6</div>
+                    <h3 class="activity-title">Activity: Technology Matching Game</h3>
+                </div>
+                
+                <div class="activity-instructions">
+                    <p><strong>Instructions:</strong> Match the technology on the left with its correct description on the right. Draw lines connecting them or write the matching letter next to each number.</p>
+                </div>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th width="40%">Technology</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1. Email</td>
+                            <td>A. A collection of web pages that anyone can visit</td>
+                        </tr>
+                        <tr>
+                            <td>2. Cloud Storage</td>
+                            <td>B. Sending electronic messages over the Internet</td>
+                        </tr>
+                        <tr>
+                            <td>3. Social Media</td>
+                            <td>C. Storing files on Internet servers instead of your computer</td>
+                        </tr>
+                        <tr>
+                            <td>4. Website</td>
+                            <td>D. Online platforms for creating and sharing content with networks</td>
+                        </tr>
+                        <tr>
+                            <td>5. Blog</td>
+                            <td>E. A website where articles are posted regularly</td>
+                        </tr>
+                        <tr>
+                            <td>6. URL</td>
+                            <td>F. The address of a web page on the Internet</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="discussion-points">
+                    <h5><i class="fas fa-comments"></i> Discussion Questions</h5>
+                    <ul>
+                        <li>Which of these technologies do you use most often?</li>
+                        <li>What are the advantages of cloud storage over saving files on your computer?</li>
+                        <li>How is a blog different from a regular website?</li>
+                        <li>Why is it important to understand URLs?</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Activity 7 -->
+            <div class="activity" id="activity-7">
+                <div class="activity-header">
+                    <div class="activity-icon">7</div>
+                    <h3 class="activity-title">Activity: Creating a Simple Information Sharing Plan</h3>
+                </div>
+                
+                <div class="activity-instructions">
+                    <p><strong>Instructions:</strong> Imagine your class is organizing a charity fundraiser. Create a plan for how you would share information about the event using at least three different technologies.</p>
+                </div>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Information to Share</th>
+                            <th>Technology to Use</th>
+                            <th>Reason for Choice</th>
+                            <th>Target Audience</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Event details (date, time, place)</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Photos from previous events</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Donation information</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Volunteer sign-up</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Updates during the event</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="discussion-points">
+                    <h5><i class="fas fa-comments"></i> Discussion Questions</h5>
+                    <ul>
+                        <li>Why did you choose specific technologies for different types of information?</li>
+                        <li>How would you reach people who don't use social media?</li>
+                        <li>What privacy considerations should you think about when sharing event information?</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- How the Internet Works -->
+            <section id="internet-works" class="section">
+                <h2><i class="fas fa-network-wired"></i> How the Internet Works</h2>
+                
+                <p>The <span class="key-term">Internet</span> is a global network of computers connected together. Understanding how it works helps us use it more effectively and safely.</p>
+                
+                <div class="info-box primary">
+                    <h4><i class="fas fa-sitemap"></i> What is the Internet?</h4>
+                    <p>The Internet is not one single thing but a network of networks. It connects:</p>
+                    <ul>
+                        <li><strong>Computers</strong> (desktops, laptops, tablets, phones)</li>
+                        <li><strong>Servers</strong> (computers that store websites and data)</li>
+                        <li><strong>Routers</strong> (devices that direct information traffic)</li>
+                        <li><strong>Cables and wireless connections</strong> (how devices connect)</li>
+                    </ul>
+                </div>
+                
+                <h3>Key Internet Concepts</h3>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Term</th>
+                            <th>Definition</th>
+                            <th>Example</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Network</strong></td>
+                            <td>Two or more computers connected together</td>
+                            <td>Your school's computer lab, home Wi-Fi</td>
+                        </tr>
+                        <tr>
+                            <td><strong>URL</strong></td>
+                            <td>Uniform Resource Locator - the address of a web page</td>
+                            <td>https://www.google.com</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Website</strong></td>
+                            <td>A collection of web pages on a specific topic</td>
+                            <td>Wikipedia, your school's website</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Browser</strong></td>
+                            <td>Software used to access and view websites</td>
+                            <td>Chrome, Firefox, Safari, Edge</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Server</strong></td>
+                            <td>A computer that stores websites and sends them to users</td>
+                            <td>The computer that hosts Facebook's website</td>
+                        </tr>
+                        <tr>
+                            <td><strong>ISP</strong></td>
+                            <td>Internet Service Provider - company that provides Internet access</td>
+                            <td>JTL, Safaricom, Airtel</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <h3>The Journey of a Web Page</h3>
+                <p>When you type a URL into your browser and press Enter, here's what happens:</p>
+                
+                <div class="info-box secondary">
+                    <h4><i class="fas fa-road"></i> Step-by-Step Process</h4>
+                    <ol>
+                        <li>You type a URL (like www.example.com) into your browser</li>
+                        <li>Your browser asks a DNS server to translate the URL into an IP address</li>
+                        <li>The browser sends a request to the server at that IP address</li>
+                        <li>The server receives the request and sends back the web page files</li>
+                        <li>Your browser receives the files and displays the web page</li>
+                        <li>You see and interact with the web page</li>
+                    </ol>
+                </div>
+                
+                <div class="diagram-container">
+                    <svg class="diagram" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+                        <!-- User -->
+                        <circle cx="100" cy="100" r="30" fill="#2a6ebb"/>
+                        <text x="100" y="105" text-anchor="middle" fill="white" font-weight="bold">User</text>
+                        
+                        <!-- Browser -->
+                        <rect x="70" y="150" width="60" height="40" rx="5" fill="#34a853"/>
+                        <text x="100" y="175" text-anchor="middle" fill="white" font-size="14">Browser</text>
+                        
+                        <!-- ISP -->
+                        <rect x="200" y="80" width="80" height="60" rx="5" fill="#ea4335"/>
+                        <text x="240" y="110" text-anchor="middle" fill="white" font-size="14">ISP</text>
+                        
+                        <!-- DNS -->
+                        <rect x="200" y="160" width="80" height="60" rx="5" fill="#fbbc05"/>
+                        <text x="240" y="190" text-anchor="middle" fill="white" font-size="14">DNS Server</text>
+                        
+                        <!-- Internet Cloud -->
+                        <ellipse cx="350" cy="150" rx="70" ry="50" fill="#5f6368" opacity="0.2" stroke="#5f6368" stroke-width="2"/>
+                        <text x="350" y="155" text-anchor="middle" fill="#5f6368" font-weight="bold">Internet</text>
+                        
+                        <!-- Server -->
+                        <rect x="480" y="120" width="80" height="60" rx="5" fill="#8e44ad"/>
+                        <text x="520" y="150" text-anchor="middle" fill="white" font-size="14">Web Server</text>
+                        
+                        <!-- Arrows with numbers -->
+                        <!-- Step 1 -->
+                        <path d="M100 140 L100 150" stroke="#5f6368" stroke-width="2" fill="none"/>
+                        <text x="85" y="145" text-anchor="middle" fill="#5f6368" font-size="12">1</text>
+                        
+                        <!-- Step 2 -->
+                        <path d="M130 170 L190 170" stroke="#5f6368" stroke-width="2" fill="none"/>
+                        <polygon points="190 170, 185 165, 185 175" fill="#5f6368"/>
+                        <text x="160" y="165" text-anchor="middle" fill="#5f6368" font-size="12">2</text>
+                        
+                        <!-- Step 3 -->
+                        <path d="M240 170 L280 150" stroke="#5f6368" stroke-width="2" fill="none"/>
+                        <polygon points="280 150, 275 145, 275 155" fill="#5f6368"/>
+                        <text x="260" y="160" text-anchor="middle" fill="#5f6368" font-size="12">3</text>
+                        
+                        <!-- Step 4 -->
+                        <path d="M280 150 L320 150" stroke="#5f6368" stroke-width="2" fill="none"/>
+                        <polygon points="320 150, 315 145, 315 155" fill="#5f6368"/>
+                        <text x="300" y="145" text-anchor="middle" fill="#5f6368" font-size="12">4</text>
+                        
+                        <!-- Step 5 -->
+                        <path d="M420 150 L480 150" stroke="#5f6368" stroke-width="2" fill="none"/>
+                        <polygon points="480 150, 475 145, 475 155" fill="#5f6368"/>
+                        <text x="450" y="145" text-anchor="middle" fill="#5f6368" font-size="12">5</text>
+                        
+                        <!-- Return path -->
+                        <path d="M480 150 L420 150" stroke="#5f6368" stroke-width="2" fill="none" stroke-dasharray="5,5"/>
+                        <path d="M320 150 L280 150" stroke="#5f6368" stroke-width="2" fill="none" stroke-dasharray="5,5"/>
+                        <path d="M280 150 L240 140" stroke="#5f6368" stroke-width="2" fill="none" stroke-dasharray="5,5"/>
+                        <path d="M240 140 L190 140" stroke="#5f6368" stroke-width="2" fill="none" stroke-dasharray="5,5"/>
+                        <path d="M190 140 L130 160" stroke="#5f6368" stroke-width="2" fill="none" stroke-dasharray="5,5"/>
+                        <path d="M100 150 L100 140" stroke="#5f6368" stroke-width="2" fill="none" stroke-dasharray="5,5"/>
+                    </svg>
+                    <p class="diagram-caption">Figure 5: How Information Travels Through the Internet</p>
+                </div>
+            </section>
+            
+            <!-- Activity 8 -->
+            <div class="activity" id="activity-8">
+                <div class="activity-header">
+                    <div class="activity-icon">8</div>
+                    <h3 class="activity-title">Activity: Internet Vocabulary Quiz</h3>
+                </div>
+                
+                <div class="quiz">
+                    <div class="quiz-question">
+                        1. What does URL stand for?
+                    </div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-correct="false">
+                            <input type="radio" name="q1" value="a"> Universal Resource Link
+                        </div>
+                        <div class="quiz-option" data-correct="true">
+                            <input type="radio" name="q1" value="b"> Uniform Resource Locator
+                        </div>
+                        <div class="quiz-option" data-correct="false">
+                            <input type="radio" name="q1" value="c"> United Resource Listing
+                        </div>
+                        <div class="quiz-option" data-correct="false">
+                            <input type="radio" name="q1" value="d"> Universal Reference Location
+                        </div>
+                    </div>
+                    
+                    <div class="quiz-question">
+                        2. What is the main purpose of a DNS server?
+                    </div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-correct="false">
+                            <input type="radio" name="q2" value="a"> To store websites
+                        </div>
+                        <div class="quiz-option" data-correct="false">
+                            <input type="radio" name="q2" value="b"> To display web pages
+                        </div>
+                        <div class="quiz-option" data-correct="true">
+                            <input type="radio" name="q2" value="c"> To translate URLs into IP addresses
+                        </div>
+                        <div class="quiz-option" data-correct="false">
+                            <input type="radio" name="q2" value="d"> To connect to Wi-Fi
+                        </div>
+                    </div>
+                    
+                    <div class="quiz-question">
+                        3. What does ISP stand for?
+                    </div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-correct="false">
+                            <input type="radio" name="q3" value="a"> Internet Service Page
+                        </div>
+                        <div class="quiz-option" data-correct="false">
+                            <input type="radio" name="q3" value="b"> International Service Provider
+                        </div>
+                        <div class="quiz-option" data-correct="true">
+                            <input type="radio" name="q3" value="c"> Internet Service Provider
+                        </div>
+                        <div class="quiz-option" data-correct="false">
+                            <input type="radio" name="q3" value="d"> Internet System Protocol
+                        </div>
+                    </div>
+                    
+                    <button id="checkQuiz" class="quiz-submit">Check Answers</button>
+                    <div class="quiz-feedback" id="quizFeedback">
+                        <!-- Feedback will be inserted here -->
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Activity 9 -->
+            <div class="activity" id="activity-9">
+                <div class="activity-header">
+                    <div class="activity-icon">9</div>
+                    <h3 class="activity-title">Activity: Drawing the Internet</h3>
+                </div>
+                
+                <div class="activity-instructions">
+                    <p><strong>Instructions:</strong> On a piece of paper or using drawing software, create a diagram that shows how the Internet works. Include at least these components: User, Computer, Browser, ISP, DNS Server, Internet (shown as a cloud), Web Server, and Website. Use arrows to show how information flows from the user to the website and back.</p>
+                </div>
+                
+                <div class="discussion-points">
+                    <h5><i class="fas fa-comments"></i> Discussion Questions</h5>
+                    <ul>
+                        <li>What was the most surprising thing you learned about how the Internet works?</li>
+                        <li>Why do you think the Internet is shown as a "cloud" in diagrams?</li>
+                        <li>What would happen if one part of the system (like DNS servers) stopped working?</li>
+                        <li>How does understanding how the Internet works help you use it better?</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Safety Practices -->
+            <section id="safety" class="section">
+                <h2><i class="fas fa-shield-alt"></i> Safety Practices While Using the Internet</h2>
+                
+                <p>Using the Internet safely is crucial in today's digital world. <span class="key-term">Netiquette</span> (network etiquette) refers to the acceptable code of behavior for communicating online.</p>
+                
+                <div class="info-box accent">
+                    <h4><i class="fas fa-user-shield"></i> What is Netiquette?</h4>
+                    <p>Netiquette is the short form for network etiquette. It is the acceptable code of behavior for communicating online. It gives the do's and don'ts of online communication, which include:</p>
+                    <ul>
+                        <li>Providing true and accurate information so that people can communicate with you effectively</li>
+                        <li>Making positive and peaceful communication</li>
+                        <li>Understanding the group of people you are interacting with</li>
+                        <li>Being respectful to others even when you disagree</li>
+                    </ul>
+                </div>
+                
+                <h3>Password Safety</h3>
+                <p>Passwords protect your personal information and accounts. Follow these rules for password safety:</p>
+                
+                <div class="info-box primary">
+                    <h4><i class="fas fa-key"></i> Password Safety Rules</h4>
+                    <ol>
+                        <li><strong>Use strong passwords:</strong> At least 8 characters with uppercase, lowercase, numbers, and symbols</li>
+                        <li><strong>Don't use common passwords:</strong> Avoid "password," "123456," your name, or birthdate</li>
+                        <li><strong>Use different passwords:</strong> Don't use the same password for multiple accounts</li>
+                        <li><strong>Never share passwords:</strong> Don't give your passwords to anyone, even friends</li>
+                        <li><strong>Change passwords regularly:</strong> Update important passwords every 3-6 months</li>
+                    </ol>
+                </div>
+                
+                <h3>Personal Information Protection</h3>
+                <p>Be careful about what personal information you share online:</p>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Information Type</th>
+                            <th>Safety Level</th>
+                            <th>Guidance</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Full name</strong></td>
+                            <td>Be careful</td>
+                            <td>Only share with trusted people and sites</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Home address</strong></td>
+                            <td>Very private</td>
+                            <td>Never share publicly online</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Phone number</strong></td>
+                            <td>Private</td>
+                            <td>Only share with trusted contacts</td>
+                        </tr>
+                        <tr>
+                            <td><strong>School name</strong></td>
+                            <td>Be careful</td>
+                            <td>Avoid sharing publicly</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Photos</strong></td>
+                            <td>Depends on content</td>
+                            <td>Think before posting - once online, always online</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Location in real time</strong></td>
+                            <td>Very private</td>
+                            <td>Turn off location sharing on social media</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <h3>Recognizing Online Dangers</h3>
+                <p>Be aware of these common online risks:</p>
+                
+                <div class="info-box secondary">
+                    <h4><i class="fas fa-exclamation-triangle"></i> Online Risks to Avoid</h4>
+                    <ul>
+                        <li><strong>Phishing:</strong> Fake emails or websites trying to steal your information</li>
+                        <li><strong>Malware:</strong> Software that can harm your computer or steal data</li>
+                        <li><strong>Cyberbullying:</strong> Using technology to harass, threaten, or embarrass someone</li>
+                        <li><strong>Scams:</strong> Tricks to get your money or personal information</li>
+                        <li><strong>Fake news:</strong> False information presented as real news</li>
+                        <li><strong>Stranger danger:</strong> People online who might not be who they say they are</li>
+                    </ul>
+                </div>
+            </section>
+            
+            <!-- Activity 10 -->
+            <div class="activity" id="activity-10">
+                <div class="activity-header">
+                    <div class="activity-icon">10</div>
+                    <h3 class="activity-title">Activity: Netiquette Rules Creation</h3>
+                </div>
+                
+                <div class="activity-instructions">
+                    <p><strong>Instructions:</strong> Work in groups to create a list of 10 netiquette rules for students in your school. Consider rules for email, social media, online discussions, and general Internet use.</p>
+                </div>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Rule Number</th>
+                            <th>Netiquette Rule</th>
+                            <th>Reason for Rule</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>8</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>9</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>10</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="discussion-points">
+                    <h5><i class="fas fa-comments"></i> Discussion Questions</h5>
+                    <ul>
+                        <li>Which rule do you think is most important? Why?</li>
+                        <li>How are online rules different from face-to-face rules?</li>
+                        <li>What should happen if someone breaks these rules?</li>
+                        <li>How can we encourage everyone to follow netiquette?</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Activity 11 -->
+            <div class="activity" id="activity-11">
+                <div class="activity-header">
+                    <div class="activity-icon">11</div>
+                    <h3 class="activity-title">Activity: Password Safety Challenge</h3>
+                </div>
+                
+                <div class="activity-instructions">
+                    <p><strong>Instructions:</strong> Look at the following passwords and decide if they are strong or weak. For weak passwords, explain why they are weak and suggest a stronger alternative.</p>
+                </div>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Password</th>
+                            <th>Strong or Weak?</th>
+                            <th>Reason</th>
+                            <th>Better Alternative</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>password</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>John2005</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>12345678</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Sunshine!</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>P@ssw0rd!</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Tr0ub4dor&3</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="discussion-points">
+                    <h5><i class="fas fa-comments"></i> Discussion Questions</h5>
+                    <ul>
+                        <li>What makes a password strong?</li>
+                        <li>Why is it bad to use personal information in passwords?</li>
+                        <li>How can you remember strong passwords without writing them down?</li>
+                        <li>What should you do if you think someone knows your password?</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Activity 12 -->
+            <div class="activity" id="activity-12">
+                <div class="activity-header">
+                    <div class="activity-icon">12</div>
+                    <h3 class="activity-title">Activity: Online Safety Scenarios</h3>
+                </div>
+                
+                <div class="activity-instructions">
+                    <p><strong>Instructions:</strong> Read each scenario and discuss what the person should do. Consider safety, privacy, and netiquette in your answers.</p>
+                </div>
+                
+                <ol class="activity-steps">
+                    <li>You receive an email saying you won a prize, but you need to send your personal details to claim it.</li>
+                    <li>Someone you don't know sends you a friend request on social media.</li>
+                    <li>A classmate posts an embarrassing photo of another student online.</li>
+                    <li>You see a website offering free movie downloads that usually cost money.</li>
+                    <li>A stranger in an online game asks you what school you go to and where you live.</li>
+                    <li>You receive a message from a friend's account asking for money because they're in trouble.</li>
+                    <li>You find personal information about a teacher on a website.</li>
+                    <li>Someone is sending mean messages to you and your friends online.</li>
+                </ol>
+                
+                <div class="discussion-points">
+                    <h5><i class="fas fa-comments"></i> Discussion Questions</h5>
+                    <ul>
+                        <li>Which scenario do you think is most dangerous? Why?</li>
+                        <li>Who should you tell if you encounter these situations?</li>
+                        <li>How can you verify if something online is legitimate or a scam?</li>
+                        <li>What should you do if you accidentally share too much personal information?</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Laws on Information Access and Sharing -->
+            <section id="laws" class="section">
+                <h2><i class="fas fa-gavel"></i> Laws on Information Access and Sharing</h2>
+                
+                <p>Laws help protect people's rights and safety when accessing and sharing information. Understanding these laws helps us use information responsibly.</p>
+                
+                <div class="info-box primary">
+                    <h4><i class="fas fa-balance-scale"></i> Why We Have Information Laws</h4>
+                    <p>Laws about information exist to:</p>
+                    <ul>
+                        <li>Protect people's privacy</li>
+                        <li>Prevent the spread of harmful information</li>
+                        <li>Ensure fair access to information</li>
+                        <li>Protect intellectual property (creators' rights)</li>
+                        <li>Prevent cybercrime</li>
+                        <li>Regulate how organizations handle personal data</li>
+                    </ul>
+                </div>
+                
+                <h3>Copyright Law</h3>
+                <p><span class="key-term">Copyright</span> is a legal right that gives creators control over how their original works are used. Copyright applies to:</p>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Type of Work</th>
+                            <th>Examples</th>
+                            <th>Copyright Protection</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Written works</strong></td>
+                            <td>Books, articles, poems, blogs</td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Visual arts</strong></td>
+                            <td>Paintings, drawings, photographs</td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Music</strong></td>
+                            <td>Songs, compositions, recordings</td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Video/film</strong></td>
+                            <td>Movies, TV shows, YouTube videos</td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Software</strong></td>
+                            <td>Computer programs, apps, games</td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Facts/ideas</strong></td>
+                            <td>Historical facts, scientific discoveries</td>
+                            <td>No</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <h3>Fair Use and Educational Exceptions</h3>
+                <p><span class="key-term">Fair use</span> allows limited use of copyrighted material without permission for purposes like education, criticism, or news reporting. In education, you can often use copyrighted material if:</p>
+                
+                <div class="info-box secondary">
+                    <h4><i class="fas fa-graduation-cap"></i> Educational Use Guidelines</h4>
+                    <ul>
+                        <li>You're using it for teaching or learning</li>
+                        <li>You only use a small portion of the work</li>
+                        <li>You're not making money from it</li>
+                        <li>You credit the original creator</li>
+                        <li>Your use doesn't hurt the market for the original work</li>
+                    </ul>
+                </div>
+                
+                <h3>Data Protection Laws</h3>
+                <p>Data protection laws regulate how personal information is collected, stored, and used. Key principles include:</p>
+                
+                <div class="info-box accent">
+                    <h4><i class="fas fa-database"></i> Data Protection Principles</h4>
+                    <ul>
+                        <li><strong>Consent:</strong> Organizations must get permission to collect your data</li>
+                        <li><strong>Purpose limitation:</strong> Data can only be used for the purpose it was collected</li>
+                        <li><strong>Data minimization:</strong> Only collect necessary data</li>
+                        <li><strong>Accuracy:</strong> Keep data accurate and up-to-date</li>
+                        <li><strong>Storage limitation:</strong> Don't keep data longer than needed</li>
+                        <li><strong>Security:</strong> Protect data from unauthorized access or loss</li>
+                        <li><strong>Accountability:</strong> Organizations are responsible for following these rules</li>
+                    </ul>
+                </div>
+                
+                <h3>Cybercrime Laws</h3>
+                <p>Cybercrime refers to criminal activities carried out using computers or the Internet. Common cybercrimes include:</p>
+                
+                <ul>
+                    <li><strong>Hacking:</strong> Unauthorized access to computer systems</li>
+                    <li><strong>Identity theft:</strong> Using someone else's personal information</li>
+                    <li><strong>Online fraud:</strong> Scams to get money or information</li>
+                    <li><strong>Cyberbullying:</strong> Harassment using digital technology</li>
+                    <li><strong>Spreading malware:</strong> Creating or distributing harmful software</li>
+                    <li><strong>Copyright infringement:</strong> Illegal sharing of copyrighted material</li>
+                </ul>
+            </section>
+            
+            <!-- Activity 13 -->
+            <div class="activity" id="activity-13">
+                <div class="activity-header">
+                    <div class="activity-icon">13</div>
+                    <h3 class="activity-title">Activity: Copyright Scenarios</h3>
+                </div>
+                
+                <div class="activity-instructions">
+                    <p><strong>Instructions:</strong> Read each scenario and decide if it's legal (follows copyright law) or illegal (breaks copyright law). Explain your reasoning.</p>
+                </div>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Scenario</th>
+                            <th>Legal or Illegal?</th>
+                            <th>Reason</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Copying a paragraph from a book for a school report and citing the source</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Downloading a movie from a website that doesn't own the rights</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Making 30 copies of a textbook for your class because the school can't afford books</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Using a photo from the Internet in a presentation and giving credit to the photographer</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Sharing your friend's Netflix password with another friend</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Recording a song you heard on the radio and using it as background music for your video</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Taking information from three different websites and writing it in your own words for an essay</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="discussion-points">
+                    <h5><i class="fas fa-comments"></i> Discussion Questions</h5>
+                    <ul>
+                        <li>Why do we have copyright laws?</li>
+                        <li>How does fair use help students and teachers?</li>
+                        <li>What's the difference between plagiarism and copyright infringement?</li>
+                        <li>What should you do if you want to use copyrighted material legally?</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Activity 14 -->
+            <div class="activity" id="activity-14">
+                <div class="activity-header">
+                    <div class="activity-icon">14</div>
+                    <h3 class="activity-title">Activity: Creating a School Data Protection Policy</h3>
+                </div>
+                
+                <div class="activity-instructions">
+                    <p><strong>Instructions:</strong> Imagine your school is creating a data protection policy. Work in groups to create 5-7 rules for how the school should handle student information (like names, grades, photos, etc.).</p>
+                </div>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Rule Number</th>
+                            <th>Data Protection Rule</th>
+                            <th>Purpose of Rule</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="discussion-points">
+                    <h5><i class="fas fa-comments"></i> Discussion Questions</h5>
+                    <ul>
+                        <li>What types of student information need the most protection?</li>
+                        <li>Who should have access to student information?</li>
+                        <li>How long should schools keep student records?</li>
+                        <li>What should happen if the school's data protection rules are broken?</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Activity 15 -->
+            <div class="activity" id="activity-15">
+                <div class="activity-header">
+                    <div class="activity-icon">15</div>
+                    <h3 class="activity-title">Activity: Cybercrime Case Studies</h3>
+                </div>
+                
+                <div class="activity-instructions">
+                    <p><strong>Instructions:</strong> Read each case study and identify what cybercrime is happening. Then suggest what the victim should do and how the crime could have been prevented.</p>
+                </div>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Case Study</th>
+                            <th>Cybercrime</th>
+                            <th>What to Do</th>
+                            <th>Prevention</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Maria receives an email from her "bank" asking her to confirm her account details by clicking a link. The email looks real but has spelling mistakes.</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>David buys a phone online but never receives it. The website disappears after he pays.</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Someone creates a fake social media account using Sarah's photos and personal information.</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>A student hacks into the school's computer system and changes grades.</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Someone posts embarrassing photos of James online without his permission.</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="discussion-points">
+                    <h5><i class="fas fa-comments"></i> Discussion Questions</h5>
+                    <ul>
+                        <li>Which cybercrime do you think is most common?</li>
+                        <li>Which is most harmful? Why?</li>
+                        <li>Who should you report cybercrimes to?</li>
+                        <li>How can laws help prevent cybercrimes?</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Activity of Integration -->
+            <section id="integration" class="section">
+                <h2><i class="fas fa-puzzle-piece"></i> Activity of Integration</h2>
+                
+                <p>Now it's time to apply everything you've learned about information access and sharing in a comprehensive project.</p>
+                
+                <div class="info-box primary">
+                    <h4><i class="fas fa-project-diagram"></i> Project Overview</h4>
+                    <p>You will work in groups to research a topic, gather information from multiple sources, and create a digital presentation to share your findings with the class. This project will demonstrate your understanding of:</p>
+                    <ul>
+                        <li>Finding and accessing information from different sources</li>
+                        <li>Evaluating the reliability of information</li>
+                        <li>Using technology to share information effectively</li>
+                        <li>Following safety practices and netiquette</li>
+                        <li>Respecting copyright and other information laws</li>
+                    </ul>
+                </div>
+            </section>
+            
+            <!-- Activity 16 -->
+            <div class="activity" id="activity-16">
+                <div class="activity-header">
+                    <div class="activity-icon">16</div>
+                    <h3 class="activity-title">Integrated Project: Research and Information Sharing</h3>
+                </div>
+                
+                <div class="activity-instructions">
+                    <p><strong>Project Instructions:</strong> Work in groups of 4-5 students. Choose one topic from the list below or propose your own (with teacher approval). Complete all the steps to create and share your project.</p>
+                </div>
+                
+                <h4>Step 1: Choose Your Topic</h4>
+                <ul>
+                    <li>Climate change and its effects in our community</li>
+                    <li>The history and culture of a Kenyan ethnic group</li>
+                    <li>Renewable energy sources for Kenya's future</li>
+                    <li>Cyberbullying: Causes, effects, and solutions</li>
+                    <li>The importance of wildlife conservation in Kenya</li>
+                    <li>How technology has changed education</li>
+                    <li>Your own topic (with teacher approval)</li>
+                </ul>
+                
+                <h4>Step 2: Research Your Topic</h4>
+                <p>Find information from at least FIVE different sources:</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Source Type</th>
+                            <th>Example</th>
+                            <th>Information Found</th>
+                            <th>Reliability Rating (1-5)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Online website</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Physical book</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Newspaper/magazine</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Interview with expert</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Government publication</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <h4>Step 3: Create Your Presentation</h4>
+                <p>Create a digital presentation that includes:</p>
+                <ul>
+                    <li>Introduction to your topic</li>
+                    <li>Key facts and information</li>
+                    <li>Visuals (images, charts, diagrams)</li>
+                    <li>Citations for all sources used</li>
+                    <li>Conclusion and recommendations</li>
+                </ul>
+                
+                <h4>Step 4: Share Your Presentation</h4>
+                <p>Choose TWO different ways to share your presentation:</p>
+                <ol>
+                    <li>Present to the class (in-person or video)</li>
+                    <li>Create a printed handout or poster</li>
+                    <li>Post on a class website or blog</li>
+                    <li>Share via email or cloud storage</li>
+                    <li>Create a social media post (with teacher supervision)</li>
+                </ol>
+                
+                <h4>Step 5: Reflection</h4>
+                <p>Answer these questions about your project:</p>
+                <ol>
+                    <li>What was the most challenging part of finding information?</li>
+                    <li>How did you decide which information was reliable?</li>
+                    <li>What technology skills did you use or learn?</li>
+                    <li>How did you make sure to follow safety practices and netiquette?</li>
+                    <li>How did you respect copyright laws in your project?</li>
+                </ol>
+            </div>
+            
+            <!-- Activity 17 -->
+            <div class="activity" id="activity-17">
+                <div class="activity-header">
+                    <div class="activity-icon">17</div>
+                    <h3 class="activity-title">Activity: Peer Evaluation of Projects</h3>
+                </div>
+                
+                <div class="activity-instructions">
+                    <p><strong>Instructions:</strong> After each group presents their project, use this rubric to evaluate their work. Be constructive and specific in your feedback.</p>
+                </div>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Criteria</th>
+                            <th>Excellent (5)</th>
+                            <th>Good (3-4)</th>
+                            <th>Needs Improvement (1-2)</th>
+                            <th>Score</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Information Access</strong><br>Used multiple sources effectively</td>
+                            <td>Used 5+ diverse, reliable sources</td>
+                            <td>Used 3-4 sources, mostly reliable</td>
+                            <td>Used 1-2 sources, questionable reliability</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Information Quality</strong><br>Accurate, relevant information</td>
+                            <td>All information accurate and highly relevant</td>
+                            <td>Most information accurate and relevant</td>
+                            <td>Significant errors or irrelevant information</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Technology Use</strong><br>Effective use of digital tools</td>
+                            <td>Excellent use of technology, enhances presentation</td>
+                            <td>Good use of technology, supports presentation</td>
+                            <td>Poor use of technology, distracts from content</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Sharing Methods</strong><br>Appropriate sharing techniques</td>
+                            <td>Used 2+ appropriate sharing methods effectively</td>
+                            <td>Used 1-2 sharing methods appropriately</td>
+                            <td>Sharing methods inappropriate or ineffective</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Safety & Ethics</strong><br>Followed safety practices and laws</td>
+                            <td>Excellent attention to safety, netiquette, and copyright</td>
+                            <td>Generally followed safety and ethical guidelines</td>
+                            <td>Significant issues with safety or ethics</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Presentation</strong><br>Clear, organized, engaging</td>
+                            <td>Exceptionally clear, well-organized, engaging</td>
+                            <td>Generally clear and organized</td>
+                            <td>Unclear, disorganized, hard to follow</td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="4"><strong>Total Score (out of 30)</strong></td>
+                            <td></td>
+                        </tr>
+                    </tfoot>
+                </table>
+                
+                <div class="discussion-points">
+                    <h5><i class="fas fa-comments"></i> Feedback Questions</h5>
+                    <ul>
+                        <li>What was the strongest part of this group's project?</li>
+                        <li>What suggestion would you give them to improve?</li>
+                        <li>What did you learn from their presentation?</li>
+                        <li>How did their sharing methods affect how you received the information?</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Activity 18 -->
+            <div class="activity" id="activity-18">
+                <div class="activity-header">
+                    <div class="activity-icon">18</div>
+                    <h3 class="activity-title">Activity: Creating a Class Information Sharing Policy</h3>
+                </div>
+                
+                <div class="activity-instructions">
+                    <p><strong>Instructions:</strong> As a class, create a policy for how information should be accessed and shared in your school. This policy should cover both online and offline information, and include rules for safety, ethics, and proper use of technology.</p>
+                </div>
+                
+                <h4>Policy Sections to Include:</h4>
+                <ol>
+                    <li><strong>Purpose:</strong> Why we need this policy</li>
+                    <li><strong>Information Access Rules:</strong> How to find and use information properly</li>
+                    <li><strong>Information Sharing Rules:</strong> How to share information safely and ethically</li>
+                    <li><strong>Technology Use Rules:</strong> Proper use of computers, Internet, and other technology</li>
+                    <li><strong>Safety Rules:</strong> Protecting personal information and staying safe online</li>
+                    <li><strong>Copyright Rules:</strong> Respecting others' work and following copyright law</li>
+                    <li><strong>Consequences:</strong> What happens if rules are broken</li>
+                </ol>
+                
+                <div class="discussion-points">
+                    <h5><i class="fas fa-comments"></i> Policy Discussion Questions</h5>
+                    <ul>
+                        <li>Why is it important for a school to have an information sharing policy?</li>
+                        <li>How can we make sure the policy is fair to everyone?</li>
+                        <li>Who should be responsible for enforcing the policy?</li>
+                        <li>How should the policy be shared with students, teachers, and parents?</li>
+                        <li>How often should the policy be reviewed and updated?</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Activity 19 -->
+            <div class="activity" id="activity-19">
+                <div class="activity-header">
+                    <div class="activity-icon">19</div>
+                    <h3 class="activity-title">Activity: Information Access and Sharing Quiz</h3>
+                </div>
+                
+                <div class="quiz">
+                    <div class="quiz-question">
+                        1. Which of these is NOT a good source for reliable information?
+                    </div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-correct="false">
+                            <input type="radio" name="q1" value="a"> Government website
+                        </div>
+                        <div class="quiz-option" data-correct="false">
+                            <input type="radio" name="q1" value="b"> University research paper
+                        </div>
+                        <div class="quiz-option" data-correct="true">
+                            <input type="radio" name="q1" value="c"> Anonymous blog with no sources
+                        </div>
+                        <div class="quiz-option" data-correct="false">
+                            <input type="radio" name="q1" value="d"> Established newspaper
+                        </div>
+                    </div>
+                    
+                    <div class="quiz-question">
+                        2. What does "netiquette" mean?
+                    </div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-correct="true">
+                            <input type="radio" name="q2" value="a"> Proper behavior when communicating online
+                        </div>
+                        <div class="quiz-option" data-correct="false">
+                            <input type="radio" name="q2" value="b"> A type of computer network
+                        </div>
+                        <div class="quiz-option" data-correct="false">
+                            <input type="radio" name="q2" value="c"> Software for organizing information
+                        </div>
+                        <div class="quiz-option" data-correct="false">
+                            <input type="radio" name="q2" value="d"> A secure way to send emails
+                        </div>
+                    </div>
+                    
+                    <div class="quiz-question">
+                        3. Which of these is the strongest password?
+                    </div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-correct="false">
+                            <input type="radio" name="q3" value="a"> password123
+                        </div>
+                        <div class="quiz-option" data-correct="false">
+                            <input type="radio" name="q3" value="b"> 12345678
+                        </div>
+                        <div class="quiz-option" data-correct="true">
+                            <input type="radio" name="q3" value="c"> Tr0ub4dor&3
+                        </div>
+                        <div class="quiz-option" data-correct="false">
+                            <input type="radio" name="q3" value="d"> johndoe2005
+                        </div>
+                    </div>
+                    
+                    <div class="quiz-question">
+                        4. What should you do if you receive an email from someone you don't know asking for personal information?
+                    </div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-correct="false">
+                            <input type="radio" name="q4" value="a"> Reply with the information they asked for
+                        </div>
+                        <div class="quiz-option" data-correct="false">
+                            <input type="radio" name="q4" value="b"> Forward it to all your friends
+                        </div>
+                        <div class="quiz-option" data-correct="true">
+                            <input type="radio" name="q4" value="c"> Delete it without responding
+                        </div>
+                        <div class="quiz-option" data-correct="false">
+                            <input type="radio" name="q4" value="d"> Click any links in the email to see what they want
+                        </div>
+                    </div>
+                    
+                    <div class="quiz-question">
+                        5. Copyright law protects:
+                    </div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-correct="false">
+                            <input type="radio" name="q5" value="a"> Facts and ideas
+                        </div>
+                        <div class="quiz-option" data-correct="false">
+                            <input type="radio" name="q5" value="b"> Historical events
+                        </div>
+                        <div class="quiz-option" data-correct="true">
+                            <input type="radio" name="q5" value="c"> Original creative works
+                        </div>
+                        <div class="quiz-option" data-correct="false">
+                            <input type="radio" name="q5" value="d"> Scientific discoveries
+                        </div>
+                    </div>
+                    
+                    <button id="checkFinalQuiz" class="quiz-submit">Check Answers</button>
+                    <div class="quiz-feedback" id="finalQuizFeedback">
+                        <!-- Feedback will be inserted here -->
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Activity 20 -->
+            <div class="activity" id="activity-20">
+                <div class="activity-header">
+                    <div class="activity-icon">20</div>
+                    <h3 class="activity-title">Activity: Creating an Information Access and Sharing Guide</h3>
+                </div>
+                
+                <div class="activity-instructions">
+                    <p><strong>Instructions:</strong> Create a guide for younger students on how to access and share information safely and effectively. Your guide should be easy to understand and include examples.</p>
+                </div>
+                
+                <h4>Guide Sections:</h4>
+                <ol>
+                    <li><strong>Finding Information:</strong> Where to look for information (online and offline)</li>
+                    <li><strong>Checking Information:</strong> How to know if information is reliable</li>
+                    <li><strong>Sharing Information:</strong> Different ways to share information</li>
+                    <li><strong>Staying Safe Online:</strong> Rules for protecting yourself on the Internet</li>
+                    <li><strong>Being Respectful Online:</strong> Netiquette rules</li>
+                    <li><strong>Following the Law:</strong> Copyright and other important laws</li>
+                    <li><strong>Getting Help:</strong> Who to ask if you have questions or problems</li>
+                </ol>
+                
+                <div class="discussion-points">
+                    <h5><i class="fas fa-comments"></i> Guide Creation Questions</h5>
+                    <ul>
+                        <li>What's the most important thing younger students need to know?</li>
+                        <li>How can you make the guide engaging and easy to understand?</li>
+                        <li>What examples would help explain each concept?</li>
+                        <li>How would you share this guide with younger students?</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Activity 21 -->
+            <div class="activity" id="activity-21">
+                <div class="activity-header">
+                    <div class="activity-icon">21</div>
+                    <h3 class="activity-title">Activity: Reflection on Learning</h3>
+                </div>
+                
+                <div class="activity-instructions">
+                    <p><strong>Instructions:</strong> Reflect on what you've learned in this module. Answer these questions thoughtfully and honestly.</p>
+                </div>
+                
+                <ol class="activity-steps">
+                    <li>What was the most interesting thing you learned about information access and sharing?</li>
+                    <li>What skill did you improve the most during this module?</li>
+                    <li>How will you use what you learned in your daily life?</li>
+                    <li>What was the most challenging activity and why?</li>
+                    <li>What safety practice will you be most careful to follow from now on?</li>
+                    <li>How has your understanding of Internet use changed?</li>
+                    <li>What advice would you give to someone just starting to learn about information access and sharing?</li>
+                    <li>What topic would you like to learn more about?</li>
+                </ol>
+                
+                <div class="discussion-points">
+                    <h5><i class="fas fa-comments"></i> Class Discussion Questions</h5>
+                    <ul>
+                        <li>How has technology changed the way we access and share information?</li>
+                        <li>What responsibilities do we have when sharing information?</li>
+                        <li>How can we help others learn about safe and effective information use?</li>
+                        <li>What will information access and sharing look like in 10 years?</li>
+                    </ul>
+                </div>
+            </div>
+        </main>
+        
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="module-progress">
+                <h3>Module Progress</h3>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <div class="progress-text">
+                    <span>0%</span>
+                    <span id="progressPercent">0%</span>
+                    <span>100%</span>
+                </div>
+            </div>
+            
+            <div class="sidebar-nav-container">
+                <h3>Module Navigation</h3>
+                <ul class="sidebar-nav">
+                    <li><a href="#introduction"><i class="fas fa-home"></i> Introduction</a></li>
+                    <li><a href="#activity-1"><i class="fas fa-tasks"></i> Activity 1: Info Sharing</a></li>
+                    <li><a href="#information-access"><i class="fas fa-search"></i> Information Access</a></li>
+                    <li><a href="#activity-2"><i class="fas fa-tasks"></i> Activity 2: Search Engine Hunt</a></li>
+                    <li><a href="#offline-access"><i class="fas fa-book"></i> Offline Access</a></li>
+                    <li><a href="#activity-3"><i class="fas fa-tasks"></i> Activity 3: Encyclopedia</a></li>
+                    <li><a href="#activity-4"><i class="fas fa-tasks"></i> Activity 4: Source Comparison</a></li>
+                    <li><a href="#information-sharing"><i class="fas fa-share-alt"></i> Information Sharing</a></li>
+                    <li><a href="#activity-5"><i class="fas fa-tasks"></i> Activity 5: Sharing Scenarios</a></li>
+                    <li><a href="#technologies"><i class="fas fa-tools"></i> Technologies</a></li>
+                    <li><a href="#activity-6"><i class="fas fa-tasks"></i> Activity 6: Tech Matching</a></li>
+                    <li><a href="#activity-7"><i class="fas fa-tasks"></i> Activity 7: Sharing Plan</a></li>
+                    <li><a href="#internet-works"><i class="fas fa-network-wired"></i> How Internet Works</a></li>
+                    <li><a href="#activity-8"><i class="fas fa-tasks"></i> Activity 8: Internet Quiz</a></li>
+                    <li><a href="#activity-9"><i class="fas fa-tasks"></i> Activity 9: Drawing Internet</a></li>
+                    <li><a href="#safety"><i class="fas fa-shield-alt"></i> Safety Practices</a></li>
+                    <li><a href="#activity-10"><i class="fas fa-tasks"></i> Activity 10: Netiquette Rules</a></li>
+                    <li><a href="#activity-11"><i class="fas fa-tasks"></i> Activity 11: Password Safety</a></li>
+                    <li><a href="#activity-12"><i class="fas fa-tasks"></i> Activity 12: Safety Scenarios</a></li>
+                    <li><a href="#laws"><i class="fas fa-gavel"></i> Information Laws</a></li>
+                    <li><a href="#activity-13"><i class="fas fa-tasks"></i> Activity 13: Copyright</a></li>
+                    <li><a href="#activity-14"><i class="fas fa-tasks"></i> Activity 14: Data Protection</a></li>
+                    <li><a href="#activity-15"><i class="fas fa-tasks"></i> Activity 15: Cybercrime</a></li>
+                    <li><a href="#integration"><i class="fas fa-puzzle-piece"></i> Integration Project</a></li>
+                    <li><a href="#activity-16"><i class="fas fa-tasks"></i> Activity 16: Research Project</a></li>
+                    <li><a href="#activity-17"><i class="fas fa-tasks"></i> Activity 17: Peer Evaluation</a></li>
+                    <li><a href="#activity-18"><i class="fas fa-tasks"></i> Activity 18: Class Policy</a></li>
+                    <li><a href="#activity-19"><i class="fas fa-tasks"></i> Activity 19: Final Quiz</a></li>
+                    <li><a href="#activity-20"><i class="fas fa-tasks"></i> Activity 20: Student Guide</a></li>
+                    <li><a href="#activity-21"><i class="fas fa-tasks"></i> Activity 21: Reflection</a></li>
+                </ul>
+            </div>
+            
+            <div class="assessment-info">
+                <h4><i class="fas fa-clipboard-check"></i> Assessment Strategy</h4>
+                <ul>
+                    <li><strong>Observation:</strong> Watch learners as they complete activities</li>
+                    <li><strong>Intervention:</strong> Guide learning toward achieving outcomes</li>
+                    <li><strong>Discussion:</strong> Listen to learners and ask probing questions</li>
+                    <li><strong>Evaluation:</strong> Assess verbal contributions and sharing skills</li>
+                    <li><strong>Recording:</strong> Track participation in discussions and activities</li>
+                </ul>
+            </div>
+            
+            <div class="download-section">
+                <h3>Module Resources</h3>
+                <button id="printModule" class="resource-btn"><i class="fas fa-print"></i> Print Module</button>
+                <button id="saveProgress" class="resource-btn"><i class="fas fa-save"></i> Save Progress</button>
+            </div>
+        </aside>
+    </div>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Information Access & Sharing</h3>
+                    <p>This comprehensive module covers everything students need to know about accessing, sharing, and protecting information in the digital age.</p>
+                    <p>Designed for secondary school students with activities, assessments, and real-world applications.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Key Topics</h3>
+                    <ul class="footer-links">
+                        <li><a href="#information-access">Information Access Methods</a></li>
+                        <li><a href="#information-sharing">Information Sharing Techniques</a></li>
+                        <li><a href="#technologies">Digital Technologies</a></li>
+                        <li><a href="#safety">Internet Safety & Netiquette</a></li>
+                        <li><a href="#laws">Information Laws & Ethics</a></li>
+                        <li><a href="#integration">Integrated Projects</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Learning Outcomes</h3>
+                    <ul class="footer-links">
+                        <li><a href="#introduction">Use online/offline platforms</a></li>
+                        <li><a href="#activity-7">Use ICT tools to share information</a></li>
+                        <li><a href="#activity-10">Explain safety practices (netiquette)</a></li>
+                        <li><a href="#activity-16">Apply skills in integrated projects</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact & Support</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-envelope"></i> Teacher Support</a></li>
+                        <li><a href="#"><i class="fas fa-question-circle"></i> Help & FAQ</a></li>
+                        <li><a href="#"><i class="fas fa-download"></i> Download Resources</a></li>
+                        <li><a href="#"><i class="fas fa-share-alt"></i> Share Module</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>© 2023 Information Access and Sharing Module. Educational content for classroom use.</p>
+                <p>This module includes 21 comprehensive activities covering all aspects of information access and sharing.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Mobile navigation toggle
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navLinks = document.getElementById('navLinks');
+        const navOverlay = document.getElementById('navOverlay');
+        
+        mobileToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            navOverlay.classList.toggle('active');
+            document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : 'auto';
+        });
+        
+        navOverlay.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+            navOverlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                navOverlay.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+        });
+        
+        // Progress tracking
+        function updateProgress() {
+            const sections = document.querySelectorAll('.section, .activity');
+            const viewportHeight = window.innerHeight;
+            const documentHeight = document.documentElement.scrollHeight - viewportHeight;
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const scrollPercent = Math.min(100, Math.round((scrollTop / documentHeight) * 100));
+            
+            document.getElementById('progressFill').style.width = `${scrollPercent}%`;
+            document.getElementById('progressPercent').textContent = `${scrollPercent}%`;
+            
+            // Update sidebar active link
+            updateActiveSidebarLink();
+        }
+        
+        function updateActiveSidebarLink() {
+            const sidebarLinks = document.querySelectorAll('.sidebar-nav a');
+            const sections = document.querySelectorAll('.section, .activity');
+            let currentSection = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                const sectionHeight = section.offsetHeight;
+                if (window.pageYOffset >= sectionTop && window.pageYOffset < sectionTop + sectionHeight) {
+                    currentSection = '#' + section.id;
+                }
+            });
+            
+            sidebarLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === currentSection) {
+                    link.classList.add('active');
+                }
+            });
+        }
+        
+        window.addEventListener('scroll', updateProgress);
+        window.addEventListener('load', updateProgress);
+        
+        // Quiz functionality
+        document.getElementById('checkQuiz').addEventListener('click', function() {
+            let score = 0;
+            const questions = document.querySelectorAll('#activity-8 .quiz-question');
+            
+            questions.forEach((question, index) => {
+                const selectedOption = question.nextElementSibling.querySelector('input:checked');
+                if (selectedOption) {
+                    const isCorrect = selectedOption.parentElement.getAttribute('data-correct') === 'true';
+                    if (isCorrect) score++;
+                }
+            });
+            
+            const feedback = document.getElementById('quizFeedback');
+            feedback.textContent = `You scored ${score} out of ${questions.length}. ${score === questions.length ? 'Excellent!' : score >= questions.length/2 ? 'Good job!' : 'Try again!'}`;
+            feedback.className = `quiz-feedback ${score === questions.length ? 'correct' : 'incorrect'}`;
+        });
+        
+        document.getElementById('checkFinalQuiz').addEventListener('click', function() {
+            let score = 0;
+            const questions = document.querySelectorAll('#activity-19 .quiz-question');
+            
+            questions.forEach((question, index) => {
+                const selectedOption = question.nextElementSibling.querySelector('input:checked');
+                if (selectedOption) {
+                    const isCorrect = selectedOption.parentElement.getAttribute('data-correct') === 'true';
+                    if (isCorrect) score++;
+                }
+            });
+            
+            const feedback = document.getElementById('finalQuizFeedback');
+            feedback.textContent = `You scored ${score} out of ${questions.length}. ${score === questions.length ? 'Perfect! You really understand information access and sharing!' : score >= 4 ? 'Well done! You have a good understanding.' : 'Review the material and try again.'}`;
+            feedback.className = `quiz-feedback ${score === questions.length ? 'correct' : score >= 4 ? 'correct' : 'incorrect'}`;
+        });
+        
+        // Quiz option selection
+        document.querySelectorAll('.quiz-option').forEach(option => {
+            option.addEventListener('click', function() {
+                const inputs = this.querySelector('input');
+                if (inputs) inputs.checked = true;
+                
+                // Clear other selections in the same question
+                const questionGroup = this.closest('.quiz-options');
+                questionGroup.querySelectorAll('.quiz-option').forEach(opt => {
+                    opt.classList.remove('selected');
+                });
+                
+                this.classList.add('selected');
+            });
+        });
+        
+        // Print functionality
+        document.getElementById('printModule').addEventListener('click', () => {
+            window.print();
+        });
+        
+        // Save progress (simulated)
+        document.getElementById('saveProgress').addEventListener('click', () => {
+            const progress = document.getElementById('progressPercent').textContent;
+            alert(`Progress saved: ${progress} complete. In a real application, this would save to your account.`);
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Initialize progress on load
+        updateProgress();
+    </script>
+</body>
+</html>

@@ -1,0 +1,2408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 4: Word Processing - Complete Learning Module</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6a5acd;
+            --secondary: #9370db;
+            --accent: #ff7f50;
+            --warning: #ffd700;
+            --light: #f8f9fa;
+            --dark: #202124;
+            --gray: #5f6368;
+            --border-radius: 10px;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: #f5f7fa;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary), #5a4acd);
+            color: white;
+            padding: 2rem 0;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+            opacity: 0.1;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .course-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.8rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+        
+        .course-subtitle {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
+            max-width: 800px;
+        }
+        
+        .keywords {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 1rem;
+        }
+        
+        .keyword {
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .learning-outcomes {
+            background-color: rgba(255, 255, 255, 0.15);
+            border-radius: var(--border-radius);
+            padding: 1.2rem;
+            margin-top: 1.5rem;
+        }
+        
+        .learning-outcomes h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+        }
+        
+        .outcomes-list {
+            list-style: none;
+        }
+        
+        .outcomes-list li {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .outcomes-list i {
+            margin-right: 10px;
+            margin-top: 3px;
+            color: var(--warning);
+        }
+        
+        /* Navigation */
+        .module-nav {
+            background-color: white;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 0.5rem 0;
+            position: relative;
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--dark);
+            cursor: pointer;
+        }
+        
+        /* Main Content */
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .content-area {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 2.5rem;
+            box-shadow: var(--shadow);
+        }
+        
+        /* Sidebar */
+        .sidebar {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+        }
+        
+        .sidebar h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--light);
+            font-size: 1.3rem;
+        }
+        
+        .module-progress {
+            margin-bottom: 2rem;
+        }
+        
+        .progress-bar {
+            height: 8px;
+            background-color: #e0e0e0;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 0.5rem;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background-color: var(--secondary);
+            width: 0%;
+            transition: width 1s ease;
+        }
+        
+        .progress-text {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+        
+        .sidebar-nav {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+        
+        .sidebar-nav li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .sidebar-nav a {
+            text-decoration: none;
+            color: var(--dark);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: var(--transition);
+            padding: 0.5rem;
+            border-radius: 5px;
+        }
+        
+        .sidebar-nav a:hover {
+            background-color: rgba(106, 90, 205, 0.1);
+            color: var(--primary);
+            transform: translateX(5px);
+        }
+        
+        .sidebar-nav i {
+            color: var(--primary);
+            width: 20px;
+            text-align: center;
+        }
+        
+        .assessment-info {
+            background-color: rgba(255, 215, 0, 0.1);
+            border-radius: var(--border-radius);
+            padding: 1.2rem;
+            border-left: 4px solid var(--warning);
+        }
+        
+        .assessment-info h4 {
+            color: var(--dark);
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .assessment-info ul {
+            padding-left: 1.2rem;
+            font-size: 0.9rem;
+        }
+        
+        .assessment-info li {
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Section Styling */
+        .section {
+            margin-bottom: 3rem;
+            scroll-margin-top: 100px;
+        }
+        
+        h2 {
+            color: var(--primary);
+            font-family: 'Poppins', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--light);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        h2 i {
+            color: var(--primary);
+        }
+        
+        h3 {
+            color: var(--dark);
+            font-size: 1.6rem;
+            margin: 1.8rem 0 1rem;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        h4 {
+            color: var(--dark);
+            font-size: 1.3rem;
+            margin: 1.5rem 0 0.8rem;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        p {
+            margin-bottom: 1.2rem;
+        }
+        
+        .key-term {
+            background-color: rgba(147, 112, 219, 0.1);
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            font-weight: 600;
+            color: var(--secondary);
+        }
+        
+        /* Activity Box */
+        .activity {
+            background-color: #f8f9fa;
+            border-radius: var(--border-radius);
+            padding: 1.8rem;
+            margin: 2rem 0;
+            border-left: 5px solid var(--primary);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+        
+        .activity-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.2rem;
+        }
+        
+        .activity-icon {
+            background-color: var(--primary);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-weight: bold;
+        }
+        
+        .activity-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.4rem;
+            color: var(--primary);
+        }
+        
+        .activity-instructions {
+            background-color: white;
+            padding: 1.2rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            border: 1px dashed #ddd;
+        }
+        
+        .activity-steps {
+            list-style: decimal;
+            padding-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .activity-steps li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .discussion-points {
+            background-color: rgba(255, 127, 80, 0.05);
+            padding: 1.2rem;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+            border-left: 4px solid var(--accent);
+        }
+        
+        .discussion-points h5 {
+            color: var(--accent);
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
+        }
+        
+        .discussion-points ul {
+            padding-left: 1.2rem;
+        }
+        
+        .discussion-points li {
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Information Boxes */
+        .info-box {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            box-shadow: var(--shadow);
+            border-top: 4px solid;
+        }
+        
+        .info-box.primary {
+            border-color: var(--primary);
+        }
+        
+        .info-box.secondary {
+            border-color: var(--secondary);
+        }
+        
+        .info-box.accent {
+            border-color: var(--accent);
+        }
+        
+        .info-box h4 {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 0;
+        }
+        
+        .info-box i {
+            font-size: 1.3rem;
+        }
+        
+        .info-box.primary h4 i {
+            color: var(--primary);
+        }
+        
+        .info-box.secondary h4 i {
+            color: var(--secondary);
+        }
+        
+        .info-box.accent h4 i {
+            color: var(--accent);
+        }
+        
+        /* Word Processing Interface */
+        .interface-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .interface-card {
+            background-color: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            text-align: center;
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+        
+        .interface-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: var(--shadow);
+        }
+        
+        .interface-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .interface-card h4 {
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+        
+        /* Comparison Table */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+        }
+        
+        .comparison-table th {
+            background-color: var(--primary);
+            color: white;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        .comparison-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .comparison-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        .comparison-table tr:hover {
+            background-color: rgba(106, 90, 205, 0.05);
+        }
+        
+        /* Steps for Operations */
+        .operation-steps {
+            counter-reset: step-counter;
+            margin: 2rem 0;
+        }
+        
+        .step {
+            display: flex;
+            margin-bottom: 1.5rem;
+            align-items: flex-start;
+        }
+        
+        .step-number {
+            background-color: var(--primary);
+            color: white;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+        
+        .step-content {
+            flex: 1;
+        }
+        
+        .step-content h4 {
+            margin-top: 0;
+            color: var(--primary);
+        }
+        
+        /* Formatting Examples */
+        .formatting-examples {
+            background-color: #f8f9fa;
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--accent);
+        }
+        
+        .format-example {
+            margin: 1rem 0;
+            padding: 1rem;
+            border-bottom: 1px dashed #ddd;
+        }
+        
+        .format-example:last-child {
+            border-bottom: none;
+        }
+        
+        .example-title {
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Font Demo */
+        .font-demo {
+            font-size: 1.2rem;
+            padding: 1rem;
+            background-color: white;
+            border-radius: 8px;
+            margin: 1rem 0;
+            border: 1px solid #eee;
+        }
+        
+        .demo-times { font-family: 'Times New Roman', serif; }
+        .demo-arial { font-family: Arial, sans-serif; }
+        .demo-courier { font-family: 'Courier New', monospace; }
+        .demo-bold { font-weight: bold; }
+        .demo-italic { font-style: italic; }
+        .demo-underline { text-decoration: underline; }
+        .demo-large { font-size: 1.5rem; }
+        .demo-small { font-size: 0.9rem; }
+        
+        /* Alignment Demo */
+        .alignment-demo {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .align-box {
+            padding: 1rem;
+            background-color: white;
+            border-radius: 8px;
+            border: 1px solid #eee;
+        }
+        
+        .align-left { text-align: left; }
+        .align-center { text-align: center; }
+        .align-right { text-align: right; }
+        .align-justify { text-align: justify; }
+        
+        /* Image Handling */
+        .image-handling {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .image-card {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            border-left: 4px solid var(--secondary);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+        
+        .image-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+        
+        .image-card h4 {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+        
+        /* Table Demo */
+        .table-demo {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+        }
+        
+        .table-demo th, .table-demo td {
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        
+        .table-demo th {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .table-demo tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        /* Interactive Quiz */
+        .quiz {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: var(--shadow);
+            border: 2px solid var(--primary);
+        }
+        
+        .quiz-question {
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .quiz-option {
+            padding: 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .quiz-option:hover {
+            border-color: var(--primary);
+            background-color: rgba(106, 90, 205, 0.05);
+        }
+        
+        .quiz-option.selected {
+            border-color: var(--secondary);
+            background-color: rgba(147, 112, 219, 0.1);
+        }
+        
+        .quiz-option input {
+            margin-right: 10px;
+        }
+        
+        .quiz-feedback {
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            display: none;
+            margin-top: 1rem;
+        }
+        
+        .quiz-feedback.correct {
+            background-color: rgba(147, 112, 219, 0.1);
+            color: var(--secondary);
+            display: block;
+            border-left: 4px solid var(--secondary);
+        }
+        
+        .quiz-feedback.incorrect {
+            background-color: rgba(255, 127, 80, 0.1);
+            color: var(--accent);
+            display: block;
+            border-left: 4px solid var(--accent);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 3rem 0 1.5rem;
+            margin-top: 3rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-section h3 {
+            color: white;
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+            border-bottom: none;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 0.95rem;
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary);
+            padding-left: 5px;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                position: static;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .course-title {
+                font-size: 2.2rem;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                height: 100vh;
+                background-color: white;
+                flex-direction: column;
+                padding: 2rem;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+                transition: var(--transition);
+                z-index: 1000;
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .mobile-toggle {
+                display: block;
+            }
+            
+            .nav-overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.5);
+                z-index: 999;
+                display: none;
+            }
+            
+            .nav-overlay.active {
+                display: block;
+            }
+            
+            .content-area {
+                padding: 1.5rem;
+            }
+            
+            .interface-grid, .image-handling {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Print Styles */
+        @media print {
+            .module-nav, .sidebar, footer, .quiz, .activity {
+                display: none;
+            }
+            
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .content-area {
+                box-shadow: none;
+                padding: 0;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="navigation.css">
+</head>
+<body>
+    <!-- GLOBAL NAVIGATION WITH SUBMENUS -->
+<nav class="global-nav">
+    <div class="global-nav-container">
+        <a href="learning-hub.html" class="global-nav-brand">
+            <i class="fas fa-graduation-cap"></i> ICT Learning Hub
+        </a>
+        
+        <button class="nav-mobile-toggle" title="Toggle menu">
+            <i class="fas fa-bars"></i>
+        </button>
+        
+        <ul class="global-nav-menu">
+            <!-- Home -->
+            <li class="nav-item">
+                <a href="index.html">
+                    <i class="fas fa-home"></i> Home
+                </a>
+            </li>
+            
+            <!-- Office Applications -->
+            <li class="nav-item">
+                <a href="#" class="nav-dropdown-toggle">
+                    <i class="fas fa-file"></i> Office Applications
+                </a>
+                <ul class="nav-submenu">
+                    <li><a href="word 2.html" class="submenu-item"><i class="fas fa-file-word"></i> Word Processing 2</a></li>
+                    <li><a href="word processingone.html" class="submenu-item"><i class="fas fa-file-word"></i> Word Processing</a></li>
+                    <li class="submenu-divider"></li>
+                    <li><a href="PowerPoint.html" class="submenu-item"><i class="fas fa-presentation"></i> Presentations</a></li>
+                    <li class="submenu-divider"></li>
+                    <li><a href="spreadsheets 1.html" class="submenu-item"><i class="fas fa-table"></i> Spreadsheets 1</a></li>
+                    <li><a href="spreadsheets 2.html" class="submenu-item"><i class="fas fa-table"></i> Spreadsheets 2</a></li>
+                </ul>
+            </li>
+            
+            <!-- System & Data -->
+            <li class="nav-item">
+                <a href="#" class="nav-dropdown-toggle">
+                    <i class="fas fa-server"></i> System & Data
+                </a>
+                <ul class="nav-submenu">
+                    <li><a href="DBMS.html" class="submenu-item"><i class="fas fa-database"></i> Database Management</a></li>
+                    <li><a href="software.html" class="submenu-item"><i class="fas fa-box"></i> Software Management</a></li>
+                    <li class="submenu-divider"></li>
+                    <li><a href="system security and data security .html" class="submenu-item"><i class="fas fa-lock"></i> System & Data Security</a></li>
+                    <li><a href="information_access_and_sharing_and_security.html" class="submenu-item"><i class="fas fa-share"></i> Information Sharing</a></li>
+                </ul>
+            </li>
+            
+            <!-- Design & Web -->
+            <li class="nav-item">
+                <a href="#" class="nav-dropdown-toggle">
+                    <i class="fas fa-palette"></i> Design & Web
+                </a>
+                <ul class="nav-submenu">
+                    <li><a href="web design.html" class="submenu-item"><i class="fas fa-globe"></i> Web Design</a></li>
+                    <li><a href="desktop publishing.html" class="submenu-item"><i class="fas fa-paint-brush"></i> Desktop Publishing</a></li>
+                </ul>
+            </li>
+            
+            <!-- Hardware & IT -->
+            <li class="nav-item">
+                <a href="#" class="nav-dropdown-toggle">
+                    <i class="fas fa-microchip"></i> Hardware & IT
+                </a>
+                <ul class="nav-submenu">
+                    <li><a href="computer hardware.html" class="submenu-item"><i class="fas fa-computer"></i> Computer Hardware</a></li>
+                    <li><a href="file and folder management.html" class="submenu-item"><i class="fas fa-folder"></i> File Management</a></li>
+                    <li><a href="Access-and-sharing.html" class="submenu-item"><i class="fas fa-users"></i> Access & Sharing</a></li>
+                </ul>
+            </li>
+            
+            <!-- Information & Safety -->
+            <li class="nav-item">
+                <a href="#" class="nav-dropdown-toggle">
+                    <i class="fas fa-shield"></i> Info & Safety
+                </a>
+                <ul class="nav-submenu">
+                    <li><a href="Health and safety .html" class="submenu-item"><i class="fas fa-heartbeat"></i> Health & Safety</a></li>
+                    <li><a href="Waste management.html" class="submenu-item"><i class="fas fa-recycle"></i> Waste Management</a></li>
+                </ul>
+            </li>
+            
+            <!-- General -->
+            <li class="nav-item">
+                <a href="#" class="nav-dropdown-toggle">
+                    <i class="fas fa-book"></i> General
+                </a>
+                <ul class="nav-submenu">
+                    <li><a href="introduction to ICT.html" class="submenu-item"><i class="fas fa-book-open"></i> Introduction to ICT</a></li>
+                    <li><a href="ticking timer..html" class="submenu-item"><i class="fas fa-clock"></i> Ticking Timer</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</nav>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <h1 class="course-title">Word Processing</h1>
+            <p class="course-subtitle">Chapter 4: Creating, formatting, and editing documents using word processing software</p>
+            
+            <div class="keywords">
+                <span class="keyword">Word Processing</span>
+                <span class="keyword">Formatting</span>
+                <span class="keyword">Layout</span>
+                <span class="keyword">Mail Merge</span>
+                <span class="keyword">MS Word</span>
+                <span class="keyword">Documents</span>
+                <span class="keyword">Templates</span>
+            </div>
+            
+            <div class="learning-outcomes">
+                <h3><i class="fas fa-bullseye"></i> Learning Outcomes</h3>
+                <ul class="outcomes-list">
+                    <li><i class="fas fa-check-circle"></i> Use the word processor interface effectively</li>
+                    <li><i class="fas fa-check-circle"></i> Create, format, edit, and print documents</li>
+                    <li><i class="fas fa-check-circle"></i> Apply character and paragraph formatting</li>
+                    <li><i class="fas fa-check-circle"></i> Work with page layout settings</li>
+                    <li><i class="fas fa-check-circle"></i> Insert and format images, tables, and other objects</li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="module-nav">
+        <div class="container nav-container">
+            <div class="nav-brand">
+                <span class="nav-brand-text">ICT - Chapter 4: Word Processing</span>
+            </div>
+            
+            <button class="mobile-toggle" id="mobileToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#section1"><i class="fas fa-cogs"></i> Features</a></li>
+                <li><a href="#section2"><i class="fas fa-sliders-h"></i> Customization</a></li>
+                <li><a href="#section3"><i class="fas fa-save"></i> Saving Files</a></li>
+                <li><a href="#section4"><i class="fas fa-font"></i> Working with Text</a></li>
+                <li><a href="#section5"><i class="fas fa-columns"></i> Page Layout</a></li>
+                <li><a href="#section6"><i class="fas fa-search"></i> Find & Replace</a></li>
+                <li><a href="#section7"><i class="fas fa-spell-check"></i> Spelling & Grammar</a></li>
+                <li><a href="#section8"><i class="fas fa-text-height"></i> Formatting</a></li>
+                <li><a href="#section9"><i class="fas fa-image"></i> Working with Objects</a></li>
+                <li><a href="#integration"><i class="fas fa-tasks"></i> Integration Activity</a></li>
+                <li><a href="#quiz"><i class="fas fa-question-circle"></i> Knowledge Check</a></li>
+            </ul>
+        </div>
+        
+        <div class="nav-overlay" id="navOverlay"></div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container main-content">
+        <!-- Content Area -->
+        <main class="content-area">
+            <!-- Section 1: Features of a Word Processor -->
+            <section class="section" id="section1">
+                <h2><i class="fas fa-cogs"></i> Features of a Word Processor</h2>
+                
+                <div class="info-box primary">
+                    <h4><i class="fas fa-info-circle"></i> What is Word Processing?</h4>
+                    <p><span class="key-term">Word processing</span> is a very important skill for computer literacy. Once you learn word processing, you will be in position to use word processing software (e.g. MS Word) appropriately to create, edit and print documents. Microsoft Office Word is one of the most commonly used word processing software.</p>
+                </div>
+                
+                <h3>Word Processor Interface</h3>
+                <p>A word processor has numerous features whose uses you need to understand. The image below shows a typical word processor window with key features:</p>
+                
+                <div class="interface-grid">
+                    <div class="interface-card">
+                        <div class="interface-icon">
+                            <i class="fas fa-bars"></i>
+                        </div>
+                        <h4>Office Button/File Menu</h4>
+                        <p>Access to Save, Open, Print, and other file operations</p>
+                    </div>
+                    
+                    <div class="interface-card">
+                        <div class="interface-icon">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <h4>Home Tab</h4>
+                        <p>Basic formatting tools: font, paragraph, styles, editing</p>
+                    </div>
+                    
+                    <div class="interface-card">
+                        <div class="interface-icon">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <h4>Insert Tab</h4>
+                        <p>Insert pages, tables, illustrations, links, headers/footers</p>
+                    </div>
+                    
+                    <div class="interface-card">
+                        <div class="interface-icon">
+                            <i class="fas fa-paint-brush"></i>
+                        </div>
+                        <h4>Page Layout Tab</h4>
+                        <p>Page setup, themes, page background, paragraph spacing</p>
+                    </div>
+                    
+                    <div class="interface-card">
+                        <div class="interface-icon">
+                            <i class="fas fa-mail-bulk"></i>
+                        </div>
+                        <h4>References Tab</h4>
+                        <p>Table of contents, footnotes, citations, bibliography</p>
+                    </div>
+                    
+                    <div class="interface-card">
+                        <div class="interface-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h4>Mailings Tab</h4>
+                        <p>Mail merge, envelopes, labels for bulk mailing</p>
+                    </div>
+                    
+                    <div class="interface-card">
+                        <div class="interface-icon">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <h4>Review Tab</h4>
+                        <p>Spelling & grammar, proofing, comments, tracking changes</p>
+                    </div>
+                    
+                    <div class="interface-card">
+                        <div class="interface-icon">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <h4>View Tab</h4>
+                        <p>Document views, zoom, window arrangements, macros</p>
+                    </div>
+                </div>
+                
+                <div class="activity">
+                    <div class="activity-header">
+                        <div class="activity-icon">1</div>
+                        <div class="activity-title">Activity 4.1: Understanding Word Processor Features</div>
+                    </div>
+                    
+                    <div class="activity-instructions">
+                        <p><strong>Instructions:</strong> In groups, explore the word processor interface and identify features.</p>
+                    </div>
+                    
+                    <ol class="activity-steps">
+                        <li>Open a word processor (Start → All Programs → MS Office → Word)</li>
+                        <li>Identify the groups of word processing features on different tabs</li>
+                        <li>Type the sentence "I love my school"</li>
+                        <li>Select (highlight) the sentence and click on any three features</li>
+                        <li>Observe the changes which occur in the text</li>
+                        <li>State the function of each of the features identified</li>
+                    </ol>
+                    
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Feature Identified</th>
+                                <th>Group it Belongs To</th>
+                                <th>Use of the Feature</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Bold</td>
+                                <td>Font (Home tab)</td>
+                                <td>Makes text thicker and more prominent</td>
+                            </tr>
+                            <tr>
+                                <td>Center Align</td>
+                                <td>Paragraph (Home tab)</td>
+                                <td>Centers text between left and right margins</td>
+                            </tr>
+                            <tr>
+                                <td>Font Size</td>
+                                <td>Font (Home tab)</td>
+                                <td>Changes the size of text characters</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+            
+            <!-- Section 2: Customizing the Word Processing Environment -->
+            <section class="section" id="section2">
+                <h2><i class="fas fa-sliders-h"></i> Customizing Word Processing Environment</h2>
+                
+                <div class="info-box secondary">
+                    <h4><i class="fas fa-cog"></i> Setting Up Your Workspace</h4>
+                    <p>Before you begin creating documents, ensure that you have set up your Word environment and become familiar with key tasks such as minimizing and maximizing the Ribbon, configuring the Quick Access toolbar, using the ruler, word counting and zooming tools.</p>
+                </div>
+                
+                <h3>Customizing the Quick Access Toolbar</h3>
+                <div class="operation-steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Access Customization</h4>
+                            <p>Click the arrow to the right of the Quick Access toolbar (top-left corner of Word window).</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Select Commands</h4>
+                            <p>Select the command you want to add from the drop-down list. It will appear in the Quick Access toolbar.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>Minimize/Maximize Ribbon</h4>
+                            <p>Right-click anywhere in the main menu and select "Minimize the Ribbon" to toggle the Ribbon on and off.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h4>Customize Taskbar</h4>
+                            <p>Right-click anywhere on the taskbar and select the items you would like to appear on your taskbar.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="activity">
+                    <div class="activity-header">
+                        <div class="activity-icon">2</div>
+                        <div class="activity-title">Activity 4.2: Setting a Word Processing Environment</div>
+                    </div>
+                    
+                    <div class="activity-instructions">
+                        <p><strong>Instructions:</strong> Practice customizing your word processing workspace.</p>
+                    </div>
+                    
+                    <ol class="activity-steps">
+                        <li>Add Save, Undo, and Redo buttons to your Quick Access toolbar</li>
+                        <li>Practice minimizing and maximizing the Ribbon</li>
+                        <li>Customize what appears on your taskbar</li>
+                        <li>Explore other customization options in the Word options menu</li>
+                    </ol>
+                </div>
+            </section>
+            
+            <!-- Section 3: Saving Documents -->
+            <section class="section" id="section3">
+                <h2><i class="fas fa-save"></i> Saving Documents</h2>
+                
+                <div class="info-box primary">
+                    <h4><i class="fas fa-hdd"></i> Importance of Saving</h4>
+                    <p><span class="key-term">Saving</span> is a process of storing a document in a certain location or creating a file. This can be done on a newly created document or on an already existing document. Saving is normally in two categories: <strong>Save</strong> and <strong>Save As</strong>.</p>
+                </div>
+                
+                <h3>Save vs Save As</h3>
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Operation</th>
+                            <th>When to Use</th>
+                            <th>Result</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Save</strong></td>
+                            <td>First time saving or updating existing file</td>
+                            <td>Saves changes to current file location with same name</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Save As</strong></td>
+                            <td>Creating copy, changing location, or changing file type</td>
+                            <td>Creates new file with different name, location, or format</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="activity">
+                    <div class="activity-header">
+                        <div class="activity-icon">3</div>
+                        <div class="activity-title">Activity 4.3: Saving a File</div>
+                    </div>
+                    
+                    <div class="activity-instructions">
+                        <p><strong>Instructions:</strong> Practice saving a document with proper naming and location.</p>
+                    </div>
+                    
+                    <div class="operation-steps">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h4>Open MS Word</h4>
+                                <p>Start the Word processing program.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h4>Select Save/Save As</h4>
+                                <p>Select Office Button → Save or Save As (or File → Save/Save As in newer versions).</p>
+                            </div>
+                        </div>
+                        
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h4>Choose Location</h4>
+                                <p>Select Desktop or My Documents as the location to save in.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="step">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <h4>Name the File</h4>
+                                <p>Give the file a name like "NCDC" and click Save.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="discussion-points">
+                        <h5>Important Tip</h5>
+                        <p>Save your file immediately after creating it to prevent the possibility of losing it later due to power failure. Use Ctrl+S frequently to save your work as you go.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Section 4: Working with Text -->
+            <section class="section" id="section4">
+                <h2><i class="fas fa-font"></i> Working with Text</h2>
+                
+                <div class="info-box secondary">
+                    <h4><i class="fas fa-keyboard"></i> Basic Text Operations</h4>
+                    <p>Working with text involves selecting, inserting, deleting, copying, and pasting text. These fundamental skills are essential for creating and editing documents effectively.</p>
+                </div>
+                
+                <h3>Text Selection Methods</h3>
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>To Select</th>
+                            <th>Method</th>
+                            <th>Keyboard Shortcut</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Single word</td>
+                            <td>Double-click the word</td>
+                            <td>Double-click</td>
+                        </tr>
+                        <tr>
+                            <td>Line of text</td>
+                            <td>Click in left margin next to line</td>
+                            <td>Triple-click in paragraph</td>
+                        </tr>
+                        <tr>
+                            <td>Paragraph</td>
+                            <td>Triple-click in paragraph or double-click in left margin</td>
+                            <td>Triple-click</td>
+                        </tr>
+                        <tr>
+                            <td>Entire document</td>
+                            <td>Triple-click in left margin or Edit → Select All</td>
+                            <td>Ctrl+A</td>
+                        </tr>
+                        <tr>
+                            <td>Non-adjacent text</td>
+                            <td>Select first portion, then Ctrl+Click additional portions</td>
+                            <td>Ctrl+Click</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <h3>Copying and Pasting Text</h3>
+                <div class="operation-steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Select Text</h4>
+                            <p>Select the text you want to copy by dragging over it with the mouse.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Copy Text</h4>
+                            <p>Click the Copy command on the Home tab, or right-click and choose Copy, or press Ctrl+C.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>Place Cursor</h4>
+                            <p>Place the cursor where you want text to appear in the document.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h4>Paste Text</h4>
+                            <p>Click the Paste command on the Home tab, or right-click and choose Paste, or press Ctrl+V.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="activity">
+                    <div class="activity-header">
+                        <div class="activity-icon">4</div>
+                        <div class="activity-title">Activity 4.4: Working with Text</div>
+                    </div>
+                    
+                    <div class="activity-instructions">
+                        <p><strong>Instructions:</strong> Practice basic text operations in a document.</p>
+                    </div>
+                    
+                    <ol class="activity-steps">
+                        <li>Type some text in your text area (about four paragraphs)</li>
+                        <li>Practice selecting text using different methods</li>
+                        <li>Insert text anywhere in your document by clicking and typing</li>
+                        <li>Delete text using Backspace (left of cursor) and Delete (right of cursor) keys</li>
+                        <li>Practice copying and pasting text within the document</li>
+                    </ol>
+                    
+                    <div class="discussion-points">
+                        <h5>Important Tip</h5>
+                        <p>Always highlight text before applying any formatting to it. This ensures you format only the text you intend to format.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Section 5: Page Layout -->
+            <section class="section" id="section5">
+                <h2><i class="fas fa-columns"></i> Page Layout</h2>
+                
+                <div class="info-box primary">
+                    <h4><i class="fas fa-file-alt"></i> Document Layout Settings</h4>
+                    <p>Page layout involves changing default settings to suit your document requirements. You can change margins, document orientation, use columns in your document, and adjust line spacing of text.</p>
+                </div>
+                
+                <h3>Changing Page Orientation</h3>
+                <div class="operation-steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Select Page Layout Tab</h4>
+                            <p>Click on the Page Layout tab in the Ribbon.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Click Orientation Command</h4>
+                            <p>Click the Orientation command in the Page Setup group.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>Choose Orientation</h4>
+                            <p>Left-click either Portrait (vertical) or Landscape (horizontal) to change the page orientation.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <h3>Setting Margins</h3>
+                <div class="operation-steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Access Margins Command</h4>
+                            <p>Select the Page Layout tab, then click the Margins command.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Choose Predefined Margins</h4>
+                            <p>Select from predefined margin sizes: Normal, Narrow, Moderate, Wide, or Mirrored.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>Custom Margins</h4>
+                            <p>For custom margins, click Custom Margins and enter specific values for top, bottom, left, and right margins.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <h3>Using Columns</h3>
+                <div class="operation-steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Select Text</h4>
+                            <p>Select the text you want to format into columns.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Access Columns Command</h4>
+                            <p>Select the Page Layout tab, then click the Columns command.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>Choose Column Layout</h4>
+                            <p>Select the number of columns you want: One, Two, Three, Left, or Right.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h4>More Columns Options</h4>
+                            <p>For more options, select More Columns to specify exact column width and spacing.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="activity">
+                    <div class="activity-header">
+                        <div class="activity-icon">5</div>
+                        <div class="activity-title">Activity 4.5-4.7: Page Layout Exercises</div>
+                    </div>
+                    
+                    <div class="activity-instructions">
+                        <p><strong>Instructions:</strong> Practice different page layout settings.</p>
+                    </div>
+                    
+                    <ol class="activity-steps">
+                        <li>Change a document from portrait to landscape orientation</li>
+                        <li>Set custom margins: Top and Bottom = 1 inch, Left and Right = 1.5 inches</li>
+                        <li>Format a paragraph of text into two columns</li>
+                        <li>Experiment with different column layouts (three columns, left/right columns)</li>
+                    </ol>
+                </div>
+            </section>
+            
+            <!-- Section 6: Find and Replace -->
+            <section class="section" id="section6">
+                <h2><i class="fas fa-search"></i> Finding and Replacing Text</h2>
+                
+                <div class="info-box secondary">
+                    <h4><i class="fas fa-search-plus"></i> Efficient Text Editing</h4>
+                    <p>When a document comprises many pages, locating specific text might be cumbersome. Word processors have mechanisms for locating specific texts and replacing them efficiently.</p>
+                </div>
+                
+                <h3>Finding Text</h3>
+                <div class="operation-steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Open Find Dialog</h4>
+                            <p>Click the Home tab's Find button or press Ctrl+F to display the Find and Replace dialog box.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Enter Search Text</h4>
+                            <p>Type the text you want to find in the "Search for" textbox.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>Start Search</h4>
+                            <p>Click the Find Next button. Word searches from the current cursor position to the end of the file.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h4>Navigate Results</h4>
+                            <p>If Word finds the text, it highlights it. Click Find Next to continue searching.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <h3>Replacing Text</h3>
+                <div class="operation-steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Open Replace Dialog</h4>
+                            <p>Click the Home tab's Replace button or press Ctrl+H to display the Find and Replace dialog box.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Enter Text to Find and Replace</h4>
+                            <p>Type the text you want to find in the "Find what" box and the replacement text in the "Replace with" box.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>Replace Text</h4>
+                            <p>Click Replace to replace the next occurrence, or Replace All to replace all occurrences at once.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="activity">
+                    <div class="activity-header">
+                        <div class="activity-icon">6</div>
+                        <div class="activity-title">Activity 4.9-4.10: Find and Replace Exercises</div>
+                    </div>
+                    
+                    <div class="activity-instructions">
+                        <p><strong>Instructions:</strong> Practice finding and replacing text in a document.</p>
+                    </div>
+                    
+                    <ol class="activity-steps">
+                        <li>Load a file with text on at least two pages</li>
+                        <li>Use Find (Ctrl+F) to locate specific words or phrases</li>
+                        <li>Use Replace (Ctrl+H) to change all occurrences of "school" to "college"</li>
+                        <li>Experiment with Replace vs Replace All functions</li>
+                    </ol>
+                </div>
+            </section>
+            
+            <!-- Section 7: Spelling and Grammar Check -->
+            <section class="section" id="section7">
+                <h2><i class="fas fa-spell-check"></i> Spelling and Grammar Check</h2>
+                
+                <div class="info-box primary">
+                    <h4><i class="fas fa-check-circle"></i> Proofreading Tools</h4>
+                    <p>When you are typing, sometimes a wavy red or green line appears beneath your text. Red wavy lines indicate spelling errors, while green wavy lines indicate grammatical errors. Word processors include proofreading tools to help correct these errors.</p>
+                </div>
+                
+                <h3>Using Spell Check</h3>
+                <div class="operation-steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Identify Errors</h4>
+                            <p>Look for wavy red lines under misspelled words or wavy green lines under grammatical errors.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Right-Click Error</h4>
+                            <p>Right-click on the underlined word to see suggested corrections.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>Select Correction</h4>
+                            <p>Click on the correct suggestion to replace the mistyped word automatically.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h4>Use Spelling & Grammar Checker</h4>
+                            <p>Go to Review tab → Spelling & Grammar (or press F7) to check the entire document.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="activity">
+                    <div class="activity-header">
+                        <div class="activity-icon">7</div>
+                        <div class="activity-title">Activity 4.11: Text Proofreading</div>
+                    </div>
+                    
+                    <div class="activity-instructions">
+                        <p><strong>Instructions:</strong> Practice using spelling and grammar check tools.</p>
+                    </div>
+                    
+                    <ol class="activity-steps">
+                        <li>Open a new document and intentionally mistype several words</li>
+                        <li>Observe the wavy red lines that appear under misspelled words</li>
+                        <li>Right-click on underlined words and select correct suggestions</li>
+                        <li>Use the Spelling & Grammar checker (F7) to check the entire document</li>
+                    </ol>
+                    
+                    <div class="discussion-points">
+                        <h5>Important Note</h5>
+                        <p>A wavy red line does not always mean you have made a mistake! Proper nouns and specialist terms that Word doesn't recognize will also be underlined. You can add these to the dictionary to prevent future underlining.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Section 8: Character and Paragraph Formatting -->
+            <section class="section" id="section8">
+                <h2><i class="fas fa-text-height"></i> Character and Paragraph Formatting</h2>
+                
+                <div class="info-box secondary">
+                    <h4><i class="fas fa-paint-brush"></i> Making Documents Attractive</h4>
+                    <p><span class="key-term">Formatting</span> is the art of making your documents effective and attractive. Good formatting distinguishes different parts of your text and helps your readers take in your message. Character formatting affects individual characters, while paragraph formatting affects entire paragraphs.</p>
+                </div>
+                
+                <h3>Character Formatting</h3>
+                <div class="formatting-examples">
+                    <div class="format-example">
+                        <div class="example-title">Changing Font</div>
+                        <div class="font-demo demo-times">Times New Roman - Traditional serif font</div>
+                        <div class="font-demo demo-arial">Arial - Clean sans-serif font</div>
+                        <div class="font-demo demo-courier">Courier New - Monospaced font</div>
+                    </div>
+                    
+                    <div class="format-example">
+                        <div class="example-title">Font Styles</div>
+                        <div class="font-demo demo-bold">Bold text for emphasis</div>
+                        <div class="font-demo demo-italic">Italic text for titles or emphasis</div>
+                        <div class="font-demo demo-underline">Underlined text for links or emphasis</div>
+                    </div>
+                    
+                    <div class="format-example">
+                        <div class="example-title">Font Size</div>
+                        <div class="font-demo demo-large">Large text for headings (18pt+)</div>
+                        <div class="font-demo">Normal text for body (10-12pt)</div>
+                        <div class="font-demo demo-small">Small text for footnotes (8-9pt)</div>
+                    </div>
+                </div>
+                
+                <h3>Text Alignment</h3>
+                <div class="alignment-demo">
+                    <div class="align-box align-left">
+                        <div class="example-title">Align Left (Default)</div>
+                        <p>Text is aligned at the left margin but jagged on the right. This is the standard alignment for most documents.</p>
+                    </div>
+                    
+                    <div class="align-box align-center">
+                        <div class="example-title">Center</div>
+                        <p>Text is centred within each line, with jagged margins on both left and right. Good for titles and headings.</p>
+                    </div>
+                    
+                    <div class="align-box align-right">
+                        <div class="example-title">Align Right</div>
+                        <p>Text is aligned at the right margin but jagged on the left. Often used for dates or page numbers.</p>
+                    </div>
+                    
+                    <div class="align-box align-justify">
+                        <div class="example-title">Justify</div>
+                        <p>Text is aligned at both the left and right margins. Word does this by adjusting the amount of space between words. Creates a clean, formal look.</p>
+                    </div>
+                </div>
+                
+                <h3>Bulleted and Numbered Lists</h3>
+                <div class="operation-steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Create List Items</h4>
+                            <p>Type the points that you want to list, one under another. Press Enter after each point.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Select Items</h4>
+                            <p>Select the paragraphs that you would like to format as a list.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>Apply List Formatting</h4>
+                            <p>Click the Bullets or Numbering button in the Paragraph section of the Home tab.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h4>Change List Style</h4>
+                            <p>Use the drop-down arrow next to the Bullets or Numbering button to choose different styles.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="activity">
+                    <div class="activity-header">
+                        <div class="activity-icon">8</div>
+                        <div class="activity-title">Activity 4.12-4.13: Formatting Exercises</div>
+                    </div>
+                    
+                    <div class="activity-instructions">
+                        <p><strong>Instructions:</strong> Practice different formatting techniques.</p>
+                    </div>
+                    
+                    <ol class="activity-steps">
+                        <li>Type a paragraph and change its font, size, and style (bold, italic, underline)</li>
+                        <li>Practice different text alignments: left, center, right, and justify</li>
+                        <li>Create a bulleted list of five items</li>
+                        <li>Create a numbered list of steps for a process</li>
+                        <li>Adjust line spacing in a paragraph (single, 1.5, double spacing)</li>
+                    </ol>
+                </div>
+            </section>
+            
+            <!-- Section 9: Working with Objects -->
+            <section class="section" id="section9">
+                <h2><i class="fas fa-image"></i> Working with Objects</h2>
+                
+                <div class="info-box primary">
+                    <h4><i class="fas fa-shapes"></i> Enhancing Documents</h4>
+                    <p>In addition to text, you can add various objects to your documents including images/pictures, tables, charts, smart art, screenshots, and illustrations. These elements make documents more engaging and informative.</p>
+                </div>
+                
+                <h3>Inserting and Formatting Images</h3>
+                <div class="image-handling">
+                    <div class="image-card">
+                        <h4><i class="fas fa-crop"></i> Cropping Images</h4>
+                        <p>Cropping removes part of an image to focus on a specific area. Select the image, click Format tab → Crop command, then drag the cropping handles.</p>
+                    </div>
+                    
+                    <div class="image-card">
+                        <h4><i class="fas fa-compress"></i> Compressing Images</h4>
+                        <p>Reduces file size by telling Word to compress pictures. Select picture → Format tab → Compress Pictures → Choose target output.</p>
+                    </div>
+                    
+                    <div class="image-card">
+                        <h4><i class="fas fa-magic"></i> Image Adjustments</h4>
+                        <p>Adjust brightness, contrast, color, and apply artistic effects. Select image → Format tab → Adjust group for various options.</p>
+                    </div>
+                    
+                    <div class="image-card">
+                        <h4><i class="fas fa-th"></i> Working with Tables</h4>
+                        <p>Tables organize information in rows and columns. Insert → Table → Choose number of rows and columns. Use Table Tools for formatting.</p>
+                    </div>
+                </div>
+                
+                <h3>Working with Tables</h3>
+                <table class="table-demo">
+                    <thead>
+                        <tr>
+                            <th>Student Name</th>
+                            <th>Mathematics</th>
+                            <th>English</th>
+                            <th>Science</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>John Smith</td>
+                            <td>85%</td>
+                            <td>78%</td>
+                            <td>92%</td>
+                            <td>255</td>
+                        </tr>
+                        <tr>
+                            <td>Mary Johnson</td>
+                            <td>92%</td>
+                            <td>88%</td>
+                            <td>85%</td>
+                            <td>265</td>
+                        </tr>
+                        <tr>
+                            <td>David Brown</td>
+                            <td>78%</td>
+                            <td>82%</td>
+                            <td>79%</td>
+                            <td>239</td>
+                        </tr>
+                        <tr>
+                            <td>Sarah Wilson</td>
+                            <td>95%</td>
+                            <td>90%</td>
+                            <td>94%</td>
+                            <td>279</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="operation-steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Insert Table</h4>
+                            <p>Click Insert tab → Table → Drag to select rows and columns or choose Insert Table for specific dimensions.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Enter Data</h4>
+                            <p>Click in cells and type your data. Use Tab key to move to next cell, Shift+Tab to move to previous cell.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>Format Table</h4>
+                            <p>Use Table Tools Design and Layout tabs to apply styles, adjust cell size, align text, and modify borders.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h4>Add/Delete Rows/Columns</h4>
+                            <p>Right-click in table → Insert or Delete → Choose to add/remove rows, columns, or cells.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="activity">
+                    <div class="activity-header">
+                        <div class="activity-icon">9</div>
+                        <div class="activity-title">Activity 4.14-4.18: Working with Objects</div>
+                    </div>
+                    
+                    <div class="activity-instructions">
+                        <p><strong>Instructions:</strong> Practice inserting and formatting various objects in a document.</p>
+                    </div>
+                    
+                    <ol class="activity-steps">
+                        <li>Insert a clip art image related to education</li>
+                        <li>Insert a picture from your computer and practice cropping it</li>
+                        <li>Compress an image to reduce file size</li>
+                        <li>Create a 3×3 table and enter sample data</li>
+                        <li>Format the table with borders, shading, and text alignment</li>
+                        <li>Insert a shape (rectangle, circle, arrow) and add text to it</li>
+                    </ol>
+                </div>
+            </section>
+            
+            <!-- Integration Activity -->
+            <section class="section" id="integration">
+                <h2><i class="fas fa-tasks"></i> Activity of Integration</h2>
+                
+                <div class="info-box accent">
+                    <h4><i class="fas fa-envelope"></i> Real-World Application</h4>
+                    <p>Your class is planning an end of year party scheduled to take place on 21st November this year, in the main hall, starting at 8:30am.</p>
+                </div>
+                
+                <div class="activity">
+                    <div class="activity-header">
+                        <div class="activity-icon">INT</div>
+                        <div class="activity-title">Integration Task: Word-process a Letter</div>
+                    </div>
+                    
+                    <div class="activity-instructions">
+                        <p><strong>Task:</strong> Word process a formal letter inviting the head teacher and members of staff to the end of year party.</p>
+                    </div>
+                    
+                    <div class="formatting-examples">
+                        <div class="format-example">
+                            <div class="example-title">Letter Requirements</div>
+                            <ul>
+                                <li>Proper letter format with date, address, salutation, body, closing</li>
+                                <li>Clear communication of purpose, time, date, venue</li>
+                                <li>Professional appearance with appropriate formatting</li>
+                                <li>Correct spelling and grammar</li>
+                                <li>Appropriate font choices and sizes</li>
+                                <li>Proper alignment and spacing</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="format-example">
+                            <div class="example-title">Formatting Elements to Include</div>
+                            <ul>
+                                <li>At least 4 font features (bold, underline, font changes, size changes)</li>
+                                <li>Appropriate alignment (left, center, right as needed)</li>
+                                <li>Proper spacing between paragraphs</li>
+                                <li>Bulleted or numbered list if appropriate</li>
+                                <li>Consistent formatting throughout</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="discussion-points">
+                        <h5>Evaluation Criteria</h5>
+                        <p>The letter will be evaluated based on:</p>
+                        <ul>
+                            <li><strong>Relevance:</strong> Includes all required information (purpose, time, date, venue, addressee)</li>
+                            <li><strong>Accuracy:</strong> Clear purpose, correct details, proper formatting</li>
+                            <li><strong>Coherence:</strong> Logical flow and clarity of ideas</li>
+                            <li><strong>Formatting:</strong> Appropriate use of font features, alignment, spacing</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Quiz Section -->
+            <section class="section" id="quiz">
+                <h2><i class="fas fa-question-circle"></i> Knowledge Check: Word Processing Quiz</h2>
+                
+                <div class="quiz">
+                    <div class="quiz-question" id="question1">
+                        1. Which tab in Microsoft Word contains formatting tools like bold, italic, and underline?
+                    </div>
+                    
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="selectOption(this, 'q1')">
+                            <input type="radio" name="q1" id="q1a">
+                            <label for="q1a">Insert Tab</label>
+                        </div>
+                        <div class="quiz-option" onclick="selectOption(this, 'q1')">
+                            <input type="radio" name="q1" id="q1b">
+                            <label for="q1b">Home Tab</label>
+                        </div>
+                        <div class="quiz-option" onclick="selectOption(this, 'q1')">
+                            <input type="radio" name="q1" id="q1c">
+                            <label for="q1c">Page Layout Tab</label>
+                        </div>
+                        <div class="quiz-option" onclick="selectOption(this, 'q1')">
+                            <input type="radio" name="q1" id="q1d">
+                            <label for="q1d">Review Tab</label>
+                        </div>
+                    </div>
+                    
+                    <div class="quiz-feedback correct" id="feedback1">
+                        <strong>Correct!</strong> The Home tab contains basic formatting tools including bold, italic, underline, font selection, and font size.
+                    </div>
+                    <div class="quiz-feedback incorrect" id="feedback1-incorrect">
+                        <strong>Incorrect.</strong> While other tabs have important functions, the Home tab specifically contains the basic text formatting tools like bold, italic, and underline.
+                    </div>
+                    
+                    <button class="btn-check" onclick="checkAnswer('q1', 'q1b', 'feedback1', 'feedback1-incorrect')">Check Answer</button>
+                </div>
+                
+                <div class="quiz">
+                    <div class="quiz-question" id="question2">
+                        2. What keyboard shortcut is used to save a document?
+                    </div>
+                    
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="selectOption(this, 'q2')">
+                            <input type="radio" name="q2" id="q2a">
+                            <label for="q2a">Ctrl+C</label>
+                        </div>
+                        <div class="quiz-option" onclick="selectOption(this, 'q2')">
+                            <input type="radio" name="q2" id="q2b">
+                            <label for="q2b">Ctrl+V</label>
+                        </div>
+                        <div class="quiz-option" onclick="selectOption(this, 'q2')">
+                            <input type="radio" name="q2" id="q2c">
+                            <label for="q2c">Ctrl+S</label>
+                        </div>
+                        <div class="quiz-option" onclick="selectOption(this, 'q2')">
+                            <input type="radio" name="q2" id="q2d">
+                            <label for="q2d">Ctrl+P</label>
+                        </div>
+                    </div>
+                    
+                    <div class="quiz-feedback correct" id="feedback2">
+                        <strong>Correct!</strong> Ctrl+S is the keyboard shortcut for saving a document. It's important to save frequently while working.
+                    </div>
+                    <div class="quiz-feedback incorrect" id="feedback2-incorrect">
+                        <strong>Incorrect.</strong> Ctrl+C is for copy, Ctrl+V is for paste, Ctrl+P is for print. Ctrl+S is the shortcut for saving documents.
+                    </div>
+                    
+                    <button class="btn-check" onclick="checkAnswer('q2', 'q2c', 'feedback2', 'feedback2-incorrect')">Check Answer</button>
+                </div>
+                
+                <div class="quiz">
+                    <div class="quiz-question" id="question3">
+                        3. Which feature allows you to change a document from portrait (vertical) to landscape (horizontal) orientation?
+                    </div>
+                    
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="selectOption(this, 'q3')">
+                            <input type="radio" name="q3" id="q3a">
+                            <label for="q3a">Margins command in Page Layout tab</label>
+                        </div>
+                        <div class="quiz-option" onclick="selectOption(this, 'q3')">
+                            <input type="radio" name="q3" id="q3b">
+                            <label for="q3b">Orientation command in Page Layout tab</label>
+                        </div>
+                        <div class="quiz-option" onclick="selectOption(this, 'q3')">
+                            <input type="radio" name="q3" id="q3c">
+                            <label for="q3c">Page Setup in the File menu</label>
+                        </div>
+                        <div class="quiz-option" onclick="selectOption(this, 'q3')">
+                            <input type="radio" name="q3" id="q3d">
+                            <label for="q3d">Columns command in Page Layout tab</label>
+                        </div>
+                    </div>
+                    
+                    <div class="quiz-feedback correct" id="feedback3">
+                        <strong>Correct!</strong> The Orientation command in the Page Layout tab allows you to switch between portrait and landscape page orientations.
+                    </div>
+                    <div class="quiz-feedback incorrect" id="feedback3-incorrect">
+                        <strong>Incorrect.</strong> While Page Setup in the File menu also contains orientation options, the direct way is using the Orientation command in the Page Layout tab.
+                    </div>
+                    
+                    <button class="btn-check" onclick="checkAnswer('q3', 'q3b', 'feedback3', 'feedback3-incorrect')">Check Answer</button>
+                </div>
+                
+                <div class="quiz">
+                    <div class="quiz-question" id="question4">
+                        4. What is the purpose of the "Find and Replace" feature in word processing?
+                    </div>
+                    
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="selectOption(this, 'q4')">
+                            <input type="radio" name="q4" id="q4a">
+                            <label for="q4a">To check spelling and grammar errors</label>
+                        </div>
+                        <div class="quiz-option" onclick="selectOption(this, 'q4')">
+                            <input type="radio" name="q4" id="q4b">
+                            <label for="q4b">To locate specific text and optionally replace it with different text</label>
+                        </div>
+                        <div class="quiz-option" onclick="selectOption(this, 'q4')">
+                            <input type="radio" name="q4" id="q4c">
+                            <label for="q4c">To format text with different fonts and styles</label>
+                        </div>
+                        <div class="quiz-option" onclick="selectOption(this, 'q4')">
+                            <input type="radio" name="q4" id="q4d">
+                            <label for="q4d">To insert images and tables into a document</label>
+                        </div>
+                    </div>
+                    
+                    <div class="quiz-feedback correct" id="feedback4">
+                        <strong>Correct!</strong> Find and Replace (Ctrl+H) allows you to search for specific text in a document and replace it with different text, which is especially useful for making global changes.
+                    </div>
+                    <div class="quiz-feedback incorrect" id="feedback4-incorrect">
+                        <strong>Incorrect.</strong> Find and Replace specifically helps locate text and optionally replace it. Spelling/grammar check, formatting, and inserting objects are different functions.
+                    </div>
+                    
+                    <button class="btn-check" onclick="checkAnswer('q4', 'q4b', 'feedback4', 'feedback4-incorrect')">Check Answer</button>
+                </div>
+                
+                <div class="info-box primary">
+                    <h4><i class="fas fa-graduation-cap"></i> Chapter Summary</h4>
+                    <p>In this chapter, you have learnt about:</p>
+                    <ul>
+                        <li>Loading and using word processing application software (Microsoft Word)</li>
+                        <li>Customizing the word processing environment and interface</li>
+                        <li>Creating, saving, and managing document files</li>
+                        <li>Working with text: selecting, inserting, deleting, copying, pasting</li>
+                        <li>Formatting documents: page orientation, margins, columns, fonts, paragraphing</li>
+                        <li>Using proofreading tools: spelling and grammar check</li>
+                        <li>Finding and replacing text efficiently</li>
+                        <li>Inserting and formatting objects: tables, images, shapes, headers and footers</li>
+                        <li>Printing documents with proper settings</li>
+                        <li>Applying word processing skills to create professional documents like letters</li>
+                    </ul>
+                </div>
+            </section>
+        </main>
+        
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="module-progress">
+                <h3>Chapter Progress</h3>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <div class="progress-text">
+                    <span>0% Complete</span>
+                    <span>100%</span>
+                </div>
+            </div>
+            
+            <h3>Chapter Navigation</h3>
+            <ul class="sidebar-nav">
+                <li><a href="#section1"><i class="fas fa-chevron-right"></i> Word Processor Features</a></li>
+                <li><a href="#section2"><i class="fas fa-chevron-right"></i> Customizing Environment</a></li>
+                <li><a href="#section3"><i class="fas fa-chevron-right"></i> Saving Documents</a></li>
+                <li><a href="#section4"><i class="fas fa-chevron-right"></i> Working with Text</a></li>
+                <li><a href="#section5"><i class="fas fa-chevron-right"></i> Page Layout</a></li>
+                <li><a href="#section6"><i class="fas fa-chevron-right"></i> Find & Replace</a></li>
+                <li><a href="#section7"><i class="fas fa-chevron-right"></i> Spelling & Grammar</a></li>
+                <li><a href="#section8"><i class="fas fa-chevron-right"></i> Formatting</a></li>
+                <li><a href="#section9"><i class="fas fa-chevron-right"></i> Working with Objects</a></li>
+                <li><a href="#integration"><i class="fas fa-chevron-right"></i> Integration Activity</a></li>
+                <li><a href="#quiz"><i class="fas fa-chevron-right"></i> Knowledge Check</a></li>
+            </ul>
+            
+            <div class="assessment-info">
+                <h4><i class="fas fa-clipboard-check"></i> Chapter Activities</h4>
+                <ul>
+                    <li>Activity 4.1: Understanding Word Processor Features</li>
+                    <li>Activity 4.2: Setting Word Processing Environment</li>
+                    <li>Activity 4.3: Saving a File</li>
+                    <li>Activity 4.4: Working with Text</li>
+                    <li>Activities 4.5-4.7: Page Layout Exercises</li>
+                    <li>Activities 4.9-4.10: Find & Replace</li>
+                    <li>Activity 4.11: Text Proofreading</li>
+                    <li>Activities 4.12-4.13: Formatting Exercises</li>
+                    <li>Activities 4.14-4.18: Working with Objects</li>
+                    <li>Integration Activity: Formal Letter</li>
+                </ul>
+            </div>
+            
+            <div class="info-box secondary" style="margin-top: 1.5rem;">
+                <h4><i class="fas fa-keyboard"></i> Essential Keyboard Shortcuts</h4>
+                <p><strong>Ctrl+S:</strong> Save document</p>
+                <p><strong>Ctrl+C:</strong> Copy selected text</p>
+                <p><strong>Ctrl+X:</strong> Cut selected text</p>
+                <p><strong>Ctrl+V:</strong> Paste text</p>
+                <p><strong>Ctrl+Z:</strong> Undo last action</p>
+                <p><strong>Ctrl+Y:</strong> Redo last action</p>
+                <p><strong>Ctrl+F:</strong> Find text</p>
+                <p><strong>Ctrl+H:</strong> Find and replace</p>
+                <p><strong>Ctrl+B:</strong> Bold text</p>
+                <p><strong>Ctrl+I:</strong> Italicize text</p>
+                <p><strong>Ctrl+U:</strong> Underline text</p>
+                <p><strong>F7:</strong> Spelling and grammar check</p>
+            </div>
+            
+            <div class="info-box accent" style="margin-top: 1.5rem;">
+                <h4><i class="fas fa-lightbulb"></i> Best Practices</h4>
+                <p>• Save frequently (Ctrl+S)</p>
+                <p>• Use styles for consistent formatting</p>
+                <p>• Proofread before finalizing</p>
+                <p>• Use appropriate fonts and sizes</p>
+                <p>• Maintain consistent formatting</p>
+                <p>• Use headers/footers for page numbers</p>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Word Processing</h3>
+                    <p>Chapter 4 of the Senior One ICT curriculum. Learn how to create, format, edit, and print professional documents using word processing software.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#section1">Word Processor Features</a></li>
+                        <li><a href="#section2">Customizing Environment</a></li>
+                        <li><a href="#section4">Working with Text</a></li>
+                        <li><a href="#section5">Page Layout</a></li>
+                        <li><a href="#section8">Formatting</a></li>
+                        <li><a href="#section9">Working with Objects</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Key Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="#integration">Integration Activity</a></li>
+                        <li><a href="#quiz">Knowledge Check Quiz</a></li>
+                        <li><a href="https://www.ncdc.go.ug" target="_blank">NCDC Website</a></li>
+                        <li><a href="#assessment">Chapter Activities</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 ICT Learning Module - Chapter 4: Word Processing. Based on Uganda's NCDC ICT Curriculum. For educational purposes only.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Navigation Toggle
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navLinks = document.getElementById('navLinks');
+        const navOverlay = document.getElementById('navOverlay');
+        
+        mobileToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            navOverlay.classList.toggle('active');
+        });
+        
+        navOverlay.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+            navOverlay.classList.remove('active');
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                navOverlay.classList.remove('active');
+            });
+        });
+        
+        // Quiz functionality
+        function selectOption(optionElement, questionName) {
+            // Remove selected class from all options in this question
+            const options = document.querySelectorAll(`[name="${questionName}"]`);
+            options.forEach(opt => {
+                opt.parentElement.classList.remove('selected');
+            });
+            
+            // Add selected class to clicked option
+            optionElement.classList.add('selected');
+            
+            // Check the radio button
+            const radioBtn = optionElement.querySelector('input[type="radio"]');
+            radioBtn.checked = true;
+        }
+        
+        function checkAnswer(questionName, correctId, correctFeedbackId, incorrectFeedbackId) {
+            const selectedOption = document.querySelector(`input[name="${questionName}"]:checked`);
+            
+            if (!selectedOption) {
+                alert('Please select an answer first.');
+                return;
+            }
+            
+            // Hide all feedback for this question first
+            document.getElementById(correctFeedbackId).style.display = 'none';
+            document.getElementById(incorrectFeedbackId).style.display = 'none';
+            
+            // Show correct feedback
+            if (selectedOption.id === correctId) {
+                document.getElementById(correctFeedbackId).style.display = 'block';
+            } else {
+                document.getElementById(incorrectFeedbackId).style.display = 'block';
+            }
+        }
+        
+        // Progress tracking
+        function updateProgress() {
+            const sections = document.querySelectorAll('.section');
+            const scrollPosition = window.scrollY;
+            const windowHeight = window.innerHeight;
+            const documentHeight = document.documentElement.scrollHeight;
+            
+            // Calculate percentage scrolled
+            const scrollPercentage = (scrollPosition / (documentHeight - windowHeight)) * 100;
+            
+            // Update progress bar
+            const progressFill = document.getElementById('progressFill');
+            progressFill.style.width = `${scrollPercentage}%`;
+            
+            // Update progress text
+            const progressText = document.querySelector('.progress-text span:first-child');
+            progressText.textContent = `${Math.min(100, Math.round(scrollPercentage))}% Complete`;
+        }
+        
+        // Update progress on scroll
+        window.addEventListener('scroll', updateProgress);
+        
+        // Initialize progress on page load
+        document.addEventListener('DOMContentLoaded', updateProgress);
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Add check answer buttons dynamically
+        document.querySelectorAll('.quiz').forEach(quiz => {
+            const btn = document.createElement('button');
+            btn.className = 'btn-check';
+            btn.style.cssText = `
+                background-color: var(--primary);
+                color: white;
+                border: none;
+                padding: 0.8rem 1.5rem;
+                border-radius: var(--border-radius);
+                cursor: pointer;
+                font-weight: 600;
+                transition: var(--transition);
+                margin-top: 1rem;
+                display: block;
+            `;
+            btn.textContent = 'Check Answer';
+            btn.onmouseover = function() { this.style.backgroundColor = '#5a4acd'; };
+            btn.onmouseout = function() { this.style.backgroundColor = 'var(--primary)'; };
+            
+            // Find the last element before the feedback divs to insert before
+            const quizOptions = quiz.querySelector('.quiz-options');
+            if (quizOptions) {
+                quiz.insertBefore(btn, quizOptions.nextSibling);
+            }
+        });
+        
+        // Interactive formatting demonstration
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add click events to formatting examples for interactive learning
+            console.log('Word Processing module loaded successfully');
+            
+            // Example of interactive functionality that could be added:
+            // Allow students to "apply" formatting to sample text
+        });
+    </script>
+    <script src="navigation.js"></script>
+</body>
+</html>

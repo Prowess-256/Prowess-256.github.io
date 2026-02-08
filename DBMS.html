@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Database Management Systems (DBMS) - Complete Learning Module</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a5f7a;
+            --secondary: #27ae60;
+            --accent: #e74c3c;
+            --warning: #f39c12;
+            --light: #f8f9fa;
+            --dark: #2c3e50;
+            --gray: #7f8c8d;
+            --border-radius: 10px;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Open Sans', sans-serif; line-height: 1.6; color: var(--dark); background-color: #f5f7fa; }
+        .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary), #0f4c6f);
+            color: white;
+            padding: 2rem 0;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+            opacity: 0.1;
+        }
+        
+        .header-content { position: relative; z-index: 1; }
+        .course-title { font-family: 'Poppins', sans-serif; font-size: 2.8rem; margin-bottom: 0.5rem; font-weight: 700; }
+        .course-subtitle { font-size: 1.3rem; opacity: 0.9; margin-bottom: 1.5rem; max-width: 800px; }
+        
+        .keywords { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 1rem; }
+        .keyword { background-color: rgba(255, 255, 255, 0.2); padding: 0.4rem 0.8rem; border-radius: 20px; font-size: 0.9rem; }
+        
+        .learning-outcomes {
+            background-color: rgba(255, 255, 255, 0.15);
+            border-radius: var(--border-radius);
+            padding: 1.2rem;
+            margin-top: 1.5rem;
+        }
+        
+        .learning-outcomes h3 { font-size: 1.2rem; margin-bottom: 0.8rem; }
+        .outcomes-list { list-style: none; }
+        .outcomes-list li { margin-bottom: 0.5rem; display: flex; align-items: flex-start; }
+        .outcomes-list i { margin-right: 10px; margin-top: 3px; color: var(--warning); }
+        
+        /* Navigation */
+        .module-nav {
+            background-color: white;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 0.5rem 0;
+            position: relative;
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover { color: var(--primary); }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover::after { width: 100%; }
+        
+        /* Main Content */
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .content-area {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 2.5rem;
+            box-shadow: var(--shadow);
+        }
+        
+        /* Sidebar */
+        .sidebar {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+        }
+        
+        .sidebar h3 { color: var(--primary); margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--light); font-size: 1.3rem; }
+        
+        .module-progress { margin-bottom: 2rem; }
+        .progress-bar { height: 8px; background-color: #e0e0e0; border-radius: 4px; overflow: hidden; margin-bottom: 0.5rem; }
+        .progress-fill { height: 100%; background-color: var(--secondary); width: 0%; transition: width 1s ease; }
+        .progress-text { display: flex; justify-content: space-between; font-size: 0.9rem; color: var(--gray); }
+        
+        .sidebar-nav { list-style: none; margin-bottom: 2rem; }
+        .sidebar-nav li { margin-bottom: 0.8rem; }
+        .sidebar-nav a {
+            text-decoration: none;
+            color: var(--dark);
+            font-size: 0.9rem;
+            padding: 0.5rem 0;
+            display: block;
+            border-left: 3px solid transparent;
+            padding-left: 0.8rem;
+            transition: var(--transition);
+        }
+        
+        .sidebar-nav a:hover { color: var(--primary); border-left-color: var(--primary); }
+        
+        h1 { color: var(--primary); margin-bottom: 1rem; margin-top: 2rem; }
+        h2 { color: var(--primary); margin-bottom: 0.8rem; margin-top: 1.5rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--light); }
+        h3 { color: var(--dark); margin-bottom: 0.5rem; margin-top: 1rem; }
+        
+        p { margin-bottom: 1rem; text-align: justify; }
+        
+        ul, ol { margin-left: 2rem; margin-bottom: 1rem; }
+        li { margin-bottom: 0.5rem; }
+        
+        code {
+            background-color: #f0f0f0;
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            color: var(--accent);
+        }
+        
+        .highlight {
+            background-color: #fff3cd;
+            padding: 1rem;
+            border-left: 4px solid var(--warning);
+            margin: 1rem 0;
+            border-radius: 3px;
+        }
+        
+        .info-box {
+            background-color: #e7f3ff;
+            padding: 1rem;
+            border-left: 4px solid var(--primary);
+            margin: 1rem 0;
+            border-radius: 3px;
+        }
+        
+        .success-box {
+            background-color: #d4edda;
+            padding: 1rem;
+            border-left: 4px solid var(--secondary);
+            margin: 1rem 0;
+            border-radius: 3px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            box-shadow: var(--shadow);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+        }
+        
+        th, td {
+            padding: 0.8rem;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        th {
+            background-color: var(--primary);
+            color: white;
+            font-weight: 600;
+        }
+        
+        tr:hover { background-color: #f9f9f9; }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background-color: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+        }
+        
+        .btn:hover {
+            background-color: #0f4c6f;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+        
+        .btn-secondary {
+            background-color: var(--secondary);
+        }
+        
+        .btn-secondary:hover {
+            background-color: #229954;
+        }
+        
+        /* Global Navigation */
+        .global-nav {
+            background-color: #ffffff;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            width: 100%;
+        }
+        
+        .global-nav-container {
+            width: 100%;
+            max-width: 100%;
+            margin: 0;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 60px;
+        }
+        
+        .global-nav-brand {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+        
+        .global-nav-brand:hover {
+            color: #0f4c6f;
+        }
+        
+        .global-nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 0;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+        }
+        
+        .nav-item {
+            position: relative;
+        }
+        
+        .nav-item > a {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 20px 18px;
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .nav-item > a:hover {
+            color: var(--primary);
+            background-color: rgba(26, 95, 122, 0.05);
+        }
+        
+        .nav-item.active > a {
+            color: var(--primary);
+            border-bottom: 3px solid var(--primary);
+        }
+        
+        .nav-dropdown-toggle {
+            cursor: pointer !important;
+        }
+        
+        .nav-dropdown-toggle::after {
+            content: '▼';
+            font-size: 0.7rem;
+            transition: transform 0.3s ease;
+            margin-left: 4px;
+            display: inline-block;
+        }
+        
+        .nav-item.open > .nav-dropdown-toggle::after {
+            transform: rotate(180deg);
+        }
+        
+        /* Dropdown menu */
+        .nav-submenu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            min-width: 280px;
+            background-color: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            box-shadow: var(--shadow);
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .nav-item.open > .nav-submenu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .submenu-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 20px;
+            color: #333;
+            text-decoration: none;
+            transition: var(--transition);
+            border-left: 3px solid transparent;
+        }
+        
+        .submenu-item:hover {
+            background-color: #f5f5f5;
+            color: var(--primary);
+            border-left-color: var(--primary);
+        }
+        
+        .submenu-divider {
+            height: 1px;
+            background-color: #e0e0e0;
+            margin: 8px 0;
+        }
+        
+        .nav-mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--dark);
+            cursor: pointer;
+        }
+        
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                position: static;
+                top: auto;
+            }
+            
+            .global-nav-menu {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                right: 0;
+                background-color: white;
+                border-top: 1px solid #e0e0e0;
+            }
+            
+            .global-nav-menu.active {
+                display: flex;
+            }
+            
+            .nav-item {
+                width: 100%;
+            }
+            
+            .nav-item > a {
+                padding: 15px 20px;
+            }
+            
+            .nav-submenu {
+                position: static;
+                opacity: 0;
+                visibility: hidden;
+                max-height: 0;
+                overflow: hidden;
+                transition: all 0.3s ease;
+                border: none;
+                box-shadow: none;
+                transform: none;
+                border-top: 1px solid #e0e0e0;
+            }
+            
+            .nav-item.open > .nav-submenu {
+                opacity: 1;
+                visibility: visible;
+                max-height: 500px;
+            }
+            
+            .nav-mobile-toggle {
+                display: block;
+            }
+            
+            .nav-links {
+                flex-direction: column;
+                gap: 0;
+            }
+            
+            .nav-links a {
+                padding: 1rem 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- GLOBAL NAVIGATION WITH SUBMENUS -->
+<nav class="global-nav">
+    <div class="global-nav-container">
+        <a href="learning-hub.html" class="global-nav-brand">
+            <i class="fas fa-graduation-cap"></i> ICT Learning Hub
+        </a>
+        
+        <button class="nav-mobile-toggle" title="Toggle menu">
+            <i class="fas fa-bars"></i>
+        </button>
+        
+        <ul class="global-nav-menu">
+            <!-- Home -->
+            <li class="nav-item">
+                <a href="index.html">
+                    <i class="fas fa-home"></i> Home
+                </a>
+            </li>
+            
+            <!-- Office Applications -->
+            <li class="nav-item">
+                <a href="#" class="nav-dropdown-toggle">
+                    <i class="fas fa-file"></i> Office Applications
+                </a>
+                <ul class="nav-submenu">
+                    <li><a href="word 2.html" class="submenu-item"><i class="fas fa-file-word"></i> Word Processing 2</a></li>
+                    <li><a href="word processingone.html" class="submenu-item"><i class="fas fa-file-word"></i> Word Processing</a></li>
+                    <li class="submenu-divider"></li>
+                    <li><a href="PowerPoint.html" class="submenu-item"><i class="fas fa-presentation"></i> Presentations</a></li>
+                    <li class="submenu-divider"></li>
+                    <li><a href="spreadsheets 1.html" class="submenu-item"><i class="fas fa-table"></i> Spreadsheets 1</a></li>
+                    <li><a href="spreadsheets 2.html" class="submenu-item"><i class="fas fa-table"></i> Spreadsheets 2</a></li>
+                </ul>
+            </li>
+            
+            <!-- System & Data -->
+            <li class="nav-item active">
+                <a href="#" class="nav-dropdown-toggle">
+                    <i class="fas fa-server"></i> System & Data
+                </a>
+                <ul class="nav-submenu">
+                    <li><a href="DBMS.html" class="submenu-item"><i class="fas fa-database"></i> Database Management</a></li>
+                    <li><a href="software.html" class="submenu-item"><i class="fas fa-box"></i> Software Management</a></li>
+                    <li class="submenu-divider"></li>
+                    <li><a href="system security and data security .html" class="submenu-item"><i class="fas fa-lock"></i> System & Data Security</a></li>
+                    <li><a href="information_access_and_sharing_and_security.html" class="submenu-item"><i class="fas fa-share"></i> Information Sharing</a></li>
+                </ul>
+            </li>
+            
+            <!-- Design & Web -->
+            <li class="nav-item">
+                <a href="#" class="nav-dropdown-toggle">
+                    <i class="fas fa-palette"></i> Design & Web
+                </a>
+                <ul class="nav-submenu">
+                    <li><a href="web design.html" class="submenu-item"><i class="fas fa-globe"></i> Web Design</a></li>
+                    <li><a href="desktop publishing.html" class="submenu-item"><i class="fas fa-paint-brush"></i> Desktop Publishing</a></li>
+                </ul>
+            </li>
+            
+            <!-- Hardware & IT -->
+            <li class="nav-item">
+                <a href="#" class="nav-dropdown-toggle">
+                    <i class="fas fa-microchip"></i> Hardware & IT
+                </a>
+                <ul class="nav-submenu">
+                    <li><a href="computer hardware.html" class="submenu-item"><i class="fas fa-computer"></i> Computer Hardware</a></li>
+                    <li><a href="file and folder management.html" class="submenu-item"><i class="fas fa-folder"></i> File Management</a></li>
+                    <li><a href="Access-and-sharing.html" class="submenu-item"><i class="fas fa-users"></i> Access & Sharing</a></li>
+                </ul>
+            </li>
+            
+            <!-- Information & Safety -->
+            <li class="nav-item">
+                <a href="#" class="nav-dropdown-toggle">
+                    <i class="fas fa-shield"></i> Info & Safety
+                </a>
+                <ul class="nav-submenu">
+                    <li><a href="Health and safety .html" class="submenu-item"><i class="fas fa-heartbeat"></i> Health & Safety</a></li>
+                    <li><a href="Waste management.html" class="submenu-item"><i class="fas fa-recycle"></i> Waste Management</a></li>
+                </ul>
+            </li>
+            
+            <!-- General -->
+            <li class="nav-item">
+                <a href="#" class="nav-dropdown-toggle">
+                    <i class="fas fa-book"></i> General
+                </a>
+                <ul class="nav-submenu">
+                    <li><a href="introduction to ICT.html" class="submenu-item"><i class="fas fa-book-open"></i> Introduction to ICT</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+    <!-- HEADER -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <h1 class="course-title">Database Management Systems (DBMS)</h1>
+                <p class="course-subtitle">Master the foundations and advanced concepts of database management, data organization, and relational database design</p>
+                
+                <div class="keywords">
+                    <span class="keyword"><i class="fas fa-database"></i> Databases</span>
+                    <span class="keyword"><i class="fas fa-table"></i> SQL</span>
+                    <span class="keyword"><i class="fas fa-lock"></i> Data Security</span>
+                    <span class="keyword"><i class="fas fa-arrows"></i> Relationships</span>
+                    <span class="keyword"><i class="fas fa-shield"></i> Integrity</span>
+                </div>
+                
+                <div class="learning-outcomes">
+                    <h3>Learning Outcomes</h3>
+                    <ul class="outcomes-list">
+                        <li><i class="fas fa-check"></i> Understand database concepts and architecture</li>
+                        <li><i class="fas fa-check"></i> Design and normalize database structures</li>
+                        <li><i class="fas fa-check"></i> Write and execute SQL queries</li>
+                        <li><i class="fas fa-check"></i> Implement data integrity and security measures</li>
+                        <li><i class="fas fa-check"></i> Manage transactions and backups</li>
+                        <li><i class="fas fa-check"></i> Optimize database performance</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- NAVIGATION BAR -->
+    <nav class="module-nav">
+        <div class="container">
+            <div class="nav-container">
+                <ul class="nav-links">
+                    <li><a href="#overview">Overview</a></li>
+                    <li><a href="#concepts">Core Concepts</a></li>
+                    <li><a href="#types">Database Types</a></li>
+                    <li><a href="#design">Design Principles</a></li>
+                    <li><a href="#sql">SQL Basics</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <div class="container">
+        <div class="main-content">
+            <div class="content-area">
+                <!-- OVERVIEW SECTION -->
+                <section id="overview">
+                    <h1><i class="fas fa-book"></i> Database Management Systems Overview</h1>
+                    
+                    <p>A Database Management System (DBMS) is software that enables the creation, manipulation, and administration of databases. It serves as an interface between users, applications, and the physical database stored on disk.</p>
+                    
+                    <h2>What is a Database?</h2>
+                    <p>A database is an organized collection of structured data stored in a computer system and accessed electronically. It contains:</p>
+                    <ul>
+                        <li><strong>Tables:</strong> Organized data in rows and columns</li>
+                        <li><strong>Records:</strong> Individual rows in a table</li>
+                        <li><strong>Fields:</strong> Individual columns in a table</li>
+                        <li><strong>Relationships:</strong> Links between tables</li>
+                        <li><strong>Indexes:</strong> Mechanisms to speed up data retrieval</li>
+                    </ul>
+                    
+                    <h2>Advantages of Using a DBMS</h2>
+                    <ul>
+                        <li>Data organization and efficient storage</li>
+                        <li>Data security and access control</li>
+                        <li>Data consistency and integrity</li>
+                        <li>Multi-user access and concurrent operations</li>
+                        <li>Backup and recovery capabilities</li>
+                        <li>Query optimization and performance</li>
+                    </ul>
+                </section>
+
+                <!-- CONCEPTS SECTION -->
+                <section id="concepts">
+                    <h1><i class="fas fa-lightbulb"></i> Core Concepts</h1>
+                    
+                    <h2>Entity-Relationship Model (ER Model)</h2>
+                    <p>The ER model is used to design databases by identifying entities (objects), their attributes, and relationships.</p>
+                    <ul>
+                        <li><strong>Entity:</strong> A thing or object (e.g., Student, Course)</li>
+                        <li><strong>Attribute:</strong> A property of an entity (e.g., StudentID, Name)</li>
+                        <li><strong>Relationship:</strong> Association between entities (e.g., Enrolls)</li>
+                    </ul>
+                    
+                    <h2>Keys in Databases</h2>
+                    <table>
+                        <tr>
+                            <th>Key Type</th>
+                            <th>Description</th>
+                            <th>Example</th>
+                        </tr>
+                        <tr>
+                            <td><strong>Primary Key</strong></td>
+                            <td>Uniquely identifies each record</td>
+                            <td>StudentID</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Foreign Key</strong></td>
+                            <td>References primary key in another table</td>
+                            <td>CourseID in Enrollment table</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Candidate Key</strong></td>
+                            <td>Could serve as primary key</td>
+                            <td>Email if unique</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Composite Key</strong></td>
+                            <td>Multiple fields combined as key</td>
+                            <td>StudentID + CourseID</td>
+                        </tr>
+                    </table>
+                </section>
+
+                <!-- DATABASE TYPES SECTION -->
+                <section id="types">
+                    <h1><i class="fas fa-database"></i> Types of Databases</h1>
+                    
+                    <h2>Relational Databases</h2>
+                    <div class="info-box">
+                        <strong>Most Common Type:</strong> Data organized in tables with rows and columns. Uses SQL for queries.
+                        <p><strong>Examples:</strong> MySQL, PostgreSQL, Microsoft SQL Server, Oracle</p>
+                    </div>
+                    
+                    <h2>NoSQL Databases</h2>
+                    <div class="info-box">
+                        <strong>Non-Relational:</strong> Flexible schema, stores data in documents, key-value pairs, or graphs.
+                        <p><strong>Examples:</strong> MongoDB, Cassandra, Redis, CouchDB</p>
+                    </div>
+                    
+                    <h2>Other Database Types</h2>
+                    <ul>
+                        <li><strong>Hierarchical Databases:</strong> Tree-like structure</li>
+                        <li><strong>Network Databases:</strong> Complex relationship structure</li>
+                        <li><strong>Object-Oriented Databases:</strong> Store objects directly</li>
+                        <li><strong>Graph Databases:</strong> Optimize for relationships</li>
+                    </ul>
+                </section>
+
+                <!-- DESIGN PRINCIPLES SECTION -->
+                <section id="design">
+                    <h1><i class="fas fa-drafting-compass"></i> Database Design Principles</h1>
+                    
+                    <h2>Normalization</h2>
+                    <p>Normalization is the process of organizing data to minimize redundancy and dependency anomalies.</p>
+                    
+                    <h3>Normal Forms:</h3>
+                    <ul>
+                        <li><strong>1NF (First Normal Form):</strong> Eliminate repeating groups</li>
+                        <li><strong>2NF (Second Normal Form):</strong> Remove partial dependencies</li>
+                        <li><strong>3NF (Third Normal Form):</strong> Remove transitive dependencies</li>
+                        <li><strong>BCNF (Boyce-Codd Normal Form):</strong> Stricter version of 3NF</li>
+                    </ul>
+                    
+                    <h2>Data Integrity</h2>
+                    <ul>
+                        <li><strong>Entity Integrity:</strong> Primary key cannot be null</li>
+                        <li><strong>Referential Integrity:</strong> Foreign keys must reference valid primary keys</li>
+                        <li><strong>Domain Integrity:</strong> Values within valid domain/type</li>
+                        <li><strong>User-Defined Integrity:</strong> Custom business rules</li>
+                    </ul>
+                </section>
+
+                <!-- SQL BASICS SECTION -->
+                <section id="sql">
+                    <h1><i class="fas fa-code"></i> SQL Basics</h1>
+                    
+                    <h2>Common SQL Operations</h2>
+                    
+                    <h3>SELECT - Retrieve Data</h3>
+                    <div class="highlight">
+                        <code>SELECT column1, column2 FROM table_name WHERE condition;</code>
+                    </div>
+                    
+                    <h3>INSERT - Add Data</h3>
+                    <div class="highlight">
+                        <code>INSERT INTO table_name (column1, column2) VALUES (value1, value2);</code>
+                    </div>
+                    
+                    <h3>UPDATE - Modify Data</h3>
+                    <div class="highlight">
+                        <code>UPDATE table_name SET column1 = value1 WHERE condition;</code>
+                    </div>
+                    
+                    <h3>DELETE - Remove Data</h3>
+                    <div class="highlight">
+                        <code>DELETE FROM table_name WHERE condition;</code>
+                    </div>
+                    
+                    <h2>JOIN Operations</h2>
+                    <p>JOINs combine rows from two or more tables based on a common column:</p>
+                    <ul>
+                        <li><strong>INNER JOIN:</strong> Returns matching records</li>
+                        <li><strong>LEFT JOIN:</strong> All left table records + matching right</li>
+                        <li><strong>RIGHT JOIN:</strong> All right table records + matching left</li>
+                        <li><strong>FULL JOIN:</strong> All records from both tables</li>
+                    </ul>
+                    
+                    <div class="success-box">
+                        <strong>Best Practice:</strong> Always use proper indexing and normalize your database for optimal performance.
+                    </div>
+                </section>
+
+                <!-- FOOTER NAVIGATION -->
+                <div style="margin-top: 3rem; padding-top: 2rem; border-top: 2px solid #e0e0e0; display: flex; justify-content: space-between;">
+                    <a href="software.html" class="btn"><i class="fas fa-arrow-left"></i> Previous Module</a>
+                    <a href="learning-hub.html" class="btn btn-secondary"><i class="fas fa-home"></i> Back to Hub</a>
+                </div>
+            </div>
+
+            <!-- SIDEBAR -->
+            <aside class="sidebar">
+                <h3><i class="fas fa-list"></i> Quick Navigation</h3>
+                
+                <div class="module-progress">
+                    <p style="margin-bottom: 0.5rem; font-weight: 600;">Module Progress</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill"></div>
+                    </div>
+                    <div class="progress-text">
+                        <span>0%</span>
+                        <span>Complete</span>
+                    </div>
+                </div>
+                
+                <ul class="sidebar-nav">
+                    <li><a href="#overview"><i class="fas fa-link"></i> Overview</a></li>
+                    <li><a href="#concepts"><i class="fas fa-link"></i> Core Concepts</a></li>
+                    <li><a href="#types"><i class="fas fa-link"></i> Database Types</a></li>
+                    <li><a href="#design"><i class="fas fa-link"></i> Design Principles</a></li>
+                    <li><a href="#sql"><i class="fas fa-link"></i> SQL Basics</a></li>
+                </ul>
+                
+                <h3 style="margin-top: 2rem;"><i class="fas fa-info-circle"></i> Resources</h3>
+                <ul class="sidebar-nav">
+                    <li><a href="#" onclick="alert('Download materials coming soon!')"><i class="fas fa-download"></i> Download Notes</a></li>
+                    <li><a href="#" onclick="alert('Quiz coming soon!')"><i class="fas fa-question"></i> Take Quiz</a></li>
+                    <li><a href="#" onclick="alert('Support coming soon!')"><i class="fas fa-envelope"></i> Get Support</a></li>
+                </ul>
+            </aside>
+        </div>
+    </div>
+
+    <script src="navigation.js"></script>
+</body>
+</html>

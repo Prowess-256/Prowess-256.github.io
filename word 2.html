@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Processing 2 - Complete Learning Module</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --warning: #f1c40f;
+            --light: #f8f9fa;
+            --dark: #2c3e50;
+            --gray: #7f8c8d;
+            --border-radius: 10px;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Open Sans', sans-serif; line-height: 1.6; color: var(--dark); background-color: #f5f7fa; }
+        .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary), #1a252f);
+            color: white;
+            padding: 2rem 0;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header-content { position: relative; z-index: 1; }
+        .course-title { font-family: 'Poppins', sans-serif; font-size: 2.8rem; margin-bottom: 0.5rem; font-weight: 700; }
+        .course-subtitle { font-size: 1.3rem; opacity: 0.9; margin-bottom: 1.5rem; max-width: 800px; }
+        
+        .keywords { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 1rem; }
+        .keyword { background-color: rgba(255, 255, 255, 0.2); padding: 0.4rem 0.8rem; border-radius: 20px; font-size: 0.9rem; }
+        
+        .learning-outcomes {
+            background-color: rgba(255, 255, 255, 0.15);
+            border-radius: var(--border-radius);
+            padding: 1.2rem;
+            margin-top: 1.5rem;
+        }
+        
+        /* Navigation */
+        .module-nav {
+            background-color: white;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 0.5rem 0;
+            position: relative;
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover { color: var(--primary); }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover::after { width: 100%; }
+        
+        /* Main Content */
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .content-area {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 2.5rem;
+            box-shadow: var(--shadow);
+        }
+        
+        /* Sidebar */
+        .sidebar {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+        }
+        
+        .sidebar h3 { color: var(--primary); margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--light); font-size: 1.3rem; }
+        
+        /* Section Styling */
+        .section { margin-bottom: 3rem; scroll-margin-top: 100px; }
+        
+        h2 {
+            color: var(--primary);
+            font-family: 'Poppins', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--light);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        h2 i { color: var(--primary); }
+        h3 { color: var(--dark); font-size: 1.6rem; margin: 1.8rem 0 1rem; font-family: 'Poppins', sans-serif; }
+        
+        .key-term {
+            background-color: rgba(52, 152, 219, 0.1);
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            font-weight: 600;
+            color: var(--secondary);
+        }
+        
+        /* Table Styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+        }
+        
+        th { background-color: var(--primary); color: white; padding: 1rem; text-align: left; font-weight: 600; }
+        td { padding: 1rem; border-bottom: 1px solid #eee; }
+        tr:nth-child(even) { background-color: #f9f9f9; }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .main-content { grid-template-columns: 1fr; }
+            .sidebar { position: static; }
+        }
+    </style>
+    <link rel="stylesheet" href="navigation.css">
+</head>
+<body>
+    <!-- GLOBAL NAVIGATION WITH SUBMENUS -->
+<nav class="global-nav">
+    <div class="global-nav-container">
+        <a href="learning-hub.html" class="global-nav-brand">
+            <i class="fas fa-graduation-cap"></i> ICT Learning Hub
+        </a>
+        
+        <button class="nav-mobile-toggle" title="Toggle menu">
+            <i class="fas fa-bars"></i>
+        </button>
+        
+        <ul class="global-nav-menu">
+            <!-- Home -->
+            <li class="nav-item">
+                <a href="index.html">
+                    <i class="fas fa-home"></i> Home
+                </a>
+            </li>
+            
+            <!-- Office Applications -->
+            <li class="nav-item">
+                <a href="#" class="nav-dropdown-toggle">
+                    <i class="fas fa-file"></i> Office Applications
+                </a>
+                <ul class="nav-submenu">
+                    <li><a href="word 2.html" class="submenu-item"><i class="fas fa-file-word"></i> Word Processing 2</a></li>
+                    <li><a href="word processingone.html" class="submenu-item"><i class="fas fa-file-word"></i> Word Processing</a></li>
+                    <li class="submenu-divider"></li>
+                    <li><a href="PowerPoint.html" class="submenu-item"><i class="fas fa-presentation"></i> Presentations</a></li>
+                    <li class="submenu-divider"></li>
+                    <li><a href="spreadsheets 1.html" class="submenu-item"><i class="fas fa-table"></i> Spreadsheets 1</a></li>
+                    <li><a href="spreadsheets 2.html" class="submenu-item"><i class="fas fa-table"></i> Spreadsheets 2</a></li>
+                </ul>
+            </li>
+            
+            <!-- System & Data -->
+            <li class="nav-item">
+                <a href="#" class="nav-dropdown-toggle">
+                    <i class="fas fa-server"></i> System & Data
+                </a>
+                <ul class="nav-submenu">
+                    <li><a href="DBMS.html" class="submenu-item"><i class="fas fa-database"></i> Database Management</a></li>
+                    <li><a href="software.html" class="submenu-item"><i class="fas fa-box"></i> Software Management</a></li>
+                    <li class="submenu-divider"></li>
+                    <li><a href="system security and data security .html" class="submenu-item"><i class="fas fa-lock"></i> System & Data Security</a></li>
+                    <li><a href="information_access_and_sharing_and_security.html" class="submenu-item"><i class="fas fa-share"></i> Information Sharing</a></li>
+                </ul>
+            </li>
+            
+            <!-- Design & Web -->
+            <li class="nav-item">
+                <a href="#" class="nav-dropdown-toggle">
+                    <i class="fas fa-palette"></i> Design & Web
+                </a>
+                <ul class="nav-submenu">
+                    <li><a href="web design.html" class="submenu-item"><i class="fas fa-globe"></i> Web Design</a></li>
+                    <li><a href="desktop publishing.html" class="submenu-item"><i class="fas fa-paint-brush"></i> Desktop Publishing</a></li>
+                </ul>
+            </li>
+            
+            <!-- Hardware & IT -->
+            <li class="nav-item">
+                <a href="#" class="nav-dropdown-toggle">
+                    <i class="fas fa-microchip"></i> Hardware & IT
+                </a>
+                <ul class="nav-submenu">
+                    <li><a href="computer hardware.html" class="submenu-item"><i class="fas fa-computer"></i> Computer Hardware</a></li>
+                    <li><a href="file and folder management.html" class="submenu-item"><i class="fas fa-folder"></i> File Management</a></li>
+                    <li><a href="Access-and-sharing.html" class="submenu-item"><i class="fas fa-users"></i> Access & Sharing</a></li>
+                </ul>
+            </li>
+            
+            <!-- Information & Safety -->
+            <li class="nav-item">
+                <a href="#" class="nav-dropdown-toggle">
+                    <i class="fas fa-shield"></i> Info & Safety
+                </a>
+                <ul class="nav-submenu">
+                    <li><a href="Health and safety .html" class="submenu-item"><i class="fas fa-heartbeat"></i> Health & Safety</a></li>
+                    <li><a href="Waste management.html" class="submenu-item"><i class="fas fa-recycle"></i> Waste Management</a></li>
+                </ul>
+            </li>
+            
+            <!-- General -->
+            <li class="nav-item">
+                <a href="#" class="nav-dropdown-toggle">
+                    <i class="fas fa-book"></i> General
+                </a>
+                <ul class="nav-submenu">
+                    <li><a href="introduction to ICT.html" class="submenu-item"><i class="fas fa-book-open"></i> Introduction to ICT</a></li>
+                    <li><a href="ticking timer..html" class="submenu-item"><i class="fas fa-clock"></i> Ticking Timer</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</nav>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <h1 class="course-title">Word Processing 2</h1>
+            <p class="course-subtitle">Advanced document creation, formatting, and collaboration techniques</p>
+            
+            <div class="keywords">
+                <span class="keyword">Advanced Formatting</span>
+                <span class="keyword">Styles</span>
+                <span class="keyword">Mail Merge</span>
+                <span class="keyword">Collaboration</span>
+                <span class="keyword">Templates</span>
+                <span class="keyword">References</span>
+            </div>
+            
+            <div class="learning-outcomes">
+                <h3>Learning Outcomes</h3>
+                <ul class="outcomes-list">
+                    <li><i class="fas fa-check-circle"></i> Apply advanced formatting techniques</li>
+                    <li><i class="fas fa-check-circle"></i> Use styles and templates effectively</li>
+                    <li><i class="fas fa-check-circle"></i> Create professional documents with tables and graphics</li>
+                    <li><i class="fas fa-check-circle"></i> Implement mail merge for bulk communications</li>
+                    <li><i class="fas fa-check-circle"></i> Collaborate on documents with others</li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Navigation -->
+    <nav class="module-nav">
+        <div class="container nav-container">
+            <div class="nav-brand">
+                <span style="font-weight: 600; color: var(--primary);">Word Processing 2</span>
+            </div>
+            
+            <ul class="nav-links">
+                <li><a href="#styles"><i class="fas fa-paint-brush"></i> Styles & Templates</a></li>
+                <li><a href="#tables"><i class="fas fa-table"></i> Advanced Tables</a></li>
+                <li><a href="#references"><i class="fas fa-book"></i> References</a></li>
+                <li><a href="#mailmerge"><i class="fas fa-envelope"></i> Mail Merge</a></li>
+                <li><a href="#collaboration"><i class="fas fa-users"></i> Collaboration</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- Main Content -->
+    <div class="container main-content">
+        <main class="content-area">
+            <!-- Styles -->
+            <section id="styles" class="section">
+                <h2><i class="fas fa-paint-brush"></i> Styles and Templates</h2>
+                <p>Styles ensure consistent formatting throughout your document. Templates save time on repetitive document creation.</p>
+                
+                <h3>Using Styles</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Style Type</th>
+                            <th>Purpose</th>
+                            <th>When to Use</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Heading Styles</strong></td>
+                            <td>Create document structure and table of contents</td>
+                            <td>Document titles, section headings</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Paragraph Styles</strong></td>
+                            <td>Consistent body text formatting</td>
+                            <td>Main document content</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Character Styles</strong></td>
+                            <td>Format specific text within paragraphs</td>
+                            <td>Keywords, emphasized text</td>
+                        </tr>
+                        <tr>
+                            <td><strong>List Styles</strong></td>
+                            <td>Consistent bulleted or numbered lists</td>
+                            <td>Any list in your document</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            
+            <!-- Tables -->
+            <section id="tables" class="section">
+                <h2><i class="fas fa-table"></i> Advanced Tables</h2>
+                <p>Tables organize information clearly. Advanced features include calculations, sorting, and formatting.</p>
+                
+                <h3>Table Features</h3>
+                <ul>
+                    <li><strong>Formulas:</strong> Perform calculations within tables</li>
+                    <li><strong>Sorting:</strong> Organize data alphabetically or numerically</li>
+                    <li><strong>Banded Rows:</strong> Alternate row colors for readability</li>
+                    <li><strong>Cell Merging:</strong> Combine cells for headings</li>
+                    <li><strong>Text Direction:</strong> Vertical or angled text in cells</li>
+                </ul>
+            </section>
+            
+            <!-- References -->
+            <section id="references" class="section">
+                <h2><i class="fas fa-book"></i> References and Citations</h2>
+                <p>Professional documents often require references, citations, and other academic formatting.</p>
+                
+                <h3>Reference Tools</h3>
+                <ol>
+                    <li><strong>Table of Contents:</strong> Automatically generated from heading styles</li>
+                    <li><strong>Footnotes/Endnotes:</strong> Add citations or explanations</li>
+                    <li><strong>Bibliography:</strong> Automatically format reference lists</li>
+                    <li><strong>Captions:</strong> Number figures and tables automatically</li>
+                    <li><strong>Cross-references:</strong> Link to figures, tables, or headings</li>
+                </ol>
+            </section>
+            
+            <!-- Mail Merge -->
+            <section id="mailmerge" class="section">
+                <h2><i class="fas fa-envelope"></i> Mail Merge</h2>
+                <p>Create personalized letters, emails, or labels for multiple recipients.</p>
+                
+                <h3>Mail Merge Process</h3>
+                <ol>
+                    <li>Create your main document with placeholders</li>
+                    <li>Prepare your data source (Excel, Contacts, etc.)</li>
+                    <li>Insert merge fields (Name, Address, etc.)</li>
+                    <li>Preview the merged documents</li>
+                    <li>Complete the merge to print or email</li>
+                </ol>
+            </section>
+            
+            <!-- Collaboration -->
+            <section id="collaboration" class="section">
+                <h2><i class="fas fa-users"></i> Collaboration Features</h2>
+                <p>Modern word processors include tools for working with others on documents.</p>
+                
+                <h3>Collaboration Tools</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>Description</th>
+                            <th>Benefit</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Track Changes</strong></td>
+                            <td>Shows edits made by different users</td>
+                            <td>Review and accept/reject edits</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Comments</strong></td>
+                            <td>Add notes without changing text</td>
+                            <td>Discussion about specific content</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Compare Documents</strong></td>
+                            <td>Highlights differences between versions</td>
+                            <td>See what changed between drafts</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Real-time Co-authoring</strong></td>
+                            <td>Multiple people edit simultaneously</td>
+                            <td>Faster collaboration</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </main>
+        
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-nav">
+                <h3>Module Sections</h3>
+                <ul>
+                    <li><a href="#styles"><i class="fas fa-chevron-right"></i> Styles & Templates</a></li>
+                    <li><a href="#tables"><i class="fas fa-chevron-right"></i> Advanced Tables</a></li>
+                    <li><a href="#references"><i class="fas fa-chevron-right"></i> References</a></li>
+                    <li><a href="#mailmerge"><i class="fas fa-chevron-right"></i> Mail Merge</a></li>
+                    <li><a href="#collaboration"><i class="fas fa-chevron-right"></i> Collaboration</a></li>
+                </ul>
+            </div>
+            
+            <div class="info-box">
+                <h4><i class="fas fa-keyboard"></i> Quick Tips</h4>
+                <ul>
+                    <li>Use Ctrl+Shift+S to apply styles</li>
+                    <li>Save custom styles as templates</li>
+                    <li>Use section breaks for different page layouts</li>
+                    <li>Always preview before printing mail merge</li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+    <script src="navigation.js"></script>
+</body>
+</html>

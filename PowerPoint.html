@@ -1,0 +1,1576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electronic Presentations - Complete Learning Module</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="modules.css">
+    <link rel="stylesheet" href="navigation.css">
+    <style>
+        :root {
+            --primary: #8e44ad;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --warning: #f39c12;
+            --light: #f8f9fa;
+            --dark: #2c3e50;
+            --gray: #7f8c8d;
+            --border-radius: 10px;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: #f5f7fa;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary), #6c3483);
+            color: white;
+            padding: 2rem 0;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+            opacity: 0.1;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .course-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.8rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+        
+        .course-subtitle {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
+            max-width: 800px;
+        }
+        
+        .keywords {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 1rem;
+        }
+        
+        .keyword {
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .learning-outcomes {
+            background-color: rgba(255, 255, 255, 0.15);
+            border-radius: var(--border-radius);
+            padding: 1.2rem;
+            margin-top: 1.5rem;
+        }
+        
+        .learning-outcomes h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+        }
+        
+        .outcomes-list {
+            list-style: none;
+        }
+        
+        .outcomes-list li {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .outcomes-list i {
+            margin-right: 10px;
+            margin-top: 3px;
+            color: var(--warning);
+        }
+        
+        /* Navigation */
+        .module-nav {
+            background-color: white;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 0.5rem 0;
+            position: relative;
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--dark);
+            cursor: pointer;
+        }
+        
+        /* Main Content */
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .content-area {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 2.5rem;
+            box-shadow: var(--shadow);
+        }
+        
+        /* Sidebar */
+        .sidebar {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+        }
+        
+        .sidebar h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--light);
+            font-size: 1.3rem;
+        }
+        
+        .module-progress {
+            margin-bottom: 2rem;
+        }
+        
+        .progress-bar {
+            height: 8px;
+            background-color: #e0e0e0;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 0.5rem;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background-color: var(--secondary);
+            width: 0%;
+            transition: width 1s ease;
+        }
+        
+        .progress-text {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+        
+        .sidebar-nav {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+        
+        .sidebar-nav li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .sidebar-nav a {
+            text-decoration: none;
+            color: var(--dark);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: var(--transition);
+            padding: 0.5rem;
+            border-radius: 5px;
+        }
+        
+        .sidebar-nav a:hover {
+            background-color: rgba(142, 68, 173, 0.1);
+            color: var(--primary);
+            transform: translateX(5px);
+        }
+        
+        .sidebar-nav i {
+            color: var(--primary);
+            width: 20px;
+            text-align: center;
+        }
+        
+        .assessment-info {
+            background-color: rgba(243, 156, 18, 0.1);
+            border-radius: var(--border-radius);
+            padding: 1.2rem;
+            border-left: 4px solid var(--warning);
+        }
+        
+        .assessment-info h4 {
+            color: var(--dark);
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .assessment-info ul {
+            padding-left: 1.2rem;
+            font-size: 0.9rem;
+        }
+        
+        .assessment-info li {
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Section Styling */
+        .section {
+            margin-bottom: 3rem;
+            scroll-margin-top: 100px;
+        }
+        
+        h2 {
+            color: var(--primary);
+            font-family: 'Poppins', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--light);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        h2 i {
+            color: var(--primary);
+        }
+        
+        h3 {
+            color: var(--dark);
+            font-size: 1.6rem;
+            margin: 1.8rem 0 1rem;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        h4 {
+            color: var(--dark);
+            font-size: 1.3rem;
+            margin: 1.5rem 0 0.8rem;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        p {
+            margin-bottom: 1.2rem;
+        }
+        
+        .key-term {
+            background-color: rgba(52, 152, 219, 0.1);
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            font-weight: 600;
+            color: var(--secondary);
+        }
+        
+        /* Activity Box */
+        .activity {
+            background-color: #f8f9fa;
+            border-radius: var(--border-radius);
+            padding: 1.8rem;
+            margin: 2rem 0;
+            border-left: 5px solid var(--primary);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+        
+        .activity-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.2rem;
+        }
+        
+        .activity-icon {
+            background-color: var(--primary);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-weight: bold;
+        }
+        
+        .activity-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.4rem;
+            color: var(--primary);
+        }
+        
+        .activity-instructions {
+            background-color: white;
+            padding: 1.2rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            border: 1px dashed #ddd;
+        }
+        
+        .activity-steps {
+            list-style: decimal;
+            padding-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .activity-steps li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .discussion-points {
+            background-color: rgba(231, 76, 60, 0.05);
+            padding: 1.2rem;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+            border-left: 4px solid var(--accent);
+        }
+        
+        .discussion-points h5 {
+            color: var(--accent);
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
+        }
+        
+        .discussion-points ul {
+            padding-left: 1.2rem;
+        }
+        
+        .discussion-points li {
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Information Boxes */
+        .info-box {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            box-shadow: var(--shadow);
+            border-top: 4px solid;
+        }
+        
+        .info-box.primary {
+            border-color: var(--primary);
+        }
+        
+        .info-box.secondary {
+            border-color: var(--secondary);
+        }
+        
+        .info-box.accent {
+            border-color: var(--accent);
+        }
+        
+        .info-box h4 {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 0;
+        }
+        
+        .info-box i {
+            font-size: 1.3rem;
+        }
+        
+        .info-box.primary h4 i {
+            color: var(--primary);
+        }
+        
+        .info-box.secondary h4 i {
+            color: var(--secondary);
+        }
+        
+        .info-box.accent h4 i {
+            color: var(--accent);
+        }
+        
+        /* Screenshot Container */
+        .screenshot-container {
+            margin: 2rem 0;
+            text-align: center;
+            border: 1px solid #e0e0e0;
+            border-radius: var(--border-radius);
+            padding: 1rem;
+            background-color: #fafafa;
+        }
+        
+        .screenshot {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            border: 1px solid #ddd;
+        }
+        
+        .screenshot-caption {
+            margin-top: 0.8rem;
+            font-style: italic;
+            color: var(--gray);
+            font-size: 0.9rem;
+            text-align: center;
+        }
+        
+        .screenshot-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .screenshot-item {
+            text-align: center;
+        }
+        
+        /* Comparison Table */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+        }
+        
+        .comparison-table th {
+            background-color: var(--primary);
+            color: white;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        .comparison-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .comparison-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        /* Presentation Example */
+        .slide-example {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: var(--border-radius);
+            margin: 1.5rem 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .slide-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        .slide-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            text-align: center;
+            max-width: 80%;
+        }
+        
+        .slide-number {
+            position: absolute;
+            bottom: 10px;
+            right: 15px;
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+        
+        /* Interactive Quiz */
+        .quiz {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: var(--shadow);
+            border: 2px solid var(--primary);
+        }
+        
+        .quiz-question {
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .quiz-option {
+            padding: 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .quiz-option:hover {
+            border-color: var(--primary);
+            background-color: rgba(142, 68, 173, 0.05);
+        }
+        
+        .quiz-option.selected {
+            border-color: var(--secondary);
+            background-color: rgba(52, 152, 219, 0.1);
+        }
+        
+        .quiz-option input {
+            margin-right: 10px;
+        }
+        
+        .quiz-feedback {
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            display: none;
+            margin-top: 1rem;
+        }
+        
+        .quiz-feedback.correct {
+            background-color: rgba(52, 152, 219, 0.1);
+            color: var(--secondary);
+            display: block;
+            border-left: 4px solid var(--secondary);
+        }
+        
+        .quiz-feedback.incorrect {
+            background-color: rgba(231, 76, 60, 0.1);
+            color: var(--accent);
+            display: block;
+            border-left: 4px solid var(--accent);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 3rem 0 1.5rem;
+            margin-top: 3rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-section h3 {
+            color: white;
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+            border-bottom: none;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 0.95rem;
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary);
+            padding-left: 5px;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                position: static;
+            }
+            
+            .screenshot-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .course-title {
+                font-size: 2.2rem;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                height: 100vh;
+                background-color: white;
+                flex-direction: column;
+                padding: 2rem;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+                transition: var(--transition);
+                z-index: 1000;
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .mobile-toggle {
+                display: block;
+            }
+            
+            .nav-overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.5);
+                z-index: 999;
+                display: none;
+            }
+            
+            .nav-overlay.active {
+                display: block;
+            }
+            
+            .content-area {
+                padding: 1.5rem;
+            }
+            
+            .slide-title {
+                font-size: 1.8rem;
+            }
+        }
+        
+        /* Print Styles */
+        @media print {
+            .module-nav, .sidebar, footer, .quiz, .activity {
+                display: none;
+            }
+            
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .content-area {
+                box-shadow: none;
+                padding: 0;
+            }
+        }
+    
+</head>
+<body>
+    <!-- GLOBAL NAVIGATION WITH SUBMENUS -->
+    <!-- GLOBAL NAVIGATION WITH SUBMENUS -->
+    <nav class="global-nav">
+        <div class="global-nav-container">
+            <a href="learning-hub.html" class="global-nav-brand">
+                <i class="fas fa-graduation-cap"></i> ICT Learning Hub
+            </a>
+            
+            <button class="nav-mobile-toggle" title="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <ul class="global-nav-menu">
+                <!-- Home -->
+                <li class="nav-item">
+                    <a href="index.html">
+                        <i class="fas fa-home"></i> Home
+                    </a>
+                </li>
+                
+                <!-- Office Applications -->
+                <li class="nav-item">
+                    <a href="#" class="nav-dropdown-toggle">
+                        <i class="fas fa-file"></i> Office Applications
+                    </a>
+                    <ul class="nav-submenu">
+                        <li><a href="word 2.html" class="submenu-item"><i class="fas fa-file-word"></i> Word Processing 2</a></li>
+                        <li><a href="word processingone.html" class="submenu-item"><i class="fas fa-file-word"></i> Word Processing</a></li>
+                        <li class="submenu-divider"></li>
+                        <li><a href="PowerPoint.html" class="submenu-item"><i class="fas fa-presentation"></i> Presentations</a></li>
+                        <li class="submenu-divider"></li>
+                        <li><a href="spreadsheets 1.html" class="submenu-item"><i class="fas fa-table"></i> Spreadsheets 1</a></li>
+                        <li><a href="spreadsheets 2.html" class="submenu-item"><i class="fas fa-table"></i> Spreadsheets 2</a></li>
+                    </ul>
+                </li>
+                
+                <!-- System & Data -->
+                <li class="nav-item">
+                    <a href="#" class="nav-dropdown-toggle">
+                        <i class="fas fa-server"></i> System & Data
+                    </a>
+                    <ul class="nav-submenu">
+                        <li><a href="DBMS.html" class="submenu-item"><i class="fas fa-database"></i> Database Management</a></li>
+                        <li><a href="software.html" class="submenu-item"><i class="fas fa-box"></i> Software Management</a></li>
+                        <li class="submenu-divider"></li>
+                        <li><a href="system security and data security .html" class="submenu-item"><i class="fas fa-lock"></i> System & Data Security</a></li>
+                        <li><a href="information_access_and_sharing_and_security.html" class="submenu-item"><i class="fas fa-share"></i> Information Sharing</a></li>
+                    </ul>
+                </li>
+                
+                <!-- Design & Web -->
+                <li class="nav-item">
+                    <a href="#" class="nav-dropdown-toggle">
+                        <i class="fas fa-palette"></i> Design & Web
+                    </a>
+                    <ul class="nav-submenu">
+                        <li><a href="web design.html" class="submenu-item"><i class="fas fa-globe"></i> Web Design</a></li>
+                        <li><a href="desktop publishing.html" class="submenu-item"><i class="fas fa-paint-brush"></i> Desktop Publishing</a></li>
+                    </ul>
+                </li>
+                
+                <!-- Hardware & IT -->
+                <li class="nav-item">
+                    <a href="#" class="nav-dropdown-toggle">
+                        <i class="fas fa-microchip"></i> Hardware & IT
+                    </a>
+                    <ul class="nav-submenu">
+                        <li><a href="computer hardware.html" class="submenu-item"><i class="fas fa-computer"></i> Computer Hardware</a></li>
+                        <li><a href="file and folder management.html" class="submenu-item"><i class="fas fa-folder"></i> File Management</a></li>
+                        <li><a href="Access-and-sharing.html" class="submenu-item"><i class="fas fa-users"></i> Access & Sharing</a></li>
+                    </ul>
+                </li>
+                
+                <!-- Information & Safety -->
+                <li class="nav-item">
+                    <a href="#" class="nav-dropdown-toggle">
+                        <i class="fas fa-shield"></i> Info & Safety
+                    </a>
+                    <ul class="nav-submenu">
+                        <li><a href="Health and safety .html" class="submenu-item"><i class="fas fa-heartbeat"></i> Health & Safety</a></li>
+                        <li><a href="Waste management.html" class="submenu-item"><i class="fas fa-recycle"></i> Waste Management</a></li>
+                    </ul>
+                </li>
+                
+                <!-- General -->
+                <li class="nav-item">
+                    <a href="#" class="nav-dropdown-toggle">
+                        <i class="fas fa-book"></i> General
+                    </a>
+                    <ul class="nav-submenu">
+                        <li><a href="introduction to ICT.html" class="submenu-item"><i class="fas fa-book-open"></i> Introduction to ICT</a></li>
+                        <li><a href="ticking timer..html" class="submenu-item"><i class="fas fa-clock"></i> Ticking Timer</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <h1 class="course-title">Electronic Presentations</h1>
+            <p class="course-subtitle">Master the art of creating compelling digital presentations for effective communication</p>
+            
+            <div class="keywords">
+                <span class="keyword">PowerPoint</span>
+                <span class="keyword">Google Slides</span>
+                <span class="keyword">Presentation Design</span>
+                <span class="keyword">Visual Communication</span>
+                <span class="keyword">Public Speaking</span>
+                <span class="keyword">Slide Design</span>
+            </div>
+            
+            <div class="learning-outcomes">
+                <h3>Learning Outcomes</h3>
+                <ul class="outcomes-list">
+                    <li><i class="fas fa-check-circle"></i> Design effective presentation slides following best practices</li>
+                    <li><i class="fas fa-check-circle"></i> Use advanced features of presentation software</li>
+                    <li><i class="fas fa-check-circle"></i> Incorporate multimedia elements effectively</li>
+                    <li><i class="fas fa-check-circle"></i> Apply visual design principles for clarity and impact</li>
+                    <li><i class="fas fa-check-circle"></i> Deliver engaging presentations with confidence</li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Navigation -->
+    <nav class="module-nav">
+        <div class="container nav-container">
+            <div class="nav-brand">
+                <span style="font-weight: 600; color: var(--primary);">Electronic Presentations</span>
+            </div>
+            
+            <button class="mobile-toggle" id="mobileToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#introduction"><i class="fas fa-home"></i> Introduction</a></li>
+                <li><a href="#planning"><i class="fas fa-brain"></i> Presentation Planning</a></li>
+                <li><a href="#design"><i class="fas fa-palette"></i> Slide Design</a></li>
+                <li><a href="#multimedia"><i class="fas fa-photo-video"></i> Multimedia Elements</a></li>
+                <li><a href="#delivery"><i class="fas fa-microphone"></i> Delivery Techniques</a></li>
+                <li><a href="#assessment"><i class="fas fa-clipboard-check"></i> Assessment</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <div class="nav-overlay" id="navOverlay"></div>
+    
+    <!-- Main Content -->
+    <div class="container main-content">
+        <!-- Content Area -->
+        <main class="content-area">
+            <!-- Introduction Section -->
+            <section id="introduction" class="section">
+                <h2><i class="fas fa-home"></i> Introduction to Electronic Presentations</h2>
+                <p>Electronic presentations have become the standard for sharing information in business, education, and professional settings. When done well, they can enhance understanding, engage audiences, and make complex information accessible.</p>
+                
+                <div class="info-box primary">
+                    <h4><i class="fas fa-lightbulb"></i> Why Presentation Skills Matter</h4>
+                    <p>Effective presentations combine <span class="key-term">visual design</span>, <span class="key-term">content organization</span>, and <span class="key-term">delivery skills</span>. Research shows that people remember only 10% of what they hear, but 65% of what they see and hear together. Well-designed presentations can significantly improve information retention and audience engagement.</p>
+                </div>
+                
+                <h3>Popular Presentation Software</h3>
+                
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Software</th>
+                            <th>Strengths</th>
+                            <th>Best For</th>
+                            <th>Platform</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Microsoft PowerPoint</strong></td>
+                            <td>Advanced features, templates, animation tools</td>
+                            <td>Professional business presentations</td>
+                            <td>Windows, Mac, Web, Mobile</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Google Slides</strong></td>
+                            <td>Real-time collaboration, cloud-based, free</td>
+                            <td>Team projects, educational use</td>
+                            <td>Web-based, all platforms</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Apple Keynote</strong></td>
+                            <td>Beautiful templates, smooth animations</td>
+                            <td>Creative presentations, Apple ecosystem</td>
+                            <td>Mac, iOS, Web</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Prezi</strong></td>
+                            <td>Non-linear presentations, zooming interface</td>
+                            <td>Storytelling, creative pitches</td>
+                            <td>Web-based</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="screenshot-container">
+                    <div class="slide-example">
+                        <div class="slide-title">Effective Presentations</div>
+                        <div class="slide-subtitle">Combining visual design with compelling content</div>
+                        <div class="slide-number">Slide 1 of 10</div>
+                    </div>
+                    <p class="screenshot-caption">Example of a well-designed title slide with clear hierarchy and visual appeal</p>
+                </div>
+            </section>
+            
+            <!-- Planning Section -->
+            <section id="planning" class="section">
+                <h2><i class="fas fa-brain"></i> Presentation Planning & Structure</h2>
+                <p>Before you open your presentation software, planning is essential. A well-structured presentation follows a logical flow that guides your audience through your message.</p>
+                
+                <h3>The 10/20/30 Rule</h3>
+                <p>A popular guideline for effective presentations:</p>
+                
+                <div class="info-box secondary">
+                    <h4><i class="fas fa-ruler"></i> The 10/20/30 Rule</h4>
+                    <p><strong>10 Slides:</strong> Maximum number of slides for a 20-minute presentation<br>
+                    <strong>20 Minutes:</strong> Ideal presentation length to maintain attention<br>
+                    <strong>30-Point Font:</strong> Minimum font size for readability</p>
+                </div>
+                
+                <h3>Presentation Structure</h3>
+                
+                <div class="screenshot-grid">
+                    <div class="screenshot-item">
+                        <div class="screenshot-container" style="padding: 0.5rem;">
+                            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Title Slide Example" class="screenshot">
+                        </div>
+                        <p class="screenshot-caption">Title Slide: Clear title, subtitle, presenter name</p>
+                    </div>
+                    
+                    <div class="screenshot-item">
+                        <div class="screenshot-container" style="padding: 0.5rem;">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Agenda Slide Example" class="screenshot">
+                        </div>
+                        <p class="screenshot-caption">Agenda Slide: Outline of presentation structure</p>
+                    </div>
+                    
+                    <div class="screenshot-item">
+                        <div class="screenshot-container" style="padding: 0.5rem;">
+                            <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Content Slide Example" class="screenshot">
+                        </div>
+                        <p class="screenshot-caption">Content Slide: Clear heading with supporting points</p>
+                    </div>
+                </div>
+                
+                <div class="activity">
+                    <div class="activity-header">
+                        <div class="activity-icon">1</div>
+                        <div class="activity-title">Plan Your Presentation Structure</div>
+                    </div>
+                    
+                    <div class="activity-instructions">
+                        <p><strong>Objective:</strong> Create a detailed outline for a 10-minute presentation on a topic of your choice.</p>
+                    </div>
+                    
+                    <ol class="activity-steps">
+                        <li>Choose a topic (e.g., "The Benefits of Remote Work," "Introduction to Renewable Energy")</li>
+                        <li>Define your main objective: What should your audience learn or do?</li>
+                        <li>Create a storyboard with 8-10 slides following this structure:
+                            <ul>
+                                <li>Title Slide</li>
+                                <li>Agenda/Overview</li>
+                                <li>Introduction/Problem Statement</li>
+                                <li>3-5 Content Slides (main points)</li>
+                                <li>Case Study/Example</li>
+                                <li>Conclusion</li>
+                                <li>Q&A Slide</li>
+                            </ul>
+                        </li>
+                        <li>For each slide, write 1-2 sentences describing the content</li>
+                    </ol>
+                </div>
+            </section>
+            
+            <!-- Design Section -->
+            <section id="design" class="section">
+                <h2><i class="fas fa-palette"></i> Slide Design Principles</h2>
+                <p>Good design makes your presentation more effective, professional, and memorable. Follow these principles to create visually appealing slides.</p>
+                
+                <h3>Design Principles for Effective Slides</h3>
+                
+                <div class="info-box accent">
+                    <h4><i class="fas fa-exclamation-circle"></i> Common Design Mistakes to Avoid</h4>
+                    <p><strong>Text-heavy slides:</strong> Avoid paragraphs; use bullet points with 5-7 words each<br>
+                    <strong>Inconsistent formatting:</strong> Maintain consistent fonts, colors, and spacing<br>
+                    <strong>Poor color contrast:</strong> Ensure text is readable against background<br>
+                    <strong>Overuse of animations:</strong> Use animations purposefully, not excessively</p>
+                </div>
+                
+                <h3>Visual Hierarchy in Slides</h3>
+                
+                <div class="screenshot-container">
+                    <div class="slide-example" style="background: linear-gradient(135deg, #2c3e50 0%, #4a6491 100%); text-align: left; padding: 2rem;">
+                        <div style="font-size: 2rem; font-weight: bold; margin-bottom: 1rem;">Visual Hierarchy Example</div>
+                        <div style="font-size: 1.5rem; margin-bottom: 1.5rem; color: #3498db;">Main Point Heading</div>
+                        <ul style="font-size: 1.2rem; line-height: 1.8;">
+                            <li>Supporting point with relevant information</li>
+                            <li>Another supporting point with details</li>
+                            <li>Final supporting point to reinforce message</li>
+                        </ul>
+                        <div class="slide-number">Slide 3 of 10</div>
+                    </div>
+                    <p class="screenshot-caption">Example showing clear visual hierarchy with distinct heading levels</p>
+                </div>
+                
+                <h4>Typography Guidelines</h4>
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Element</th>
+                            <th>Recommended Font Size</th>
+                            <th>Font Style</th>
+                            <th>Usage</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Title</td>
+                            <td>36-44 pt</td>
+                            <td>Bold, Sans-serif</td>
+                            <td>Slide titles, main headings</td>
+                        </tr>
+                        <tr>
+                            <td>Headings</td>
+                            <td>28-32 pt</td>
+                            <td>Semi-bold</td>
+                            <td>Section headings, key points</td>
+                        </tr>
+                        <tr>
+                            <td>Body Text</td>
+                            <td>24-28 pt</td>
+                            <td>Regular</td>
+                            <td>Bullet points, descriptions</td>
+                        </tr>
+                        <tr>
+                            <td>Captions</td>
+                            <td>18-22 pt</td>
+                            <td>Regular, Italic</td>
+                            <td>Image captions, references</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="activity">
+                    <div class="activity-header">
+                        <div class="activity-icon">2</div>
+                        <div class="activity-title">Design a Visual Slide</div>
+                    </div>
+                    
+                    <div class="activity-instructions">
+                        <p><strong>Objective:</strong> Apply design principles to create an effective content slide.</p>
+                    </div>
+                    
+                    <ol class="activity-steps">
+                        <li>Choose one of your content slides from Activity 1</li>
+                        <li>Create a new slide with a clear, descriptive title</li>
+                        <li>Convert any paragraphs into 3-5 bullet points (max 7 words each)</li>
+                        <li>Apply consistent formatting:
+                            <ul>
+                                <li>Choose a professional color scheme (2-3 colors max)</li>
+                                <li>Select appropriate fonts with good hierarchy</li>
+                                <li>Ensure ample white space between elements</li>
+                            </ul>
+                        </li>
+                        <li>Add a relevant visual element (icon, simple graphic, or image placeholder)</li>
+                        <li>Apply the 10/20/30 rule to check your design</li>
+                    </ol>
+                </div>
+            </section>
+            
+            <!-- Multimedia Section -->
+            <section id="multimedia" class="section">
+                <h2><i class="fas fa-photo-video"></i> Multimedia Elements</h2>
+                <p>Multimedia elements like images, videos, and audio can enhance your presentation when used appropriately. They should support your message, not distract from it.</p>
+                
+                <h3>Using Images Effectively</h3>
+                <p>Images should be high-quality, relevant, and properly sized. Avoid clipart and low-resolution images.</p>
+                
+                <div class="screenshot-grid">
+                    <div class="screenshot-item">
+                        <div class="screenshot-container" style="padding: 0.5rem;">
+                            <img src="https://images.unsplash.com/photo-1545235617-9465d2a55698?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Good Image Usage Example" class="screenshot">
+                        </div>
+                        <p class="screenshot-caption">Good: High-quality, relevant image with clear purpose</p>
+                    </div>
+                    
+                    <div class="screenshot-item">
+                        <div class="screenshot-container" style="padding: 0.5rem; background-color: #fff;">
+                            <div style="width: 100%; height: 200px; background-color: #f0f0f0; display: flex; align-items: center; justify-content: center; color: #999; font-size: 1.2rem;">
+                                [Low-Quality Image]
+                            </div>
+                        </div>
+                        <p class="screenshot-caption">Poor: Low-resolution, pixelated image</p>
+                    </div>
+                </div>
+                
+                <h3>Incorporating Video and Audio</h3>
+                
+                <div class="info-box primary">
+                    <h4><i class="fas fa-film"></i> Best Practices for Video</h4>
+                    <p><strong>Keep it short:</strong> Videos should be 30-60 seconds maximum in presentations<br>
+                    <strong>Test playback:</strong> Always test video playback on the presentation computer<br>
+                    <strong>Have a backup:</strong> Prepare screenshots or describe the video in case of technical issues<br>
+                    <strong>Embed properly:</strong> Either embed the video or link to it with a thumbnail</p>
+                </div>
+                
+                <h4>Animation and Transitions</h4>
+                <p>Use animations and transitions purposefully to guide attention, not to entertain.</p>
+                
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Animation Type</th>
+                            <th>Appropriate Use</th>
+                            <th>When to Avoid</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Appear/Fade</strong></td>
+                            <td>Revealing points one at a time</td>
+                            <td>On every element; becomes distracting</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Motion Paths</strong></td>
+                            <td>Showing processes or movement</td>
+                            <td>On text or basic elements</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Slide Transitions</strong></td>
+                            <td>Signaling section changes</td>
+                            <td>Different transitions on every slide</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            
+            <!-- Delivery Section -->
+            <section id="delivery" class="section">
+                <h2><i class="fas fa-microphone"></i> Presentation Delivery Techniques</h2>
+                <p>A beautifully designed presentation can still fail if delivered poorly. Effective delivery combines preparation, practice, and engagement techniques.</p>
+                
+                <h3>Preparation Strategies</h3>
+                
+                <div class="info-box secondary">
+                    <h4><i class="fas fa-user-check"></i> Know Your Audience</h4>
+                    <p><strong>Technical level:</strong> Adjust terminology and depth based on audience expertise<br>
+                    <strong>Size:</strong> Adjust volume and engagement techniques for audience size<br>
+                    <strong>Expectations:</strong> Understand what your audience hopes to gain<br>
+                    <strong>Environment:</strong> Check room setup, technology, and acoustics in advance</p>
+                </div>
+                
+                <h3>Delivery Best Practices</h3>
+                
+                <div class="screenshot-container">
+                    <div class="slide-example" style="background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);">
+                        <div class="slide-title">Speaker Notes View</div>
+                        <div class="slide-subtitle" style="font-size: 1rem; margin-top: 2rem; text-align: left; padding: 0 2rem;">
+                            <p><strong>Key points to cover:</strong></p>
+                            <ul>
+                                <li>Explain the three main benefits</li>
+                                <li>Share the case study example</li>
+                                <li>Transition to implementation steps</li>
+                            </ul>
+                            <p><strong>Timing:</strong> Spend approximately 3 minutes on this slide</p>
+                        </div>
+                        <div class="slide-number">Speaker Notes</div>
+                    </div>
+                    <p class="screenshot-caption">Example of speaker notes to guide presentation delivery (not visible to audience)</p>
+                </div>
+                
+                <h4>Handling Q&A Sessions</h4>
+                <ul>
+                    <li><strong>Prepare anticipated questions:</strong> Have slides ready for likely questions</li>
+                    <li><strong>Repeat questions:</strong> Ensure everyone hears the question before answering</li>
+                    <li><strong>Be honest:</strong> It's okay to say "I don't know" and offer to follow up</li>
+                    <li><strong>Control time:</strong> Set expectations for Q&A duration at the beginning</li>
+                </ul>
+                
+                <div class="activity">
+                    <div class="activity-header">
+                        <div class="activity-icon">3</div>
+                        <div class="activity-title">Practice Delivery with Recording</div>
+                    </div>
+                    
+                    <div class="activity-instructions">
+                        <p><strong>Objective:</strong> Improve presentation delivery through practice and self-review.</p>
+                    </div>
+                    
+                    <ol class="activity-steps">
+                        <li>Complete your presentation from previous activities (minimum 5 slides)</li>
+                        <li>Add speaker notes to each slide with key talking points</li>
+                        <li>Practice delivering your presentation 3 times:
+                            <ul>
+                                <li>First: Focus on content and flow</li>
+                                <li>Second: Work on pacing and emphasis</li>
+                                <li>Third: Record yourself (use phone or computer camera)</li>
+                            </ul>
+                        </li>
+                        <li>Watch your recording and note:
+                            <ul>
+                                <li>Verbal fillers ("um," "like," "you know")</li>
+                                <li>Body language and eye contact</li>
+                                <li>Pacing and clarity</li>
+                            </ul>
+                        </li>
+                        <li>Practice once more focusing on improving identified areas</li>
+                    </ol>
+                </div>
+            </section>
+            
+            <!-- Assessment Section -->
+            <section id="assessment" class="section">
+                <h2><i class="fas fa-clipboard-check"></i> Knowledge Assessment</h2>
+                <p>Test your understanding of electronic presentation principles with this interactive quiz.</p>
+                
+                <div class="quiz">
+                    <div class="quiz-question">1. According to the 10/20/30 rule, what is the maximum recommended number of slides for a 20-minute presentation?</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-correct="true">
+                            <input type="radio" name="q1" id="q1a">
+                            <label for="q1a">10 slides</label>
+                        </div>
+                        <div class="quiz-option" data-correct="false">
+                            <input type="radio" name="q1" id="q1b">
+                            <label for="q1b">20 slides</label>
+                        </div>
+                        <div class="quiz-option" data-correct="false">
+                            <input type="radio" name="q1" id="q1c">
+                            <label for="q1c">30 slides</label>
+                        </div>
+                        <div class="quiz-option" data-correct="false">
+                            <input type="radio" name="q1" id="q1d">
+                            <label for="q1d">40 slides</label>
+                        </div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+                
+                <div class="quiz">
+                    <div class="quiz-question">2. Which of the following is NOT a recommended practice for presentation design?</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-correct="false">
+                            <input type="radio" name="q2" id="q2a">
+                            <label for="q2a">Using consistent formatting throughout</label>
+                        </div>
+                        <div class="quiz-option" data-correct="true">
+                            <input type="radio" name="q2" id="q2b">
+                            <label for="q2b">Including long paragraphs of text on slides</label>
+                        </div>
+                        <div class="quiz-option" data-correct="false">
+                            <input type="radio" name="q2" id="q2c">
+                            <label for="q2c">Maintaining good color contrast for readability</label>
+                        </div>
+                        <div class="quiz-option" data-correct="false">
+                            <input type="radio" name="q2" id="q2d">
+                            <label for="q2d">Using bullet points with 5-7 words each</label>
+                        </div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+                
+                <div class="quiz">
+                    <div class="quiz-question">3. What should you do during Q&A if you don't know the answer to a question?</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-correct="false">
+                            <input type="radio" name="q3" id="q3a">
+                            <label for="q3a">Make up an answer to avoid appearing unprepared</label>
+                        </div>
+                        <div class="quiz-option" data-correct="false">
+                            <input type="radio" name="q3" id="q3b">
+                            <label for="q3b">Ignore the question and move to the next one</label>
+                        </div>
+                        <div class="quiz-option" data-correct="true">
+                            <input type="radio" name="q3" id="q3c">
+                            <label for="q3c">Admit you don't know and offer to follow up later</label>
+                        </div>
+                        <div class="quiz-option" data-correct="false">
+                            <input type="radio" name="q3" id="q3d">
+                            <label for="q3d">Criticize the question as irrelevant</label>
+                        </div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+                
+                <div class="info-box accent">
+                    <h4><i class="fas fa-tasks"></i> Final Presentation Project</h4>
+                    <p>Create a complete 8-10 minute presentation on a topic of your choice that includes:</p>
+                    <ul>
+                        <li>Title slide with your name and topic</li>
+                        <li>Agenda/overview slide</li>
+                        <li>5-7 content slides following design principles</li>
+                        <li>At least one relevant image or graphic</li>
+                        <li>Proper use of visual hierarchy and consistent formatting</li>
+                        <li>Speaker notes for each slide</li>
+                        <li>Conclusion slide with key takeaways</li>
+                        <li>Q&A slide</li>
+                    </ul>
+                    <p><strong>Bonus:</strong> Record yourself delivering the presentation and submit both the slide deck and recording.</p>
+                </div>
+            </section>
+        </main>
+        
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="module-progress">
+                <h3>Module Progress</h3>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <div class="progress-text">
+                    <span>20% Complete</span>
+                    <span>1 of 5 Sections</span>
+                </div>
+            </div>
+            
+            <div class="sidebar-nav">
+                <h3>Module Sections</h3>
+                <ul>
+                    <li><a href="#introduction"><i class="fas fa-chevron-right"></i> Introduction</a></li>
+                    <li><a href="#planning"><i class="fas fa-chevron-right"></i> Presentation Planning</a></li>
+                    <li><a href="#design"><i class="fas fa-chevron-right"></i> Slide Design</a></li>
+                    <li><a href="#multimedia"><i class="fas fa-chevron-right"></i> Multimedia Elements</a></li>
+                    <li><a href="#delivery"><i class="fas fa-chevron-right"></i> Delivery Techniques</a></li>
+                    <li><a href="#assessment"><i class="fas fa-chevron-right"></i> Assessment</a></li>
+                </ul>
+            </div>
+            
+            <div class="assessment-info">
+                <h4><i class="fas fa-clipboard-list"></i> Assessment Details</h4>
+                <ul>
+                    <li>3 Knowledge Check Questions</li>
+                    <li>3 Hands-On Activities</li>
+                    <li>1 Final Presentation Project</li>
+                    <li>Estimated Time: 5-8 hours</li>
+                </ul>
+            </div>
+            
+            <div class="info-box secondary">
+                <h4><i class="fas fa-download"></i> Resources & Templates</h4>
+                <p>Download useful resources:</p>
+                <ul>
+                    <li><a href="#" style="color: var(--secondary);">Presentation Planning Worksheet</a></li>
+                    <li><a href="#" style="color: var(--secondary);">Color Scheme Generator</a></li>
+                    <li><a href="#" style="color: var(--secondary);">Free Image Sources</a></li>
+                    <li><a href="#" style="color: var(--secondary);">Presentation Checklist</a></li>
+                </ul>
+            </div>
+            
+            <div class="info-box primary">
+                <h4><i class="fas fa-video"></i> Video Tutorials</h4>
+                <p>Watch supplemental tutorials:</p>
+                <ul>
+                    <li><a href="#" style="color: var(--primary);">PowerPoint Advanced Features</a></li>
+                    <li><a href="#" style="color: var(--primary);">Google Slides Collaboration</a></li>
+                    <li><a href="#" style="color: var(--primary);">Public Speaking Techniques</a></li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Electronic Presentations</h3>
+                    <p>Master the art of creating compelling digital presentations for effective communication in professional, academic, and personal contexts.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#introduction">Introduction</a></li>
+                        <li><a href="#design">Slide Design</a></li>
+                        <li><a href="#multimedia">Multimedia Elements</a></li>
+                        <li><a href="#delivery">Delivery Techniques</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Related Courses</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Public Speaking Mastery</a></li>
+                        <li><a href="#">Data Visualization</a></li>
+                        <li><a href="#">Graphic Design Fundamentals</a></li>
+                        <li><a href="#">Business Communication</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Digital Skills Academy. All rights reserved. | This learning module is part of the Digital Literacy Certification Program.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Mobile navigation toggle
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navLinks = document.getElementById('navLinks');
+        const navOverlay = document.getElementById('navOverlay');
+        
+        mobileToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            navOverlay.classList.toggle('active');
+        });
+        
+        navOverlay.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+            navOverlay.classList.remove('active');
+        });
+        
+        // Update progress based on scroll position
+        function updateProgress() {
+            const sections = document.querySelectorAll('.section');
+            const scrollPosition = window.scrollY;
+            const documentHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPercentage = (scrollPosition / documentHeight) * 100;
+            
+            const progressFill = document.getElementById('progressFill');
+            progressFill.style.width = `${scrollPercentage}%`;
+            
+            // Update section count based on scroll
+            let visibleSection = 0;
+            sections.forEach((section, index) => {
+                const rect = section.getBoundingClientRect();
+                if (rect.top < window.innerHeight / 2) {
+                    visibleSection = index + 1;
+                }
+            });
+            
+            const progressText = document.querySelector('.progress-text');
+            if (progressText) {
+                const totalSections = sections.length;
+                progressText.innerHTML = `<span>${Math.round(scrollPercentage)}% Complete</span><span>${visibleSection} of ${totalSections} Sections</span>`;
+            }
+        }
+        
+        window.addEventListener('scroll', updateProgress);
+        window.addEventListener('load', updateProgress);
+        
+        // Quiz functionality
+        document.querySelectorAll('.quiz-option').forEach(option => {
+            option.addEventListener('click', function() {
+                const questionContainer = this.closest('.quiz');
+                const options = questionContainer.querySelectorAll('.quiz-option');
+                const feedback = questionContainer.querySelector('.quiz-feedback');
+                
+                // Remove selected class from all options in this question
+                options.forEach(opt => {
+                    opt.classList.remove('selected');
+                });
+                
+                // Add selected class to clicked option
+                this.classList.add('selected');
+                
+                // Check if answer is correct
+                const isCorrect = this.getAttribute('data-correct') === 'true';
+                
+                // Show feedback
+                feedback.textContent = isCorrect ? 
+                    "✓ Correct! Well done." : 
+                    "✗ Incorrect. Review the material and try again.";
+                feedback.className = isCorrect ? 'quiz-feedback correct' : 'quiz-feedback incorrect';
+            });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    navLinks.classList.remove('active');
+                    navOverlay.classList.remove('active');
+                }
+            });
+        });
+    </script>
+    <script src="modules.js"></script>
+</body>
+</html>

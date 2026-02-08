@@ -1,0 +1,1725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 1: Introduction to ICT - Complete Learning Module</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #3a7bd5;
+            --secondary: #00d2ff;
+            --accent: #ff6b6b;
+            --warning: #f9c74f;
+            --light: #f8f9fa;
+            --dark: #202124;
+            --gray: #5f6368;
+            --border-radius: 10px;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: #f5f7fa;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary), #2563c8);
+            color: white;
+            padding: 2rem 0;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+            opacity: 0.1;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .course-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.8rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+        
+        .course-subtitle {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
+            max-width: 800px;
+        }
+        
+        .keywords {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 1rem;
+        }
+        
+        .keyword {
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .learning-outcomes {
+            background-color: rgba(255, 255, 255, 0.15);
+            border-radius: var(--border-radius);
+            padding: 1.2rem;
+            margin-top: 1.5rem;
+        }
+        
+        .learning-outcomes h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+        }
+        
+        .outcomes-list {
+            list-style: none;
+        }
+        
+        .outcomes-list li {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .outcomes-list i {
+            margin-right: 10px;
+            margin-top: 3px;
+            color: var(--warning);
+        }
+        
+        /* Navigation */
+        .module-nav {
+            background-color: white;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 0.5rem 0;
+            position: relative;
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--dark);
+            cursor: pointer;
+        }
+        
+        /* Main Content */
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .content-area {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 2.5rem;
+            box-shadow: var(--shadow);
+        }
+        
+        /* Sidebar */
+        .sidebar {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+        }
+        
+        .sidebar h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--light);
+            font-size: 1.3rem;
+        }
+        
+        .module-progress {
+            margin-bottom: 2rem;
+        }
+        
+        .progress-bar {
+            height: 8px;
+            background-color: #e0e0e0;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 0.5rem;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background-color: var(--secondary);
+            width: 0%;
+            transition: width 1s ease;
+        }
+        
+        .progress-text {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+        
+        .sidebar-nav {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+        
+        .sidebar-nav li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .sidebar-nav a {
+            text-decoration: none;
+            color: var(--dark);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: var(--transition);
+            padding: 0.5rem;
+            border-radius: 5px;
+        }
+        
+        .sidebar-nav a:hover {
+            background-color: rgba(58, 123, 213, 0.1);
+            color: var(--primary);
+            transform: translateX(5px);
+        }
+        
+        .sidebar-nav i {
+            color: var(--primary);
+            width: 20px;
+            text-align: center;
+        }
+        
+        .assessment-info {
+            background-color: rgba(249, 199, 79, 0.1);
+            border-radius: var(--border-radius);
+            padding: 1.2rem;
+            border-left: 4px solid var(--warning);
+        }
+        
+        .assessment-info h4 {
+            color: var(--dark);
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .assessment-info ul {
+            padding-left: 1.2rem;
+            font-size: 0.9rem;
+        }
+        
+        .assessment-info li {
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Section Styling */
+        .section {
+            margin-bottom: 3rem;
+            scroll-margin-top: 100px;
+        }
+        
+        h2 {
+            color: var(--primary);
+            font-family: 'Poppins', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--light);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        h2 i {
+            color: var(--primary);
+        }
+        
+        h3 {
+            color: var(--dark);
+            font-size: 1.6rem;
+            margin: 1.8rem 0 1rem;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        h4 {
+            color: var(--dark);
+            font-size: 1.3rem;
+            margin: 1.5rem 0 0.8rem;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        p {
+            margin-bottom: 1.2rem;
+        }
+        
+        .key-term {
+            background-color: rgba(0, 210, 255, 0.1);
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            font-weight: 600;
+            color: var(--secondary);
+        }
+        
+        /* Activity Box */
+        .activity {
+            background-color: #f8f9fa;
+            border-radius: var(--border-radius);
+            padding: 1.8rem;
+            margin: 2rem 0;
+            border-left: 5px solid var(--primary);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+        
+        .activity-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.2rem;
+        }
+        
+        .activity-icon {
+            background-color: var(--primary);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-weight: bold;
+        }
+        
+        .activity-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.4rem;
+            color: var(--primary);
+        }
+        
+        .activity-instructions {
+            background-color: white;
+            padding: 1.2rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            border: 1px dashed #ddd;
+        }
+        
+        .activity-steps {
+            list-style: decimal;
+            padding-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .activity-steps li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .discussion-points {
+            background-color: rgba(255, 107, 107, 0.05);
+            padding: 1.2rem;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+            border-left: 4px solid var(--accent);
+        }
+        
+        .discussion-points h5 {
+            color: var(--accent);
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
+        }
+        
+        .discussion-points ul {
+            padding-left: 1.2rem;
+        }
+        
+        .discussion-points li {
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Information Boxes */
+        .info-box {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            box-shadow: var(--shadow);
+            border-top: 4px solid;
+        }
+        
+        .info-box.primary {
+            border-color: var(--primary);
+        }
+        
+        .info-box.secondary {
+            border-color: var(--secondary);
+        }
+        
+        .info-box.accent {
+            border-color: var(--accent);
+        }
+        
+        .info-box h4 {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 0;
+        }
+        
+        .info-box i {
+            font-size: 1.3rem;
+        }
+        
+        .info-box.primary h4 i {
+            color: var(--primary);
+        }
+        
+        .info-box.secondary h4 i {
+            color: var(--secondary);
+        }
+        
+        .info-box.accent h4 i {
+            color: var(--accent);
+        }
+        
+        /* Comparison Table */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+        }
+        
+        .comparison-table th {
+            background-color: var(--primary);
+            color: white;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        .comparison-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .comparison-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        .comparison-table tr:hover {
+            background-color: rgba(58, 123, 213, 0.05);
+        }
+        
+        /* ICT Tools Grid */
+        .ict-tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .ict-tool-card {
+            background-color: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            text-align: center;
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+        
+        .ict-tool-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: var(--shadow);
+        }
+        
+        .ict-tool-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .ict-tool-card h4 {
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+        
+        /* Application Areas */
+        .application-areas {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .application-card {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            border-left: 4px solid var(--secondary);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+        
+        .application-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+        
+        .application-card h4 {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+        
+        /* Maintenance Tools */
+        .maintenance-tools {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .tool-item {
+            background-color: #f8f9fa;
+            padding: 1rem 1.5rem;
+            border-radius: 20px;
+            border: 1px solid #ddd;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .tool-item i {
+            color: var(--primary);
+        }
+        
+        /* Interactive Quiz */
+        .quiz {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: var(--shadow);
+            border: 2px solid var(--primary);
+        }
+        
+        .quiz-question {
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .quiz-option {
+            padding: 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .quiz-option:hover {
+            border-color: var(--primary);
+            background-color: rgba(58, 123, 213, 0.05);
+        }
+        
+        .quiz-option.selected {
+            border-color: var(--secondary);
+            background-color: rgba(0, 210, 255, 0.1);
+        }
+        
+        .quiz-option input {
+            margin-right: 10px;
+        }
+        
+        .quiz-feedback {
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            display: none;
+            margin-top: 1rem;
+        }
+        
+        .quiz-feedback.correct {
+            background-color: rgba(0, 210, 255, 0.1);
+            color: var(--secondary);
+            display: block;
+            border-left: 4px solid var(--secondary);
+        }
+        
+        .quiz-feedback.incorrect {
+            background-color: rgba(255, 107, 107, 0.1);
+            color: var(--accent);
+            display: block;
+            border-left: 4px solid var(--accent);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 3rem 0 1.5rem;
+            margin-top: 3rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-section h3 {
+            color: white;
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+            border-bottom: none;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 0.95rem;
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary);
+            padding-left: 5px;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                position: static;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .course-title {
+                font-size: 2.2rem;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                height: 100vh;
+                background-color: white;
+                flex-direction: column;
+                padding: 2rem;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+                transition: var(--transition);
+                z-index: 1000;
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .mobile-toggle {
+                display: block;
+            }
+            
+            .nav-overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.5);
+                z-index: 999;
+                display: none;
+            }
+            
+            .nav-overlay.active {
+                display: block;
+            }
+            
+            .content-area {
+                padding: 1.5rem;
+            }
+            
+            .ict-tools-grid, .application-areas {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Print Styles */
+        @media print {
+            .module-nav, .sidebar, footer, .quiz, .activity {
+                display: none;
+            }
+            
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .content-area {
+                box-shadow: none;
+                padding: 0;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="navigation.css">
+</head>
+<body>
+    <!-- GLOBAL NAVIGATION WITH SUBMENUS -->
+<nav class="global-nav">
+    <div class="global-nav-container">
+        <a href="learning-hub.html" class="global-nav-brand">
+            <i class="fas fa-graduation-cap"></i> ICT Learning Hub
+        </a>
+        
+        <button class="nav-mobile-toggle" title="Toggle menu">
+            <i class="fas fa-bars"></i>
+        </button>
+        
+        <ul class="global-nav-menu">
+            <!-- Home -->
+            <li class="nav-item">
+                <a href="index.html">
+                    <i class="fas fa-home"></i> Home
+                </a>
+            </li>
+            
+            <!-- Office Applications -->
+            <li class="nav-item">
+                <a href="#" class="nav-dropdown-toggle">
+                    <i class="fas fa-file"></i> Office Applications
+                </a>
+                <ul class="nav-submenu">
+                    <li><a href="word processingone.html" class="submenu-item"><i class="fas fa-file-word"></i> Word Processing</a></li>
+                    <li><a href="word 2.html" class="submenu-item"><i class="fas fa-file-word"></i> Word Processing 2</a></li>
+                    <li><a href="word processingone.html" class="submenu-item"><i class="fas fa-file-word"></i> Word Processing</a></li>
+                    <li class="submenu-divider"></li>
+                    <li><a href="PowerPoint.html" class="submenu-item"><i class="fas fa-presentation"></i> Presentations</a></li>
+                    <li class="submenu-divider"></li>
+                    <li><a href="spreadsheets 1.html" class="submenu-item"><i class="fas fa-table"></i> Spreadsheets 1</a></li>
+                    <li><a href="spreadsheets 2.html" class="submenu-item"><i class="fas fa-table"></i> Spreadsheets 2</a></li>
+                </ul>
+            </li>
+            
+            <!-- System & Data -->
+            <li class="nav-item">
+                <a href="#" class="nav-dropdown-toggle">
+                    <i class="fas fa-server"></i> System & Data
+                </a>
+                <ul class="nav-submenu">
+                    <li><a href="DBMS.html" class="submenu-item"><i class="fas fa-database"></i> Database Management</a></li>
+                    <li><a href="software.html" class="submenu-item"><i class="fas fa-box"></i> Software Management</a></li>
+                    <li class="submenu-divider"></li>
+                    <li><a href="system security and data security .html" class="submenu-item"><i class="fas fa-lock"></i> System & Data Security</a></li>
+                    <li><a href="information_access_and_sharing_and_security.html" class="submenu-item"><i class="fas fa-share"></i> Information Sharing</a></li>
+                </ul>
+            </li>
+            
+            <!-- Design & Web -->
+            <li class="nav-item">
+                <a href="#" class="nav-dropdown-toggle">
+                    <i class="fas fa-palette"></i> Design & Web
+                </a>
+                <ul class="nav-submenu">
+                    <li><a href="web design.html" class="submenu-item"><i class="fas fa-globe"></i> Web Design</a></li>
+                    <li><a href="desktop publishing.html" class="submenu-item"><i class="fas fa-paint-brush"></i> Desktop Publishing</a></li>
+                </ul>
+            </li>
+            
+            <!-- Hardware & IT -->
+            <li class="nav-item">
+                <a href="#" class="nav-dropdown-toggle">
+                    <i class="fas fa-microchip"></i> Hardware & IT
+                </a>
+                <ul class="nav-submenu">
+                    <li><a href="computer hardware.html" class="submenu-item"><i class="fas fa-computer"></i> Computer Hardware</a></li>
+                    <li><a href="file and folder management.html" class="submenu-item"><i class="fas fa-folder"></i> File Management</a></li>
+                    <li><a href="Access-and-sharing.html" class="submenu-item"><i class="fas fa-users"></i> Access & Sharing</a></li>
+                </ul>
+            </li>
+            
+            <!-- Information & Safety -->
+            <li class="nav-item">
+                <a href="#" class="nav-dropdown-toggle">
+                    <i class="fas fa-shield"></i> Info & Safety
+                </a>
+                <ul class="nav-submenu">
+                    <li><a href="Health and safety .html" class="submenu-item"><i class="fas fa-heartbeat"></i> Health & Safety</a></li>
+                    <li><a href="Waste management.html" class="submenu-item"><i class="fas fa-recycle"></i> Waste Management</a></li>
+                </ul>
+            </li>
+            
+            <!-- General -->
+            <li class="nav-item">
+                <a href="#" class="nav-dropdown-toggle">
+                    <i class="fas fa-book"></i> General
+                </a>
+                <ul class="nav-submenu">
+                    <li><a href="introduction to ICT.html" class="submenu-item"><i class="fas fa-book-open"></i> Introduction to ICT</a></li>
+                    <li><a href="ticking timer..html" class="submenu-item"><i class="fas fa-clock"></i> Ticking Timer</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</nav>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <h1 class="course-title">Introduction to ICT</h1>
+            <p class="course-subtitle">Chapter 1: Understanding Information and Communication Technology and its applications in daily life</p>
+            
+            <div class="keywords">
+                <span class="keyword">ICT</span>
+                <span class="keyword">Hardware</span>
+                <span class="keyword">Software</span>
+                <span class="keyword">Peripherals</span>
+                <span class="keyword">Safety</span>
+                <span class="keyword">User Manuals</span>
+                <span class="keyword">Applications</span>
+            </div>
+            
+            <div class="learning-outcomes">
+                <h3><i class="fas fa-bullseye"></i> Learning Outcomes</h3>
+                <ul class="outcomes-list">
+                    <li><i class="fas fa-check-circle"></i> Explain what ICT is all about</li>
+                    <li><i class="fas fa-check-circle"></i> Identify common ICT tools and their functions</li>
+                    <li><i class="fas fa-check-circle"></i> Describe the uses of ICTs in various fields</li>
+                    <li><i class="fas fa-check-circle"></i> Explain safety precautions for different ICT tools</li>
+                    <li><i class="fas fa-check-circle"></i> Understand how to handle and maintain ICT equipment</li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="module-nav">
+        <div class="container nav-container">
+            <div class="nav-brand">
+                <span class="nav-brand-text">ICT - Chapter 1</span>
+            </div>
+            
+            <button class="mobile-toggle" id="mobileToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#section1"><i class="fas fa-info-circle"></i> Meaning of ICT</a></li>
+                <li><a href="#section2"><i class="fas fa-tools"></i> Common ICT Tools</a></li>
+                <li><a href="#section3"><i class="fas fa-globe"></i> Applications of ICT</a></li>
+                <li><a href="#section4"><i class="fas fa-cogs"></i> Handling & Maintenance</a></li>
+                <li><a href="#section5"><i class="fas fa-shield-alt"></i> Safety & Security</a></li>
+                <li><a href="#section6"><i class="fas fa-book"></i> User Manuals</a></li>
+                <li><a href="#integration"><i class="fas fa-tasks"></i> Integration Activity</a></li>
+                <li><a href="#quiz"><i class="fas fa-question-circle"></i> Quiz</a></li>
+            </ul>
+        </div>
+        
+        <div class="nav-overlay" id="navOverlay"></div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container main-content">
+        <!-- Content Area -->
+        <main class="content-area">
+            <!-- Section 1: Meaning of ICT -->
+            <section class="section" id="section1">
+                <h2><i class="fas fa-info-circle"></i> Meaning of ICT</h2>
+                
+                <div class="info-box primary">
+                    <h4><i class="fas fa-lightbulb"></i> What is ICT?</h4>
+                    <p><span class="key-term">ICT</span> stands for <strong>I</strong>nformation, <strong>C</strong>ommunication, and <strong>T</strong>echnology. It refers to technologies that provide access to information through telecommunications. Hardly a day passes when ICT does not intrude into our lives.</p>
+                </div>
+                
+                <h3>Understanding the Components</h3>
+                <p>ICT can be compared with other systems to help understand its components. Let's compare ICT with a water system:</p>
+                
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Water System Component</th>
+                            <th>ICT Equivalent</th>
+                            <th>Explanation</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Taps, water tank, pipes</td>
+                            <td>Technology</td>
+                            <td>The physical devices and infrastructure</td>
+                        </tr>
+                        <tr>
+                            <td>Water</td>
+                            <td>Information</td>
+                            <td>The data or content being transmitted</td>
+                        </tr>
+                        <tr>
+                            <td>Water flowing through pipes</td>
+                            <td>Communication</td>
+                            <td>The transmission of information</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="activity">
+                    <div class="activity-header">
+                        <div class="activity-icon">1</div>
+                        <div class="activity-title">Activity 1.1: Meaning of ICT</div>
+                    </div>
+                    
+                    <div class="activity-instructions">
+                        <p><strong>Instructions:</strong> In groups, identify ICT tools around your school or community and complete the table below.</p>
+                    </div>
+                    
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>ICT Tool</th>
+                                <th>Function</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Camera</td>
+                                <td>Capturing photographs</td>
+                            </tr>
+                            <tr>
+                                <td>Projector</td>
+                                <td>Making projections for big audiences</td>
+                            </tr>
+                            <tr>
+                                <td>Mobile phone</td>
+                                <td>Making calls, chatting, accessing internet</td>
+                            </tr>
+                            <tr>
+                                <td>Laptop</td>
+                                <td>Typing documents, research, presentations</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="discussion-points">
+                        <h5>Discussion Points</h5>
+                        <ul>
+                            <li>Select any two ICTs and identify the information they handle, the nature of communication, and the technology used</li>
+                            <li>Practice using a selected ICT tool and identify the I, C, and T in it</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Section 2: Common ICT Tools -->
+            <section class="section" id="section2">
+                <h2><i class="fas fa-tools"></i> Common ICT Tools</h2>
+                
+                <p>ICT tools are devices or objects used in ICT for data capture, processing, information storage, and communication. They are not one solid thing but rather a collection of several electronic tools.</p>
+                
+                <h3>Basic ICT Tools</h3>
+                <div class="ict-tools-grid">
+                    <div class="ict-tool-card">
+                        <div class="ict-tool-icon">
+                            <i class="fas fa-desktop"></i>
+                        </div>
+                        <h4>Desktop Computer</h4>
+                        <p>Complete computer system for various tasks</p>
+                    </div>
+                    
+                    <div class="ict-tool-card">
+                        <div class="ict-tool-icon">
+                            <i class="fas fa-tv"></i>
+                        </div>
+                        <h4>Television</h4>
+                        <p>Receiving and displaying broadcast signals</p>
+                    </div>
+                    
+                    <div class="ict-tool-card">
+                        <div class="ict-tool-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <h4>Telephone</h4>
+                        <p>Voice communication over distance</p>
+                    </div>
+                    
+                    <div class="ict-tool-card">
+                        <div class="ict-tool-icon">
+                            <i class="fas fa-broadcast-tower"></i>
+                        </div>
+                        <h4>Radio</h4>
+                        <p>Receiving audio broadcasts</p>
+                    </div>
+                </div>
+                
+                <div class="activity">
+                    <div class="activity-header">
+                        <div class="activity-icon">2</div>
+                        <div class="activity-title">Activity 1.2: Common ICT Tools</div>
+                    </div>
+                    
+                    <div class="activity-instructions">
+                        <p><strong>Instructions:</strong> In groups, identify ICT tools provided and note their characteristics.</p>
+                    </div>
+                    
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Name of ICT Tool</th>
+                                <th>Characteristics</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Computer</td>
+                                <td>Electronic tool, has hardware and software, can store information</td>
+                            </tr>
+                            <tr>
+                                <td>Projector</td>
+                                <td>Electronic tool, uses light for projection, has image adjustments</td>
+                            </tr>
+                            <tr>
+                                <td>Camera</td>
+                                <td>Has a lens, flash light, memory (inbuilt and external)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="discussion-points">
+                        <h5>Activity 1.3: ICT Tools in Specialized Fields</h5>
+                        <ul>
+                            <li>Identify ICT tools used in specialized fields like communication, manufacturing, teaching and learning, health and medicine, security, climate and weather management</li>
+                            <li>Examples include X-ray machines, biometric recognition machines, ATMs, photocopiers, security cameras</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Section 3: Applications of ICT -->
+            <section class="section" id="section3">
+                <h2><i class="fas fa-globe"></i> Applications of ICT</h2>
+                
+                <div class="info-box secondary">
+                    <h4><i class="fas fa-chart-line"></i> ICT in Our Society</h4>
+                    <p>ICT is increasingly used in all areas of our society to collect and communicate information. ICTs are used in homes, schools, hospitals, banking halls, entertainment industry, security, agriculture, and transport.</p>
+                </div>
+                
+                <h3>Application Areas</h3>
+                <div class="application-areas">
+                    <div class="application-card">
+                        <h4><i class="fas fa-home"></i> Home</h4>
+                        <p>Mobile phones for communication, digital cameras for security, smart home devices</p>
+                    </div>
+                    
+                    <div class="application-card">
+                        <h4><i class="fas fa-school"></i> School</h4>
+                        <p>Digital cameras for security, computers with report card systems, projectors for teaching</p>
+                    </div>
+                    
+                    <div class="application-card">
+                        <h4><i class="fas fa-hospital"></i> Hospitals</h4>
+                        <p>Computers with medical records systems, diagnostic equipment, patient monitoring systems</p>
+                    </div>
+                    
+                    <div class="application-card">
+                        <h4><i class="fas fa-university"></i> Banking</h4>
+                        <p>ATMs, Electronic Point of Sales (EPOS), online banking systems</p>
+                    </div>
+                </div>
+                
+                <div class="info-box accent">
+                    <h4><i class="fas fa-shopping-cart"></i> ICT in Business - EPOS</h4>
+                    <p>An <strong>Electronic Point of Sales (EPOS)</strong> is a self-contained, computerized equipment that performs all tasks of a store checkout counter. It allows payments by cash, bank or credit cards, verifies transactions, generates sales receipts, and coordinates inventory data.</p>
+                </div>
+                
+                <div class="activity">
+                    <div class="activity-header">
+                        <div class="activity-icon">3</div>
+                        <div class="activity-title">Activity 1.4: Application of ICTs</div>
+                    </div>
+                    
+                    <div class="activity-instructions">
+                        <p><strong>Instructions:</strong> In groups, identify ICT devices used in different application areas and what they are used for.</p>
+                    </div>
+                    
+                    <div class="discussion-points">
+                        <h5>Advantages of Using ICTs</h5>
+                        <ul>
+                            <li>Ease communication; fast and convenient</li>
+                            <li>Cost effective to process data/communicate</li>
+                            <li>Bridge cultural/geographical gaps; make the world a global village</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Section 4: Handling and Maintenance -->
+            <section class="section" id="section4">
+                <h2><i class="fas fa-cogs"></i> Handling and Maintaining ICT Tools</h2>
+                
+                <div class="info-box primary">
+                    <h4><i class="fas fa-hand-sparkles"></i> Importance of Maintenance</h4>
+                    <p>Taking care of your ICT tools is just as important as taking care of your books. Both internal and external parts of computers and other ICTs need proper care.</p>
+                </div>
+                
+                <h3>Basic Maintenance Tasks</h3>
+                <div class="maintenance-tools">
+                    <div class="tool-item">
+                        <i class="fas fa-wind"></i>
+                        <span>Keep dust away: Dust your computer regularly</span>
+                    </div>
+                    <div class="tool-item">
+                        <i class="fas fa-utensils"></i>
+                        <span>Keep food away: Don't eat or drink while working on computer</span>
+                    </div>
+                    <div class="tool-item">
+                        <i class="fas fa-hands-wash"></i>
+                        <span>Use clean and dry hands: Before typing or using mouse</span>
+                    </div>
+                    <div class="tool-item">
+                        <i class="fas fa-bolt"></i>
+                        <span>Keep off during storms: Lightning can damage through electrical connections</span>
+                    </div>
+                    <div class="tool-item">
+                        <i class="fas fa-virus"></i>
+                        <span>Stop virus attack: Use antivirus software and get permission before downloading</span>
+                    </div>
+                    <div class="tool-item">
+                        <i class="fas fa-compact-disc"></i>
+                        <span>Handle CDs with care: Hold correctly by edges</span>
+                    </div>
+                </div>
+                
+                <h3>Maintenance Tools and Their Functions</h3>
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Maintenance Tool</th>
+                            <th>Function</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Dust blower</td>
+                            <td>Can be regularly used to blow dust out of computer equipment</td>
+                        </tr>
+                        <tr>
+                            <td>Air conditioner</td>
+                            <td>Regulates computer lab temperatures</td>
+                        </tr>
+                        <tr>
+                            <td>UPS (Uninterruptible Power Supply)</td>
+                            <td>Provides backup power during outages</td>
+                        </tr>
+                        <tr>
+                            <td>Surge protector</td>
+                            <td>Protects against voltage spikes</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="activity">
+                    <div class="activity-header">
+                        <div class="activity-icon">4</div>
+                        <div class="activity-title">Activity 1.6: Handling and Maintaining ICT Tools</div>
+                    </div>
+                    
+                    <div class="activity-instructions">
+                        <p><strong>Instructions:</strong> Identify ICT maintenance tools in your computer laboratory and their functions.</p>
+                    </div>
+                    
+                    <ol class="activity-steps">
+                        <li>Identify other ICT maintenance tools in the computer laboratory besides dust blower and air conditioner</li>
+                        <li>Identify a computer that needs cleaning and clean it with appropriate tools</li>
+                        <li>Make a report of the steps followed and tools used in the cleaning process</li>
+                    </ol>
+                </div>
+            </section>
+            
+            <!-- Section 5: Safety and Security -->
+            <section class="section" id="section5">
+                <h2><i class="fas fa-shield-alt"></i> ICT Safety Precautions and Security</h2>
+                
+                <h3>Safety Precautions</h3>
+                <div class="info-box secondary">
+                    <h4><i class="fas fa-exclamation-triangle"></i> Importance of Safety</h4>
+                    <p>As ICT users, it's important to take precautions when using ICT tools to avoid health problems and ensure equipment longevity. Manufacturers provide user manuals for all ICT equipment with safety guidelines.</p>
+                </div>
+                
+                <div class="activity">
+                    <div class="activity-header">
+                        <div class="activity-icon">5</div>
+                        <div class="activity-title">Activity 1.7: ICT Safety Precautions</div>
+                    </div>
+                    
+                    <div class="activity-instructions">
+                        <p><strong>Instructions:</strong> In groups, discuss the "rules that govern the use of the computer laboratory."</p>
+                    </div>
+                    
+                    <div class="discussion-points">
+                        <h5>Common Computer Lab Rules</h5>
+                        <ul>
+                            <li>No food or drinks near computers</li>
+                            <li>Wash hands before using equipment</li>
+                            <li>Report any equipment problems immediately</li>
+                            <li>Follow proper shutdown procedures</li>
+                            <li>Keep the lab clean and organized</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <h3>Security Threats and Measures</h3>
+                <div class="info-box accent">
+                    <h4><i class="fas fa-lock"></i> Protecting ICT Tools</h4>
+                    <p>ICT tools need protection from risks such as theft, viruses, vandalism, and unauthorized access. Security measures include physical security, electronic security, and document/files and network security.</p>
+                </div>
+                
+                <div class="activity">
+                    <div class="activity-header">
+                        <div class="activity-icon">6</div>
+                        <div class="activity-title">Activity 1.8: ICT Tools Security Threats and Measures</div>
+                    </div>
+                    
+                    <div class="activity-instructions">
+                        <p><strong>Instructions:</strong> Walk around school computer installations and identify security concerns and protection measures.</p>
+                    </div>
+                    
+                    <ol class="activity-steps">
+                        <li>Take a walk around school computer installations and identify security and safety concerns</li>
+                        <li>Identify how computers need to be protected for long-term use</li>
+                        <li>Discuss security measures in line with physical security, electronic security, and document/files and network security</li>
+                    </ol>
+                    
+                    <div class="discussion-points">
+                        <h5>Security Measures Examples</h5>
+                        <ul>
+                            <li><strong>Physical security:</strong> Burglar proofing, locked doors, security cameras</li>
+                            <li><strong>Electronic security:</strong> Passwords, encryption, antivirus software</li>
+                            <li><strong>Network security:</strong> Firewalls, secure connections, access controls</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Section 6: User Manuals -->
+            <section class="section" id="section6">
+                <h2><i class="fas fa-book"></i> User Manuals</h2>
+                
+                <div class="info-box primary">
+                    <h4><i class="fas fa-file-alt"></i> What are User Manuals?</h4>
+                    <p>A <strong>user guide</strong> or <strong>user's guide</strong> (commonly known as a manual) is a technical communication document intended to give assistance to people using a particular system. It contains instructions on installing, using, or troubleshooting hardware or software products.</p>
+                </div>
+                
+                <div class="activity">
+                    <div class="activity-header">
+                        <div class="activity-icon">7</div>
+                        <div class="activity-title">Activity 1.9: ICT User Manuals</div>
+                    </div>
+                    
+                    <div class="activity-instructions">
+                        <p><strong>Instructions:</strong> Study a user manual for a given ICT tool and summarize its contents and safety precautions.</p>
+                    </div>
+                    
+                    <ol class="activity-steps">
+                        <li>Form groups and study the provided user manual</li>
+                        <li>Identify the key sections of the manual</li>
+                        <li>Summarize the contents and safety precautions</li>
+                        <li>Prepare and make a presentation to the class</li>
+                    </ol>
+                </div>
+            </section>
+            
+            <!-- Integration Activity -->
+            <section class="section" id="integration">
+                <h2><i class="fas fa-tasks"></i> Activity of Integration</h2>
+                
+                <div class="info-box secondary">
+                    <h4><i class="fas fa-chalkboard-teacher"></i> Scenario</h4>
+                    <p>ICTs are currently being employed in almost all fields in this modern era. Some of these fields are Education, Banking and Security. In the area of education, it is possible for a teacher in London to virtually conduct a lesson in a school in Uganda.</p>
+                </div>
+                
+                <div class="activity">
+                    <div class="activity-header">
+                        <div class="activity-icon">INT</div>
+                        <div class="activity-title">Integration Task</div>
+                    </div>
+                    
+                    <div class="activity-instructions">
+                        <p><strong>Tasks:</strong></p>
+                        <ol class="activity-steps">
+                            <li>Explain how the virtual lesson above can be conducted with ICTs</li>
+                            <li>Explain the precautions that should be exercised when using the ICT tools in (a) above</li>
+                        </ol>
+                    </div>
+                    
+                    <div class="discussion-points">
+                        <h5>Suggested ICT Tools for Virtual Lesson</h5>
+                        <ul>
+                            <li>Camera for video transmission</li>
+                            <li>Computer for running software and connectivity</li>
+                            <li>Internet connection for data transmission</li>
+                            <li>Projector for displaying content to students</li>
+                            <li>Microphone for audio input</li>
+                            <li>Speakers for audio output</li>
+                            <li>Smart board or interactive display</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Quiz Section -->
+            <section class="section" id="quiz">
+                <h2><i class="fas fa-question-circle"></i> Knowledge Check: ICT Quiz</h2>
+                
+                <div class="quiz">
+                    <div class="quiz-question" id="question1">
+                        1. What does ICT stand for?
+                    </div>
+                    
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="selectOption(this, 'q1')">
+                            <input type="radio" name="q1" id="q1a">
+                            <label for="q1a">International Communication Technology</label>
+                        </div>
+                        <div class="quiz-option" onclick="selectOption(this, 'q1')">
+                            <input type="radio" name="q1" id="q1b">
+                            <label for="q1b">Information and Communication Technology</label>
+                        </div>
+                        <div class="quiz-option" onclick="selectOption(this, 'q1')">
+                            <input type="radio" name="q1" id="q1c">
+                            <label for="q1c">Internet Connection Tool</label>
+                        </div>
+                        <div class="quiz-option" onclick="selectOption(this, 'q1')">
+                            <input type="radio" name="q1" id="q1d">
+                            <label for="q1d">Integrated Computer Technology</label>
+                        </div>
+                    </div>
+                    
+                    <div class="quiz-feedback correct" id="feedback1">
+                        <strong>Correct!</strong> ICT stands for Information and Communication Technology.
+                    </div>
+                    <div class="quiz-feedback incorrect" id="feedback1-incorrect">
+                        <strong>Incorrect.</strong> The correct answer is Information and Communication Technology.
+                    </div>
+                    
+                    <button class="btn-check" onclick="checkAnswer('q1', 'q1b', 'feedback1', 'feedback1-incorrect')">Check Answer</button>
+                </div>
+                
+                <div class="quiz">
+                    <div class="quiz-question" id="question2">
+                        2. Which of these is NOT a common ICT tool?
+                    </div>
+                    
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="selectOption(this, 'q2')">
+                            <input type="radio" name="q2" id="q2a">
+                            <label for="q2a">Desktop Computer</label>
+                        </div>
+                        <div class="quiz-option" onclick="selectOption(this, 'q2')">
+                            <input type="radio" name="q2" id="q2b">
+                            <label for="q2b">Television</label>
+                        </div>
+                        <div class="quiz-option" onclick="selectOption(this, 'q2')">
+                            <input type="radio" name="q2" id="q2c">
+                            <label for="q2c">Refrigerator</label>
+                        </div>
+                        <div class="quiz-option" onclick="selectOption(this, 'q2')">
+                            <input type="radio" name="q2" id="q2d">
+                            <label for="q2d">Mobile Phone</label>
+                        </div>
+                    </div>
+                    
+                    <div class="quiz-feedback correct" id="feedback2">
+                        <strong>Correct!</strong> A refrigerator is primarily a household appliance, not typically classified as an ICT tool.
+                    </div>
+                    <div class="quiz-feedback incorrect" id="feedback2-incorrect">
+                        <strong>Incorrect.</strong> Desktop computers, televisions, and mobile phones are all ICT tools, while refrigerators are primarily household appliances.
+                    </div>
+                    
+                    <button class="btn-check" onclick="checkAnswer('q2', 'q2c', 'feedback2', 'feedback2-incorrect')">Check Answer</button>
+                </div>
+                
+                <div class="quiz">
+                    <div class="quiz-question" id="question3">
+                        3. What does EPOS stand for in business ICT?
+                    </div>
+                    
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="selectOption(this, 'q3')">
+                            <input type="radio" name="q3" id="q3a">
+                            <label for="q3a">Electronic Point of Sales</label>
+                        </div>
+                        <div class="quiz-option" onclick="selectOption(this, 'q3')">
+                            <input type="radio" name="q3" id="q3b">
+                            <label for="q3b">Electronic Processing of Systems</label>
+                        </div>
+                        <div class="quiz-option" onclick="selectOption(this, 'q3')">
+                            <input type="radio" name="q3" id="q3c">
+                            <label for="q3c">Equipment Point of Service</label>
+                        </div>
+                        <div class="quiz-option" onclick="selectOption(this, 'q3')">
+                            <input type="radio" name="q3" id="q3d">
+                            <label for="q3d">Electronic Payment of Sales</label>
+                        </div>
+                    </div>
+                    
+                    <div class="quiz-feedback correct" id="feedback3">
+                        <strong>Correct!</strong> EPOS stands for Electronic Point of Sales, which is computerized equipment used at store checkout counters.
+                    </div>
+                    <div class="quiz-feedback incorrect" id="feedback3-incorrect">
+                        <strong>Incorrect.</strong> EPOS stands for Electronic Point of Sales, which handles transactions, inventory, and sales receipts in businesses.
+                    </div>
+                    
+                    <button class="btn-check" onclick="checkAnswer('q3', 'q3a', 'feedback3', 'feedback3-incorrect')">Check Answer</button>
+                </div>
+                
+                <div class="info-box primary">
+                    <h4><i class="fas fa-graduation-cap"></i> Chapter Summary</h4>
+                    <p>Ensure that learners have learnt about:</p>
+                    <ul>
+                        <li>The meaning of ICT and its components</li>
+                        <li>Common ICT tools at workplaces and their uses</li>
+                        <li>Application of ICTs in our daily lives</li>
+                        <li>Handling and maintaining of ICT tools</li>
+                        <li>ICT safety precautions and security threats</li>
+                    </ul>
+                </div>
+            </section>
+        </main>
+        
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="module-progress">
+                <h3>Chapter Progress</h3>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <div class="progress-text">
+                    <span>0% Complete</span>
+                    <span>100%</span>
+                </div>
+            </div>
+            
+            <h3>Chapter Navigation</h3>
+            <ul class="sidebar-nav">
+                <li><a href="#section1"><i class="fas fa-chevron-right"></i> Meaning of ICT</a></li>
+                <li><a href="#section2"><i class="fas fa-chevron-right"></i> Common ICT Tools</a></li>
+                <li><a href="#section3"><i class="fas fa-chevron-right"></i> Applications of ICT</a></li>
+                <li><a href="#section4"><i class="fas fa-chevron-right"></i> Handling & Maintenance</a></li>
+                <li><a href="#section5"><i class="fas fa-chevron-right"></i> Safety & Security</a></li>
+                <li><a href="#section6"><i class="fas fa-chevron-right"></i> User Manuals</a></li>
+                <li><a href="#integration"><i class="fas fa-chevron-right"></i> Integration Activity</a></li>
+                <li><a href="#quiz"><i class="fas fa-chevron-right"></i> Knowledge Check</a></li>
+            </ul>
+            
+            <div class="assessment-info">
+                <h4><i class="fas fa-clipboard-check"></i> Chapter Activities</h4>
+                <ul>
+                    <li>Activity 1.1: Meaning of ICT</li>
+                    <li>Activity 1.2: Common ICT Tools</li>
+                    <li>Activity 1.3: Specialized Fields</li>
+                    <li>Activity 1.4: Application of ICTs</li>
+                    <li>Activity 1.6: Handling ICT Tools</li>
+                    <li>Activity 1.7: Safety Precautions</li>
+                    <li>Activity 1.8: Security Measures</li>
+                    <li>Activity 1.9: User Manuals</li>
+                    <li>Integration Activity</li>
+                </ul>
+            </div>
+            
+            <div class="info-box secondary" style="margin-top: 1.5rem;">
+                <h4><i class="fas fa-clock"></i> Time Allocation</h4>
+                <p><strong>Total Time:</strong> 30 periods</p>
+                <p><strong>Meaning of ICT:</strong> 6 periods</p>
+                <p><strong>Common ICT Tools:</strong> 6 periods</p>
+                <p><strong>Application of ICT:</strong> 6 periods</p>
+                <p><strong>Safety Precautions:</strong> 6 periods</p>
+                <p><strong>Other sections:</strong> 6 periods</p>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Introduction to ICT</h3>
+                    <p>Chapter 1 of the Senior One ICT curriculum based on Uganda's National Curriculum Development Centre (NCDC) materials.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#section1">Meaning of ICT</a></li>
+                        <li><a href="#section2">Common ICT Tools</a></li>
+                        <li><a href="#section3">Applications of ICT</a></li>
+                        <li><a href="#section4">Handling & Maintenance</a></li>
+                        <li><a href="#section5">Safety & Security</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Key Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="#section6">User Manuals</a></li>
+                        <li><a href="#integration">Integration Activity</a></li>
+                        <li><a href="#quiz">Knowledge Check Quiz</a></li>
+                        <li><a href="https://www.ncdc.go.ug" target="_blank">NCDC Website</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 ICT Learning Module - Chapter 1: Introduction to ICT. Based on Uganda's NCDC ICT Curriculum. For educational purposes only.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Navigation Toggle
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navLinks = document.getElementById('navLinks');
+        const navOverlay = document.getElementById('navOverlay');
+        
+        mobileToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            navOverlay.classList.toggle('active');
+        });
+        
+        navOverlay.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+            navOverlay.classList.remove('active');
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                navOverlay.classList.remove('active');
+            });
+        });
+        
+        // Quiz functionality
+        function selectOption(optionElement, questionName) {
+            // Remove selected class from all options in this question
+            const options = document.querySelectorAll(`[name="${questionName}"]`);
+            options.forEach(opt => {
+                opt.parentElement.classList.remove('selected');
+            });
+            
+            // Add selected class to clicked option
+            optionElement.classList.add('selected');
+            
+            // Check the radio button
+            const radioBtn = optionElement.querySelector('input[type="radio"]');
+            radioBtn.checked = true;
+        }
+        
+        function checkAnswer(questionName, correctId, correctFeedbackId, incorrectFeedbackId) {
+            const selectedOption = document.querySelector(`input[name="${questionName}"]:checked`);
+            
+            if (!selectedOption) {
+                alert('Please select an answer first.');
+                return;
+            }
+            
+            // Hide all feedback for this question first
+            document.getElementById(correctFeedbackId).style.display = 'none';
+            document.getElementById(incorrectFeedbackId).style.display = 'none';
+            
+            // Show correct feedback
+            if (selectedOption.id === correctId) {
+                document.getElementById(correctFeedbackId).style.display = 'block';
+            } else {
+                document.getElementById(incorrectFeedbackId).style.display = 'block';
+            }
+        }
+        
+        // Progress tracking
+        function updateProgress() {
+            const sections = document.querySelectorAll('.section');
+            const scrollPosition = window.scrollY;
+            const windowHeight = window.innerHeight;
+            const documentHeight = document.documentElement.scrollHeight;
+            
+            // Calculate percentage scrolled
+            const scrollPercentage = (scrollPosition / (documentHeight - windowHeight)) * 100;
+            
+            // Update progress bar
+            const progressFill = document.getElementById('progressFill');
+            progressFill.style.width = `${scrollPercentage}%`;
+            
+            // Update progress text
+            const progressText = document.querySelector('.progress-text span:first-child');
+            progressText.textContent = `${Math.min(100, Math.round(scrollPercentage))}% Complete`;
+        }
+        
+        // Update progress on scroll
+        window.addEventListener('scroll', updateProgress);
+        
+        // Initialize progress on page load
+        document.addEventListener('DOMContentLoaded', updateProgress);
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Add check answer buttons dynamically
+        document.querySelectorAll('.quiz').forEach(quiz => {
+            const btn = document.createElement('button');
+            btn.className = 'btn-check';
+            btn.style.cssText = `
+                background-color: var(--primary);
+                color: white;
+                border: none;
+                padding: 0.8rem 1.5rem;
+                border-radius: var(--border-radius);
+                cursor: pointer;
+                font-weight: 600;
+                transition: var(--transition);
+                margin-top: 1rem;
+                display: block;
+            `;
+            btn.textContent = 'Check Answer';
+            btn.onmouseover = function() { this.style.backgroundColor = '#2a65c0'; };
+            btn.onmouseout = function() { this.style.backgroundColor = 'var(--primary)'; };
+            
+            // Find the last element before the feedback divs to insert before
+            const quizOptions = quiz.querySelector('.quiz-options');
+            if (quizOptions) {
+                quiz.insertBefore(btn, quizOptions.nextSibling);
+            }
+        });
+    </script>
+    <script src="navigation.js"></script>
+</body>
+</html>

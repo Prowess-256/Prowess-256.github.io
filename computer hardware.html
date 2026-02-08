@@ -1,0 +1,1781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 2: Computer Hardware and System Startup - Complete Learning Module</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4a6fa5;
+            --secondary: #6b9ac4;
+            --accent: #e76f51;
+            --warning: #e9c46a;
+            --light: #f8f9fa;
+            --dark: #202124;
+            --gray: #5f6368;
+            --border-radius: 10px;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: #f5f7fa;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary), #3a5785);
+            color: white;
+            padding: 2rem 0;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+            opacity: 0.1;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .course-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.8rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+        
+        .course-subtitle {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
+            max-width: 800px;
+        }
+        
+        .keywords {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 1rem;
+        }
+        
+        .keyword {
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .learning-outcomes {
+            background-color: rgba(255, 255, 255, 0.15);
+            border-radius: var(--border-radius);
+            padding: 1.2rem;
+            margin-top: 1.5rem;
+        }
+        
+        .learning-outcomes h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+        }
+        
+        .outcomes-list {
+            list-style: none;
+        }
+        
+        .outcomes-list li {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .outcomes-list i {
+            margin-right: 10px;
+            margin-top: 3px;
+            color: var(--warning);
+        }
+        
+        /* Navigation */
+        .module-nav {
+            background-color: white;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 0.5rem 0;
+            position: relative;
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--dark);
+            cursor: pointer;
+        }
+        
+        /* Main Content */
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .content-area {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 2.5rem;
+            box-shadow: var(--shadow);
+        }
+        
+        /* Sidebar */
+        .sidebar {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+        }
+        
+        .sidebar h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--light);
+            font-size: 1.3rem;
+        }
+        
+        .module-progress {
+            margin-bottom: 2rem;
+        }
+        
+        .progress-bar {
+            height: 8px;
+            background-color: #e0e0e0;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 0.5rem;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background-color: var(--secondary);
+            width: 0%;
+            transition: width 1s ease;
+        }
+        
+        .progress-text {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+        
+        .sidebar-nav {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+        
+        .sidebar-nav li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .sidebar-nav a {
+            text-decoration: none;
+            color: var(--dark);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: var(--transition);
+            padding: 0.5rem;
+            border-radius: 5px;
+        }
+        
+        .sidebar-nav a:hover {
+            background-color: rgba(74, 111, 165, 0.1);
+            color: var(--primary);
+            transform: translateX(5px);
+        }
+        
+        .sidebar-nav i {
+            color: var(--primary);
+            width: 20px;
+            text-align: center;
+        }
+        
+        .assessment-info {
+            background-color: rgba(233, 196, 106, 0.1);
+            border-radius: var(--border-radius);
+            padding: 1.2rem;
+            border-left: 4px solid var(--warning);
+        }
+        
+        .assessment-info h4 {
+            color: var(--dark);
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .assessment-info ul {
+            padding-left: 1.2rem;
+            font-size: 0.9rem;
+        }
+        
+        .assessment-info li {
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Section Styling */
+        .section {
+            margin-bottom: 3rem;
+            scroll-margin-top: 100px;
+        }
+        
+        h2 {
+            color: var(--primary);
+            font-family: 'Poppins', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--light);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        h2 i {
+            color: var(--primary);
+        }
+        
+        h3 {
+            color: var(--dark);
+            font-size: 1.6rem;
+            margin: 1.8rem 0 1rem;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        h4 {
+            color: var(--dark);
+            font-size: 1.3rem;
+            margin: 1.5rem 0 0.8rem;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        p {
+            margin-bottom: 1.2rem;
+        }
+        
+        .key-term {
+            background-color: rgba(107, 154, 196, 0.1);
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            font-weight: 600;
+            color: var(--secondary);
+        }
+        
+        /* Activity Box */
+        .activity {
+            background-color: #f8f9fa;
+            border-radius: var(--border-radius);
+            padding: 1.8rem;
+            margin: 2rem 0;
+            border-left: 5px solid var(--primary);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+        
+        .activity-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.2rem;
+        }
+        
+        .activity-icon {
+            background-color: var(--primary);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-weight: bold;
+        }
+        
+        .activity-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.4rem;
+            color: var(--primary);
+        }
+        
+        .activity-instructions {
+            background-color: white;
+            padding: 1.2rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            border: 1px dashed #ddd;
+        }
+        
+        .activity-steps {
+            list-style: decimal;
+            padding-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .activity-steps li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .discussion-points {
+            background-color: rgba(231, 111, 81, 0.05);
+            padding: 1.2rem;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+            border-left: 4px solid var(--accent);
+        }
+        
+        .discussion-points h5 {
+            color: var(--accent);
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
+        }
+        
+        .discussion-points ul {
+            padding-left: 1.2rem;
+        }
+        
+        .discussion-points li {
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Information Boxes */
+        .info-box {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            box-shadow: var(--shadow);
+            border-top: 4px solid;
+        }
+        
+        .info-box.primary {
+            border-color: var(--primary);
+        }
+        
+        .info-box.secondary {
+            border-color: var(--secondary);
+        }
+        
+        .info-box.accent {
+            border-color: var(--accent);
+        }
+        
+        .info-box h4 {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 0;
+        }
+        
+        .info-box i {
+            font-size: 1.3rem;
+        }
+        
+        .info-box.primary h4 i {
+            color: var(--primary);
+        }
+        
+        .info-box.secondary h4 i {
+            color: var(--secondary);
+        }
+        
+        .info-box.accent h4 i {
+            color: var(--accent);
+        }
+        
+        /* Computer Parts Grid */
+        .parts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .part-card {
+            background-color: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            text-align: center;
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+        
+        .part-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: var(--shadow);
+        }
+        
+        .part-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .part-card h4 {
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+        
+        .part-category {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-top: 0.5rem;
+        }
+        
+        .category-input {
+            background-color: rgba(74, 111, 165, 0.1);
+            color: var(--primary);
+        }
+        
+        .category-output {
+            background-color: rgba(107, 154, 196, 0.1);
+            color: var(--secondary);
+        }
+        
+        .category-storage {
+            background-color: rgba(233, 196, 106, 0.1);
+            color: #d4a017;
+        }
+        
+        .category-processing {
+            background-color: rgba(231, 111, 81, 0.1);
+            color: var(--accent);
+        }
+        
+        .category-communication {
+            background-color: rgba(42, 157, 143, 0.1);
+            color: #2a9d8f;
+        }
+        
+        /* Comparison Table */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+        }
+        
+        .comparison-table th {
+            background-color: var(--primary);
+            color: white;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        .comparison-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .comparison-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        .comparison-table tr:hover {
+            background-color: rgba(74, 111, 165, 0.05);
+        }
+        
+        /* Connection Types */
+        .connection-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .connection-card {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            border-left: 4px solid var(--secondary);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+        
+        .connection-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+        
+        .connection-card h4 {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+        
+        /* Steps for Assembly */
+        .assembly-steps {
+            counter-reset: step-counter;
+            margin: 2rem 0;
+        }
+        
+        .step {
+            display: flex;
+            margin-bottom: 1.5rem;
+            align-items: flex-start;
+        }
+        
+        .step-number {
+            background-color: var(--primary);
+            color: white;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+        
+        .step-content {
+            flex: 1;
+        }
+        
+        .step-content h4 {
+            margin-top: 0;
+            color: var(--primary);
+        }
+        
+        /* Boot Process */
+        .boot-process {
+            background-color: #f8f9fa;
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--accent);
+        }
+        
+        /* Interactive Quiz */
+        .quiz {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: var(--shadow);
+            border: 2px solid var(--primary);
+        }
+        
+        .quiz-question {
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .quiz-option {
+            padding: 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .quiz-option:hover {
+            border-color: var(--primary);
+            background-color: rgba(74, 111, 165, 0.05);
+        }
+        
+        .quiz-option.selected {
+            border-color: var(--secondary);
+            background-color: rgba(107, 154, 196, 0.1);
+        }
+        
+        .quiz-option input {
+            margin-right: 10px;
+        }
+        
+        .quiz-feedback {
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            display: none;
+            margin-top: 1rem;
+        }
+        
+        .quiz-feedback.correct {
+            background-color: rgba(107, 154, 196, 0.1);
+            color: var(--secondary);
+            display: block;
+            border-left: 4px solid var(--secondary);
+        }
+        
+        .quiz-feedback.incorrect {
+            background-color: rgba(231, 111, 81, 0.1);
+            color: var(--accent);
+            display: block;
+            border-left: 4px solid var(--accent);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 3rem 0 1.5rem;
+            margin-top: 3rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-section h3 {
+            color: white;
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+            border-bottom: none;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 0.95rem;
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary);
+            padding-left: 5px;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                position: static;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .course-title {
+                font-size: 2.2rem;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                height: 100vh;
+                background-color: white;
+                flex-direction: column;
+                padding: 2rem;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+                transition: var(--transition);
+                z-index: 1000;
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .mobile-toggle {
+                display: block;
+            }
+            
+            .nav-overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.5);
+                z-index: 999;
+                display: none;
+            }
+            
+            .nav-overlay.active {
+                display: block;
+            }
+            
+            .content-area {
+                padding: 1.5rem;
+            }
+            
+            .parts-grid, .connection-types {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Print Styles */
+        @media print {
+            .module-nav, .sidebar, footer, .quiz, .activity {
+                display: none;
+            }
+            
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .content-area {
+                box-shadow: none;
+                padding: 0;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="navigation.css">
+</head>
+<body>
+    <!-- GLOBAL NAVIGATION WITH SUBMENUS -->
+<nav class="global-nav">
+    <div class="global-nav-container">
+        <a href="learning-hub.html" class="global-nav-brand">
+            <i class="fas fa-graduation-cap"></i> ICT Learning Hub
+        </a>
+        
+        <button class="nav-mobile-toggle" title="Toggle menu">
+            <i class="fas fa-bars"></i>
+        </button>
+        
+        <ul class="global-nav-menu">
+            <!-- Home -->
+            <li class="nav-item">
+                <a href="index.html">
+                    <i class="fas fa-home"></i> Home
+                </a>
+            </li>
+            
+            <!-- Office Applications -->
+            <li class="nav-item">
+                <a href="#" class="nav-dropdown-toggle">
+                    <i class="fas fa-file"></i> Office Applications
+                </a>
+                <ul class="nav-submenu">
+                    <li><a href="word processingone.html" class="submenu-item"><i class="fas fa-file-word"></i> Word Processing</a></li>
+                    <li><a href="word 2.html" class="submenu-item"><i class="fas fa-file-word"></i> Word Processing 2</a></li>
+                    <li><a href="word processingone.html" class="submenu-item"><i class="fas fa-file-word"></i> Word Processing</a></li>
+                    <li class="submenu-divider"></li>
+                    <li><a href="PowerPoint.html" class="submenu-item"><i class="fas fa-presentation"></i> Presentations</a></li>
+                    <li class="submenu-divider"></li>
+                    <li><a href="spreadsheets 1.html" class="submenu-item"><i class="fas fa-table"></i> Spreadsheets 1</a></li>
+                    <li><a href="spreadsheets 2.html" class="submenu-item"><i class="fas fa-table"></i> Spreadsheets 2</a></li>
+                </ul>
+            </li>
+            
+            <!-- System & Data -->
+            <li class="nav-item">
+                <a href="#" class="nav-dropdown-toggle">
+                    <i class="fas fa-server"></i> System & Data
+                </a>
+                <ul class="nav-submenu">
+                    <li><a href="DBMS.html" class="submenu-item"><i class="fas fa-database"></i> Database Management</a></li>
+                    <li><a href="software.html" class="submenu-item"><i class="fas fa-box"></i> Software Management</a></li>
+                    <li class="submenu-divider"></li>
+                    <li><a href="system security and data security .html" class="submenu-item"><i class="fas fa-lock"></i> System & Data Security</a></li>
+                    <li><a href="information_access_and_sharing_and_security.html" class="submenu-item"><i class="fas fa-share"></i> Information Sharing</a></li>
+                </ul>
+            </li>
+            
+            <!-- Design & Web -->
+            <li class="nav-item">
+                <a href="#" class="nav-dropdown-toggle">
+                    <i class="fas fa-palette"></i> Design & Web
+                </a>
+                <ul class="nav-submenu">
+                    <li><a href="web design.html" class="submenu-item"><i class="fas fa-globe"></i> Web Design</a></li>
+                    <li><a href="desktop publishing.html" class="submenu-item"><i class="fas fa-paint-brush"></i> Desktop Publishing</a></li>
+                </ul>
+            </li>
+            
+            <!-- Hardware & IT -->
+            <li class="nav-item">
+                <a href="#" class="nav-dropdown-toggle">
+                    <i class="fas fa-microchip"></i> Hardware & IT
+                </a>
+                <ul class="nav-submenu">
+                    <li><a href="computer hardware.html" class="submenu-item"><i class="fas fa-computer"></i> Computer Hardware</a></li>
+                    <li><a href="file and folder management.html" class="submenu-item"><i class="fas fa-folder"></i> File Management</a></li>
+                    <li><a href="Access-and-sharing.html" class="submenu-item"><i class="fas fa-users"></i> Access & Sharing</a></li>
+                </ul>
+            </li>
+            
+            <!-- Information & Safety -->
+            <li class="nav-item">
+                <a href="#" class="nav-dropdown-toggle">
+                    <i class="fas fa-shield"></i> Info & Safety
+                </a>
+                <ul class="nav-submenu">
+                    <li><a href="Health and safety .html" class="submenu-item"><i class="fas fa-heartbeat"></i> Health & Safety</a></li>
+                    <li><a href="Waste management.html" class="submenu-item"><i class="fas fa-recycle"></i> Waste Management</a></li>
+                </ul>
+            </li>
+            
+            <!-- General -->
+            <li class="nav-item">
+                <a href="#" class="nav-dropdown-toggle">
+                    <i class="fas fa-book"></i> General
+                </a>
+                <ul class="nav-submenu">
+                    <li><a href="introduction to ICT.html" class="submenu-item"><i class="fas fa-book-open"></i> Introduction to ICT</a></li>
+                    <li><a href="ticking timer..html" class="submenu-item"><i class="fas fa-clock"></i> Ticking Timer</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</nav>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <h1 class="course-title">Computer Hardware and System Startup</h1>
+            <p class="course-subtitle">Chapter 2: Understanding computer hardware components, assembly, and system startup procedures</p>
+            
+            <div class="keywords">
+                <span class="keyword">Hardware</span>
+                <span class="keyword">Booting</span>
+                <span class="keyword">Peripheral</span>
+                <span class="keyword">Device</span>
+                <span class="keyword">System Unit</span>
+                <span class="keyword">Input Devices</span>
+                <span class="keyword">Output Devices</span>
+            </div>
+            
+            <div class="learning-outcomes">
+                <h3><i class="fas fa-bullseye"></i> Learning Outcomes</h3>
+                <ul class="outcomes-list">
+                    <li><i class="fas fa-check-circle"></i> Know the physical devices of a computer system and how each operates</li>
+                    <li><i class="fas fa-check-circle"></i> Assemble a computer system from its components</li>
+                    <li><i class="fas fa-check-circle"></i> Safely start and shut down a computer system</li>
+                    <li><i class="fas fa-check-circle"></i> Use computer peripheral tools effectively</li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="module-nav">
+        <div class="container nav-container">
+            <div class="nav-brand">
+                <span class="nav-brand-text">ICT - Chapter 2: Computer Hardware</span>
+            </div>
+            
+            <button class="mobile-toggle" id="mobileToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#section1"><i class="fas fa-desktop"></i> Computer Hardware</a></li>
+                <li><a href="#section2"><i class="fas fa-cubes"></i> Hardware Categories</a></li>
+                <li><a href="#section3"><i class="fas fa-tools"></i> Assembling a Computer</a></li>
+                <li><a href="#section4"><i class="fas fa-power-off"></i> Starting & Shutting Down</a></li>
+                <li><a href="#section5"><i class="fas fa-laptop"></i> Laptop Setup</a></li>
+                <li><a href="#quiz"><i class="fas fa-question-circle"></i> Knowledge Check</a></li>
+            </ul>
+        </div>
+        
+        <div class="nav-overlay" id="navOverlay"></div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container main-content">
+        <!-- Content Area -->
+        <main class="content-area">
+            <!-- Section 1: Meaning of Computer Hardware -->
+            <section class="section" id="section1">
+                <h2><i class="fas fa-desktop"></i> Meaning of Computer Hardware</h2>
+                
+                <div class="info-box primary">
+                    <h4><i class="fas fa-cogs"></i> What is Computer Hardware?</h4>
+                    <p>A computer is a system of many parts working together. The <span class="key-term">tangible parts</span> that you can touch and feel such as the monitor, keyboard, mouse, disk drives, printer, scanner and speakers are collectively referred to as <span class="key-term">hardware</span>. The opposite of hardware is <span class="key-term">software</span>, which refers to the instructions or programs that tell the hardware what to do.</p>
+                </div>
+                
+                <h3>Computer Hardware Components</h3>
+                <p>In comparison with the human being, hardware may be considered as the body while software is the brain. Imagine you have been asked to type and produce a letter inviting your head teacher to a debating competition. In this case:</p>
+                
+                <div class="parts-grid">
+                    <div class="part-card">
+                        <div class="part-icon">
+                            <i class="fas fa-keyboard"></i>
+                        </div>
+                        <h4>Keyboard</h4>
+                        <p>Used for typing the letter</p>
+                        <span class="part-category category-input">Input Device</span>
+                    </div>
+                    
+                    <div class="part-card">
+                        <div class="part-icon">
+                            <i class="fas fa-mouse"></i>
+                        </div>
+                        <h4>Mouse</h4>
+                        <p>Controls cursor on the screen</p>
+                        <span class="part-category category-input">Input Device</span>
+                    </div>
+                    
+                    <div class="part-card">
+                        <div class="part-icon">
+                            <i class="fas fa-tv"></i>
+                        </div>
+                        <h4>Monitor</h4>
+                        <p>Displays the work on screen</p>
+                        <span class="part-category category-output">Output Device</span>
+                    </div>
+                    
+                    <div class="part-card">
+                        <div class="part-icon">
+                            <i class="fas fa-print"></i>
+                        </div>
+                        <h4>Printer</h4>
+                        <p>Produces hard copy of the work</p>
+                        <span class="part-category category-output">Output Device</span>
+                    </div>
+                </div>
+                
+                <div class="activity">
+                    <div class="activity-header">
+                        <div class="activity-icon">1</div>
+                        <div class="activity-title">Activity 2.1: Parts of a Computer</div>
+                    </div>
+                    
+                    <div class="activity-instructions">
+                        <p><strong>Instructions:</strong> Discuss and identify whether each device is an input, output, storage, communication or processing device.</p>
+                    </div>
+                    
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Label</th>
+                                <th>Name of Device</th>
+                                <th>Category</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Mouse</td>
+                                <td>Input Device</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Keyboard</td>
+                                <td>Input Device</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Monitor</td>
+                                <td>Output Device</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>System Unit</td>
+                                <td>Processing/Storage</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>Printer</td>
+                                <td>Output Device</td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>Speakers</td>
+                                <td>Output Device</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+            
+            <!-- Section 2: Categories of Computer Hardware -->
+            <section class="section" id="section2">
+                <h2><i class="fas fa-cubes"></i> Categories of Computer Hardware</h2>
+                
+                <p>Hardware devices are categorized according to their functions. The various hardware categories include:</p>
+                
+                <div class="connection-types">
+                    <div class="connection-card">
+                        <h4><i class="fas fa-sign-in-alt"></i> Input Devices</h4>
+                        <p>Used for entering data or information into the computer. Examples: keyboard, mouse, microphone, scanner, camera.</p>
+                    </div>
+                    
+                    <div class="connection-card">
+                        <h4><i class="fas fa-sign-out-alt"></i> Output Devices</h4>
+                        <p>Used for producing or displaying information which can be in form of a soft copy or hard copy. Examples: monitor, printer, speakers, projector.</p>
+                    </div>
+                    
+                    <div class="connection-card">
+                        <h4><i class="fas fa-database"></i> Storage Devices</h4>
+                        <p>Used for storing data or information for future use. Can be internal (hard disk) or external (flash drive, CD).</p>
+                    </div>
+                    
+                    <div class="connection-card">
+                        <h4><i class="fas fa-microchip"></i> Processing Devices</h4>
+                        <p>Process data and instructions. The Central Processing Unit (CPU) is the main processing device.</p>
+                    </div>
+                    
+                    <div class="connection-card">
+                        <h4><i class="fas fa-wifi"></i> Communication Devices</h4>
+                        <p>Enable computers to connect and communicate with other devices. Examples: modem, network card, router.</p>
+                    </div>
+                </div>
+                
+                <div class="info-box secondary">
+                    <h4><i class="fas fa-copy"></i> Soft Copy vs Hard Copy</h4>
+                    <p><strong>Soft Copy:</strong> Information displayed on a screen or stored electronically (e.g., document on computer screen, PDF file).</p>
+                    <p><strong>Hard Copy:</strong> Physical printed version of information (e.g., printed document, photograph).</p>
+                </div>
+                
+                <div class="activity">
+                    <div class="activity-header">
+                        <div class="activity-icon">2</div>
+                        <div class="activity-title">Activity 2.2: Categories of Computer Hardware</div>
+                    </div>
+                    
+                    <div class="activity-instructions">
+                        <p><strong>Instructions:</strong> Move around the computer laboratory or any office in your school and identify other computer hardware devices.</p>
+                    </div>
+                    
+                    <ol class="activity-steps">
+                        <li>What is the difference between a soft copy and a hard copy? Give examples to support your answer.</li>
+                        <li>Identify other computer hardware devices and summarize their details in terms of Name, features, function and category.</li>
+                        <li>Identify at least one device in each category and demonstrate how it works.</li>
+                    </ol>
+                </div>
+            </section>
+            
+            <!-- Section 3: Assembling a Computer System -->
+            <section class="section" id="section3">
+                <h2><i class="fas fa-tools"></i> Assembling a Computer System</h2>
+                
+                <div class="info-box primary">
+                    <h4><i class="fas fa-puzzle-piece"></i> Computer System Assembly</h4>
+                    <p>When hardware devices are connected together properly, they make a computer system. For a computer system to work well, hardware devices must be connected properly. If you are setting up a newly purchased computer, you will probably find a how-to use or a user guide in the packaging that includes step-by-step details.</p>
+                </div>
+                
+                <h3>Steps for Assembling a Desktop Computer</h3>
+                
+                <div class="assembly-steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Check Available Devices</h4>
+                            <p>Check whether all the required devices are available: system unit, monitor, keyboard, mouse, power cables, and any other peripherals.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Connect Monitor Cable</h4>
+                            <p>Locate the monitor cable (usually VGA or DVI). VGA cables often have blue connectors. Connect one end to the monitor port on the back of the computer case and the other end to the monitor. Hand-tighten the plastic-covered screws to secure it.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>Connect Other Devices</h4>
+                            <p>Connect other devices by looking at the port types: USB for keyboard and mouse, audio ports for speakers/microphone, etc. Match the shapes and colors of connectors to the correct ports.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h4>Connect Power Supply Cables</h4>
+                            <p>Locate the power supply cables. Plug the first power supply cable into the back of the computer case, and then into a surge protector. Then, using the other cable, connect the monitor to the surge protector.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <h4>Connect to Power Source</h4>
+                            <p>Finally, plug the surge protector into a wall outlet. You may also need to turn the surge protector on if it has a power switch.</p>
+                            <div class="discussion-points">
+                                <h5>Important Note</h5>
+                                <p>If you don't have a surge protector, you can plug the computer directly into the wall. However, this is not recommended, as electrical surges can damage your computer.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="activity">
+                    <div class="activity-header">
+                        <div class="activity-icon">3</div>
+                        <div class="activity-title">Activity 2.3: Assembling a Computer System (Desktop)</div>
+                    </div>
+                    
+                    <div class="activity-instructions">
+                        <p><strong>Instructions:</strong> With guidance from your teacher, assemble a computer system from its various parts provided in the computer laboratory.</p>
+                    </div>
+                    
+                    <ol class="activity-steps">
+                        <li>Follow the steps outlined above to assemble a computer system</li>
+                        <li>Explain any key steps followed to assemble the computer system</li>
+                        <li>What precautions must be taken while assembling a computer system?</li>
+                    </ol>
+                    
+                    <div class="discussion-points">
+                        <h5>Precautions for Computer Assembly</h5>
+                        <ul>
+                            <li>Handle components with care to avoid static electricity damage</li>
+                            <li>Ensure power is disconnected before connecting/disconnecting cables</li>
+                            <li>Match connectors carefully - don't force connections</li>
+                            <li>Keep organized and follow a systematic approach</li>
+                            <li>Work on a clean, dry surface</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Section 4: Starting and Shutting Down a Computer System -->
+            <section class="section" id="section4">
+                <h2><i class="fas fa-power-off"></i> Starting and Shutting Down a Computer System</h2>
+                
+                <div class="info-box secondary">
+                    <h4><i class="fas fa-play-circle"></i> Booting Process</h4>
+                    <p>The process of starting a computer is called <span class="key-term">booting</span>. After assembling a computer, the next step is to power it on correctly, use it, and then shut it down with proper procedures.</p>
+                </div>
+                
+                <h3>Starting the Computer</h3>
+                
+                <div class="boot-process">
+                    <ol class="activity-steps">
+                        <li>Make sure all the plugs are well connected</li>
+                        <li>Switch on the electricity socket and the Uninterruptible Power Supply Unit (if available)</li>
+                        <li>Press the power button on the computer monitor first - it should show signal</li>
+                        <li>Press the power button on the system unit</li>
+                        <li>The computer should now start to boot and load the operating system (e.g., Windows)</li>
+                        <li>If the welcome screen appears, select your username and enter the password</li>
+                        <li>The Desktop should now appear</li>
+                        <li>Give it time to load the elements and start up programs</li>
+                    </ol>
+                </div>
+                
+                <h3>Shutting Down a Computer System</h3>
+                <p>Proper shutdown is important to prevent data loss and hardware damage:</p>
+                
+                <div class="connection-types">
+                    <div class="connection-card">
+                        <h4><i class="fas fa-stop-circle"></i> Turn Off Computer</h4>
+                        <p>Located on the Start menu. The Turn Off Computer dialog has options to turn off, standby/hibernate, or restart the computer.</p>
+                    </div>
+                    
+                    <div class="connection-card">
+                        <h4><i class="fas fa-sign-out-alt"></i> Log Off</h4>
+                        <p>Log Off option is also located on the Start menu. This closes your user session but leaves the computer running.</p>
+                    </div>
+                    
+                    <div class="connection-card">
+                        <h4><i class="fas fa-exchange-alt"></i> Switch User</h4>
+                        <p>Allows another user to log in without closing your programs. Also located on the Start menu.</p>
+                    </div>
+                </div>
+                
+                <div class="activity">
+                    <div class="activity-header">
+                        <div class="activity-icon">4</div>
+                        <div class="activity-title">Activity 2.4: Starting and Shutting Down a Computer System</div>
+                    </div>
+                    
+                    <div class="activity-instructions">
+                        <p><strong>Instructions:</strong> Explain the logical order of switching on an assembled computer system and how it can be shut down properly.</p>
+                    </div>
+                    
+                    <ol class="activity-steps">
+                        <li>Explain the logical order of switching on the assembled computer system and how it can be shut down properly</li>
+                        <li>Starting from a fully connected computer system, demonstrate how a computer can be switched on and later switched off after use</li>
+                        <li>What precautions MUST be considered in the above process?</li>
+                    </ol>
+                    
+                    <div class="discussion-points">
+                        <h5>Shutdown Precautions</h5>
+                        <ul>
+                            <li>Save all work before shutting down</li>
+                            <li>Close all programs before shutting down</li>
+                            <li>Use the proper shutdown procedure (don't just turn off power)</li>
+                            <li>Wait for the computer to completely shut down before turning off power strip/UPS</li>
+                            <li>For emergencies, use the power button only as a last resort</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Section 5: Laptop Setup -->
+            <section class="section" id="section5">
+                <h2><i class="fas fa-laptop"></i> Setting Up a Laptop Computer</h2>
+                
+                <div class="info-box accent">
+                    <h4><i class="fas fa-laptop-code"></i> Laptop Computer Setup</h4>
+                    <p>If you have a laptop, setup should be very easy. Just open it up and press the power button. If the battery is not charged, you will need to plug in the AC adapter and charge it before using it.</p>
+                </div>
+                
+                <div class="parts-grid">
+                    <div class="part-card">
+                        <div class="part-icon">
+                            <i class="fas fa-battery-full"></i>
+                        </div>
+                        <h4>Battery</h4>
+                        <p>Check battery charge level before use</p>
+                    </div>
+                    
+                    <div class="part-card">
+                        <div class="part-icon">
+                            <i class="fas fa-plug"></i>
+                        </div>
+                        <h4>AC Adapter</h4>
+                        <p>Plug in to charge battery or use directly</p>
+                    </div>
+                    
+                    <div class="part-card">
+                        <div class="part-icon">
+                            <i class="fas fa-power-off"></i>
+                        </div>
+                        <h4>Power Button</h4>
+                        <p>Usually located near keyboard or on side</p>
+                    </div>
+                    
+                    <div class="part-card">
+                        <div class="part-icon">
+                            <i class="fas fa-volume-up"></i>
+                        </div>
+                        <h4>Peripherals</h4>
+                        <p>External speakers, mouse, etc. use same connections as desktop</p>
+                    </div>
+                </div>
+                
+                <h3>Laptop vs Desktop Setup</h3>
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Aspect</th>
+                            <th>Desktop Computer</th>
+                            <th>Laptop Computer</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Setup Complexity</strong></td>
+                            <td>More complex - multiple components to connect</td>
+                            <td>Very simple - mostly integrated</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Portability</strong></td>
+                            <td>Not portable - stays in one location</td>
+                            <td>Highly portable - can be used anywhere</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Power Source</strong></td>
+                            <td>Always needs direct power connection</td>
+                            <td>Can use battery or power adapter</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Peripheral Connections</strong></td>
+                            <td>Many ports available for expansion</td>
+                            <td>Limited ports, may need adapters</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            
+            <!-- Quiz Section -->
+            <section class="section" id="quiz">
+                <h2><i class="fas fa-question-circle"></i> Knowledge Check: Computer Hardware Quiz</h2>
+                
+                <div class="quiz">
+                    <div class="quiz-question" id="question1">
+                        1. What is the process of starting a computer called?
+                    </div>
+                    
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="selectOption(this, 'q1')">
+                            <input type="radio" name="q1" id="q1a">
+                            <label for="q1a">Initializing</label>
+                        </div>
+                        <div class="quiz-option" onclick="selectOption(this, 'q1')">
+                            <input type="radio" name="q1" id="q1b">
+                            <label for="q1b">Booting</label>
+                        </div>
+                        <div class="quiz-option" onclick="selectOption(this, 'q1')">
+                            <input type="radio" name="q1" id="q1c">
+                            <label for="q1c">Launching</label>
+                        </div>
+                        <div class="quiz-option" onclick="selectOption(this, 'q1')">
+                            <input type="radio" name="q1" id="q1d">
+                            <label for="q1d">Starting Up</label>
+                        </div>
+                    </div>
+                    
+                    <div class="quiz-feedback correct" id="feedback1">
+                        <strong>Correct!</strong> The process of starting a computer is called booting.
+                    </div>
+                    <div class="quiz-feedback incorrect" id="feedback1-incorrect">
+                        <strong>Incorrect.</strong> The correct term is "booting" - the process a computer goes through when starting up.
+                    </div>
+                    
+                    <button class="btn-check" onclick="checkAnswer('q1', 'q1b', 'feedback1', 'feedback1-incorrect')">Check Answer</button>
+                </div>
+                
+                <div class="quiz">
+                    <div class="quiz-question" id="question2">
+                        2. Which of these is an INPUT device?
+                    </div>
+                    
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="selectOption(this, 'q2')">
+                            <input type="radio" name="q2" id="q2a">
+                            <label for="q2a">Monitor</label>
+                        </div>
+                        <div class="quiz-option" onclick="selectOption(this, 'q2')">
+                            <input type="radio" name="q2" id="q2b">
+                            <label for="q2b">Printer</label>
+                        </div>
+                        <div class="quiz-option" onclick="selectOption(this, 'q2')">
+                            <input type="radio" name="q2" id="q2c">
+                            <label for="q2c">Keyboard</label>
+                        </div>
+                        <div class="quiz-option" onclick="selectOption(this, 'q2')">
+                            <input type="radio" name="q2" id="q2d">
+                            <label for="q2d">Speaker</label>
+                        </div>
+                    </div>
+                    
+                    <div class="quiz-feedback correct" id="feedback2">
+                        <strong>Correct!</strong> The keyboard is an input device - it allows you to enter data into the computer.
+                    </div>
+                    <div class="quiz-feedback incorrect" id="feedback2-incorrect">
+                        <strong>Incorrect.</strong> Monitor, printer, and speakers are all output devices. The keyboard is an input device.
+                    </div>
+                    
+                    <button class="btn-check" onclick="checkAnswer('q2', 'q2c', 'feedback2', 'feedback2-incorrect')">Check Answer</button>
+                </div>
+                
+                <div class="quiz">
+                    <div class="quiz-question" id="question3">
+                        3. What should you connect a computer to for protection against electrical surges?
+                    </div>
+                    
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="selectOption(this, 'q3')">
+                            <input type="radio" name="q3" id="q3a">
+                            <label for="q3a">Extension cord</label>
+                        </div>
+                        <div class="quiz-option" onclick="selectOption(this, 'q3')">
+                            <input type="radio" name="q3" id="q3b">
+                            <label for="q3b">Surge protector</label>
+                        </div>
+                        <div class="quiz-option" onclick="selectOption(this, 'q3')">
+                            <input type="radio" name="q3" id="q3c">
+                            <label for="q3c">Direct wall outlet</label>
+                        </div>
+                        <div class="quiz-option" onclick="selectOption(this, 'q3')">
+                            <input type="radio" name="q3" id="q3d">
+                            <label for="q3d">Power inverter</label>
+                        </div>
+                    </div>
+                    
+                    <div class="quiz-feedback correct" id="feedback3">
+                        <strong>Correct!</strong> A surge protector protects computer equipment from voltage spikes that can damage components.
+                    </div>
+                    <div class="quiz-feedback incorrect" id="feedback3-incorrect">
+                        <strong>Incorrect.</strong> While you can plug directly into a wall outlet, a surge protector is recommended to protect against electrical surges that can damage your computer.
+                    </div>
+                    
+                    <button class="btn-check" onclick="checkAnswer('q3', 'q3b', 'feedback3', 'feedback3-incorrect')">Check Answer</button>
+                </div>
+                
+                <div class="quiz">
+                    <div class="quiz-question" id="question4">
+                        4. Which component is considered the "brain" of the computer?
+                    </div>
+                    
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="selectOption(this, 'q4')">
+                            <input type="radio" name="q4" id="q4a">
+                            <label for="q4a">Hard Disk</label>
+                        </div>
+                        <div class="quiz-option" onclick="selectOption(this, 'q4')">
+                            <input type="radio" name="q4" id="q4b">
+                            <label for="q4b">RAM</label>
+                        </div>
+                        <div class="quiz-option" onclick="selectOption(this, 'q4')">
+                            <input type="radio" name="q4" id="q4c">
+                            <label for="q4c">CPU</label>
+                        </div>
+                        <div class="quiz-option" onclick="selectOption(this, 'q4')">
+                            <input type="radio" name="q4" id="q4d">
+                            <label for="q4d">Motherboard</label>
+                        </div>
+                    </div>
+                    
+                    <div class="quiz-feedback correct" id="feedback4">
+                        <strong>Correct!</strong> The CPU (Central Processing Unit) is often called the "brain" of the computer because it processes instructions and performs calculations.
+                    </div>
+                    <div class="quiz-feedback incorrect" id="feedback4-incorrect">
+                        <strong>Incorrect.</strong> While all are important components, the CPU (Central Processing Unit) is specifically referred to as the "brain" of the computer.
+                    </div>
+                    
+                    <button class="btn-check" onclick="checkAnswer('q4', 'q4c', 'feedback4', 'feedback4-incorrect')">Check Answer</button>
+                </div>
+                
+                <div class="info-box primary">
+                    <h4><i class="fas fa-graduation-cap"></i> Chapter Summary</h4>
+                    <p>In this chapter, you have learnt about:</p>
+                    <ul>
+                        <li>The physical devices of a computer system and how each operates</li>
+                        <li>How to assemble a computer system from its components</li>
+                        <li>Safely starting and shutting down a computer system</li>
+                        <li>Using computer peripheral tools effectively</li>
+                        <li>The difference between hardware (physical components) and software (programs/instructions)</li>
+                        <li>The importance of using surge protectors for electrical safety</li>
+                    </ul>
+                </div>
+            </section>
+        </main>
+        
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="module-progress">
+                <h3>Chapter Progress</h3>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <div class="progress-text">
+                    <span>0% Complete</span>
+                    <span>100%</span>
+                </div>
+            </div>
+            
+            <h3>Chapter Navigation</h3>
+            <ul class="sidebar-nav">
+                <li><a href="#section1"><i class="fas fa-chevron-right"></i> Computer Hardware</a></li>
+                <li><a href="#section2"><i class="fas fa-chevron-right"></i> Hardware Categories</a></li>
+                <li><a href="#section3"><i class="fas fa-chevron-right"></i> Assembling a Computer</a></li>
+                <li><a href="#section4"><i class="fas fa-chevron-right"></i> Starting & Shutting Down</a></li>
+                <li><a href="#section5"><i class="fas fa-chevron-right"></i> Laptop Setup</a></li>
+                <li><a href="#quiz"><i class="fas fa-chevron-right"></i> Knowledge Check</a></li>
+            </ul>
+            
+            <div class="assessment-info">
+                <h4><i class="fas fa-clipboard-check"></i> Chapter Activities</h4>
+                <ul>
+                    <li>Activity 2.1: Parts of a Computer</li>
+                    <li>Activity 2.2: Hardware Categories</li>
+                    <li>Activity 2.3: Assembling a Computer</li>
+                    <li>Activity 2.4: Starting & Shutting Down</li>
+                </ul>
+            </div>
+            
+            <div class="info-box secondary" style="margin-top: 1.5rem;">
+                <h4><i class="fas fa-lightbulb"></i> Key Concepts</h4>
+                <p><strong>Hardware:</strong> Physical components of a computer</p>
+                <p><strong>Software:</strong> Programs that tell hardware what to do</p>
+                <p><strong>Booting:</strong> Process of starting a computer</p>
+                <p><strong>Peripheral:</strong> External device connected to computer</p>
+                <p><strong>Input/Output:</strong> Devices for entering/displaying data</p>
+            </div>
+            
+            <div class="info-box accent" style="margin-top: 1.5rem;">
+                <h4><i class="fas fa-exclamation-triangle"></i> Safety Tips</h4>
+                <p>• Always use surge protectors</p>
+                <p>• Follow proper shutdown procedures</p>
+                <p>• Handle components with care</p>
+                <p>• Keep liquids away from computers</p>
+                <p>• Work in a clean, organized space</p>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Computer Hardware and System Startup</h3>
+                    <p>Chapter 2 of the Senior One ICT curriculum. Learn about computer components, assembly, and proper startup/shutdown procedures.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#section1">Computer Hardware</a></li>
+                        <li><a href="#section2">Hardware Categories</a></li>
+                        <li><a href="#section3">Assembling a Computer</a></li>
+                        <li><a href="#section4">Starting & Shutting Down</a></li>
+                        <li><a href="#section5">Laptop Setup</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Key Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="#quiz">Knowledge Check Quiz</a></li>
+                        <li><a href="https://www.ncdc.go.ug" target="_blank">NCDC Website</a></li>
+                        <li><a href="#assessment">Chapter Activities</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 ICT Learning Module - Chapter 2: Computer Hardware and System Startup. Based on Uganda's NCDC ICT Curriculum. For educational purposes only.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Navigation Toggle
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navLinks = document.getElementById('navLinks');
+        const navOverlay = document.getElementById('navOverlay');
+        
+        mobileToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            navOverlay.classList.toggle('active');
+        });
+        
+        navOverlay.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+            navOverlay.classList.remove('active');
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                navOverlay.classList.remove('active');
+            });
+        });
+        
+        // Quiz functionality
+        function selectOption(optionElement, questionName) {
+            // Remove selected class from all options in this question
+            const options = document.querySelectorAll(`[name="${questionName}"]`);
+            options.forEach(opt => {
+                opt.parentElement.classList.remove('selected');
+            });
+            
+            // Add selected class to clicked option
+            optionElement.classList.add('selected');
+            
+            // Check the radio button
+            const radioBtn = optionElement.querySelector('input[type="radio"]');
+            radioBtn.checked = true;
+        }
+        
+        function checkAnswer(questionName, correctId, correctFeedbackId, incorrectFeedbackId) {
+            const selectedOption = document.querySelector(`input[name="${questionName}"]:checked`);
+            
+            if (!selectedOption) {
+                alert('Please select an answer first.');
+                return;
+            }
+            
+            // Hide all feedback for this question first
+            document.getElementById(correctFeedbackId).style.display = 'none';
+            document.getElementById(incorrectFeedbackId).style.display = 'none';
+            
+            // Show correct feedback
+            if (selectedOption.id === correctId) {
+                document.getElementById(correctFeedbackId).style.display = 'block';
+            } else {
+                document.getElementById(incorrectFeedbackId).style.display = 'block';
+            }
+        }
+        
+        // Progress tracking
+        function updateProgress() {
+            const sections = document.querySelectorAll('.section');
+            const scrollPosition = window.scrollY;
+            const windowHeight = window.innerHeight;
+            const documentHeight = document.documentElement.scrollHeight;
+            
+            // Calculate percentage scrolled
+            const scrollPercentage = (scrollPosition / (documentHeight - windowHeight)) * 100;
+            
+            // Update progress bar
+            const progressFill = document.getElementById('progressFill');
+            progressFill.style.width = `${scrollPercentage}%`;
+            
+            // Update progress text
+            const progressText = document.querySelector('.progress-text span:first-child');
+            progressText.textContent = `${Math.min(100, Math.round(scrollPercentage))}% Complete`;
+        }
+        
+        // Update progress on scroll
+        window.addEventListener('scroll', updateProgress);
+        
+        // Initialize progress on page load
+        document.addEventListener('DOMContentLoaded', updateProgress);
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Add check answer buttons dynamically
+        document.querySelectorAll('.quiz').forEach(quiz => {
+            const btn = document.createElement('button');
+            btn.className = 'btn-check';
+            btn.style.cssText = `
+                background-color: var(--primary);
+                color: white;
+                border: none;
+                padding: 0.8rem 1.5rem;
+                border-radius: var(--border-radius);
+                cursor: pointer;
+                font-weight: 600;
+                transition: var(--transition);
+                margin-top: 1rem;
+                display: block;
+            `;
+            btn.textContent = 'Check Answer';
+            btn.onmouseover = function() { this.style.backgroundColor = '#3a5a85'; };
+            btn.onmouseout = function() { this.style.backgroundColor = 'var(--primary)'; };
+            
+            // Find the last element before the feedback divs to insert before
+            const quizOptions = quiz.querySelector('.quiz-options');
+            if (quizOptions) {
+                quiz.insertBefore(btn, quizOptions.nextSibling);
+            }
+        });
+        
+        // Interactive hardware identification
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add click events to part cards for interactive learning
+            document.querySelectorAll('.part-card').forEach(card => {
+                card.addEventListener('click', function() {
+                    const deviceName = this.querySelector('h4').textContent;
+                    const category = this.querySelector('.part-category').textContent;
+                    
+                    // Create a simple alert with device info
+                    alert(`Device: ${deviceName}\nCategory: ${category}\n\nClick OK to continue learning.`);
+                });
+            });
+        });
+    </script>
+    <script src="navigation.js"></script>
+</body>
+</html>
