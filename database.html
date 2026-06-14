@@ -3,119 +3,270 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Database Management Systems | ICT Learning Module</title>
-    <meta name="description" content="Learn the fundamentals of database management systems - data organization, SQL, relationships, and database design">
+    <title>Database Management Systems (MS Access) | ICT Learning Module</title>
+    <meta name="description" content="Master database concepts and MS Access skills for data management as per the Ugandan ICT syllabus.">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="styles/main.css">
-    <link rel="stylesheet" href="styles/navigation.css">
-    <link rel="stylesheet" href="styles/components.css">
-    
-    <!-- Module-specific theme (Database - Purple/Magenta) -->
+    <!-- REMOVED external CSS dependencies to prevent navigation conflicts -->
     <style>
+        /* ============================================
+           COMPLETE FIXED CSS (Self-contained for this module)
+           ============================================ */
         :root {
             --theme-primary: #7c3aed;
             --theme-primary-light: #8b5cf6;
             --theme-primary-dark: #6d28d9;
             --theme-secondary: #ec4899;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8f9fa;
+            --bg-tertiary: #f1f3f5;
+            --text-primary: #1a1a2e;
+            --text-secondary: #4a5568;
+            --text-muted: #718096;
+            --border-light: #e2e8f0;
+            --border-medium: #cbd5e1;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+            --radius-sm: 0.375rem;
+            --radius-md: 0.5rem;
+            --radius-lg: 0.75rem;
+            --radius-xl: 1rem;
+            --radius-full: 9999px;
+            --transition-fast: 150ms ease;
+            --transition-normal: 250ms ease;
+            --container-max: 1200px;
+            --container-padding: 1.5rem;
         }
-        
-        .section h2 {
-            color: var(--theme-primary);
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        
-        .section h2::after {
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: var(--container-max);
+            margin: 0 auto;
+            padding: 0 var(--container-padding);
+            width: 100%;
+        }
+
+        /* Navigation */
+        .global-nav {
+            background: linear-gradient(135deg, #0a0f2a 0%, #0a0a2a 100%);
+            border-bottom: 2px solid #00ffff;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .global-nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .global-nav-brand {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #00ffff;
+            text-decoration: none;
+            padding: 16px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .global-nav-brand:hover { text-shadow: 0 0 10px cyan; }
+        .global-nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 8px;
+            margin: 0;
+            padding: 0;
+        }
+        .nav-item { position: relative; }
+        .nav-item > a {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 16px 18px;
+            color: #e0e0ff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.2s;
+            border-radius: 12px;
+        }
+        .nav-item > a:hover {
+            background: rgba(0, 255, 255, 0.15);
+            color: #00ffff;
+        }
+        .nav-submenu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: rgba(10, 20, 45, 0.98);
+            backdrop-filter: blur(12px);
+            min-width: 260px;
+            border-radius: 16px;
+            padding: 12px 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: 0.2s;
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.5);
+            z-index: 100;
+        }
+        .nav-item:hover .nav-submenu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        .submenu-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 20px;
+            color: #ccc;
+            text-decoration: none;
+            transition: 0.2s;
+            font-size: 0.9rem;
+        }
+        .submenu-item:hover {
+            background: rgba(0, 255, 255, 0.2);
+            color: #00ffff;
+            padding-left: 28px;
+        }
+        .submenu-group-header {
+            padding: 8px 20px;
+            color: #ffd966;
+            font-size: 0.75rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .submenu-divider {
+            height: 1px;
+            background: rgba(0, 255, 255, 0.2);
+            margin: 8px 0;
+        }
+        .nav-mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: #0ff;
+            font-size: 1.8rem;
+            cursor: pointer;
+            padding: 8px;
+        }
+        @media (max-width: 992px) {
+            .nav-mobile-toggle { display: block; }
+            .global-nav-menu {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                background: #0a0f2a;
+                padding: 20px;
+                gap: 0;
+            }
+            .global-nav-menu.active { display: flex; }
+            .nav-submenu {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                background: #0f1a30;
+                margin-top: 8px;
+                display: none;
+            }
+            .nav-item.active .nav-submenu { display: block; }
+        }
+
+        /* Typography & Sections */
+        h1, h2, h3, h4 { font-weight: 700; line-height: 1.2; margin-bottom: 1rem; }
+        h1 { font-size: 2.5rem; }
+        h2 { font-size: 2rem; margin-bottom: 1.5rem; color: var(--theme-primary); position: relative; display: inline-block; }
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -0.5rem;
+            left: 0;
+            width: 60px;
+            height: 3px;
             background: var(--theme-primary);
+            border-radius: var(--radius-full);
         }
-        
-        /* Database structure diagram */
-        .db-diagram {
+        .section-header { text-align: center; margin-bottom: 2rem; }
+        .section-header h1 { margin-bottom: 0.5rem; }
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            padding: 0.75rem 0;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid var(--border-light);
+            font-size: 0.85rem;
+        }
+        .breadcrumb a { color: var(--text-muted); text-decoration: none; }
+        .breadcrumb .current { color: var(--text-primary); font-weight: 500; }
+        .section { padding: 3rem 0 2rem; border-bottom: 1px solid var(--border-light); }
+        .section:last-of-type { border-bottom: none; }
+
+        /* Components */
+        .info-box {
+            background: var(--bg-secondary);
+            border-radius: var(--radius-lg);
+            padding: 1.25rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--theme-primary);
+        }
+        .info-box h4 { display: flex; align-items: center; gap: 0.5rem; font-size: 1rem; margin-bottom: 0.75rem; }
+        .activity-box {
             background: var(--bg-secondary);
             border-radius: var(--radius-lg);
             padding: 1.5rem;
-            margin: 1.5rem 0;
-            text-align: center;
+            margin: 2rem 0;
+            border-left: 4px solid var(--theme-primary);
         }
-        
-        .db-level {
-            background: var(--bg-primary);
-            border-radius: var(--radius-md);
-            padding: 1rem;
-            margin: 0.5rem 0;
-            border: 1px solid var(--border-light);
-            position: relative;
-        }
-        
-        .db-level.external {
-            border-left: 4px solid #10b981;
-        }
-        .db-level.conceptual {
-            border-left: 4px solid #f59e0b;
-        }
-        .db-level.internal {
-            border-left: 4px solid #ef4444;
-        }
-        
-        .db-level-title {
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-        }
-        
-        /* Entity-Relationship diagram symbols */
-        .er-symbols {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-            margin: 1rem 0;
-        }
-        
-        .er-symbol {
-            text-align: center;
-        }
-        
-        .er-box {
-            width: 80px;
-            height: 50px;
-            background: var(--bg-secondary);
-            border: 2px solid var(--theme-primary);
-            border-radius: var(--radius-md);
-            margin: 0 auto 0.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .er-diamond {
-            width: 60px;
-            height: 60px;
-            background: var(--bg-secondary);
-            border: 2px solid var(--theme-secondary);
-            transform: rotate(45deg);
-            margin: 0 auto 0.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .er-diamond span {
-            transform: rotate(-45deg);
-        }
-        
-        .er-oval {
-            width: 80px;
-            height: 40px;
-            background: var(--bg-secondary);
-            border: 2px solid #f59e0b;
+        .activity-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; }
+        .activity-number {
+            width: 36px;
+            height: 36px;
+            background: var(--theme-primary);
+            color: white;
             border-radius: 50%;
-            margin: 0 auto 0.5rem;
             display: flex;
             align-items: center;
             justify-content: center;
+            font-weight: bold;
         }
-        
-        /* SQL code block */
-        .sql-block {
+        .activity-title { font-size: 1.25rem; font-weight: 600; color: var(--theme-primary); }
+        .activity-steps { list-style: decimal; padding-left: 1.25rem; margin: 1rem 0; }
+        .activity-steps li { margin-bottom: 0.5rem; }
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+        }
+        .data-table thead tr { background: var(--theme-primary); color: white; }
+        .data-table th, .data-table td { padding: 0.75rem 1rem; text-align: left; border-bottom: 1px solid var(--border-light); }
+        .data-table tbody tr:hover { background-color: var(--bg-secondary); }
+        .code-block, .sql-block {
             background: #1e1e2e;
             color: #e2e8f0;
             padding: 1rem;
@@ -125,738 +276,326 @@
             overflow-x: auto;
             margin: 1rem 0;
         }
-        
-        .sql-keyword {
-            color: #c678dd;
+        .sql-keyword { color: #c678dd; }
+        .sql-function { color: #61afef; }
+        .sql-string { color: #98c379; }
+        .sql-comment { color: #5c6370; }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            transition: all var(--transition-normal);
+            cursor: pointer;
+            border: none;
+            text-decoration: none;
         }
-        
-        .sql-function {
-            color: #61afef;
+        .btn-outline {
+            background: transparent;
+            color: var(--theme-primary);
+            border: 2px solid var(--theme-primary);
         }
-        
-        .sql-string {
-            color: #98c379;
+        .btn-outline:hover {
+            background: var(--theme-primary);
+            color: white;
+            transform: translateY(-2px);
         }
-        
-        .sql-comment {
-            color: #5c6370;
+        .site-footer {
+            background: #1a1a2e;
+            padding: 3rem 0 1.5rem;
+            margin-top: 4rem;
+            color: #94a3b8;
         }
-        
-        /* Key types table */
-        .keys-table {
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        .footer-bottom {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid #334155;
+            font-size: 0.8rem;
+        }
+        .module-wrapper { display: grid; grid-template-columns: 1fr 300px; gap: 2rem; margin: 2rem 0; }
+        .module-content { background: var(--bg-primary); border-radius: var(--radius-lg); padding: 2rem; border: 1px solid var(--border-light); }
+        .module-sidebar { position: sticky; top: 90px; align-self: start; }
+        .sidebar-nav {
             background: var(--bg-secondary);
             border-radius: var(--radius-lg);
-            overflow: hidden;
+            padding: 1.25rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--border-light);
         }
+        .sidebar-nav ul { list-style: none; }
+        .sidebar-nav li { margin-bottom: 0.5rem; }
+        .sidebar-nav a {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            border-radius: var(--radius-md);
+            transition: all var(--transition-fast);
+        }
+        .sidebar-nav a:hover { background-color: var(--bg-primary); color: var(--theme-primary); transform: translateX(4px); }
+        .progress-container {
+            background: var(--bg-secondary);
+            border-radius: var(--radius-lg);
+            padding: 1.25rem;
+            margin-bottom: 1.5rem;
+        }
+        .progress-bar { height: 8px; background-color: var(--border-medium); border-radius: var(--radius-full); overflow: hidden; margin-bottom: 0.5rem; }
+        .progress-fill { height: 100%; background-color: var(--theme-primary); width: 0%; transition: width var(--transition-normal); }
+        @media (max-width: 992px) { .module-wrapper { grid-template-columns: 1fr; } .module-sidebar { position: static; } }
+        @media print { .global-nav, .module-sidebar, .site-footer, .activity-box { display: none; } }
     </style>
 </head>
 <body>
 
-<!-- Navigation Placeholder -->
-<div id="global-nav-placeholder"></div>
+<!-- Navigation -->
+<nav class="global-nav">
+    <div class="global-nav-container">
+        <a href="index.html" class="global-nav-brand"><i class="fas fa-graduation-cap"></i> ICT Learning Hub</a>
+        <button class="nav-mobile-toggle" onclick="document.querySelector('.global-nav-menu').classList.toggle('active')"><i class="fas fa-bars"></i></button>
+        <ul class="global-nav-menu">
+            <li class="nav-item"><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+            <li class="nav-item">
+                <a href="#"><i class="fas fa-graduation-cap"></i> Learning Hub ▼</a>
+                <ul class="nav-submenu">
+                    <li class="submenu-group-header"><i class="fas fa-server"></i> System & Data</li>
+                    <li><a href="database.html" class="submenu-item"><i class="fas fa-database"></i> Database Management (MS Access)</a></li>
+                    <li><a href="software-management.html" class="submenu-item"><i class="fas fa-box"></i> Software Management</a></li>
+                    <li><a href="system-security.html" class="submenu-item"><i class="fas fa-lock"></i> System & Data Security</a></li>
+                    <li><a href="file-management.html" class="submenu-item"><i class="fas fa-folder"></i> File Management</a></li>
+                </ul>
+            </li>
+            <li class="nav-item"><a href="shorts2.html"><i class="fas fa-gamepad"></i> Gaming Center</a></li>
+        </ul>
+    </div>
+</nav>
 
 <main>
     <div class="container">
-        <!-- Breadcrumb -->
-        <div class="breadcrumb">
-            <a href="index.html">Home</a>
-            <span class="separator">/</span>
-            <a href="#">Learning Hub</a>
-            <span class="separator">/</span>
-            <span class="current" id="page-title">Database Management Systems</span>
-        </div>
+        <div class="breadcrumb"><a href="index.html">Home</a><span class="separator">/</span><span class="current">Database Management Systems (MS Access)</span></div>
         
-        <!-- Module Header -->
-        <div class="section-header" style="margin-bottom: 2rem;">
-            <h1>Database Management Systems</h1>
-            <p>Understanding database concepts, design, SQL, and data management</p>
-            <div class="keywords" style="display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; margin-top: 1rem;">
-                <span style="background: var(--bg-secondary); padding: 0.25rem 0.75rem; border-radius: 2rem; font-size: 0.8rem;">Database</span>
-                <span style="background: var(--bg-secondary); padding: 0.25rem 0.75rem; border-radius: 2rem; font-size: 0.8rem;">SQL</span>
-                <span style="background: var(--bg-secondary); padding: 0.25rem 0.75rem; border-radius: 2rem; font-size: 0.8rem;">Tables</span>
-                <span style="background: var(--bg-secondary); padding: 0.25rem 0.75rem; border-radius: 2rem; font-size: 0.8rem;">Relationships</span>
-                <span style="background: var(--bg-secondary); padding: 0.25rem 0.75rem; border-radius: 2rem; font-size: 0.8rem;">Normalization</span>
-                <span style="background: var(--bg-secondary); padding: 0.25rem 0.75rem; border-radius: 2rem; font-size: 0.8rem;">DBMS</span>
-            </div>
-        </div>
+        <div class="section-header"><h1>Database Management Systems</h1><p>Mastering MS Access for data management as per the Ugandan ICT Syllabus (Senior 3, Term 2)</p></div>
         
-        <!-- Module Layout: 2-column -->
         <div class="module-wrapper">
-            <!-- Main Content Area -->
             <div class="module-content">
                 <!-- Learning Outcomes -->
-                <div class="info-box" style="margin-bottom: 2rem;">
-                    <h4><i class="fas fa-bullseye"></i> Learning Outcomes</h4>
-                    <ul>
-                        <li>Understand database concepts and terminology</li>
-                        <li>Identify different types of databases and DBMS</li>
-                        <li>Design database structures using entity-relationship diagrams</li>
-                        <li>Understand keys and relationships in databases</li>
-                        <li>Write basic SQL queries (SELECT, INSERT, UPDATE, DELETE)</li>
-                        <li>Apply normalization principles to database design</li>
-                    </ul>
+                <div class="info-box"><h4><i class="fas fa-bullseye"></i> Learning Outcomes (Syllabus Based)</h4>
+                    <ul><li>Explain database concepts and identify DBMS examples (MS Access, Oracle, MySQL).</li>
+                    <li>Identify records, fields, and data types in a database.</li>
+                    <li>Create tables, define fields, and set appropriate data types and properties.</li>
+                    <li>Apply validation rules, validation text, and input masks.</li>
+                    <li>Create forms for easy data entry.</li>
+                    <li>Query databases using operators (=, >, <, >=, <=, <>, IS NULL).</li>
+                    <li>Generate professional reports with calculations.</li>
+                    <li>Create a relational database with up to two tables.</li>
+                    <li>Print database objects to required layouts.</li></ul>
                 </div>
-                
-                <!-- Section 1: Introduction to Databases -->
-                <section id="section1" class="section">
-                    <h2><i class="fas fa-database"></i> Introduction to Databases</h2>
-                    
-                    <div class="info-box">
-                        <h4><i class="fas fa-info-circle"></i> What is a Database?</h4>
-                        <p>A <strong>database</strong> is an organized collection of structured data stored electronically in a computer system. Databases are designed to efficiently store, retrieve, and manage large amounts of data.</p>
-                    </div>
-                    
-                    <h3>Database vs. Spreadsheet</h3>
-                    <table class="data-table">
-                        <thead>
-                            <tr><th>Feature</th><th>Spreadsheet</th><th>Database</th></tr>
-                        </thead>
-                        <tbody>
-                            <tr><td><strong>Data Volume</strong></span></td>:<span>Limited (rows)</span></td>:<span>Very large (millions of records)</span></td></tr>
-                            <tr><td><strong>Multi-user Access</strong></span></td>:<span>Limited</span></td>:<span>Excellent with conflict resolution</span></td></tr>
-                            <tr><td><strong>Data Relationships</strong></span></td>:<span>Manual</span></td>:<span>Built-in relationship management</span></td></tr>
-                            <tr><td><strong>Data Integrity</strong></span></td>:<span>Limited</span></td>:<span>Strong with constraints and rules</span></td></tr>
-                            <tr><td><strong>Query Language</strong></span></td>:<span>Limited formulas</span></td>:<span>Powerful SQL queries</span></td></tr>
-                            <tr><td><strong>Security</strong></span></td>:<span>Basic</span></td>:<span>Advanced user permissions</span></td></tr>
-                        </tbody>
+
+                <!-- SECTION 1: Intro & DBMS (Matches syllabus) -->
+                <section class="section"><h2><i class="fas fa-database"></i> 1. Introduction to Databases & DBMS</h2>
+                    <div class="info-box"><h4><i class="fas fa-info-circle"></i> What is a Database?</h4><p>A database is an organized collection of structured data stored electronically. A <strong>Database Management System (DBMS)</strong> is software that allows users to create, manage, and interact with databases. Examples include <strong>MS Access</strong>, MySQL, Oracle, and SQL Server.</p></div>
+                    <table class="data-table"><thead><tr><th>Feature</th><th>Spreadsheet</th><th>Database (MS Access)</th></tr></thead>
+                        <tbody><tr><td>Data Volume</td><td>Limited (rows)</td><td>Very large (millions of records)</td></tr>
+                        <tr><td>Multi-user Access</td><td>Limited</td><td>Excellent with conflict resolution</td></tr>
+                        <tr><td>Data Relationships</td><td>Manual</td><td>Built-in relationship management</td></tr>
+                        <tr><td>Query Language</td><td>Limited formulas</td><td>Powerful SQL queries & QBE (Query by Example)</td></tr></tbody>
                     </table>
-                    
-                    <h3>What is a DBMS?</h3>
-                    <div class="info-box">
-                        <h4><i class="fas fa-server"></i> Database Management System</h4>
-                        <p>A <strong>Database Management System (DBMS)</strong> is software that enables users to create, manage, and interact with databases. Examples include:</p>
-                        <ul>
-                            <li><strong>MySQL</strong> - Open-source, popular for web applications</li>
-                            <li><strong>PostgreSQL</strong> - Advanced open-source, enterprise-ready</li>
-                            <li><strong>Microsoft SQL Server</strong> - Enterprise, integrates with .NET</li>
-                            <li><strong>Oracle Database</strong> - Large-scale enterprise systems</li>
-                            <li><strong>SQLite</strong> - Lightweight, embedded databases</li>
-                            <li><strong>MongoDB</strong> - NoSQL document database</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="activity-box">
-                        <div class="activity-header">
-                            <div class="activity-number">1</div>
-                            <div class="activity-title">Activity: Database vs. Spreadsheet Analysis</div>
-                        </div>
-                        <p><strong>Instructions:</strong> Compare using a spreadsheet vs a database for different scenarios.</p>
-                        <ol class="activity-steps">
-                            <li>Consider these scenarios: personal budget, student records, inventory management, customer database</li>
-                            <li>For each scenario, decide if a spreadsheet or database would be more appropriate</li>
-                            <li>Justify your choices with reasons</li>
-                            <li>Create a comparison chart showing your analysis</li>
-                            <li>Share with the class</li>
-                        </ol>
-                    </div>
+                    <div class="activity-box"><div class="activity-header"><div class="activity-number">1</div><div class="activity-title">Activity: Brainstorming Database Uses</div></div>
+                    <p><strong>Instructions:</strong> In groups, discuss and list at least 5 real-world applications of databases (e.g., school records, bank accounts, hospital patient details, airline booking). Share with the class.</p></div>
                 </section>
-                
-                <!-- Section 2: Database Architecture -->
-                <section id="section2" class="section">
-                    <h2><i class="fas fa-architecture"></i> Database Architecture</h2>
-                    
-                    <h3>The Three-Level Architecture</h3>
-                    <div class="db-diagram">
-                        <div class="db-level external">
-                            <div class="db-level-title"><i class="fas fa-eye"></i> External Level (View Level)</div>
-                            <p>How users view the data - different users see different views</p>
-                            <div style="font-size: 0.8rem; color: var(--text-muted);">User 1 → View A | User 2 → View B | User 3 → View C</div>
-                        </div>
-                        <div class="db-level conceptual">
-                            <div class="db-level-title"><i class="fas fa-cubes"></i> Conceptual Level (Logical Level)</div>
-                            <p>What data is stored and the relationships between them</p>
-                            <div style="font-size: 0.8rem; color: var(--text-muted);">Tables, relationships, constraints</div>
-                        </div>
-                        <div class="db-level internal">
-                            <div class="db-level-title"><i class="fas fa-microchip"></i> Internal Level (Physical Level)</div>
-                            <p>How data is physically stored on storage devices</p>
-                            <div style="font-size: 0.8rem; color: var(--text-muted);">File structures, indexing, compression</div>
-                        </div>
-                    </div>
-                    
-                    <h3>Components of a DBMS</h3>
-                    <div class="health-grid">
-                        <div class="health-card">
-                            <i class="fas fa-cogs"></i>
-                            <h4>Query Processor</h4>
-                            <p>Interprets and executes SQL queries</p>
-                        </div>
-                        <div class="health-card">
-                            <i class="fas fa-database"></i>
-                            <h4>Storage Manager</h4>
-                            <p>Manages data storage and retrieval</p>
-                        </div>
-                        <div class="health-card">
-                            <i class="fas fa-users"></i>
-                            <h4>Transaction Manager</h4>
-                            <p>Ensures data consistency across concurrent access</p>
-                        </div>
-                        <div class="health-card">
-                            <i class="fas fa-shield-alt"></i>
-                            <h4>Security Manager</h4>
-                            <p>Controls user access and permissions</p>
-                        </div>
-                    </div>
+
+                <!-- SECTION 2: MS Access Interface & Objects (NEW - Syllabus requirement) -->
+                <section class="section"><h2><i class="fas fa-desktop"></i> 2. Getting Started with MS Access</h2>
+                    <div class="info-box"><h4><i class="fas fa-lightbulb"></i> MS Access Database Objects</h4><p>A database in MS Access consists of several key objects: <strong>Tables</strong> (store data), <strong>Queries</strong> (ask questions), <strong>Forms</strong> (data entry interface), <strong>Reports</strong> (printable output).</p></div>
+                    <div class="activity-box"><div class="activity-header"><div class="activity-number">2</div><div class="activity-title">Activity: Exploring MS Access Interface</div></div>
+                    <ol class="activity-steps"><li>Launch MS Access. Select <strong>"Blank Database"</strong>. Name it <code>SchoolDB.accdb</code> and save it.</li>
+                    <li>Identify the Navigation Pane on the left. Note the default "Table1".</li>
+                    <li>Switch between <strong>Datasheet View</strong> (data entry) and <strong>Design View</strong> (structure) using the buttons at the bottom-right of the Access window.</li>
+                    <li>Create a new table in Design View. Add fields: <code>StudentID (AutoNumber)</code>, <code>FirstName (Short Text)</code>, <code>LastName (Short Text)</code>, <code>DateOfBirth (Date/Time)</code>.</li>
+                    <li>Set <code>StudentID</code> as the <strong>Primary Key</strong> (right-click the row → Primary Key).</li>
+                    <li>Save the table as <strong>"Students"</strong>. Switch to Datasheet View and enter 5 sample student records.</li>
+                    <li><strong>Teacher Assessment:</strong> Observe correct creation of table, field types, and primary key.</li></ol></div>
                 </section>
-                
-                <!-- Section 3: Data Models and ER Diagrams -->
-                <section id="section3" class="section">
-                    <h2><i class="fas fa-project-diagram"></i> Data Models and ER Diagrams</h2>
-                    
-                    <div class="info-box">
-                        <h4><i class="fas fa-lightbulb"></i> Entity-Relationship (ER) Model</h4>
-                        <p>The ER model is used to design databases by identifying <strong>entities</strong> (objects), their <strong>attributes</strong> (properties), and <strong>relationships</strong> (associations).</p>
-                    </div>
-                    
-                    <h3>ER Diagram Symbols</h3>
-                    <div class="er-symbols">
-                        <div class="er-symbol">
-                            <div class="er-box">Entity</div>
-                            <p>Entity (rectangle)</p>
-                            <p style="font-size: 0.7rem;">Person, Place, Thing</p>
-                        </div>
-                        <div class="er-symbol">
-                            <div class="er-diamond"><span>R</span></div>
-                            <p>Relationship (diamond)</p>
-                            <p style="font-size: 0.7rem;">Works for, Owns, Enrolls</p>
-                        </div>
-                        <div class="er-symbol">
-                            <div class="er-oval">Attribute</div>
-                            <p>Attribute (oval)</p>
-                            <p style="font-size: 0.7rem;">Name, Age, ID</p>
-                        </div>
-                    </div>
-                    
-                    <h3>Example ER Diagram: University Database</h3>
-                    <div class="db-diagram">
-                        <p><strong>Student</strong> (StudentID, Name, DOB, Address)</p>
-                        <p>↓ <strong>enrolls in</strong> ↓</p>
-                        <p><strong>Course</strong> (CourseID, Title, Credits)</p>
-                        <p>↓ <strong>has</strong> ↓</p>
-                        <p><strong>Grade</strong> (Grade, Semester)</p>
-                    </div>
-                    
-                    <h3>Types of Relationships</h3>
-                    <table class="data-table">
-                        <thead>
-                            <tr><th>Relationship Type</th><th>Description</th><th>Example</th></tr>
-                        </thead>
-                        <tbody>
-                            <tr><td><strong>One-to-One (1:1)</strong></span></td>:<span>One entity relates to exactly one other entity</span></td>:<span>Person ↔ Passport</span></td></tr>
-                            <tr><td><strong>One-to-Many (1:M)</strong></span></td>:<span>One entity relates to many others</span></td>:<span>Department ↔ Employees</span></td></tr>
-                            <tr><td><strong>Many-to-Many (M:N)</strong></span></td>:<span>Many entities relate to many others</span></td>:<span>Students ↔ Courses</span></td></tr>
-                        </tbody>
-                    </table>
-                    
-                    <div class="activity-box">
-                        <div class="activity-header">
-                            <div class="activity-number">2</div>
-                            <div class="activity-title">Activity: Create an ER Diagram</div>
-                        </div>
-                        <p><strong>Objective:</strong> Create an ER diagram for a library management system.</p>
-                        <ol class="activity-steps">
-                            <li>Identify all entities (Book, Member, Loan, Author, Publisher)</li>
-                            <li>List attributes for each entity</li>
-                            <li>Identify relationships between entities</li>
-                            <li>Determine relationship types (1:1, 1:M, M:N)</li>
-                            <li>Draw your ER diagram on paper or using a digital tool</li>
-                            <li>Present your diagram to the class</li>
-                        </ol>
-                    </div>
+
+                <!-- SECTION 3: Data Types, Validation & Input Masks (NEW - Syllabus requirement) -->
+                <section class="section"><h2><i class="fas fa-check-circle"></i> 3. Data Types, Validation & Input Masks</h2>
+                    <div class="info-box"><h4><i class="fas fa-shield-alt"></i> Ensuring Data Integrity</h4><p><strong>Validation Rules</strong> ensure data entered meets specific criteria. <strong>Input Masks</strong> control the format of data entry (e.g., phone numbers, dates).</p></div>
+                    <div class="activity-box"><div class="activity-header"><div class="activity-number">3</div><div class="activity-title">Activity: Applying Validation and Input Masks</div></div>
+                    <ol class="activity-steps"><li>Open the <strong>Students</strong> table in Design View.</li>
+                    <li>Select the <code>DateOfBirth</code> field. In the Field Properties pane (bottom), click the <strong>Validation Rule</strong> box and type: <code>&gt;=#1/1/2000# And &lt;=#12/31/2010#</code> (adjust years as appropriate).</li>
+                    <li>In the <strong>Validation Text</strong> box, type: <code>"Date must be between 1/1/2000 and 12/31/2010"</code>. Save the table.</li>
+                    <li>Create a new field: <code>PhoneNumber</code> (Short Text). In the <strong>Input Mask</strong> property, click the ... button. Select "Phone Number" mask and follow the wizard.</li>
+                    <li>Attempt to enter an invalid date in Datasheet View to test the validation rule. Observe the error message.</li>
+                    <li><strong>Teacher Assessment:</strong> Check the correct implementation of validation rules, text, and input masks.</li></ol></div>
                 </section>
-                
-                <!-- Section 4: Keys in Databases -->
-                <section id="section4" class="section">
-                    <h2><i class="fas fa-key"></i> Keys in Databases</h2>
-                    
-                    <div class="keys-table">
-                        <table class="data-table">
-                            <thead>
-                                <tr><th>Key Type</th><th>Description</th><th>Example</th></tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><strong>Primary Key (PK)</strong></span>
-                                    <td>Uniquely identifies each record in a table</span>
-                                    <td>StudentID, EmployeeID, ProductID</span>
-                                </tr>
-                                <tr>
-                                    <td><strong>Foreign Key (FK)</strong></span>
-                                    <td>References the primary key in another table</span>
-                                    <td>CourseID in Enrollment table, DepartmentID in Employee table</span>
-                                </tr>
-                                <tr>
-                                    <td><strong>Candidate Key</strong></span>
-                                    <td>Could serve as primary key (unique, not null)</span>
-                                    <td>Email, Phone Number, National ID</span>
-                                </tr>
-                                <tr>
-                                    <td><strong>Composite Key</strong></span>
-                                    <td>Two or more columns combined to form a unique identifier</span>
-                                    <td>(StudentID, CourseID) in Enrollment</span>
-                                </tr>
-                                <tr>
-                                    <td><strong>Alternate Key</strong></span>
-                                    <td>Candidate keys not chosen as primary key</span>
-                                    <td>Email (if StudentID is PK)</span>
-                                </tr>
-                                <tr>
-                                    <td><strong>Super Key</strong></span>
-                                    <td>Set of attributes that uniquely identifies a record</span>
-                                    <td>{StudentID, Name} or {StudentID}</span>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    
-                    <div class="activity-box">
-                        <div class="activity-header">
-                            <div class="activity-number">3</div>
-                            <div class="activity-title">Activity: Identify Keys</div>
-                        </div>
-                        <p><strong>Instructions:</strong> For the given table, identify the different types of keys.</p>
-                        <div class="code-block" style="margin-bottom: 1rem;">
-                            <span class="sql-comment">-- Student Table</span><br>
-                            StudentID | NationalID | Email | Name | Phone | DepartmentID
-                        </div>
-                        <ol class="activity-steps">
-                            <li>Identify the Primary Key(s) - what would you choose? Why?</li>
-                            <li>Identify all Candidate Keys</li>
-                            <li>Identify the Foreign Key(s)</li>
-                            <li>Create a Composite Key example</li>
-                            <li>Explain your reasoning for each choice</li>
-                        </ol>
-                    </div>
+
+                <!-- SECTION 4: Creating Forms (NEW - Syllabus requirement) -->
+                <section class="section"><h2><i class="fas fa-window-maximize"></i> 4. Creating Data Entry Forms</h2>
+                    <div class="info-box"><h4><i class="fas fa-edit"></i> Why Use Forms?</h4><p>Forms provide a user-friendly interface for data entry, preventing users from accidentally modifying the underlying table structure.</p></div>
+                    <div class="activity-box"><div class="activity-header"><div class="activity-number">4</div><div class="activity-title">Activity: Building a Student Entry Form</div></div>
+                    <ol class="activity-steps"><li>Select the <strong>Students</strong> table in the Navigation Pane.</li>
+                    <li>Click the <strong>Create</strong> tab → <strong>Form</strong>. MS Access will automatically generate a bound form.</li>
+                    <li>Switch to <strong>Layout View</strong> to adjust the size and position of fields.</li>
+                    <li>Switch to <strong>Form View</strong>. Use the navigation buttons at the bottom to add, edit, and delete records.</li>
+                    <li>Add a new student using the form. Observe how the form updates the underlying table.</li>
+                    <li>Save the form as <strong>"frmStudents"</strong>.</li>
+                    <li><strong>Teacher Assessment:</strong> Evaluate the form's usability and correct binding to the table.</li></ol></div>
                 </section>
-                
-                <!-- Section 5: Normalization -->
-                <section id="section5" class="section">
-                    <h2><i class="fas fa-chart-line"></i> Normalization</h2>
-                    
-                    <div class="info-box">
-                        <h4><i class="fas fa-chart-line"></i> What is Normalization?</h4>
-                        <p>Normalization is the process of organizing data to minimize redundancy (duplicate data) and dependency anomalies. It involves splitting tables into smaller, related tables.</p>
-                    </div>
-                    
-                    <h3>Normal Forms</h3>
-                    <table class="data-table">
-                        <thead>
-                            <tr><th>Normal Form</th><th>Requirement</th><th>Example Violation</th></tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>1NF (First Normal Form)</strong>
-                                <td>No repeating groups or arrays; each cell contains atomic (single) value
-                                <td>A student having multiple phone numbers in one field
-                            </tr>
-                            <tr>
-                                <td><strong>2NF (Second Normal Form)</strong>
-                                <td>In 1NF + no partial dependencies (all non-key attributes depend on entire primary key)
-                                <td>In a composite key table, an attribute depends on only part of the key
-                            </tr>
-                            <tr>
-                                <td><strong>3NF (Third Normal Form)</strong>
-                                <td>In 2NF + no transitive dependencies (non-key attributes depend only on the primary key)
-                                <td>Student table containing Department Head name (depends on Department, not Student)
-                            </tr>
-                            <tr>
-                                <td><strong>BCNF</strong>
-                                <td>Stricter version of 3NF
-                                <td>Every determinant is a candidate key
-                            </tr>
-                        </tbody>
-                    </table>
-                    
-                    <h3>Example: Unnormalized vs Normalized</h3>
-                    <div class="code-block">
-                        <span class="sql-comment">-- UNNORMALIZED (Problems: repeating groups, redundancy)</span><br>
-                        Customer (CustomerID, Name, Address, Order1, Order2, Order3)<br><br>
-                        
-                        <span class="sql-comment">-- 1NF (Remove repeating groups)</span><br>
-                        Customer (CustomerID, Name, Address)<br>
-                        Orders (OrderID, CustomerID, Product)<br><br>
-                        
-                        <span class="sql-comment">-- 2NF (Remove partial dependencies)</span><br>
-                        Customer (CustomerID, Name, Address)<br>
-                        OrderItems (OrderID, ProductID, Quantity)<br>
-                        Products (ProductID, Name, Price)<br><br>
-                        
-                        <span class="sql-comment">-- 3NF (Remove transitive dependencies)</span><br>
-                        Employee (EmployeeID, Name, DepartmentID)<br>
-                        Department (DepartmentID, DeptName, ManagerID)
-                    </div>
-                    
-                    <div class="activity-box">
-                        <div class="activity-header">
-                            <div class="activity-number">4</div>
-                            <div class="activity-title">Activity: Normalize a Table</div>
-                        </div>
-                        <p><strong>Objective:</strong> Normalize an unnormalized table to 3NF.</p>
-                        <p>Given the table: <strong>StudentCourse</strong> (StudentID, Name, Address, CourseID, CourseName, Instructor, Grade)</p>
-                        <ol class="activity-steps">
-                            <li>Identify the repeating groups and redundancy issues</li>
-                            <li>Convert to 1NF</li>
-                            <li>Convert to 2NF (identify and remove partial dependencies)</li>
-                            <li>Convert to 3NF (identify and remove transitive dependencies)</li>
-                            <li>Draw the final normalized tables and their relationships</li>
-                        </ol>
-                    </div>
+
+                <!-- SECTION 5: Queries (NEW - Syllabus requirement with operators) -->
+                <section class="section"><h2><i class="fas fa-question"></i> 5. Querying the Database</h2>
+                    <div class="info-box"><h4><i class="fas fa-search"></i> What is a Query?</h4><p>Queries allow you to ask questions about your data and retrieve specific records. MS Access provides a graphical <strong>Query by Example (QBE)</strong> grid.</p></div>
+                    <div class="activity-box"><div class="activity-header"><div class="activity-number">5</div><div class="activity-title">Activity: Creating Queries with Operators</div></div>
+                    <ol class="activity-steps"><li>Go to <strong>Create</strong> tab → <strong>Query Design</strong>. Add the <strong>Students</strong> table.</li>
+                    <li>Add the fields: <code>FirstName, LastName, DateOfBirth</code>.</li>
+                    <li>In the <strong>Criteria</strong> row under <code>LastName</code>, type: <code>"Smith"</code> (for exact match). Run the query (red exclamation mark).</li>
+                    <li><strong>Using Comparison Operators:</strong><ul><li>In the Criteria under <code>DateOfBirth</code>, type: <code>&gt;#1/1/2005#</code> (students born after 2005).</li>
+                    <li>Try: <code>&lt;#1/1/2005#</code> (before 2005).</li><li>Try: <code>&gt;=#1/1/2004# And &lt;#1/1/2006#</code> (range).</li>
+                    <li>Find students NOT named "Smith": Use <code>&lt;&gt;"Smith"</code>.</li>
+                    <li>Find students with no phone number: Use <code>Is Null</code> in the <code>PhoneNumber</code> field.</li></ul></li>
+                    <li>Save the query as <strong>"qryStudentsAfter2005"</strong>.</li>
+                    <li><strong>Extension:</strong> Create a query that counts the number of students. Use the <strong>Totals</strong> button (Σ) and change "Group By" to "Count".</li>
+                    <li><strong>Teacher Assessment:</strong> Verify correct use of query operators and criteria syntax.</li></ol></div>
                 </section>
-                
-                <!-- Section 6: SQL Fundamentals -->
-                <section id="section6" class="section">
-                    <h2><i class="fas fa-code"></i> SQL Fundamentals</h2>
-                    
-                    <div class="info-box">
-                        <h4><i class="fas fa-lightbulb"></i> What is SQL?</h4>
-                        <p><strong>SQL (Structured Query Language)</strong> is the standard language for managing and querying relational databases. It allows you to create, read, update, and delete data.</p>
-                    </div>
-                    
-                    <h3>Basic SQL Statements</h3>
-                    
-                    <h4>CREATE TABLE</h4>
-                    <div class="sql-block">
-                        <span class="sql-keyword">CREATE TABLE</span> Students (<br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;StudentID <span class="sql-keyword">INT PRIMARY KEY</span>,<br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;Name <span class="sql-keyword">VARCHAR</span>(100) <span class="sql-keyword">NOT NULL</span>,<br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;Email <span class="sql-keyword">VARCHAR</span>(100) <span class="sql-keyword">UNIQUE</span>,<br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;DOB <span class="sql-keyword">DATE</span>,<br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;DepartmentID <span class="sql-keyword">INT</span><br>
-                        );
-                    </div>
-                    
-                    <h4>SELECT (Query Data)</h4>
-                    <div class="sql-block">
-                        <span class="sql-keyword">SELECT</span> * <span class="sql-keyword">FROM</span> Students;<br>
-                        <span class="sql-keyword">SELECT</span> Name, Email <span class="sql-keyword">FROM</span> Students <span class="sql-keyword">WHERE</span> DepartmentID = 1;<br>
-                        <span class="sql-keyword">SELECT</span> <span class="sql-function">AVG</span>(Grade) <span class="sql-keyword">AS</span> AverageGrade <span class="sql-keyword">FROM</span> Enrollments <span class="sql-keyword">WHERE</span> CourseID = 'CS101';
-                    </div>
-                    
-                    <h4>INSERT (Add Data)</h4>
-                    <div class="sql-block">
-                        <span class="sql-keyword">INSERT INTO</span> Students (StudentID, Name, Email, DepartmentID)<br>
-                        <span class="sql-keyword">VALUES</span> (1, 'John Smith', 'john@school.edu', 2);
-                    </div>
-                    
-                    <h4>UPDATE (Modify Data)</h4>
-                    <div class="sql-block">
-                        <span class="sql-keyword">UPDATE</span> Students <br>
-                        <span class="sql-keyword">SET</span> Email = 'john.smith@school.edu'<br>
-                        <span class="sql-keyword">WHERE</span> StudentID = 1;
-                    </div>
-                    
-                    <h4>DELETE (Remove Data)</h4>
-                    <div class="sql-block">
-                        <span class="sql-keyword">DELETE FROM</span> Students <span class="sql-keyword">WHERE</span> StudentID = 1;
-                    </div>
-                    
-                    <h4>JOIN (Combine Tables)</h4>
-                    <div class="sql-block">
-                        <span class="sql-keyword">SELECT</span> Students.Name, Courses.Title, Enrollments.Grade<br>
-                        <span class="sql-keyword">FROM</span> Students<br>
-                        <span class="sql-keyword">INNER JOIN</span> Enrollments ON Students.StudentID = Enrollments.StudentID<br>
-                        <span class="sql-keyword">INNER JOIN</span> Courses ON Enrollments.CourseID = Courses.CourseID;
-                    </div>
-                    
-                    <div class="activity-box">
-                        <div class="activity-header">
-                            <div class="activity-number">5</div>
-                            <div class="activity-title">Activity: Write SQL Queries</div>
-                        </div>
-                        <p><strong>Objective:</strong> Practice writing basic SQL queries.</p>
-                        <p>Using the following tables: <strong>Products</strong>(ProductID, Name, Price, CategoryID), <strong>Categories</strong>(CategoryID, CategoryName)</p>
-                        <ol class="activity-steps">
-                            <li>Write a query to select all products</li>
-                            <li>Write a query to select product names and prices where price > 100</li>
-                            <li>Write a query to insert a new product</li>
-                            <li>Write a query to update the price of a specific product</li>
-                            <li>Write a query to delete products in a specific category</li>
-                            <li>Write a JOIN query to show product names with their category names</li>
-                        </ol>
-                    </div>
+
+                <!-- SECTION 6: Reports (NEW - Syllabus requirement with calculations) -->
+                <section class="section"><h2><i class="fas fa-print"></i> 6. Generating Reports</h2>
+                    <div class="info-box"><h4><i class="fas fa-chart-simple"></i> Presenting Data Professionally</h4><p>Reports are used to format, calculate, and print data in a readable layout.</p></div>
+                    <div class="activity-box"><div class="activity-header"><div class="activity-number">6</div><div class="activity-title">Activity: Creating a Student Report</div></div>
+                    <ol class="activity-steps"><li>Select the <strong>qryStudentsAfter2005</strong> query in the Navigation Pane.</li>
+                    <li>Click <strong>Create</strong> → <strong>Report</strong>. Access generates a basic report.</li>
+                    <li>Switch to <strong>Layout View</strong> to group, sort, and format the report. Add a title: "Student List (After 2005)".</li>
+                    <li>To add a calculation (e.g., count of students): Go to <strong>Design View</strong>. In the Report Footer section, add a text box. Set its Control Source to: <code>=Count(*)</code>.</li>
+                    <li>Switch to <strong>Print Preview</strong> to see the final layout. Ensure all data fits on the page.</li>
+                    <li>Print the report or export it as a PDF (File → Print → Print to PDF).</li>
+                    <li><strong>Teacher Assessment:</strong> Assess the report's layout, grouping, and inclusion of calculated values.</li></ol></div>
                 </section>
-                
-                <!-- Section 7: Database Security -->
-                <section id="section7" class="section">
-                    <h2><i class="fas fa-shield-alt"></i> Database Security</h2>
-                    
-                    <div class="info-box">
-                        <h4><i class="fas fa-lock"></i> Protecting Database Data</h4>
-                        <ul>
-                            <li><strong>Authentication:</strong> Verify user identity (username/password)</li>
-                            <li><strong>Authorization:</strong> Control what users can do (GRANT/REVOKE permissions)</li>
-                            <li><strong>Encryption:</strong> Protect data at rest and in transit</li>
-                            <li><strong>Backups:</strong> Regular database backups for recovery</li>
-                            <li><strong>Auditing:</strong> Track database access and changes</li>
-                            <li><strong>SQL Injection Prevention:</strong> Use parameterized queries</li>
-                        </ul>
-                    </div>
-                    
-                    <h3>SQL Injection Example</h3>
-                    <div class="code-block">
-                        <span class="sql-comment">-- VULNERABLE CODE (DO NOT USE)</span><br>
-                        username = <span class="sql-string">"' OR '1'='1"</span>; <span class="sql-comment">-- Bypasses authentication</span><br>
-                        <span class="sql-keyword">SELECT</span> * <span class="sql-keyword">FROM</span> Users <span class="sql-keyword">WHERE</span> Username = <span class="sql-string">'' OR '1'='1'</span>;<br><br>
-                        
-                        <span class="sql-comment">-- SAFE (Parameterized Query)</span><br>
-                        PREPARE stmt <span class="sql-keyword">FROM</span> <span class="sql-string">'SELECT * FROM Users WHERE Username = ?'</span>;<br>
-                        <span class="sql-keyword">EXECUTE</span> stmt <span class="sql-keyword">USING</span> @username;
-                    </div>
-                    
-                    <div class="activity-box">
-                        <div class="activity-header">
-                            <div class="activity-number">6</div>
-                            <div class="activity-title">Activity: Database Security Analysis</div>
-                        </div>
-                        <p><strong>Instructions:</strong> Analyze the security of a sample database system.</p>
-                        <ol class="activity-steps">
-                            <li>Identify potential security vulnerabilities</li>
-                            <li>Recommend security measures to address each vulnerability</li>
-                            <li>Create a security checklist for database administrators</li>
-                            <li>Explain why SQL injection is dangerous and how to prevent it</li>
-                            <li>Create a backup and recovery plan for a small business database</li>
-                        </ol>
-                    </div>
+
+                <!-- SECTION 7: Creating a Relational Database (NEW - Syllabus requirement) -->
+                <section class="section"><h2><i class="fas fa-link"></i> 7. Creating a Relational Database (2 Tables)</h2>
+                    <div class="info-box"><h4><i class="fas fa-project-diagram"></i> Understanding Relationships</h4><p>A relational database links tables using a common field (<strong>Foreign Key</strong>). This prevents data duplication. E.g., one student can have many exam scores.</p></div>
+                    <div class="activity-box"><div class="activity-header"><div class="activity-number">7</div><div class="activity-title">Activity: Relating Students and Exams</div></div>
+                    <ol class="activity-steps"><li>Create a new table called <strong>Exams</strong> with fields: <code>ExamID (AutoNumber, Primary Key)</code>, <code>StudentID (Number)</code>, <code>Subject (Short Text)</code>, <code>Score (Number)</code>.</li>
+                    <li>Go to <strong>Database Tools</strong> tab → <strong>Relationships</strong>. Add both <strong>Students</strong> and <strong>Exams</strong> tables.</li>
+                    <li>Drag the <code>StudentID</code> field from the Students table and drop it on the <code>StudentID</code> field in the Exams table.</li>
+                    <li>In the Edit Relationships dialog, check <strong>"Enforce Referential Integrity"</strong>. Click <strong>Create</strong>. A line now shows the one-to-many relationship.</li>
+                    <li>Enter sample exam records (e.g., StudentID 1, Subject "Math", Score 85).</li>
+                    <li>Create a query that joins both tables: <strong>Create</strong> → <strong>Query Design</strong>. Add both tables. Select <code>FirstName, LastName, Subject, Score</code>. Run the query.</li>
+                    <li><strong>Teacher Assessment:</strong> Verify the correct creation of a relationship and a successful join query.</li></ol></div>
                 </section>
-                
-                <!-- Integration Activity -->
-                <section id="integration" class="section">
-                    <h2><i class="fas fa-tasks"></i> Activity of Integration</h2>
-                    
-                    <div class="info-box">
-                        <h4><i class="fas fa-store"></i> Business Scenario: Online Store Database</h4>
-                        <p>An online store needs a database to manage customers, products, orders, and inventory. You are the database designer.</p>
-                    </div>
-                    
-                    <div class="activity-box">
-                        <div class="activity-header">
-                            <div class="activity-number">FINAL</div>
-                            <div class="activity-title">Online Store Database Project</div>
-                        </div>
-                        <p><strong>Requirements:</strong></p>
-                        <ol class="activity-steps">
-                            <li><strong>ER Diagram:</strong> Design an ER diagram for the online store with entities: Customer, Product, Order, OrderItem, Category, Payment</li>
-                            <li><strong>Table Creation:</strong> Write SQL CREATE TABLE statements for all entities with appropriate keys and constraints</li>
-                            <li><strong>Sample Data:</strong> Write INSERT statements to add at least 5 customers, 10 products, and 5 orders</li>
-                            <li><strong>Queries:</strong> Write SQL queries to:
-                                <ul>
-                                    <li>List all products in a specific category</li>
-                                    <li>Show order history for a specific customer</li>
-                                    <li>Calculate total sales by month</li>
-                                    <li>Find customers who have spent over $500</li>
-                                    <li>Update inventory after an order</li>
-                                </ul>
-                            </li>
-                            <li><strong>Normalization:</strong> Show the normalized tables and explain the normal forms achieved</li>
-                            <li><strong>Security Plan:</strong> Create a security plan including user roles and permissions</li>
-                            <li><strong>Documentation:</strong> Write a user guide for database administrators</li>
-                        </ol>
-                    </div>
+
+                <!-- Integration Activity (Matches syllabus final project) -->
+                <section class="section"><h2><i class="fas fa-tasks"></i> Activity of Integration</h2>
+                    <div class="info-box"><h4><i class="fas fa-school"></i> School Library Database Project</h4><p>Your school library needs a database to manage books and borrowers. Create a complete MS Access database.</p></div>
+                    <div class="activity-box"><div class="activity-header"><div class="activity-number">FINAL</div><div class="activity-title">Library Management System</div></div>
+                    <ol class="activity-steps"><li>Design tables: <strong>Books</strong> (BookID, Title, Author, YearPublished, ISBN) and <strong>Borrowers</strong> (BorrowerID, FullName, Class, Phone).</li>
+                    <li>Create a relationship between the tables (one borrower can borrow many books).</li>
+                    <li>Set appropriate data types (AutoNumber, Short Text, Number, etc.) and validation rules (e.g., YearPublished between 1900 and current year).</li>
+                    <li>Create a form for entering new borrowers.</li>
+                    <li>Create a query to find all books published after 2010.</li>
+                    <li>Create a query to count the total number of borrowers.</li>
+                    <li>Create a professional report listing all books, grouped by Author.</li>
+                    <li>Print the report and any one query.</li>
+                    <li><strong>Self-Assessment Checklist:</strong> Can you explain each object? Did you enforce referential integrity? Are your reports formatted for printing?</li></ol></div>
                 </section>
-                
-                <!-- Quiz Section -->
-                <section id="quiz" class="section">
-                    <h2><i class="fas fa-question-circle"></i> Knowledge Check</h2>
-                    
-                    <div class="quiz-box">
-                        <div class="quiz-question">
-                            1. What does DBMS stand for?
-                        </div>
-                        <div class="quiz-options">
-                            <div class="quiz-option" data-correct="false">Database Management System</div>
-                            <div class="quiz-option" data-correct="true">Database Management System</div>
-                            <div class="quiz-option" data-correct="false">Data Basic Management System</div>
-                            <div class="quiz-option" data-correct="false">Digital Base Management System</div>
-                        </div>
-                        <div class="quiz-feedback"></div>
-                    </div>
-                    
-                    <div class="quiz-box">
-                        <div class="quiz-question">
-                            2. Which key uniquely identifies each record in a table?
-                        </div>
-                        <div class="quiz-options">
-                            <div class="quiz-option" data-correct="false">Foreign Key</div>
-                            <div class="quiz-option" data-correct="true">Primary Key</div>
-                            <div class="quiz-option" data-correct="false">Composite Key</div>
-                            <div class="quiz-option" data-correct="false">Alternate Key</div>
-                        </div>
-                        <div class="quiz-feedback"></div>
-                    </div>
-                    
-                    <div class="quiz-box">
-                        <div class="quiz-question">
-                            3. What does SQL stand for?
-                        </div>
-                        <div class="quiz-options">
-                            <div class="quiz-option" data-correct="false">Structured Question Language</div>
-                            <div class="quiz-option" data-correct="true">Structured Query Language</div>
-                            <div class="quiz-option" data-correct="false">Simple Query Language</div>
-                            <div class="quiz-option" data-correct="false">Standard Query Logic</div>
-                        </div>
-                        <div class="quiz-feedback"></div>
-                    </div>
-                    
-                    <div class="quiz-box">
-                        <div class="quiz-question">
-                            4. In an ER diagram, what shape represents an entity?
-                        </div>
-                        <div class="quiz-options">
-                            <div class="quiz-option" data-correct="false">Diamond</div>
-                            <div class="quiz-option" data-correct="false">Oval</div>
-                            <div class="quiz-option" data-correct="true">Rectangle</div>
-                            <div class="quiz-option" data-correct="false">Circle</div>
-                        </div>
-                        <div class="quiz-feedback"></div>
-                    </div>
-                    
-                    <div class="quiz-box">
-                        <div class="quiz-question">
-                            5. What is the purpose of normalization?
-                        </div>
-                        <div class="quiz-options">
-                            <div class="quiz-option" data-correct="false">To make queries run faster</div>
-                            <div class="quiz-option" data-correct="true">To reduce data redundancy and dependency anomalies</div>
-                            <div class="quiz-option" data-correct="false">To encrypt data for security</div>
-                            <div class="quiz-option" data-correct="false">To backup the database</div>
-                        </div>
-                        <div class="quiz-feedback"></div>
-                    </div>
-                    
-                    <div class="quiz-box">
-                        <div class="quiz-question">
-                            6. Which SQL statement is used to retrieve data from a database?
-                        </div>
-                        <div class="quiz-options">
-                            <div class="quiz-option" data-correct="false">UPDATE</div>
-                            <div class="quiz-option" data-correct="false">INSERT</div>
-                            <div class="quiz-option" data-correct="true">SELECT</div>
-                            <div class="quiz-option" data-correct="false">DELETE</div>
-                        </div>
-                        <div class="quiz-feedback"></div>
-                    </div>
+
+                <!-- Quiz Section (Updated) -->
+                <section class="section"><h2><i class="fas fa-question-circle"></i> Knowledge Check</h2>
+                    <div class="quiz-box"><div class="quiz-question">1. In MS Access, which database object is used to create a user-friendly data entry interface?</div>
+                    <div class="quiz-options"><div class="quiz-option" data-correct="false">Table</div><div class="quiz-option" data-correct="false">Query</div><div class="quiz-option" data-correct="true">Form</div><div class="quiz-option" data-correct="false">Report</div></div><div class="quiz-feedback"></div></div>
+                    <div class="quiz-box"><div class="quiz-question">2. What is the function of a Primary Key?</div>
+                    <div class="quiz-options"><div class="quiz-option" data-correct="true">Uniquely identifies each record in a table</div><div class="quiz-option" data-correct="false">Links to a field in another table</div><div class="quiz-option" data-correct="false">Formats the data for printing</div><div class="quiz-option" data-correct="false">Validates data entry</div></div><div class="quiz-feedback"></div></div>
+                    <div class="quiz-box"><div class="quiz-question">3. Which operator would you use in a query to find all students except those named "John"?</div>
+                    <div class="quiz-options"><div class="quiz-option" data-correct="false">=</div><div class="quiz-option" data-correct="false">&gt;</div><div class="quiz-option" data-correct="true">&lt;&gt;</div><div class="quiz-option" data-correct="false">LIKE</div></div><div class="quiz-feedback"></div></div>
+                    <div class="quiz-box"><div class="quiz-question">4. What does an Input Mask control?</div>
+                    <div class="quiz-options"><div class="quiz-option" data-correct="true">The format of data entered (e.g., phone number pattern)</div><div class="quiz-option" data-correct="false">The relationship between tables</div><div class="quiz-option" data-correct="false">The calculation of totals in a report</div><div class="quiz-option" data-correct="false">The color of the form background</div></div><div class="quiz-feedback"></div></div>
+                    <div class="quiz-box"><div class="quiz-question">5. Which MS Access object is best suited for printing a final, formatted summary of data?</div>
+                    <div class="quiz-options"><div class="quiz-option" data-correct="false">Table</div><div class="quiz-option" data-correct="false">Query</div><div class="quiz-option" data-correct="false">Form</div><div class="quiz-option" data-correct="true">Report</div></div><div class="quiz-feedback"></div></div>
                 </section>
-                
-                <!-- Download PDF Button -->
-                <div style="text-align: center; margin-top: 2rem;">
-                    <button id="downloadPdf" class="btn btn-outline">
-                        <i class="fas fa-download"></i> Download as PDF
-                    </button>
-                </div>
+
+                <div style="text-align: center; margin-top: 2rem;"><button id="downloadPdf" class="btn btn-outline"><i class="fas fa-download"></i> Download as PDF</button></div>
             </div>
             
             <!-- Sidebar -->
             <aside class="module-sidebar">
-                <!-- Progress Tracker -->
-                <div class="progress-container">
-                    <h3><i class="fas fa-chart-line"></i> Your Progress</h3>
-                    <div class="progress-bar">
-                        <div class="progress-fill" id="progressFill"></div>
-                    </div>
-                    <div class="progress-text">
-                        <span>0% Complete</span>
-                        <span id="progressPercent">0%</span>
-                    </div>
+                <div class="progress-container"><h3><i class="fas fa-chart-line"></i> Your Progress</h3><div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div><div class="progress-text"><span id="progressPercent">0%</span> Complete</div></div>
+                <div class="sidebar-nav"><h3><i class="fas fa-list"></i> Module Sections</h3>
+                    <ul><li><a href="#section1"><i class="fas fa-chevron-right"></i> Introduction to DBMS</a></li>
+                    <li><a href="#section2"><i class="fas fa-chevron-right"></i> MS Access Interface & Objects</a></li>
+                    <li><a href="#section3"><i class="fas fa-chevron-right"></i> Data Types, Validation & Masks</a></li>
+                    <li><a href="#section4"><i class="fas fa-chevron-right"></i> Creating Forms</a></li>
+                    <li><a href="#section5"><i class="fas fa-chevron-right"></i> Querying with Operators</a></li>
+                    <li><a href="#section6"><i class="fas fa-chevron-right"></i> Generating Reports</a></li>
+                    <li><a href="#section7"><i class="fas fa-chevron-right"></i> Relational Database</a></li>
+                    <li><a href="#integration"><i class="fas fa-chevron-right"></i> Final Project</a></li></ul>
                 </div>
-                
-                <!-- Sidebar Navigation -->
-                <div class="sidebar-nav">
-                    <h3><i class="fas fa-list"></i> Module Sections</h3>
-                    <ul>
-                        <li><a href="#section1"><i class="fas fa-chevron-right"></i> Introduction to Databases</a></li>
-                        <li><a href="#section2"><i class="fas fa-chevron-right"></i> Database Architecture</a></li>
-                        <li><a href="#section3"><i class="fas fa-chevron-right"></i> ER Diagrams</a></li>
-                        <li><a href="#section4"><i class="fas fa-chevron-right"></i> Keys in Databases</a></li>
-                        <li><a href="#section5"><i class="fas fa-chevron-right"></i> Normalization</a></li>
-                        <li><a href="#section6"><i class="fas fa-chevron-right"></i> SQL Fundamentals</a></li>
-                        <li><a href="#section7"><i class="fas fa-chevron-right"></i> Database Security</a></li>
-                        <li><a href="#integration"><i class="fas fa-chevron-right"></i> Final Project</a></li>
-                        <li><a href="#quiz"><i class="fas fa-chevron-right"></i> Knowledge Check</a></li>
-                    </ul>
+                <div class="info-box"><h4><i class="fas fa-keyboard"></i> MS Access Quick Shortcuts</h4>
+                    <ul><li><kbd>Ctrl + S</kbd> - Save Object</li><li><kbd>Ctrl + N</kbd> - New Database</li><li><kbd>F6</kbd> - Switch between panes</li><li><kbd>Ctrl + ;</kbd> - Insert Today's Date</li><li><kbd>Ctrl + '</kbd> - Copy value from above</li></ul>
                 </div>
-                
-                <!-- SQL Quick Reference -->
-                <div class="info-box">
-                    <h4><i class="fas fa-code"></i> SQL Quick Reference</h4>
-                    <ul style="margin: 0; font-size: 0.85rem;">
-                        <li><code>SELECT * FROM table;</code></li>
-                        <li><code>INSERT INTO table VALUES(...);</code></li>
-                        <li><code>UPDATE table SET col=value WHERE ...;</code></li>
-                        <li><code>DELETE FROM table WHERE ...;</code></li>
-                        <li><code>CREATE TABLE table (...);</code></li>
-                        <li><code>ALTER TABLE table ADD column;</code></li>
-                        <li><code>DROP TABLE table;</code></li>
-                        <li><code>JOIN ... ON ...</code></li>
-                    </ul>
-                </div>
-                
-                <!-- Popular DBMS -->
-                <div class="info-box">
-                    <h4><i class="fas fa-database"></i> Popular DBMS</h4>
-                    <ul style="margin: 0; font-size: 0.85rem;">
-                        <li>🔷 MySQL / MariaDB</li>
-                        <li>🔷 PostgreSQL</li>
-                        <li>🔷 Microsoft SQL Server</li>
-                        <li>🔷 SQLite</li>
-                        <li>🔷 Oracle</li>
-                        <li>🔷 MongoDB (NoSQL)</li>
-                    </ul>
-                </div>
-                
-                <!-- Assessment Info -->
-                <div class="info-box">
-                    <h4><i class="fas fa-clipboard-list"></i> Assessment</h4>
-                    <ul style="margin: 0;">
-                        <li>6 Hands-on Activities</li>
-                        <li>6 Quiz Questions</li>
-                        <li>1 Final Project</li>
-                        <li>Estimated Time: 8-10 hours</li>
-                    </ul>
-                </div>
+                <div class="info-box"><h4><i class="fas fa-clipboard-list"></i> Assessment</h4><ul><li>7 Practical Activities</li><li>5 Quiz Questions</li><li>1 Final Project (Library DB)</li><li>Meets Senior 3 ICT Syllabus</li></ul></div>
             </aside>
         </div>
     </div>
 </main>
 
-<!-- Footer -->
-<footer class="site-footer">
-    <div class="container">
-        <div class="footer-content">
-            <div class="footer-brand">
-                <h3>ICT Learning Hub</h3>
-                <p>Empowering students with digital skills for the future.</p>
-            </div>
-            <div class="footer-links">
-                <h4>Quick Links</h4>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="database.html">Database Management</a></li>
-                    <li><a href="sql.html">SQL Tutorial</a></li>
-                </ul>
-            </div>
-            <div class="footer-modules">
-                <h4>More Modules</h4>
-                <ul>
-                    <li><a href="system-security.html">Security</a></li>
-                    <li><a href="web-design.html">Web Design</a></li>
-                    <li><a href="shorts2.html">Shortcut Quiz</a></li>
-                </ul>
-            </div>
-            <div class="footer-social">
-                <h4>Connect</h4>
-                <div class="social-icons">
-                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                    <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2025 Yiga Gerald. All rights reserved. | ICT Teacher | Digital Learning Creator</p>
-        </div>
-    </div>
-</footer>
+<footer class="site-footer"><div class="container"><div class="footer-content"><div class="footer-brand"><h3>ICT Learning Hub</h3><p>Empowering students with digital skills for the future.</p></div>
+<div class="footer-links"><h4>Quick Links</h4><ul><li><a href="index.html">Home</a></li><li><a href="database.html">Database (MS Access)</a></li><li><a href="system-security.html">Security</a></li></ul></div>
+<div class="footer-modules"><h4>More Modules</h4><ul><li><a href="word-processing.html">Word Processing</a></li><li><a href="spreadsheets-1.html">Spreadsheets</a></li><li><a href="web-design.html">Web Design</a></li></ul></div>
+<div class="footer-social"><h4>Connect</h4><div class="social-icons"><a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a><a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a><a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a></div></div></div>
+<div class="footer-bottom"><p>&copy; 2025 Yiga Gerald. All rights reserved. | ICT Teacher | Digital Learning Creator</p></div></div></footer>
 
-<script src="js/modules.js"></script>
+<script>
+    // Simple progress and PDF handler
+    document.addEventListener('DOMContentLoaded', function() {
+        const sections = document.querySelectorAll('.section');
+        const progressFill = document.getElementById('progressFill');
+        const progressPercent = document.getElementById('progressPercent');
+        function updateProgress() {
+            const scrollPos = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            let percent = (scrollPos / docHeight) * 100;
+            percent = Math.min(100, Math.max(0, percent));
+            if (progressFill) progressFill.style.width = `${percent}%`;
+            if (progressPercent) progressPercent.textContent = `${Math.round(percent)}%`;
+        }
+        window.addEventListener('scroll', updateProgress);
+        window.addEventListener('load', updateProgress);
+        const downloadBtn = document.getElementById('downloadPdf');
+        if (downloadBtn) downloadBtn.addEventListener('click', () => window.print());
+        
+        // Simple quiz handler
+        document.querySelectorAll('.quiz-option').forEach(opt => {
+            opt.addEventListener('click', function() {
+                const container = this.closest('.quiz-box');
+                const isCorrect = this.getAttribute('data-correct') === 'true';
+                let feedback = container.querySelector('.quiz-feedback');
+                if (!feedback) { feedback = document.createElement('div'); feedback.className = 'quiz-feedback'; container.appendChild(feedback); }
+                feedback.textContent = isCorrect ? '✓ Correct! Well done.' : '✗ Incorrect. Review the section and try again.';
+                feedback.className = `quiz-feedback ${isCorrect ? 'correct' : 'incorrect'}`;
+                if (!feedback.style.marginTop) feedback.style.marginTop = '1rem';
+            });
+        });
+        
+        // Mobile nav toggle fix
+        const toggleBtn = document.querySelector('.nav-mobile-toggle');
+        if (toggleBtn) {
+            toggleBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const menu = document.querySelector('.global-nav-menu');
+                if (menu) menu.classList.toggle('active');
+            });
+        }
+    });
+</script>
 </body>
 </html>
