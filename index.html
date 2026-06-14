@@ -7,13 +7,8 @@
 
 <meta name="description" content="Yiga Gerald — ICT Teacher, Digital Learning Creator, and Web Solutions Provider for Schools.">
 <meta name="theme-color" content="#0f172a">
-<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 
-<!-- PWA -->
-<link rel="manifest" href="manifest.json">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="floating-buttons.css">
-  
 
 <style>
 /* ===== RESET & BASE ===== */
@@ -699,30 +694,6 @@ section h2::after {
   box-shadow: var(--shadow-md);
 }
 
-/* ===== WHATSAPP FLOAT ===== */
-.whatsapp-float {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  width: 60px;
-  height: 60px;
-  background: linear-gradient(135deg, #25D366, #128C7E);
-  color: white;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: var(--shadow-lg), 0 10px 25px rgba(37, 211, 102, 0.4);
-  z-index: 1000;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  animation: float 3s ease-in-out infinite;
-}
-
-.whatsapp-float:hover {
-  transform: scale(1.1);
-  box-shadow: 0 15px 35px rgba(37, 211, 102, 0.6);
-}
-
 /* ===== SCROLL PROGRESS ===== */
 .scroll-progress {
   position: fixed;
@@ -788,13 +759,6 @@ section h2::after {
     width: 100%;
     justify-content: center;
   }
-  
-  .whatsapp-float {
-    bottom: 20px;
-    right: 20px;
-    width: 56px;
-    height: 56px;
-  }
 }
 
 @media (max-width: 480px) {
@@ -829,7 +793,7 @@ section h2::after {
 <!-- GLOBAL NAVIGATION WITH SUBMENUS -->
 <nav class="global-nav">
     <div class="global-nav-container">
-        <a href="learning-hub.html" class="global-nav-brand">
+        <a href="index.html" class="global-nav-brand">
             <i class="fas fa-graduation-cap"></i> ICT Learning Hub
         </a>
         
@@ -845,79 +809,61 @@ section h2::after {
                 </a>
             </li>
             
-            <!-- Office Applications -->
+            <!-- Learning Hub (All ICT educational content) -->
             <li class="nav-item">
                 <a href="#" class="nav-dropdown-toggle">
-                    <i class="fas fa-file"></i> Office Applications
+                    <i class="fas fa-graduation-cap"></i> Learning Hub
                 </a>
                 <ul class="nav-submenu">
+                    <!-- Office Applications Group -->
+                    <li class="submenu-group-header"><i class="fas fa-file"></i> Office Applications</li>
                     <li><a href="word processingone.html" class="submenu-item"><i class="fas fa-file-word"></i> Word Processing</a></li>
                     <li><a href="word 2.html" class="submenu-item"><i class="fas fa-file-word"></i> Word Processing 2</a></li>
-                    <li><a href="word processingone.html" class="submenu-item"><i class="fas fa-file-word"></i> Word Processing</a></li>
-                    <li class="submenu-divider"></li>
                     <li><a href="PowerPoint.html" class="submenu-item"><i class="fas fa-presentation"></i> Presentations</a></li>
-                    <li class="submenu-divider"></li>
                     <li><a href="spreadsheets 1.html" class="submenu-item"><i class="fas fa-table"></i> Spreadsheets 1</a></li>
                     <li><a href="spreadsheets 2.html" class="submenu-item"><i class="fas fa-table"></i> Spreadsheets 2</a></li>
-                </ul>
-            </li>
-            
-            <!-- System & Data -->
-            <li class="nav-item">
-                <a href="#" class="nav-dropdown-toggle">
-                    <i class="fas fa-server"></i> System & Data
-                </a>
-                <ul class="nav-submenu">
+                    <li class="submenu-divider"></li>
+                    
+                    <!-- System & Data -->
+                    <li class="submenu-group-header"><i class="fas fa-server"></i> System & Data</li>
                     <li><a href="DBMS.html" class="submenu-item"><i class="fas fa-database"></i> Database Management</a></li>
                     <li><a href="software.html" class="submenu-item"><i class="fas fa-box"></i> Software Management</a></li>
-                    <li class="submenu-divider"></li>
                     <li><a href="system security and data security .html" class="submenu-item"><i class="fas fa-lock"></i> System & Data Security</a></li>
-                    <li><a href="information_access_and_sharing_and_security.html" class="submenu-item"><i class="fas fa-share"></i> Information Sharing</a></li>
-                </ul>
-            </li>
-            
-            <!-- Design & Web -->
-            <li class="nav-item">
-                <a href="#" class="nav-dropdown-toggle">
-                    <i class="fas fa-palette"></i> Design & Web
-                </a>
-                <ul class="nav-submenu">
-                    <li><a href="web design.html" class="submenu-item"><i class="fas fa-globe"></i> Web Design</a></li>
+                    <li class="submenu-divider"></li>
+                    
+                    <!-- Design & Web -->
+                    <li class="submenu-group-header"><i class="fas fa-palette"></i> Design & Web</li>
+                    <li><a href="web design.html" class="submenu-item"><i class="fas fa-code"></i> Web Design</a></li>
                     <li><a href="desktop publishing.html" class="submenu-item"><i class="fas fa-paint-brush"></i> Desktop Publishing</a></li>
-                </ul>
-            </li>
-            
-            <!-- Hardware & IT -->
-            <li class="nav-item">
-                <a href="#" class="nav-dropdown-toggle">
-                    <i class="fas fa-microchip"></i> Hardware & IT
-                </a>
-                <ul class="nav-submenu">
-                    <li><a href="computer hardware.html" class="submenu-item"><i class="fas fa-computer"></i> Computer Hardware</a></li>
+                    <li class="submenu-divider"></li>
+                    
+                    <!-- Hardware & IT -->
+                    <li class="submenu-group-header"><i class="fas fa-microchip"></i> Hardware & IT</li>
+                    <li><a href="computer hardware.html" class="submenu-item"><i class="fas fa-desktop"></i> Computer Hardware</a></li>
                     <li><a href="file and folder management.html" class="submenu-item"><i class="fas fa-folder"></i> File Management</a></li>
                     <li><a href="Access-and-sharing.html" class="submenu-item"><i class="fas fa-users"></i> Access & Sharing</a></li>
-                </ul>
-            </li>
-            
-            <!-- Information & Safety -->
-            <li class="nav-item">
-                <a href="#" class="nav-dropdown-toggle">
-                    <i class="fas fa-shield"></i> Info & Safety
-                </a>
-                <ul class="nav-submenu">
+                    <li class="submenu-divider"></li>
+                    
+                    <!-- Information & Safety -->
+                    <li class="submenu-group-header"><i class="fas fa-shield-alt"></i> Information & Safety</li>
                     <li><a href="Health and safety .html" class="submenu-item"><i class="fas fa-heartbeat"></i> Health & Safety</a></li>
                     <li><a href="Waste management.html" class="submenu-item"><i class="fas fa-recycle"></i> Waste Management</a></li>
+                    <li><a href="information_access_and_sharing_and_security.html" class="submenu-item"><i class="fas fa-share-alt"></i> Information Sharing</a></li>
+                    <li class="submenu-divider"></li>
+                    
+                    <!-- General ICT -->
+                    <li class="submenu-group-header"><i class="fas fa-book"></i> General</li>
+                    <li><a href="introduction to ICT.html" class="submenu-item"><i class="fas fa-book-open"></i> Introduction to ICT</a></li>
                 </ul>
             </li>
             
-            <!-- General -->
+            <!-- Gaming Center (All games including shorts.html) -->
             <li class="nav-item">
                 <a href="#" class="nav-dropdown-toggle">
-                    <i class="fas fa-book"></i> General
+                    <i class="fas fa-gamepad"></i> Gaming Center
                 </a>
                 <ul class="nav-submenu">
-                    <li><a href="introduction to ICT.html" class="submenu-item"><i class="fas fa-book-open"></i> Introduction to ICT</a></li>
-                    <li><a href="ticking timer..html" class="submenu-item"><i class="fas fa-clock"></i> Ticking Timer</a></li>
+                    <li><a href="ticking timer..html" class="submenu-item"><i class="fas fa-clock"></i> ⏰ Ticking Timer Challenge</a></li>
                 </ul>
             </li>
         </ul>
@@ -981,7 +927,7 @@ section h2::after {
         <div class="profile-wrap">
           <picture class="profile-photo" aria-hidden="false">
             <source srcset="images/YigaG.png" type="image/png">
-            <img src="images/YigaG.png" alt="Yiga Gerald — profile photo" loading="lazy" decoding="async" onerror="this.style.display='none'; this.closest('.profile-wrap').querySelector('.profile-fallback').style.display='flex'">
+            <img src="images/YigaG.png" alt="Yiga Gerald — profile photo" loading="lazy" decoding="async">
           </picture>
           <div class="profile-fallback" style="display:none">YG</div>
         </div>
@@ -999,15 +945,14 @@ section h2::after {
         and modern web technologies, I create tools that enhance teaching and learning.
       </p>
       
+      <h3 style="margin-top: 2rem;">Core Skills</h3>
       <ul class="skills">
-        <li>HTML5 & CSS3</li>
-        <li>JavaScript & PWAs</li>
-        <li>Digital Lesson Design</li>
-        <li>School ICT Systems</li>
-        <li>Responsive Web Design</li>
-        <li>Educational Technology</li>
+        <li>Web Design & Development</li>
+        <li>ICT Education</li>
+        <li>Digital Learning Solutions</li>
         <li>UI/UX Design</li>
-        <li>System Automation</li>
+        <li>WordPress Development</li>
+        <li>Responsive Design</li>
       </ul>
     </div>
   </section>
@@ -1017,58 +962,44 @@ section h2::after {
     <div class="container">
       <h2>Featured Projects</h2>
       <div class="grid">
-        
-        <div class="project-card stagger-item" style="animation-delay: 0.1s">
+        <div class="project-card">
           <div class="icon-container">
-            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <rect x="2" y="3" width="20" height="14" rx="2"></rect>
-              <path d="M8 21h8"></path>
-              <path d="M12 17v4"></path>
-            </svg>
+            <i class="fas fa-book icon"></i>
           </div>
-          <h3>Digital Learning Platforms</h3>
-          <p>Interactive ICT lessons, offline PWAs, and classroom resources designed for engaging digital learning experiences.</p>
+          <h3>Learning Management System</h3>
+          <p>A comprehensive digital platform for ICT education with modules, assessments, and interactive content designed for schools.</p>
           <div class="project-tags">
-            <span>PWA</span>
-            <span>Interactive</span>
             <span>Education</span>
+            <span>Web App</span>
+            <span>HTML/CSS/JS</span>
           </div>
         </div>
-        
-        <div class="project-card stagger-item" style="animation-delay: 0.2s">
+
+        <div class="project-card">
           <div class="icon-container">
-            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
-              <path d="M2 17l10 5 10-5"></path>
-              <path d="M2 12l10 5 10-5"></path>
-            </svg>
+            <i class="fas fa-chalkboard-user icon"></i>
           </div>
-          <h3>School ICT Systems</h3>
-          <p>Automated report cards, administrative dashboards, Excel automation, and school management tools.</p>
+          <h3>School Management Portal</h3>
+          <p>Administrative system for schools to manage students, staff, and academic records with secure access controls.</p>
           <div class="project-tags">
-            <span>Automation</span>
-            <span>Dashboards</span>
-            <span>Excel</span>
+            <span>School Admin</span>
+            <span>Database</span>
+            <span>Security</span>
           </div>
         </div>
-        
-        <div class="project-card stagger-item" style="animation-delay: 0.3s">
+
+        <div class="project-card">
           <div class="icon-container">
-            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="12" cy="12" r="10"></circle>
-              <path d="M12 8v8"></path>
-              <path d="M8 12h8"></path>
-            </svg>
+            <i class="fas fa-computer icon"></i>
           </div>
-          <h3>Websites for Schools & NGOs</h3>
-          <p>Responsive, fast, and easy-to-manage websites that effectively communicate mission and services.</p>
+          <h3>Interactive ICT Tutorials</h3>
+          <p>Engaging digital tutorials covering office applications, web design, and IT fundamentals with hands-on exercises.</p>
           <div class="project-tags">
-            <span>Responsive</span>
-            <span>Fast</span>
-            <span>Modern</span>
+            <span>Tutorial</span>
+            <span>Interactive</span>
+            <span>E-Learning</span>
           </div>
         </div>
-        
       </div>
     </div>
   </section>
@@ -1076,24 +1007,27 @@ section h2::after {
   <!-- SERVICES SECTION -->
   <section id="services">
     <div class="container">
-      <h2>What I Do</h2>
+      <h2>Services</h2>
       <div class="grid">
-        
-        <div class="service-card stagger-item" style="animation-delay: 0.1s">
-          <h3><i class="fas fa-chalkboard-teacher"></i> ICT Teaching & Training</h3>
-          <p>Comprehensive ICT instruction and professional development for educators, focusing on practical digital skills.</p>
+        <div class="service-card">
+          <h3><i class="fas fa-chalkboard"></i> ICT Teaching & Training</h3>
+          <p>Comprehensive ICT education programs customized for schools and educational institutions of all levels.</p>
         </div>
-        
-        <div class="service-card stagger-item" style="animation-delay: 0.2s">
-          <h3><i class="fas fa-laptop-code"></i> Website & System Development</h3>
-          <p>Custom web solutions and management systems tailored to educational institutions and organizations.</p>
+
+        <div class="service-card">
+          <h3><i class="fas fa-globe"></i> Web Solutions</h3>
+          <p>Custom website development for schools, educational organizations, and businesses with modern, responsive designs.</p>
         </div>
-        
-        <div class="service-card stagger-item" style="animation-delay: 0.3s">
-          <h3><i class="fas fa-tools"></i> Educational Technology Support</h3>
-          <p>Integration, troubleshooting, and optimization of ed-tech tools and platforms for effective learning.</p>
+
+        <div class="service-card">
+          <h3><i class="fas fa-graduation-cap"></i> Digital Learning Content</h3>
+          <p>Creation of engaging digital learning materials, modules, and interactive content for online and blended learning.</p>
         </div>
-        
+
+        <div class="service-card">
+          <h3><i class="fas fa-wrench"></i> System Setup & Support</h3>
+          <p>Technical support for school IT systems, network setup, security consultation, and maintenance services.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -1101,31 +1035,31 @@ section h2::after {
   <!-- CONTACT SECTION -->
   <section id="contact">
     <div class="container">
-      <h2>Get In Touch</h2>
-      <p>Interested in collaborating or have a project in mind? Let's connect and create something amazing together.</p>
+      <h2>Get in Touch</h2>
+      <p>Ready to elevate your school's digital presence or need ICT solutions? Let's collaborate!</p>
       
       <div class="contact-grid">
-        <div class="contact-item stagger-item" style="animation-delay: 0.1s">
+        <div class="contact-item">
           <div class="contact-icon">
             <i class="fas fa-envelope"></i>
           </div>
           <div class="contact-details">
             <h3>Email</h3>
-              <p><a href="mailto:yigagerald98@gmail.com">yigagerald98@gmail.com</a></p>
+            <p><a href="mailto:yigagerald98@gmail.com" style="color: inherit; text-decoration: none;">yigagerald98@gmail.com</a></p>
           </div>
         </div>
-        
-        <div class="contact-item stagger-item" style="animation-delay: 0.2s">
+
+        <div class="contact-item">
           <div class="contact-icon">
             <i class="fas fa-phone"></i>
           </div>
           <div class="contact-details">
-            <h3>Phone</h3>
-            <p>+256 757 995 116</p>
+            <h3>WhatsApp</h3>
+            <p><a href="https://wa.me/256704657159" style="color: inherit; text-decoration: none;" target="_blank">+256 704 657 159</a></p>
           </div>
         </div>
-        
-        <div class="contact-item stagger-item" style="animation-delay: 0.3s">
+
+        <div class="contact-item">
           <div class="contact-icon">
             <i class="fas fa-map-marker-alt"></i>
           </div>
@@ -1134,7 +1068,6 @@ section h2::after {
             <p>Kampala, Uganda</p>
           </div>
         </div>
-        
       </div>
     </div>
   </section>
@@ -1143,143 +1076,14 @@ section h2::after {
 <footer class="site-footer">
   <div class="container">
     <div class="footer-content">
-      <p>© <span id="year"></span> Yiga Gerald — ICT Professional & Digital Learning Content Creator</p>
-      
-      <div class="social-links">
-        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-        <a href="https://www.linkedin.com/in/yiga-gerald" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-        <a href="https://github.com/Prowess-256" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
-        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <div>
+        <p>&copy; 2024 Yiga Gerald. All rights reserved.</p>
+        <p style="font-size: 0.85rem; color: var(--gray); margin-top: 8px;">ICT Teacher | Digital Learning Creator | Web Solutions Provider</p>
       </div>
-      
-      <p>Designed with <i class="fas fa-heart" style="color: #ef4444"></i> and modern web magic</p>
-      <p style="margin-top: 15px; font-size: 0.95rem;"><a href="learning-hub.html" style="color: #3498db; text-decoration: none;">Visit Learning Hub</a> — Access all ICT learning modules</p>
     </div>
   </div>
 </footer>
 
-<a class="whatsapp-float" href="https://wa.me/256757995116" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
-  <i class="fab fa-whatsapp" style="font-size: 1.8rem"></i>
-</a>
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  // Set current year
-  document.getElementById('year').textContent = new Date().getFullYear();
-  
-  // Mobile menu toggle
-  const toggle = document.getElementById('menu-toggle');
-  const menu = document.getElementById('mobile-menu');
-  const hamburgerIcon = toggle.querySelector('i');
-  
-  toggle.addEventListener('click', () => {
-    menu.classList.toggle('open');
-    hamburgerIcon.className = menu.classList.contains('open') ? 'fas fa-times' : 'fas fa-bars';
-    
-    // Add animation to menu items
-    const menuItems = menu.querySelectorAll('a');
-    if (menu.classList.contains('open')) {
-      menuItems.forEach((item, index) => {
-        item.style.animationDelay = `${index * 0.1}s`;
-        item.classList.add('stagger-item');
-      });
-    }
-  });
-  
-  // Close mobile menu when clicking a link
-  const menuLinks = document.querySelectorAll('.mobile-menu a');
-  menuLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      menu.classList.remove('open');
-      hamburgerIcon.className = 'fas fa-bars';
-    });
-  });
-  
-  // Scroll progress indicator
-  const scrollProgress = document.getElementById('scrollProgress');
-  window.addEventListener('scroll', () => {
-    const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    const scrolled = (winScroll / height) * 100;
-    scrollProgress.style.width = scrolled + '%';
-  });
-  
-  // Header scroll effect
-  const header = document.getElementById('siteHeader');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-      header.classList.add('scrolled');
-    } else {
-      header.classList.remove('scrolled');
-    }
-  });
-  
-  // Active navigation link highlighting
-  const sections = document.querySelectorAll('section');
-  const navLinks = document.querySelectorAll('.nav a:not(.hamburger)');
-  
-  window.addEventListener('scroll', () => {
-    let current = '';
-    sections.forEach(section => {
-      const sectionTop = section.offsetTop;
-      const sectionHeight = section.clientHeight;
-      if (scrollY >= sectionTop - 200) {
-        current = section.getAttribute('id');
-      }
-    });
-    
-    navLinks.forEach(link => {
-      link.classList.remove('active');
-      if (link.getAttribute('href') === `#${current}`) {
-        link.classList.add('active');
-      }
-    });
-  });
-  
-  // Stagger animation for project cards on scroll
-  const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-  };
-  
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.style.animationPlayState = 'running';
-      }
-    });
-  }, observerOptions);
-  
-  // Observe all stagger items
-  document.querySelectorAll('.stagger-item').forEach(item => {
-    item.style.animationPlayState = 'paused';
-    observer.observe(item);
-  });
-  
-  // Add hover sound effects (optional - uncomment if you want sounds)
-  const buttons = document.querySelectorAll('.btn');
-  buttons.forEach(button => {
-  button.addEventListener('mouseenter', () => {
-      const audio = new Audio('https://assets.mixkit.co/sfx/preview/mixkit-select-click-1109.mp3');
-      audio.volume = 0.3;
-     audio.play();
-     });
-   });
-  
-  // SERVICE WORKER
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('sw.js');
-  }
-});
-</script>
 <script src="navigation.js"></script>
-<!-- Floating Navigation Buttons -->
-<a href="learning-hub.html" class="floating-button" title="Go to Learning Hub">
-  <i class="fas fa-graduation-cap"></i>
-</a>
-<a href="index.html" class="floating-button" style="bottom: 100px;" title="Go to Creator">
-  <i class="fas fa-home"></i>
-</a>
 </body>
-</html>
 </html>
