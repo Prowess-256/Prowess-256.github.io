@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Information Access and Sharing | ICT Learning Module</title>
+    <meta name="description" content="Learn how to access, share, and secure information effectively in the digital age">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/navigation.css">
+    <link rel="stylesheet" href="styles/components.css">
+    
+    <!-- Module-specific theme (Access & Sharing - Cyan/Blue) -->
+    <style>
+        :root {
+            --theme-primary: #0891b2;
+            --theme-primary-light: #06b6d4;
+            --theme-primary-dark: #0e7490;
+            --theme-secondary: #0284c7;
+        }
+        
+        .section h2 {
+            color: var(--theme-primary);
+        }
+        
+        .section h2::after {
+            background: var(--theme-primary);
+        }
+        
+        /* Access method cards */
+        .access-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .access-card {
+            background: var(--bg-secondary);
+            border-radius: var(--radius-lg);
+            padding: 1rem;
+            text-align: center;
+            transition: all var(--transition-normal);
+            border: 1px solid var(--border-light);
+        }
+        
+        .access-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--theme-primary);
+        }
+        
+        .access-card i {
+            font-size: 2rem;
+            color: var(--theme-primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .access-card h4 {
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+        }
+        
+        .access-card p {
+            font-size: 0.75rem;
+            margin-bottom: 0;
+        }
+        
+        /* Information sources */
+        .source-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .source-card {
+            background: var(--bg-secondary);
+            border-radius: var(--radius-lg);
+            padding: 0.75rem;
+            border-left: 3px solid var(--theme-primary);
+            transition: all var(--transition-normal);
+        }
+        
+        .source-card:hover {
+            transform: translateX(4px);
+            background: var(--bg-primary);
+        }
+        
+        .source-card i {
+            color: var(--theme-primary);
+            margin-right: 0.5rem;
+        }
+        
+        /* Sharing platforms */
+        .share-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .share-card {
+            background: var(--bg-secondary);
+            border-radius: var(--radius-lg);
+            padding: 1rem;
+            text-align: center;
+            transition: all var(--transition-normal);
+        }
+        
+        .share-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .share-card i {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .share-card i.fa-facebook { color: #1877f2; }
+        .share-card i.fa-whatsapp { color: #25d366; }
+        .share-card i.fa-twitter { color: #1da1f2; }
+        .share-card i.fa-instagram { color: #e4405f; }
+        .share-card i.fa-linkedin { color: #0077b5; }
+        .share-card i.fa-youtube { color: #ff0000; }
+        
+        /* Search tips */
+        .search-tip {
+            background: var(--bg-secondary);
+            border-radius: var(--radius-lg);
+            padding: 0.75rem;
+            margin: 0.5rem 0;
+            font-family: monospace;
+        }
+        
+        .breadcrumb-nav {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+            font-size: 0.85rem;
+        }
+        
+        .breadcrumb-nav a {
+            color: var(--theme-primary);
+            text-decoration: none;
+        }
+        
+        .breadcrumb-nav .separator {
+            color: var(--text-muted);
+        }
+        
+        .breadcrumb-nav .current {
+            color: var(--text-primary);
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navigation Placeholder -->
+<div id="global-nav-placeholder"></div>
+
+<main>
+    <div class="container">
+        <!-- Breadcrumb -->
+        <div class="breadcrumb">
+            <a href="index.html">Home</a>
+            <span class="separator">/</span>
+            <a href="#">Learning Hub</a>
+            <span class="separator">/</span>
+            <span class="current" id="page-title">Information Access and Sharing</span>
+        </div>
+        
+        <!-- Module Header -->
+        <div class="section-header" style="margin-bottom: 2rem;">
+            <h1>Information Access and Sharing</h1>
+            <p>A comprehensive guide to accessing, sharing, and securing information in the digital age</p>
+            <div class="keywords" style="display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; margin-top: 1rem;">
+                <span style="background: var(--bg-secondary); padding: 0.25rem 0.75rem; border-radius: 2rem; font-size: 0.8rem;">Search Engines</span>
+                <span style="background: var(--bg-secondary); padding: 0.25rem 0.75rem; border-radius: 2rem; font-size: 0.8rem;">Cloud Storage</span>
+                <span style="background: var(--bg-secondary); padding: 0.25rem 0.75rem; border-radius: 2rem; font-size: 0.8rem;">Social Media</span>
+                <span style="background: var(--bg-secondary); padding: 0.25rem 0.75rem; border-radius: 2rem; font-size: 0.8rem;">Netiquette</span>
+                <span style="background: var(--bg-secondary); padding: 0.25rem 0.75rem; border-radius: 2rem; font-size: 0.8rem;">Copyright</span>
+                <span style="background: var(--bg-secondary); padding: 0.25rem 0.75rem; border-radius: 2rem; font-size: 0.8rem;">Digital Footprint</span>
+            </div>
+        </div>
+        
+        <!-- Module Layout: 2-column -->
+        <div class="module-wrapper">
+            <!-- Main Content Area -->
+            <div class="module-content">
+                <!-- Learning Outcomes -->
+                <div class="info-box" style="margin-bottom: 2rem;">
+                    <h4><i class="fas fa-bullseye"></i> Learning Outcomes</h4>
+                    <ul>
+                        <li>Use online and offline platforms to search for information effectively</li>
+                        <li>Evaluate the credibility and reliability of information sources</li>
+                        <li>Use various ICT tools to share information appropriately</li>
+                        <li>Explain safety practices and netiquette while using the Internet</li>
+                        <li>Understand copyright, fair use, and intellectual property rights</li>
+                        <li>Protect personal information and manage digital footprint</li>
+                    </ul>
+                </div>
+                
+                <!-- Section 1: What is Information? -->
+                <section id="section1" class="section">
+                    <h2><i class="fas fa-info-circle"></i> What is Information?</h2>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-lightbulb"></i> Information vs Data</h4>
+                        <p><strong>Data</strong> is raw, unprocessed facts and figures. <strong>Information</strong> is data that has been processed, organized, and given meaning. For example, "25, 30, 35" is data, but "The temperatures this week were 25°C, 30°C, and 35°C" is information.</p>
+                    </div>
+                    
+                    <h3>Why Information Matters</h3>
+                    <p>Information is power. It helps us make decisions, solve problems, learn new things, and communicate with others. In our daily lives, we access and share information constantly:</p>
+                    <ul class="security-tips">
+                        <li><i class="fas fa-newspaper"></i> Reading news on a website</li>
+                        <li><i class="fas fa-video"></i> Watching educational videos on YouTube</li>
+                        <li><i class="fas fa-camera"></i> Sharing photos with friends on social media</li>
+                        <li><i class="fas fa-search"></i> Searching for information for school projects</li>
+                        <li><i class="fas fa-envelope"></i> Sending emails to teachers or classmates</li>
+                    </ul>
+                    
+                    <div class="activity-box">
+                        <div class="activity-header">
+                            <div class="activity-number">1</div>
+                            <div class="activity-title">Activity: Understanding Information Sharing</div>
+                        </div>
+                        <p><strong>Instructions:</strong> In groups, discuss and complete the following tasks about information sharing.</p>
+                        <ol class="activity-steps">
+                            <li>List four things you would want to share with your parents or peers about your school</li>
+                            <li>Describe how you might be able to share this information (what tools or methods would you use?)</li>
+                            <li>Explain the benefits of each method you mentioned</li>
+                            <li>In your own words, explain what "information sharing" means</li>
+                            <li>Share your findings with the class in a 2-minute presentation</li>
+                        </ol>
+                    </div>
+                </section>
+                
+                <!-- Section 2: Information Access Methods -->
+                <section id="section2" class="section">
+                    <h2><i class="fas fa-search"></i> Information Access Methods</h2>
+                    
+                    <p><strong>Information access</strong> refers to the ability to obtain, retrieve, and view information from various sources. In the digital age, we have more ways to access information than ever before.</p>
+                    
+                    <h3>Online Information Access</h3>
+                    <div class="access-grid">
+                        <div class="access-card">
+                            <i class="fab fa-google"></i>
+                            <h4>Search Engines</h4>
+                            <p>Google, Bing, DuckDuckGo</p>
+                        </div>
+                        <div class="access-card">
+                            <i class="fas fa-globe"></i>
+                            <h4>Websites</h4>
+                            <p>Wikipedia, news portals, educational sites</p>
+                        </div>
+                        <div class="access-card">
+                            <i class="fas fa-database"></i>
+                            <h4>Online Databases</h4>
+                            <p>Library catalogs, research databases</p>
+                        </div>
+                        <div class="access-card">
+                            <i class="fab fa-youtube"></i>
+                            <h4>Video Platforms</h4>
+                            <p>YouTube, Vimeo, TED Talks</p>
+                        </div>
+                        <div class="access-card">
+                            <i class="fas fa-newspaper"></i>
+                            <h4>Digital Libraries</h4>
+                            <p>Project Gutenberg, Google Books</p>
+                        </div>
+                        <div class="access-card">
+                            <i class="fas fa-graduation-cap"></i>
+                            <h4>Online Courses</h4>
+                            <p>Coursera, Khan Academy, Udemy</p>
+                        </div>
+                    </div>
+                    
+                    <h3>How Search Engines Work</h3>
+                    <div class="db-diagram" style="text-align: left;">
+                        <div class="install-step">
+                            <div class="install-number">1</div>
+                            <div class="process-content">
+                                <h4>Crawl</h4>
+                                <p>Search engines use "spiders" or "bots" to explore the web by following links</p>
+                            </div>
+                        </div>
+                        <div class="install-step">
+                            <div class="install-number">2</div>
+                            <div class="process-content">
+                                <h4>Index</h4>
+                                <p>Information about web pages is stored in a massive database</p>
+                            </div>
+                        </div>
+                        <div class="install-step">
+                            <div class="install-number">3</div>
+                            <div class="process-content">
+                                <h4>Rank</h4>
+                                <p>Algorithms determine which pages are most relevant to your search</p>
+                            </div>
+                        </div>
+                        <div class="install-step">
+                            <div class="install-number">4</div>
+                            <div class="process-content">
+                                <h4>Retrieve</h4>
+                                <p>The most relevant results are presented when you search</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h3>Search Tips and Tricks</h3>
+                    <div class="search-tip">
+                        <i class="fas fa-quote-left"></i> <strong>Exact phrase:</strong> "climate change" - finds exact match
+                    </div>
+                    <div class="search-tip">
+                        <i class="fas fa-minus-circle"></i> <strong>Exclude word:</strong> jaguar -car - excludes results about cars
+                    </div>
+                    <div class="search-tip">
+                        <i class="fas fa-globe"></i> <strong>Site search:</strong> site:wikipedia.org "Albert Einstein" - searches only Wikipedia
+                    </div>
+                    <div class="search-tip">
+                        <i class="fas fa-file-alt"></i> <strong>File type:</strong> filetype:pdf "annual report" - finds PDF files
+                    </div>
+                    <div class="search-tip">
+                        <i class="fas fa-star"></i> <strong>Wildcard:</strong> "the * of the matter" - fills in the blank
+                    </div>
+                    <div class="search-tip">
+                        <i class="fas fa-calendar-alt"></i> <strong>Date range:</strong> 2020..2022 - searches within date range
+                    </div>
+                    
+                    <div class="activity-box">
+                        <div class="activity-header">
+                            <div class="activity-number">2</div>
+                            <div class="activity-title">Activity: Search Engine Scavenger Hunt</div>
+                        </div>
+                        <p><strong>Instructions:</strong> Using a search engine, find the following information and record your search terms.</p>
+                        <ol class="activity-steps">
+                            <li>Find the capital city of Japan and its population</li>
+                            <li>What year was the first computer invented?</li>
+                            <li>Find three facts about Nelson Mandela</li>
+                            <li>What is the chemical formula for water?</li>
+                            <li>Find a high-resolution image of the solar system (use image search)</li>
+                            <li>What is the distance from Kampala to Mombasa in kilometers?</li>
+                            <li>For each search, note which search terms worked best</li>
+                        </ol>
+                    </div>
+                </section>
+                
+                <!-- Section 3: Offline Information Access -->
+                <section id="section3" class="section">
+                    <h2><i class="fas fa-book"></i> Offline Information Access</h2>
+                    
+                    <p>Not all information is accessed online. <strong>Offline information access</strong> refers to obtaining information without an Internet connection. This is important because not everyone has reliable Internet access, and offline sources can be more reliable and in-depth.</p>
+                    
+                    <h3>Common Offline Information Sources</h3>
+                    <div class="source-grid">
+                        <div class="source-card">
+                            <i class="fas fa-book"></i> <strong>Books and Textbooks</strong><br>
+                            Comprehensive, reviewed content
+                        </div>
+                        <div class="source-card">
+                            <i class="fas fa-newspaper"></i> <strong>Newspapers and Magazines</strong><br>
+                            Current events, local news
+                        </div>
+                        <div class="source-card">
+                            <i class="fas fa-graduation-cap"></i> <strong>Encyclopedias</strong><br>
+                            General knowledge, reference
+                        </div>
+                        <div class="source-card">
+                            <i class="fas fa-building"></i> <strong>Libraries and Archives</strong><br>
+                            Physical collections, historical documents
+                        </div>
+                        <div class="source-card">
+                            <i class="fas fa-chalkboard"></i> <strong>Educational Materials</strong><br>
+                            Worksheets, manuals, guides
+                        </div>
+                        <div class="source-card">
+                            <i class="fas fa-database"></i> <strong>Offline Digital Media</strong><br>
+                            CDs, DVDs, USB drives with stored content
+                        </div>
+                    </div>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-info-circle"></i> Using an Encyclopedia</h4>
+                        <ol>
+                            <li><strong>Find the right volume:</strong> Encyclopedias are organized alphabetically by topic</li>
+                            <li><strong>Use the index:</strong> Most encyclopedias have an index volume that lists all topics</li>
+                            <li><strong>Look for cross-references:</strong> Articles often reference related topics</li>
+                            <li><strong>Check publication date:</strong> Older encyclopedias may not have current information</li>
+                            <li><strong>Take notes:</strong> Since you can't copy and paste, write down important information</li>
+                        </ol>
+                    </div>
+                    
+                    <div class="activity-box">
+                        <div class="activity-header">
+                            <div class="activity-number">3</div>
+                            <div class="activity-title">Activity: Encyclopedia Exploration</div>
+                        </div>
+                        <p><strong>Instructions:</strong> Using a physical encyclopedia or an offline digital encyclopedia, find information about these topics.</p>
+                        <ol class="activity-steps">
+                            <li>What is the solar system and how many planets does it have?</li>
+                            <li>Find information about the human heart and its function</li>
+                            <li>What are the main types of ecosystems?</li>
+                            <li>Who was William Shakespeare and what did he write?</li>
+                            <li>What is photosynthesis and why is it important?</li>
+                            <li>Compare using an encyclopedia vs searching online - which was easier? Which was more reliable?</li>
+                        </ol>
+                    </div>
+                </section>
+                
+                <!-- Section 4: Evaluating Information Credibility -->
+                <section id="section4" class="section">
+                    <h2><i class="fas fa-check-double"></i> Evaluating Information Credibility</h2>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-question-circle"></i> The CRAAP Test</h4>
+                        <p>Use this framework to evaluate information sources:</p>
+                        <ul>
+                            <li><strong>C - Currency:</strong> When was the information published or updated?</li>
+                            <li><strong>R - Relevance:</strong> Does the information relate to your topic?</li>
+                            <li><strong>A - Authority:</strong> Who is the author/publisher? Are they credible?</li>
+                            <li><strong>A - Accuracy:</strong> Is the information supported by evidence? Can it be verified?</li>
+                            <li><strong>P - Purpose:</strong> Why was this information created? To inform? Persuade? Sell?</li>
+                        </ul>
+                    </div>
+                    
+                    <h3>Red Flags to Watch For</h3>
+                    <table class="data-table">
+                        <thead>
+                            <tr><th>Red Flag</th><th>What to Check</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>No author or date</strong>
+                                <td>Look for "About Us" or "Contact" pages
+                            </tr>
+                            <tr>
+                                <td><strong>Poor grammar/spelling</strong>
+                                <td>Professional sources are proofread
+                            </tr>
+                            <tr>
+                                <td><strong>Extreme language</strong>
+                                <td>"Amazing", "Shocking", "You won't believe"
+                            </tr>
+                            <tr>
+                                <td><strong>No sources/citations</strong>
+                                <td>Factual claims should have evidence
+                            </tr>
+                            <tr>
+                                <td><strong>URL ending in .com.co or similar</strong>
+                                <td>Check for legitimate domain names
+                            </tr>
+                            <tr>
+                                <td><strong>Confirmation bias</strong>
+                                <td>Check multiple sources with different perspectives
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="activity-box">
+                        <div class="activity-header">
+                            <div class="activity-number">4</div>
+                            <div class="activity-title">Activity: Source Evaluation</div>
+                        </div>
+                        <p><strong>Instructions:</strong> Evaluate the credibility of three different websites on the same topic.</p>
+                        <ol class="activity-steps">
+                            <li>Choose a controversial topic (e.g., climate change, vaccination, nutrition)</li>
+                            <li>Find three websites with different perspectives</li>
+                            <li>Apply the CRAAP test to each source</li>
+                            <li>Determine which source is most credible and explain why</li>
+                            <li>Create a comparison table of your findings</li>
+                        </ol>
+                    </div>
+                </section>
+                
+                <!-- Section 5: Information Sharing Tools -->
+                <section id="section5" class="section">
+                    <h2><i class="fas fa-share-alt"></i> Information Sharing Tools</h2>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-exchange-alt"></i> What is Information Sharing?</h4>
+                        <p>Information sharing is the process of distributing information to others. In the digital age, we can share information instantly with people around the world.</p>
+                    </div>
+                    
+                    <h3>Popular Sharing Platforms</h3>
+                    <div class="share-grid">
+                        <div class="share-card">
+                            <i class="fab fa-facebook fa-2x"></i>
+                            <h4>Facebook</h4>
+                            <p>Social networking, groups, pages</p>
+                        </div>
+                        <div class="share-card">
+                            <i class="fab fa-whatsapp fa-2x"></i>
+                            <h4>WhatsApp</h4>
+                            <p>Messaging, groups, broadcasts</p>
+                        </div>
+                        <div class="share-card">
+                            <i class="fab fa-twitter fa-2x"></i>
+                            <h4>Twitter/X</h4>
+                            <p>Short updates, news, threads</p>
+                        </div>
+                        <div class="share-card">
+                            <i class="fab fa-instagram fa-2x"></i>
+                            <h4>Instagram</h4>
+                            <p>Photos, stories, reels</p>
+                        </div>
+                        <div class="share-card">
+                            <i class="fab fa-linkedin fa-2x"></i>
+                            <h4>LinkedIn</h4>
+                            <p>Professional networking</p>
+                        </div>
+                        <div class="share-card">
+                            <i class="fab fa-youtube fa-2x"></i>
+                            <h4>YouTube</h4>
+                            <p>Video sharing, tutorials</p>
+                        </div>
+                    </div>
+                    
+                    <h3>Cloud Storage and Collaboration</h3>
+                    <table class="data-table">
+                        <thead>
+                            <tr><th>Service</th><th>Free Storage</th><th>Best For</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Google Drive</strong>
+                                <td>15 GB
+                                <td>Documents, collaboration with Google Docs
+                            </tr>
+                            <tr>
+                                <td><strong>Microsoft OneDrive</strong>
+                                <td>5 GB
+                                <td>Integration with Microsoft Office
+                            </tr>
+                            <tr>
+                                <td><strong>Dropbox</strong>
+                                <td>2 GB
+                                <td>Simple file syncing and sharing
+                            </tr>
+                            <tr>
+                                <td><strong>iCloud</strong>
+                                <td>5 GB
+                                <td>Apple device users
+                            </tr>
+                            <tr>
+                                <td><strong>Mega</strong>
+                                <td>20 GB
+                                <td>Encrypted storage
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="activity-box">
+                        <div class="activity-header">
+                            <div class="activity-number">5</div>
+                            <div class="activity-title">Activity: Information Sharing Scenarios</div>
+                        </div>
+                        <p><strong>Instructions:</strong> For each scenario, choose the best sharing method and explain why.</p>
+                        <ol class="activity-steps">
+                            <li>You need to share a 50-page project report with group members who live in different parts of the city</li>
+                            <li>You want to tell your grandparents about your school sports day (they don't use smartphones or computers)</li>
+                            <li>Your class needs to share photos from a field trip with parents</li>
+                            <li>You discovered an important safety issue in your neighborhood that everyone should know about immediately</li>
+                            <li>You want to share a complex diagram that explains a science concept with your study group</li>
+                            <li>Your teacher needs to distribute reading materials to 40 students before the weekend</li>
+                        </ol>
+                    </div>
+                </section>
+                
+                <!-- Section 6: Netiquette and Online Safety -->
+                <section id="section6" class="section">
+                    <h2><i class="fas fa-shield-alt"></i> Netiquette and Online Safety</h2>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-user-friends"></i> What is Netiquette?</h4>
+                        <p><strong>Netiquette</strong> (network etiquette) is the acceptable code of behavior for communicating online. It gives the do's and don'ts of online communication.</p>
+                    </div>
+                    
+                    <h3>Core Netiquette Rules</h3>
+                    <ul class="security-tips">
+                        <li><i class="fas fa-user-check"></i> <strong>Be respectful:</strong> Treat others as you want to be treated</li>
+                        <li><i class="fas fa-italic"></i> <strong>Use appropriate language:</strong> Avoid ALL CAPS (shouting) and offensive terms</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Fact-check before sharing:</strong> Don't spread misinformation</li>
+                        <li><i class="fas fa-lock"></i> <strong>Respect privacy:</strong> Don't share others' personal information without permission</li>
+                        <li><i class="fas fa-comment-dots"></i> <strong>Think before you post:</strong> Once online, it's hard to remove</li>
+                        <li><i class="fas fa-copyright"></i> <strong>Give credit:</strong> Cite sources and respect copyright</li>
+                        <li><i class="fas fa-smile"></i> <strong>Be forgiving:</strong> Not everyone is tech-savvy or fluent in your language</li>
+                    </ul>
+                    
+                    <h3>Protecting Personal Information</h3>
+                    <table class="data-table">
+                        <thead>
+                            <tr><th>Information Type</th><th>Safety Level</th><th>Guidance</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Full name</span>
+                                <td>Be careful</span>
+                                <td>Only share with trusted people and sites
+                            </tr>
+                            <tr>
+                                <td>Home address</span>
+                                <td>Very private</span>
+                                <td>Never share publicly online
+                            </tr>
+                            <tr>
+                                <td>Phone number</span>
+                                <td>Private</span>
+                                <td>Only share with trusted contacts
+                            </tr>
+                            <tr>
+                                <td>School name</span>
+                                <td>Be careful</span>
+                                <td>Avoid sharing publicly
+                            </tr>
+                            <tr>
+                                <td>Photos</span>
+                                <td>Depends on content</span>
+                                <td>Think before posting - once online, always online
+                            </tr>
+                            <tr>
+                                <td>Location in real time</span>
+                                <td>Very private</span>
+                                <td>Turn off location sharing on social media
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="activity-box">
+                        <div class="activity-header">
+                            <div class="activity-number">6</div>
+                            <div class="activity-title">Activity: Create a Netiquette Guide</div>
+                        </div>
+                        <p><strong>Instructions:</strong> Create a list of 10 netiquette rules for students in your school.</p>
+                        <ol class="activity-steps">
+                            <li>Consider rules for: email, social media, online discussions, general Internet use</li>
+                            <li>For each rule, explain why it's important</li>
+                            <li>Design a poster or infographic displaying your rules</li>
+                            <li>Share your netiquette guide with the class</li>
+                        </ol>
+                    </div>
+                </section>
+                
+                <!-- Section 7: Copyright and Intellectual Property -->
+                <section id="section7" class="section">
+                    <h2><i class="fas fa-copyright"></i> Copyright and Intellectual Property</h2>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-gavel"></i> What is Copyright?</h4>
+                        <p><strong>Copyright</strong> is a legal right that gives creators control over how their original works are used. It automatically applies to creative works like books, music, software, photos, and videos.</p>
+                    </div>
+                    
+                    <h3>What Copyright Protects</h3>
+                    <div class="source-grid">
+                        <div class="source-card"><i class="fas fa-book"></i> Written works (books, articles, blogs)</div>
+                        <div class="source-card"><i class="fas fa-palette"></i> Visual arts (paintings, photos, drawings)</div>
+                        <div class="source-card"><i class="fas fa-music"></i> Music (songs, compositions, recordings)</div>
+                        <div class="source-card"><i class="fas fa-video"></i> Video/film (movies, TV shows, YouTube videos)</div>
+                        <div class="source-card"><i class="fas fa-code"></i> Software (programs, apps, games)</div>
+                        <div class="source-card"><i class="fas fa-chart-line"></i> Facts and ideas (NOT protected)</div>
+                    </div>
+                    
+                    <h3>Fair Use and Educational Exceptions</h3>
+                    <div class="info-box">
+                        <h4><i class="fas fa-graduation-cap"></i> When You Can Use Copyrighted Material</h4>
+                        <ul>
+                            <li><strong>Education:</strong> Using small portions for teaching and learning</li>
+                            <li><strong>Criticism and commentary:</strong> Reviewing or analyzing a work</li>
+                            <li><strong>News reporting:</strong> Using excerpts in news stories</li>
+                            <li><strong>Parody:</strong> Satirizing or commenting on a work</li>
+                            <li><strong>Research:</strong> Using quotes and excerpts with citation</li>
+                        </ul>
+                        <p><strong>Important:</strong> Always give credit to the original creator, and consider whether your use could harm the market for the original work.</p>
+                    </div>
+                    
+                    <h3>Creative Commons and Open Licenses</h3>
+                    <div class="search-tip">
+                        <i class="fab fa-creative-commons"></i> <strong>Creative Commons (CC)</strong> - Licenses that allow creators to share their work with certain permissions (attribution, non-commercial, share-alike)
+                    </div>
+                    
+                    <div class="activity-box">
+                        <div class="activity-header">
+                            <div class="activity-number">7</div>
+                            <div class="activity-title">Activity: Copyright Scenarios</div>
+                        </div>
+                        <p><strong>Instructions:</strong> Decide whether each scenario is legal or illegal.</p>
+                        <ol class="activity-steps">
+                            <li>Copying a paragraph from a book for a school report and citing the source</li>
+                            <li>Downloading a movie from a website that doesn't own the rights</li>
+                            <li>Making 30 copies of a textbook for your class because the school can't afford books</li>
+                            <li>Using a photo from the Internet in a presentation and giving credit to the photographer</li>
+                            <li>Sharing your Netflix password with a friend who lives in another household</li>
+                            <li>Taking information from three websites and rewriting it in your own words for an essay</li>
+                        </ol>
+                    </div>
+                </section>
+                
+                <!-- Section 8: Digital Footprint -->
+                <section id="section8" class="section">
+                    <h2><i class="fas fa-footprint"></i> Your Digital Footprint</h2>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-chart-line"></i> What is a Digital Footprint?</h4>
+                        <p>Your <strong>digital footprint</strong> is the trail of data you leave behind when using the Internet. This includes websites you visit, emails you send, social media posts, photos you share, and information others post about you.</p>
+                    </div>
+                    
+                    <h3>Types of Digital Footprints</h3>
+                    <table class="data-table">
+                        <thead>
+                            <tr><th>Type</th><th>Description</th><th>Examples</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Active Footprint</strong>
+                                <td>Data you intentionally share
+                                <td>Social media posts, comments, uploaded photos, online reviews
+                            </tr>
+                            <tr>
+                                <td><strong>Passive Footprint</strong>
+                                <td>Data collected without your direct action
+                                <td>Search history, location data, browsing habits, cookies
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <h3>Managing Your Digital Footprint</h3>
+                    <ul class="security-tips">
+                        <li><i class="fas fa-user-secret"></i> <strong>Think before you post</strong> - Once online, it's permanent</li>
+                        <li><i class="fas fa-cog"></i> <strong>Review privacy settings</strong> on all social media accounts</li>
+                        <li><i class="fas fa-search"></i> <strong>Google yourself</strong> - See what others can find about you</li>
+                        <li><i class="fas fa-trash-alt"></i> <strong>Delete old accounts</strong> you no longer use</li>
+                        <li><i class="fas fa-lock"></i> <strong>Use strong, unique passwords</strong> for each account</li>
+                        <li><i class="fas fa-shield-alt"></i> <strong>Be careful what you share</strong> - Employers and schools may check your online presence</li>
+                    </ul>
+                    
+                    <div class="activity-box">
+                        <div class="activity-header">
+                            <div class="activity-number">8</div>
+                            <div class="activity-title">Activity: Digital Footprint Audit</div>
+                        </div>
+                        <p><strong>Instructions:</strong> Audit your own digital footprint.</p>
+                        <ol class="activity-steps">
+                            <li>Search for your name on Google (and other search engines)</li>
+                            <li>List what information appears publicly</li>
+                            <li>Review privacy settings on your social media accounts</li>
+                            <li>Check which apps have access to your personal data</li>
+                            <li>Create an action plan to improve your digital footprint</li>
+                            <li>Write a reflection on what you learned</li>
+                        </ol>
+                    </div>
+                </section>
+                
+                <!-- Integration Activity -->
+                <section id="integration" class="section">
+                    <h2><i class="fas fa-tasks"></i> Activity of Integration</h2>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-chalkboard"></i> Research and Presentation Project</h4>
+                        <p>Your class is researching a local environmental issue. You need to gather information, evaluate sources, create a presentation, and share it with the community.</p>
+                    </div>
+                    
+                    <div class="activity-box">
+                        <div class="activity-header">
+                            <div class="activity-number">FINAL</div>
+                            <div class="activity-title">Community Research Project</div>
+                        </div>
+                        <p><strong>Requirements:</strong></p>
+                        <ol class="activity-steps">
+                            <li><strong>Topic Selection:</strong> Choose a local issue (pollution, waste management, water quality, deforestation)</li>
+                            <li><strong>Information Gathering:</strong> Use at least 3 online sources and 2 offline sources</li>
+                            <li><strong>Source Evaluation:</strong> Apply the CRAAP test to each source and document your evaluation</li>
+                            <li><strong>Information Organization:</strong> Create an outline organizing your findings</li>
+                            <li><strong>Presentation Creation:</strong> Create a presentation (slides, poster, or video) with:
+                                <ul>
+                                    <li>Introduction to the issue</li>
+                                    <li>Key facts and statistics</li>
+                                    <li>Visuals (images, charts, diagrams)</li>
+                                    <li>Citations for all sources used</li>
+                                    <li>Conclusion and recommendations</li>
+                                </ul>
+                            </li>
+                            <li><strong>Sharing:</strong> Present your findings to the class and share via at least one digital platform</li>
+                            <li><strong>Reflection:</strong> Write about what you learned about finding, evaluating, and sharing information</li>
+                        </ol>
+                    </div>
+                </section>
+                
+                <!-- Quiz Section -->
+                <section id="quiz" class="section">
+                    <h2><i class="fas fa-question-circle"></i> Knowledge Check</h2>
+                    
+                    <div class="quiz-box">
+                        <div class="quiz-question">
+                            1. Which of these is NOT a good source for reliable information?
+                        </div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false">Government website (.gov)</div>
+                            <div class="quiz-option" data-correct="false">University research paper</div>
+                            <div class="quiz-option" data-correct="true">Anonymous blog with no sources</div>
+                            <div class="quiz-option" data-correct="false">Established newspaper</div>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                    
+                    <div class="quiz-box">
+                        <div class="quiz-question">
+                            2. What does "netiquette" mean?
+                        </div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="true">Proper behavior when communicating online</div>
+                            <div class="quiz-option" data-correct="false">A type of computer network</div>
+                            <div class="quiz-option" data-correct="false">Software for organizing information</div>
+                            <div class="quiz-option" data-correct="false">A secure way to send emails</div>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                    
+                    <div class="quiz-box">
+                        <div class="quiz-question">
+                            3. What does the "A" in the CRAAP test stand for?
+                        </div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false">Accuracy and Authority (both are important)</div>
+                            <div class="quiz-option" data-correct="true">Authority</div>
+                            <div class="quiz-option" data-correct="false">Accuracy</div>
+                            <div class="quiz-option" data-correct="false">Appearance</div>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                    
+                    <div class="quiz-box">
+                        <div class="quiz-question">
+                            4. What should you do if you receive an email from someone you don't know asking for personal information?
+                        </div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false">Reply with the information they asked for</div>
+                            <div class="quiz-option" data-correct="false">Forward it to all your friends</div>
+                            <div class="quiz-option" data-correct="true">Delete it without responding</div>
+                            <div class="quiz-option" data-correct="false">Click any links to see what they want</div>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                    
+                    <div class="quiz-box">
+                        <div class="quiz-question">
+                            5. Copyright law protects:
+                        </div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false">Facts and ideas</div>
+                            <div class="quiz-option" data-correct="false">Historical events</div>
+                            <div class="quiz-option" data-correct="true">Original creative works</div>
+                            <div class="quiz-option" data-correct="false">Scientific discoveries</div>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                    
+                    <div class="quiz-box">
+                        <div class="quiz-question">
+                            6. What is a digital footprint?
+                        </div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false">A type of computer virus</div>
+                            <div class="quiz-option" data-correct="true">The trail of data you leave behind when using the Internet</div>
+                            <div class="quiz-option" data-correct="false">A security software program</div>
+                            <div class="quiz-option" data-correct="false">A type of social media platform</div>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                </section>
+                
+                <!-- Download PDF Button -->
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button id="downloadPdf" class="btn btn-outline">
+                        <i class="fas fa-download"></i> Download as PDF
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Sidebar -->
+            <aside class="module-sidebar">
+                <!-- Progress Tracker -->
+                <div class="progress-container">
+                    <h3><i class="fas fa-chart-line"></i> Your Progress</h3>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <div class="progress-text">
+                        <span>0% Complete</span>
+                        <span id="progressPercent">0%</span>
+                    </div>
+                </div>
+                
+                <!-- Sidebar Navigation -->
+                <div class="sidebar-nav">
+                    <h3><i class="fas fa-list"></i> Module Sections</h3>
+                    <ul>
+                        <li><a href="#section1"><i class="fas fa-chevron-right"></i> What is Information?</a></li>
+                        <li><a href="#section2"><i class="fas fa-chevron-right"></i> Information Access Methods</a></li>
+                        <li><a href="#section3"><i class="fas fa-chevron-right"></i> Offline Access</a></li>
+                        <li><a href="#section4"><i class="fas fa-chevron-right"></i> Evaluating Credibility</a></li>
+                        <li><a href="#section5"><i class="fas fa-chevron-right"></i> Sharing Tools</a></li>
+                        <li><a href="#section6"><i class="fas fa-chevron-right"></i> Netiquette & Safety</a></li>
+                        <li><a href="#section7"><i class="fas fa-chevron-right"></i> Copyright</a></li>
+                        <li><a href="#section8"><i class="fas fa-chevron-right"></i> Digital Footprint</a></li>
+                        <li><a href="#integration"><i class="fas fa-chevron-right"></i> Final Project</a></li>
+                        <li><a href="#quiz"><i class="fas fa-chevron-right"></i> Knowledge Check</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Search Operators -->
+                <div class="info-box">
+                    <h4><i class="fas fa-search"></i> Search Operators</h4>
+                    <ul style="margin: 0; font-size: 0.85rem;">
+                        <li><code>"exact phrase"</code></li>
+                        <li><code>-exclude</code></li>
+                        <li><code>site:domain.com</code></li>
+                        <li><code>filetype:pdf</code></li>
+                        <li><code>intitle:keyword</code></li>
+                        <li><code>OR</code> between terms</li>
+                    </ul>
+                </div>
+                
+                <!-- Fact-Checking Sites -->
+                <div class="info-box">
+                    <h4><i class="fas fa-check-circle"></i> Fact-Checking Resources</h4>
+                    <ul style="margin: 0; font-size: 0.85rem;">
+                        <li><a href="#">Snopes.com</a></li>
+                        <li><a href="#">FactCheck.org</a></li>
+                        <li><a href="#">PolitiFact.com</a></li>
+                        <li><a href="#">Google Fact Check Tools</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Assessment Info -->
+                <div class="info-box">
+                    <h4><i class="fas fa-clipboard-list"></i> Assessment</h4>
+                    <ul style="margin: 0;">
+                        <li>8 Hands-on Activities</li>
+                        <li>6 Quiz Questions</li>
+                        <li>1 Final Project</li>
+                        <li>Estimated Time: 8-10 hours</li>
+                    </ul>
+                </div>
+            </aside>
+        </div>
+    </div>
+</main>
+
+<!-- Footer -->
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>ICT Learning Hub</h3>
+                <p>Empowering students with digital skills for the future.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="access-sharing.html">Access & Sharing</a></li>
+                    <li><a href="system-security.html">Security</a></li>
+                </ul>
+            </div>
+            <div class="footer-modules">
+                <h4>More Modules</h4>
+                <ul>
+                    <li><a href="web-design.html">Web Design</a></li>
+                    <li><a href="software-management.html">Software Management</a></li>
+                    <li><a href="shorts2.html">Shortcut Quiz</a></li>
+                </ul>
+            </div>
+            <div class="footer-social">
+                <h4>Connect</h4>
+                <div class="social-icons">
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Yiga Gerald. All rights reserved. | ICT Teacher | Digital Learning Creator</p>
+        </div>
+    </div>
+</footer>
+
+<script src="js/modules.js"></script>
+</body>
+</html>

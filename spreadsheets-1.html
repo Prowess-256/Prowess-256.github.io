@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spreadsheets 1 | ICT Learning Module</title>
+    <meta name="description" content="Master spreadsheet fundamentals - create, format, calculate, and analyze data using Excel and Google Sheets">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/navigation.css">
+    <link rel="stylesheet" href="styles/components.css">
+    
+    <!-- Module-specific theme (Spreadsheets - Green/Teal) -->
+    <style>
+        :root {
+            --theme-primary: #0d9488;
+            --theme-primary-light: #14b8a6;
+            --theme-primary-dark: #0f766e;
+            --theme-secondary: #10b981;
+        }
+        
+        .section h2 {
+            color: var(--theme-primary);
+        }
+        
+        .section h2::after {
+            background: var(--theme-primary);
+        }
+        
+        /* Spreadsheet example styling */
+        .spreadsheet-demo {
+            background: var(--bg-secondary);
+            border-radius: var(--radius-lg);
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            border: 1px solid var(--border-light);
+        }
+        
+        .spreadsheet-demo table {
+            width: 100%;
+            border-collapse: collapse;
+            font-family: monospace;
+            font-size: 0.85rem;
+        }
+        
+        .spreadsheet-demo th,
+        .spreadsheet-demo td {
+            border: 1px solid var(--border-medium);
+            padding: 0.5rem 0.75rem;
+            text-align: left;
+        }
+        
+        .spreadsheet-demo th {
+            background: var(--theme-primary);
+            color: white;
+            font-weight: 600;
+        }
+        
+        .spreadsheet-demo .formula-cell {
+            background: #fef3c7;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navigation Placeholder -->
+<div id="global-nav-placeholder"></div>
+
+<main>
+    <div class="container">
+        <!-- Breadcrumb -->
+        <div class="breadcrumb">
+            <a href="index.html">Home</a>
+            <span class="separator">/</span>
+            <a href="#">Learning Hub</a>
+            <span class="separator">/</span>
+            <span class="current" id="page-title">Spreadsheets 1</span>
+        </div>
+        
+        <!-- Module Header -->
+        <div class="section-header" style="margin-bottom: 2rem;">
+            <h1>Spreadsheets 1</h1>
+            <p>Master the fundamentals of spreadsheet software for data organization, calculation, and analysis</p>
+            <div class="keywords" style="display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; margin-top: 1rem;">
+                <span style="background: var(--bg-secondary); padding: 0.25rem 0.75rem; border-radius: 2rem; font-size: 0.8rem;">Microsoft Excel</span>
+                <span style="background: var(--bg-secondary); padding: 0.25rem 0.75rem; border-radius: 2rem; font-size: 0.8rem;">Google Sheets</span>
+                <span style="background: var(--bg-secondary); padding: 0.25rem 0.75rem; border-radius: 2rem; font-size: 0.8rem;">Formulas</span>
+                <span style="background: var(--bg-secondary); padding: 0.25rem 0.75rem; border-radius: 2rem; font-size: 0.8rem;">Functions</span>
+                <span style="background: var(--bg-secondary); padding: 0.25rem 0.75rem; border-radius: 2rem; font-size: 0.8rem;">Data Analysis</span>
+                <span style="background: var(--bg-secondary); padding: 0.25rem 0.75rem; border-radius: 2rem; font-size: 0.8rem;">Charts</span>
+            </div>
+        </div>
+        
+        <!-- Module Layout: 2-column -->
+        <div class="module-wrapper">
+            <!-- Main Content Area -->
+            <div class="module-content">
+                <!-- Learning Outcomes -->
+                <div class="info-box" style="margin-bottom: 2rem;">
+                    <h4><i class="fas fa-bullseye"></i> Learning Outcomes</h4>
+                    <ul>
+                        <li>Understand spreadsheet interface and basic navigation</li>
+                        <li>Create and format worksheets with data</li>
+                        <li>Use formulas and functions for calculations</li>
+                        <li>Create charts to visualize data</li>
+                        <li>Apply data sorting and filtering techniques</li>
+                    </ul>
+                </div>
+                
+                <!-- Section 1: Introduction -->
+                <section id="section1" class="section">
+                    <h2><i class="fas fa-home"></i> Introduction to Spreadsheets</h2>
+                    
+                    <p>Spreadsheet software is one of the most versatile and widely used tools in both professional and personal contexts. Whether you're managing a budget, analyzing data, or tracking projects, spreadsheets provide a powerful way to organize, calculate, and visualize information.</p>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-lightbulb"></i> What are Spreadsheets?</h4>
+                        <p>A spreadsheet is a digital worksheet organized into <strong>rows</strong> and <strong>columns</strong> that intersect to form <strong>cells</strong>. Each cell can contain text, numbers, or formulas that perform calculations. Modern spreadsheet applications like Microsoft Excel and Google Sheets offer extensive capabilities for data analysis, visualization, and automation.</p>
+                    </div>
+                    
+                    <h3>Common Uses of Spreadsheets</h3>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Application</th>
+                                <th>Description</th>
+                                <th>Example</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Financial Management</strong></td>
+                                <td>Budgeting, expense tracking, financial forecasting</span></td>
+                                <td>Monthly budget with income/expense calculations</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Data Analysis</strong></span></td>
+                                <td>Sorting, filtering, and analyzing datasets</span></td>
+                                <td>Sales data analysis with pivot tables</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Project Management</strong></span></td>
+                                <td>Tracking tasks, timelines, and resources</span></td>
+                                <td>Project timeline with Gantt chart</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Academic Purposes</strong></span></td>
+                                <td>Grade books, research data, statistical analysis</span></td>
+                                <td>Student grade calculation with weighted averages</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+                
+                <!-- Section 2: Spreadsheet Interface -->
+                <section id="section2" class="section">
+                    <h2><i class="fas fa-desktop"></i> Spreadsheet Interface Basics</h2>
+                    
+                    <p>Understanding the spreadsheet interface is crucial for efficient work. While different spreadsheet applications have slightly different layouts, they all share common elements.</p>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-th"></i> Worksheet Structure</h4>
+                        <ul>
+                            <li><strong>Rows:</strong> Horizontal lines identified by numbers (1, 2, 3...)</li>
+                            <li><strong>Columns:</strong> Vertical lines identified by letters (A, B, C...)</li>
+                            <li><strong>Cells:</strong> Intersection of a row and column, identified by cell address (e.g., A1, B2)</li>
+                            <li><strong>Cell Range:</strong> A group of cells identified by starting and ending cells (e.g., A1:B5)</li>
+                            <li><strong>Worksheet:</strong> A single page within a spreadsheet file</li>
+                            <li><strong>Workbook:</strong> The entire spreadsheet file containing multiple worksheets</li>
+                        </ul>
+                    </div>
+                    
+                    <h3>Spreadsheet Example</h3>
+                    <div class="spreadsheet-demo">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th></th><th>A</th><th>B</th><th>C</th><th>D</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th>1</th>
+                                    <td><strong>Item</strong></td>
+                                    <td><strong>Quantity</strong></td>
+                                    <td><strong>Price</strong></td>
+                                    <td><strong>Total</strong></td>
+                                </tr>
+                                <tr>
+                                    <th>2</th>
+                                    <td>Notebooks</td>
+                                    <td>5</td>
+                                    <td>$3.50</td>
+                                    <td class="formula-cell">=B2*C2</td>
+                                </tr>
+                                <tr>
+                                    <th>3</th>
+                                    <td>Pens</td>
+                                    <td>10</td>
+                                    <td>$1.25</td>
+                                    <td class="formula-cell">=B3*C3</td>
+                                </tr>
+                                <tr>
+                                    <th>4</th>
+                                    <td>Markers</td>
+                                    <td>3</td>
+                                    <td>$4.00</td>
+                                    <td class="formula-cell">=B4*C4</td>
+                                </tr>
+                                <tr>
+                                    <th>5</th>
+                                    <td></td>
+                                    <td></td>
+                                    <td><strong>Grand Total:</strong></td>
+                                    <td class="formula-cell">=SUM(D2:D4)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="activity-box">
+                        <div class="activity-header">
+                            <div class="activity-number">1</div>
+                            <div class="activity-title">Activity: Navigating a Spreadsheet</div>
+                        </div>
+                        <p><strong>Objective:</strong> Familiarize yourself with basic spreadsheet navigation and data entry.</p>
+                        <ol class="activity-steps">
+                            <li>Open your preferred spreadsheet application (Excel, Google Sheets, etc.)</li>
+                            <li>Click on cell B3 and type "Student Name"</li>
+                            <li>Move to cell C3 and type "Test Score"</li>
+                            <li>Enter sample data for 5 students in rows 4-8</li>
+                            <li>Practice selecting a range of cells (B4:C8)</li>
+                            <li>Try navigating using arrow keys, Tab, and Enter keys</li>
+                        </ol>
+                    </div>
+                </section>
+                
+                <!-- Section 3: Formulas and Functions -->
+                <section id="section3" class="section">
+                    <h2><i class="fas fa-calculator"></i> Formulas and Functions</h2>
+                    
+                    <p>Formulas and functions are what make spreadsheets powerful calculation tools. A <strong>formula</strong> is an expression that calculates values, while a <strong>function</strong> is a predefined formula that performs specific calculations.</p>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-exclamation-circle"></i> Important: Formula Rules</h4>
+                        <ul>
+                            <li>All formulas begin with an equals sign (=)</li>
+                            <li>Use cell references (A1, B2) instead of typing numbers</li>
+                            <li>Use mathematical operators: + (add), - (subtract), * (multiply), / (divide)</li>
+                            <li>Functions use parentheses: =SUM(A1:A10)</li>
+                        </ul>
+                    </div>
+                    
+                    <h3>Common Spreadsheet Functions</h3>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Function</th>
+                                <th>Syntax</th>
+                                <th>Description</th>
+                                <th>Example</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>SUM</strong></span></td>
+                                <td>=SUM(range)</span></td>
+                                <td>Adds all numbers in a range</span></td>
+                                <td>=SUM(A1:A10)</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>AVERAGE</strong></span></td>
+                                <td>=AVERAGE(range)</span></td>
+                                <td>Calculates the average of numbers</span></td>
+                                <td>=AVERAGE(B2:B20)</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>COUNT</strong></span></td>
+                                <td>=COUNT(range)</span></td>
+                                <td>Counts cells with numbers</span></td>
+                                <td>=COUNT(C1:C100)</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>MAX</strong></span></td>
+                                <td>=MAX(range)</span></td>
+                                <td>Finds the largest value</span></td>
+                                <td>=MAX(D5:D50)</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>MIN</strong></span></td>
+                                <td>=MIN(range)</span></td>
+                                <td>Finds the smallest value</span></td>
+                                <td>=MIN(D5:D50)</span></td>
+                            </tr>
+                            </tr>
+                                <td><strong>IF</strong></span></td>
+                                <td>=IF(condition, true, false)</span></td>
+                                <td>Performs conditional logic</span></td>
+                                <td>=IF(A1>50, "Pass", "Fail")</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <h3>Absolute vs Relative References</h3>
+                    <div class="info-box">
+                        <h4><i class="fas fa-link"></i> Understanding Cell References</h4>
+                        <ul>
+                            <li><strong>Relative Reference (A1):</strong> Changes when copied to another cell</li>
+                            <li><strong>Absolute Reference ($A$1):</strong> Stays constant when copied</li>
+                            <li><strong>Mixed Reference ($A1 or A$1):</strong> Partially locked</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="activity-box">
+                        <div class="activity-header">
+                            <div class="activity-number">2</div>
+                            <div class="activity-title">Activity: Creating Formulas</div>
+                        </div>
+                        <p><strong>Objective:</strong> Create a grade calculation spreadsheet using formulas and functions.</p>
+                        <ol class="activity-steps">
+                            <li>Set up column headers: Student, Test1, Test2, Test3, Average, Grade</li>
+                            <li>Enter data for at least 5 students with test scores (out of 100)</li>
+                            <li>In the Average column, use the AVERAGE function to calculate each student's average</li>
+                            <li>In the Grade column, use an IF function to assign grades (90+=A, 80-89=B, etc.)</li>
+                            <li>Add a cell to calculate the class average using AVERAGE</li>
+                        </ol>
+                    </div>
+                </section>
+                
+                <!-- Section 4: Formatting -->
+                <section id="section4" class="section">
+                    <h2><i class="fas fa-paint-brush"></i> Formatting and Data Organization</h2>
+                    
+                    <p>Effective formatting makes spreadsheets more readable and professional. Proper data organization enables easier analysis and reduces errors.</p>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-table"></i> Formatting Best Practices</h4>
+                        <ul>
+                            <li><strong>Number Formatting:</strong> Apply appropriate formats (currency, percentage, date)</li>
+                            <li><strong>Cell Styles:</strong> Use bold, italics, and borders to highlight important data</li>
+                            <li><strong>Alignment:</strong> Align data consistently (left for text, right for numbers)</li>
+                            <li><strong>Conditional Formatting:</strong> Automatically format cells based on their values</li>
+                        </ul>
+                    </div>
+                    
+                    <h3>Data Organization Techniques</h3>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Technique</th>
+                                <th>Purpose</th>
+                                <th>How to Apply</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Sorting</strong></span></td>
+                                <td>Arrange data in a specific order</span></td>
+                                <td>Select data → Data → Sort</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Filtering</strong></span></td>
+                                <td>Display only data meeting specific criteria</span></td>
+                                <td>Select headers → Data → Filter</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Freeze Panes</strong></span></td>
+                                <td>Keep headers visible while scrolling</span></td>
+                                <td>View → Freeze Panes</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Data Validation</strong></span></td>
+                                <td>Control what data can be entered</span></td>
+                                <td>Data → Data Validation</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+                
+                <!-- Section 5: Charts -->
+                <section id="section5" class="section">
+                    <h2><i class="fas fa-chart-bar"></i> Charts and Data Visualization</h2>
+                    
+                    <p>Charts transform numerical data into visual representations, making patterns and trends easier to identify and understand.</p>
+                    
+                    <h3>Common Chart Types</h3>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Chart Type</th>
+                                <th>Best For</th>
+                                <th>Example Use</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>📊 <strong>Column/Bar Chart</strong></span></td>
+                                <td>Comparing values across categories</span></td>
+                                <td>Monthly sales by product</span></td>
+                            </tr>
+                            <tr>
+                                <td>📈 <strong>Line Chart</strong></span></td>
+                                <td>Showing trends over time</span></td>
+                                <td>Revenue growth over 5 years</span></td>
+                            </tr>
+                            <tr>
+                                <td>🥧 <strong>Pie Chart</strong></span></td>
+                                <td>Showing parts of a whole</span></td>
+                                <td>Market share by company</span></td>
+                            </tr>
+                            <tr>
+                                <td>🔵 <strong>Scatter Plot</strong></span></td>
+                                <td>Showing relationship between variables</span></td>
+                                <td>Correlation between study hours and grades</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="activity-box">
+                        <div class="activity-header">
+                            <div class="activity-number">3</div>
+                            <div class="activity-title">Activity: Create a Sales Report with Chart</div>
+                        </div>
+                        <p><strong>Objective:</strong> Create a formatted sales report with an accompanying chart.</p>
+                        <ol class="activity-steps">
+                            <li>Create a table with columns: Month, Product A, Product B, Product C, Total</li>
+                            <li>Enter sales data for 12 months (use realistic numbers)</li>
+                            <li>Calculate monthly totals using the SUM function</li>
+                            <li>Format the table with currency formatting, borders, and header styles</li>
+                            <li>Create a line chart showing sales trends for each product over the year</li>
+                            <li>Add chart title, axis labels, and legend</li>
+                        </ol>
+                    </div>
+                </section>
+                
+                <!-- Section 6: Keyboard Shortcuts -->
+                <section id="section6" class="section">
+                    <h2><i class="fas fa-keyboard"></i> Excel Keyboard Shortcuts</h2>
+                    
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Shortcut</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><kbd style="background: var(--bg-secondary); padding: 0.25rem 0.5rem; border-radius: 0.25rem;">F2</kbd></span></td>
+                                <td>Edit active cell</span></td>
+                            </tr>
+                            <tr>
+                                <td><kbd style="background: var(--bg-secondary); padding: 0.25rem 0.5rem; border-radius: 0.25rem;">Ctrl + Space</kbd></span></td>
+                                <td>Select entire column</span></td>
+                            </tr>
+                            <tr>
+                                <td><kbd style="background: var(--bg-secondary); padding: 0.25rem 0.5rem; border-radius: 0.25rem;">Shift + Space</kbd></span></td>
+                                <td>Select entire row</span></td>
+                            </tr>
+                            <tr>
+                                <td><kbd style="background: var(--bg-secondary); padding: 0.25rem 0.5rem; border-radius: 0.25rem;">Ctrl + Arrow</kbd></span></td>
+                                <td>Jump to edge of data region</span></td>
+                            </tr>
+                            <tr>
+                                <td><kbd style="background: var(--bg-secondary); padding: 0.25rem 0.5rem; border-radius: 0.25rem;">Ctrl + Shift + Arrow</kbd></span></td>
+                                <td>Select to edge of data region</span></td>
+                            </tr>
+                            <tr>
+                                <td><kbd style="background: var(--bg-secondary); padding: 0.25rem 0.5rem; border-radius: 0.25rem;">Alt + =</kbd></span></td>
+                                <td>AutoSum</span></td>
+                            </tr>
+                            <tr>
+                                <td><kbd style="background: var(--bg-secondary); padding: 0.25rem 0.5rem; border-radius: 0.25rem;">Ctrl + Shift + %</kbd></span></td>
+                                <td>Apply percentage format</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+                
+                <!-- Integration Activity -->
+                <section id="integration" class="section">
+                    <h2><i class="fas fa-tasks"></i> Activity of Integration</h2>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-calculator"></i> Final Project: Personal Budget Spreadsheet</h4>
+                        <p>Create a complete personal budget spreadsheet that demonstrates all the skills learned.</p>
+                    </div>
+                    
+                    <div class="activity-box">
+                        <div class="activity-header">
+                            <div class="activity-number">FINAL</div>
+                            <div class="activity-title">Personal Budget Project</div>
+                        </div>
+                        <p><strong>Requirements:</strong></p>
+                        <ul class="activity-steps">
+                            <li>Income and expense categories</li>
+                            <li>Formulas to calculate totals and balances</li>
+                            <li>At least three different functions (SUM, AVERAGE, IF, etc.)</li>
+                            <li>Proper formatting for readability (currency, bold headers, borders)</li>
+                            <li>A chart visualizing expense distribution</li>
+                            <li>Data validation for at least one input field</li>
+                            <li>Clear labels and professional appearance</li>
+                        </ul>
+                    </div>
+                </section>
+                
+                <!-- Quiz Section -->
+                <section id="quiz" class="section">
+                    <h2><i class="fas fa-question-circle"></i> Knowledge Check</h2>
+                    
+                    <div class="quiz-box">
+                        <div class="quiz-question">
+                            1. What character must begin every spreadsheet formula?
+                        </div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false">A plus sign (+)</div>
+                            <div class="quiz-option" data-correct="true">An equals sign (=)</div>
+                            <div class="quiz-option" data-correct="false">A dollar sign ($)</div>
+                            <div class="quiz-option" data-correct="false">An asterisk (*)</div>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                    
+                    <div class="quiz-box">
+                        <div class="quiz-question">
+                            2. Which function would you use to calculate the average of values in cells B2 through B10?
+                        </div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false">=TOTAL(B2:B10)</div>
+                            <div class="quiz-option" data-correct="true">=AVERAGE(B2:B10)</div>
+                            <div class="quiz-option" data-correct="false">=MEAN(B2:B10)</div>
+                            <div class="quiz-option" data-correct="false">=SUM(B2:B10)</div>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                    
+                    <div class="quiz-box">
+                        <div class="quiz-question">
+                            3. What does the cell reference $A$1 represent?
+                        </div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false">A relative reference</div>
+                            <div class="quiz-option" data-correct="true">An absolute reference</div>
+                            <div class="quiz-option" data-correct="false">A mixed reference</div>
+                            <div class="quiz-option" data-correct="false">A named range</div>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                    
+                    <div class="quiz-box">
+                        <div class="quiz-question">
+                            4. Which chart type is best for showing trends over time?
+                        </div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false">Pie Chart</div>
+                            <div class="quiz-option" data-correct="false">Bar Chart</div>
+                            <div class="quiz-option" data-correct="true">Line Chart</div>
+                            <div class="quiz-option" data-correct="false">Scatter Plot</div>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                    
+                    <div class="quiz-box">
+                        <div class="quiz-question">
+                            5. What keyboard shortcut is used to edit the active cell?
+                        </div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false">Enter</div>
+                            <div class="quiz-option" data-correct="true">F2</div>
+                            <div class="quiz-option" data-correct="false">Ctrl + E</div>
+                            <div class="quiz-option" data-correct="false">Alt + Enter</div>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                </section>
+                
+                <!-- Download PDF Button -->
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button id="downloadPdf" class="btn btn-outline">
+                        <i class="fas fa-download"></i> Download as PDF
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Sidebar -->
+            <aside class="module-sidebar">
+                <!-- Progress Tracker -->
+                <div class="progress-container">
+                    <h3><i class="fas fa-chart-line"></i> Your Progress</h3>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <div class="progress-text">
+                        <span>0% Complete</span>
+                        <span id="progressPercent">0%</span>
+                    </div>
+                </div>
+                
+                <!-- Sidebar Navigation -->
+                <div class="sidebar-nav">
+                    <h3><i class="fas fa-list"></i> Module Sections</h3>
+                    <ul>
+                        <li><a href="#section1"><i class="fas fa-chevron-right"></i> Introduction to Spreadsheets</a></li>
+                        <li><a href="#section2"><i class="fas fa-chevron-right"></i> Spreadsheet Interface</a></li>
+                        <li><a href="#section3"><i class="fas fa-chevron-right"></i> Formulas & Functions</a></li>
+                        <li><a href="#section4"><i class="fas fa-chevron-right"></i> Formatting</a></li>
+                        <li><a href="#section5"><i class="fas fa-chevron-right"></i> Charts & Visualization</a></li>
+                        <li><a href="#section6"><i class="fas fa-chevron-right"></i> Keyboard Shortcuts</a></li>
+                        <li><a href="#integration"><i class="fas fa-chevron-right"></i> Final Project</a></li>
+                        <li><a href="#quiz"><i class="fas fa-chevron-right"></i> Knowledge Check</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Quick Reference Box -->
+                <div class="info-box">
+                    <h4><i class="fas fa-calculator"></i> Common Functions</h4>
+                    <ul style="margin: 0; font-size: 0.85rem;">
+                        <li><code style="background: var(--bg-primary); padding: 0.15rem 0.3rem; border-radius: 0.25rem;">=SUM(A1:A10)</code> - Add values</li>
+                        <li><code style="background: var(--bg-primary); padding: 0.15rem 0.3rem; border-radius: 0.25rem;">=AVERAGE(B1:B10)</code> - Average</li>
+                        <li><code style="background: var(--bg-primary); padding: 0.15rem 0.3rem; border-radius: 0.25rem;">=MAX(C1:C10)</code> - Maximum</li>
+                        <li><code style="background: var(--bg-primary); padding: 0.15rem 0.3rem; border-radius: 0.25rem;">=MIN(C1:C10)</code> - Minimum</li>
+                        <li><code style="background: var(--bg-primary); padding: 0.15rem 0.3rem; border-radius: 0.25rem;">=COUNT(D1:D10)</code> - Count numbers</li>
+                        <li><code style="background: var(--bg-primary); padding: 0.15rem 0.3rem; border-radius: 0.25rem;">=IF(A1>50,"Pass","Fail")</code> - Conditional</li>
+                    </ul>
+                </div>
+                
+                <!-- Resources Box -->
+                <div class="info-box">
+                    <h4><i class="fas fa-download"></i> Resources</h4>
+                    <ul style="margin: 0;">
+                        <li><a href="#">Sample Budget Template</a></li>
+                        <li><a href="#">Function Reference Guide</a></li>
+                        <li><a href="#">Excel Shortcuts Cheat Sheet</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Assessment Info -->
+                <div class="info-box">
+                    <h4><i class="fas fa-clipboard-list"></i> Assessment</h4>
+                    <ul style="margin: 0;">
+                        <li>3 Hands-on Activities</li>
+                        <li>5 Quiz Questions</li>
+                        <li>1 Final Project</li>
+                        <li>Estimated Time: 5-7 hours</li>
+                    </ul>
+                </div>
+            </aside>
+        </div>
+    </div>
+</main>
+
+<!-- Footer -->
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>ICT Learning Hub</h3>
+                <p>Empowering students with digital skills for the future.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="word-processing.html">Word Processing</a></li>
+                    <li><a href="presentations.html">Presentations</a></li>
+                    <li><a href="spreadsheets-1.html">Spreadsheets</a></li>
+                </ul>
+            </div>
+            <div class="footer-modules">
+                <h4>More Modules</h4>
+                <ul>
+                    <li><a href="computer-hardware.html">Computer Hardware</a></li>
+                    <li><a href="web-design.html">Web Design</a></li>
+                    <li><a href="health-safety.html">Health & Safety</a></li>
+                    <li><a href="shorts2.html">Shortcut Quiz</a></li>
+                </ul>
+            </div>
+            <div class="footer-social">
+                <h4>Connect</h4>
+                <div class="social-icons">
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Yiga Gerald. All rights reserved. | ICT Teacher | Digital Learning Creator</p>
+        </div>
+    </div>
+</footer>
+
+<script src="js/modules.js"></script>
+</body>
+</html>

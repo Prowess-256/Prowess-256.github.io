@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Processing | ICT Learning Module</title>
+    <meta name="description" content="Master word processing skills - create, format, edit, and print professional documents">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/navigation.css">
+    <link rel="stylesheet" href="styles/components.css">
+    
+    <!-- Module-specific theme (Office Applications - Purple) -->
+    <style>
+        :root {
+            --theme-primary: #7c3aed;
+            --theme-primary-light: #8b5cf6;
+            --theme-primary-dark: #6d28d9;
+            --theme-secondary: #06b6d4;
+        }
+        
+        .section h2 {
+            color: var(--theme-primary);
+        }
+        
+        .section h2::after {
+            background: var(--theme-primary);
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navigation Placeholder - will be injected by modules.js -->
+<div id="global-nav-placeholder"></div>
+
+<main>
+    <div class="container">
+        <!-- Breadcrumb -->
+        <div class="breadcrumb">
+            <a href="index.html">Home</a>
+            <span class="separator">/</span>
+            <a href="#">Learning Hub</a>
+            <span class="separator">/</span>
+            <span class="current" id="page-title">Word Processing</span>
+        </div>
+        
+        <!-- Module Header -->
+        <div class="section-header" style="margin-bottom: 2rem;">
+            <h1>Word Processing</h1>
+            <p>Create, format, edit, and print professional documents using word processing software</p>
+            <div class="keywords" style="display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; margin-top: 1rem;">
+                <span style="background: var(--bg-secondary); padding: 0.25rem 0.75rem; border-radius: 2rem; font-size: 0.8rem;">MS Word</span>
+                <span style="background: var(--bg-secondary); padding: 0.25rem 0.75rem; border-radius: 2rem; font-size: 0.8rem;">Formatting</span>
+                <span style="background: var(--bg-secondary); padding: 0.25rem 0.75rem; border-radius: 2rem; font-size: 0.8rem;">Documents</span>
+                <span style="background: var(--bg-secondary); padding: 0.25rem 0.75rem; border-radius: 2rem; font-size: 0.8rem;">Templates</span>
+                <span style="background: var(--bg-secondary); padding: 0.25rem 0.75rem; border-radius: 2rem; font-size: 0.8rem;">Mail Merge</span>
+            </div>
+        </div>
+        
+        <!-- Module Layout: 2-column -->
+        <div class="module-wrapper">
+            <!-- Main Content Area -->
+            <div class="module-content">
+                <!-- Learning Outcomes -->
+                <div class="info-box" style="margin-bottom: 2rem;">
+                    <h4><i class="fas fa-bullseye"></i> Learning Outcomes</h4>
+                    <ul>
+                        <li>Use the word processor interface effectively</li>
+                        <li>Create, format, edit, and print documents</li>
+                        <li>Apply character and paragraph formatting</li>
+                        <li>Work with page layout settings</li>
+                        <li>Insert and format images, tables, and other objects</li>
+                    </ul>
+                </div>
+                
+                <!-- Section 1: Features of a Word Processor -->
+                <section id="section1" class="section">
+                    <h2><i class="fas fa-cogs"></i> Features of a Word Processor</h2>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-info-circle"></i> What is Word Processing?</h4>
+                        <p><strong>Word processing</strong> is a very important skill for computer literacy. Once you learn word processing, you will be in position to use word processing software (e.g., MS Word) appropriately to create, edit and print documents. Microsoft Office Word is one of the most commonly used word processing software.</p>
+                    </div>
+                    
+                    <h3>Word Processor Interface</h3>
+                    <p>A word processor has numerous features whose uses you need to understand. The table below shows a typical word processor window with key features:</p>
+                    
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Feature</th>
+                                <th>Tab/Location</th>
+                                <th>Function</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Office Button/File Menu</td>
+                                <td>Top-left corner</td>
+                                <td>Access to Save, Open, Print, and other file operations</td>
+                            </tr>
+                            <tr>
+                                <td>Home Tab</td>
+                                <td>Ribbon (top)</td>
+                                <td>Basic formatting tools: font, paragraph, styles, editing</td>
+                            </tr>
+                            <tr>
+                                <td>Insert Tab</td>
+                                <td>Ribbon (top)</td>
+                                <td>Insert pages, tables, illustrations, links, headers/footers</td>
+                            </tr>
+                            <tr>
+                                <td>Page Layout Tab</td>
+                                <td>Ribbon (top)</td>
+                                <td>Page setup, themes, page background, paragraph spacing</td>
+                            </tr>
+                            <tr>
+                                <td>References Tab</td>
+                                <td>Ribbon (top)</td>
+                                <td>Table of contents, footnotes, citations, bibliography</td>
+                            </tr>
+                            <tr>
+                                <td>Mailings Tab</td>
+                                <td>Ribbon (top)</td>
+                                <td>Mail merge, envelopes, labels for bulk mailing</td>
+                            </tr>
+                            <tr>
+                                <td>Review Tab</td>
+                                <td>Ribbon (top)</td>
+                                <td>Spelling & grammar, proofing, comments, tracking changes</td>
+                            </tr>
+                            <tr>
+                                <td>View Tab</td>
+                                <td>Ribbon (top)</td>
+                                <td>Document views, zoom, window arrangements, macros</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="activity-box">
+                        <div class="activity-header">
+                            <div class="activity-number">1</div>
+                            <div class="activity-title">Activity: Understanding Word Processor Features</div>
+                        </div>
+                        <p><strong>Instructions:</strong> In groups, explore the word processor interface and identify features.</p>
+                        <ol class="activity-steps">
+                            <li>Open a word processor (Start → All Programs → MS Office → Word)</li>
+                            <li>Identify the groups of word processing features on different tabs</li>
+                            <li>Type the sentence "I love my school"</li>
+                            <li>Select (highlight) the sentence and click on any three features</li>
+                            <li>Observe the changes which occur in the text</li>
+                            <li>State the function of each of the features identified</li>
+                        </ol>
+                    </div>
+                </section>
+                
+                <!-- Section 2: Customizing Environment -->
+                <section id="section2" class="section">
+                    <h2><i class="fas fa-sliders-h"></i> Customizing Word Processing Environment</h2>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-cog"></i> Setting Up Your Workspace</h4>
+                        <p>Before you begin creating documents, ensure that you have set up your Word environment and become familiar with key tasks such as minimizing and maximizing the Ribbon, configuring the Quick Access toolbar, using the ruler, word counting and zooming tools.</p>
+                    </div>
+                    
+                    <h3>Customizing the Quick Access Toolbar</h3>
+                    <div class="activity-steps">
+                        <div style="margin-bottom: 1rem;">
+                            <strong>Step 1:</strong> Click the arrow to the right of the Quick Access toolbar (top-left corner of Word window).<br>
+                            <strong>Step 2:</strong> Select the command you want to add from the drop-down list. It will appear in the Quick Access toolbar.<br>
+                            <strong>Step 3:</strong> Right-click anywhere in the main menu and select "Minimize the Ribbon" to toggle the Ribbon on and off.<br>
+                            <strong>Step 4:</strong> Right-click anywhere on the taskbar and select the items you would like to appear on your taskbar.
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Section 3: Saving Documents -->
+                <section id="section3" class="section">
+                    <h2><i class="fas fa-save"></i> Saving Documents</h2>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-hdd"></i> Importance of Saving</h4>
+                        <p><strong>Saving</strong> is a process of storing a document in a certain location or creating a file. This can be done on a newly created document or on an already existing document. Saving is normally in two categories: <strong>Save</strong> and <strong>Save As</strong>.</p>
+                    </div>
+                    
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Operation</th>
+                                <th>When to Use</th>
+                                <th>Keyboard Shortcut</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Save</td>
+                                <td>First time saving or updating existing file</td>
+                                <td>Ctrl + S</td>
+                            </tr>
+                            <tr>
+                                <td>Save As</td>
+                                <td>Creating copy, changing location, or changing file type</td>
+                                <td>F12</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+                
+                <!-- Section 4: Working with Text -->
+                <section id="section4" class="section">
+                    <h2><i class="fas fa-font"></i> Working with Text</h2>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-keyboard"></i> Basic Text Operations</h4>
+                        <p>Working with text involves selecting, inserting, deleting, copying, and pasting text. These fundamental skills are essential for creating and editing documents effectively.</p>
+                    </div>
+                    
+                    <h3>Text Selection Methods</h3>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>To Select</th>
+                                <th>Method</th>
+                                <th>Keyboard Shortcut</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Single word</td>
+                                <td>Double-click the word</td>
+                                <td>Double-click</td>
+                            </tr>
+                            <tr>
+                                <td>Line of text</td>
+                                <td>Click in left margin next to line</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Paragraph</td>
+                                <td>Triple-click in paragraph or double-click in left margin</td>
+                                <td>Triple-click</td>
+                            </tr>
+                            <tr>
+                                <td>Entire document</td>
+                                <td>Triple-click in left margin or Edit → Select All</td>
+                                <td>Ctrl + A</td>
+                            </tr>
+                            <tr>
+                                <td>Non-adjacent text</td>
+                                <td>Select first portion, then Ctrl + Click additional portions</td>
+                                <td>Ctrl + Click</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="activity-box">
+                        <div class="activity-header">
+                            <div class="activity-number">2</div>
+                            <div class="activity-title">Activity: Working with Text</div>
+                        </div>
+                        <p><strong>Instructions:</strong> Practice basic text operations in a document.</p>
+                        <ol class="activity-steps">
+                            <li>Type some text in your text area (about four paragraphs)</li>
+                            <li>Practice selecting text using different methods</li>
+                            <li>Insert text anywhere in your document by clicking and typing</li>
+                            <li>Delete text using Backspace (left of cursor) and Delete (right of cursor) keys</li>
+                            <li>Practice copying and pasting text within the document (Ctrl+C, Ctrl+V)</li>
+                        </ol>
+                    </div>
+                </section>
+                
+                <!-- Section 5: Page Layout -->
+                <section id="section5" class="section">
+                    <h2><i class="fas fa-columns"></i> Page Layout</h2>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-file-alt"></i> Document Layout Settings</h4>
+                        <p>Page layout involves changing default settings to suit your document requirements. You can change margins, document orientation, use columns in your document, and adjust line spacing of text.</p>
+                    </div>
+                    
+                    <h3>Page Orientation</h3>
+                    <ul class="activity-steps">
+                        <li><strong>Portrait:</strong> Vertical orientation (taller than wide) - default for most documents</li>
+                        <li><strong>Landscape:</strong> Horizontal orientation (wider than tall) - good for tables, charts, wide images</li>
+                    </ul>
+                    
+                    <h3>Setting Margins</h3>
+                    <ul class="activity-steps">
+                        <li>Normal: 1 inch on all sides (default)</li>
+                        <li>Narrow: 0.5 inch on all sides (more content per page)</li>
+                        <li>Moderate: 0.75 inch on sides, 1 inch top/bottom</li>
+                        <li>Wide: 1 inch sides, 2 inches top/bottom</li>
+                        <li>Mirrored: For book-style printing (inside/outside margins different)</li>
+                    </ul>
+                </section>
+                
+                <!-- Section 6: Find and Replace -->
+                <section id="section6" class="section">
+                    <h2><i class="fas fa-search"></i> Finding and Replacing Text</h2>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-search-plus"></i> Efficient Text Editing</h4>
+                        <p>When a document comprises many pages, locating specific text might be cumbersome. Word processors have mechanisms for locating specific texts and replacing them efficiently.</p>
+                    </div>
+                    
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Operation</th>
+                                <th>Keyboard Shortcut</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Find</td>
+                                <td>Ctrl + F</td>
+                                <td>Opens Navigation pane to search for text</td>
+                            </tr>
+                            <tr>
+                                <td>Replace</td>
+                                <td>Ctrl + H</td>
+                                <td>Find text and replace it with different text</td>
+                            </tr>
+                            <tr>
+                                <td>Go To</td>
+                                <td>Ctrl + G</td>
+                                <td>Jump to specific page, section, or line</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+                
+                <!-- Section 7: Spelling and Grammar -->
+                <section id="section7" class="section">
+                    <h2><i class="fas fa-spell-check"></i> Spelling and Grammar Check</h2>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-check-circle"></i> Proofreading Tools</h4>
+                        <p>When you are typing, sometimes a wavy red or green line appears beneath your text. <strong>Red wavy lines</strong> indicate spelling errors, while <strong>green wavy lines</strong> indicate grammatical errors.</p>
+                    </div>
+                    
+                    <div class="activity-box">
+                        <div class="activity-header">
+                            <div class="activity-number">3</div>
+                            <div class="activity-title">Activity: Text Proofreading</div>
+                        </div>
+                        <p><strong>Instructions:</strong> Practice using spelling and grammar check tools.</p>
+                        <ol class="activity-steps">
+                            <li>Open a new document and intentionally mistype several words</li>
+                            <li>Observe the wavy red lines that appear under misspelled words</li>
+                            <li>Right-click on underlined words and select correct suggestions</li>
+                            <li>Use the Spelling & Grammar checker (F7) to check the entire document</li>
+                        </ol>
+                    </div>
+                </section>
+                
+                <!-- Section 8: Character and Paragraph Formatting -->
+                <section id="section8" class="section">
+                    <h2><i class="fas fa-text-height"></i> Character and Paragraph Formatting</h2>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-paint-brush"></i> Making Documents Attractive</h4>
+                        <p><strong>Formatting</strong> is the art of making your documents effective and attractive. Good formatting distinguishes different parts of your text and helps your readers take in your message.</p>
+                    </div>
+                    
+                    <h3>Character Formatting Examples</h3>
+                    <div style="background: var(--bg-secondary); padding: 1rem; border-radius: 0.75rem; margin: 1rem 0;">
+                        <p><strong>Bold text</strong> for emphasis</p>
+                        <p><em>Italic text</em> for titles or foreign words</p>
+                        <p><u>Underlined text</u> for links or special emphasis</p>
+                        <p style="font-size: 1.2rem;">Larger text for headings</p>
+                        <p style="color: var(--theme-primary);">Colored text for highlighting</p>
+                    </div>
+                    
+                    <h3>Text Alignment</h3>
+                    <div style="display: grid; gap: 0.75rem; margin: 1rem 0;">
+                        <div style="background: var(--bg-secondary); padding: 0.75rem; border-radius: 0.5rem;">
+                            <strong>Align Left:</strong> Text is aligned at the left margin (default)
+                        </div>
+                        <div style="background: var(--bg-secondary); padding: 0.75rem; border-radius: 0.5rem; text-align: center;">
+                            <strong>Center:</strong> Text is centered within the page
+                        </div>
+                        <div style="background: var(--bg-secondary); padding: 0.75rem; border-radius: 0.5rem; text-align: right;">
+                            <strong>Align Right:</strong> Text is aligned at the right margin
+                        </div>
+                        <div style="background: var(--bg-secondary); padding: 0.75rem; border-radius: 0.5rem; text-align: justify;">
+                            <strong>Justify:</strong> Text is aligned at both left and right margins
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Section 9: Working with Objects -->
+                <section id="section9" class="section">
+                    <h2><i class="fas fa-image"></i> Working with Objects</h2>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-shapes"></i> Enhancing Documents</h4>
+                        <p>In addition to text, you can add various objects to your documents including images/pictures, tables, charts, smart art, screenshots, and illustrations.</p>
+                    </div>
+                    
+                    <h3>Example Table</h3>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Student Name</th>
+                                <th>Mathematics</th>
+                                <th>English</th>
+                                <th>Science</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>John Smith</td>
+                                <td>85%</td>
+                                <td>78%</td>
+                                <td>92%</td>
+                                <td>255</td>
+                            </tr>
+                            <tr>
+                                <td>Mary Johnson</td>
+                                <td>92%</td>
+                                <td>88%</td>
+                                <td>85%</td>
+                                <td>265</td>
+                            </tr>
+                            <tr>
+                                <td>David Brown</td>
+                                <td>78%</td>
+                                <td>82%</td>
+                                <td>79%</td>
+                                <td>239</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+                
+                <!-- Integration Activity -->
+                <section id="integration" class="section">
+                    <h2><i class="fas fa-tasks"></i> Activity of Integration</h2>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-envelope"></i> Real-World Application</h4>
+                        <p>Your class is planning an end of year party scheduled to take place on 21st November this year, in the main hall, starting at 8:30am.</p>
+                    </div>
+                    
+                    <div class="activity-box">
+                        <div class="activity-header">
+                            <div class="activity-number">INT</div>
+                            <div class="activity-title">Integration Task: Word-process a Letter</div>
+                        </div>
+                        <p><strong>Task:</strong> Word process a formal letter inviting the head teacher and members of staff to the end of year party.</p>
+                        <p><strong>Requirements:</strong></p>
+                        <ul class="activity-steps">
+                            <li>Proper letter format with date, address, salutation, body, closing</li>
+                            <li>Clear communication of purpose, time, date, venue</li>
+                            <li>Professional appearance with appropriate formatting</li>
+                            <li>Correct spelling and grammar</li>
+                            <li>Appropriate font choices and sizes</li>
+                        </ul>
+                    </div>
+                </section>
+                
+                <!-- Quiz Section -->
+                <section id="quiz" class="section">
+                    <h2><i class="fas fa-question-circle"></i> Knowledge Check</h2>
+                    
+                    <div class="quiz-box">
+                        <div class="quiz-question">
+                            1. Which tab in Microsoft Word contains formatting tools like bold, italic, and underline?
+                        </div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false">Insert Tab</div>
+                            <div class="quiz-option" data-correct="true">Home Tab</div>
+                            <div class="quiz-option" data-correct="false">Page Layout Tab</div>
+                            <div class="quiz-option" data-correct="false">Review Tab</div>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                    
+                    <div class="quiz-box">
+                        <div class="quiz-question">
+                            2. What keyboard shortcut is used to save a document?
+                        </div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false">Ctrl + C</div>
+                            <div class="quiz-option" data-correct="false">Ctrl + V</div>
+                            <div class="quiz-option" data-correct="true">Ctrl + S</div>
+                            <div class="quiz-option" data-correct="false">Ctrl + P</div>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                    
+                    <div class="quiz-box">
+                        <div class="quiz-question">
+                            3. What does a wavy red line under a word indicate?
+                        </div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false">The word is bold</div>
+                            <div class="quiz-option" data-correct="true">A spelling error</div>
+                            <div class="quiz-option" data-correct="false">A grammatical error</div>
+                            <div class="quiz-option" data-correct="false">The word is italic</div>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                </section>
+                
+                <!-- Download PDF Button -->
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button id="downloadPdf" class="btn btn-outline">
+                        <i class="fas fa-download"></i> Download as PDF
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Sidebar -->
+            <aside class="module-sidebar">
+                <!-- Progress Tracker -->
+                <div class="progress-container">
+                    <h3><i class="fas fa-chart-line"></i> Your Progress</h3>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <div class="progress-text">
+                        <span>0% Complete</span>
+                        <span id="progressPercent">0%</span>
+                    </div>
+                </div>
+                
+                <!-- Sidebar Navigation -->
+                <div class="sidebar-nav">
+                    <h3><i class="fas fa-list"></i> Module Sections</h3>
+                    <ul>
+                        <li><a href="#section1"><i class="fas fa-chevron-right"></i> Features of a Word Processor</a></li>
+                        <li><a href="#section2"><i class="fas fa-chevron-right"></i> Customizing Environment</a></li>
+                        <li><a href="#section3"><i class="fas fa-chevron-right"></i> Saving Documents</a></li>
+                        <li><a href="#section4"><i class="fas fa-chevron-right"></i> Working with Text</a></li>
+                        <li><a href="#section5"><i class="fas fa-chevron-right"></i> Page Layout</a></li>
+                        <li><a href="#section6"><i class="fas fa-chevron-right"></i> Find & Replace</a></li>
+                        <li><a href="#section7"><i class="fas fa-chevron-right"></i> Spelling & Grammar</a></li>
+                        <li><a href="#section8"><i class="fas fa-chevron-right"></i> Formatting</a></li>
+                        <li><a href="#section9"><i class="fas fa-chevron-right"></i> Working with Objects</a></li>
+                        <li><a href="#integration"><i class="fas fa-chevron-right"></i> Integration Activity</a></li>
+                        <li><a href="#quiz"><i class="fas fa-chevron-right"></i> Knowledge Check</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Resources Box -->
+                <div class="info-box">
+                    <h4><i class="fas fa-keyboard"></i> Essential Shortcuts</h4>
+                    <ul style="margin: 0;">
+                        <li><strong>Ctrl + S:</strong> Save</li>
+                        <li><strong>Ctrl + C:</strong> Copy</li>
+                        <li><strong>Ctrl + X:</strong> Cut</li>
+                        <li><strong>Ctrl + V:</strong> Paste</li>
+                        <li><strong>Ctrl + Z:</strong> Undo</li>
+                        <li><strong>Ctrl + Y:</strong> Redo</li>
+                        <li><strong>Ctrl + B:</strong> Bold</li>
+                        <li><strong>Ctrl + I:</strong> Italic</li>
+                        <li><strong>Ctrl + U:</strong> Underline</li>
+                        <li><strong>F7:</strong> Spelling & Grammar</li>
+                    </ul>
+                </div>
+                
+                <!-- Assessment Info -->
+                <div class="info-box">
+                    <h4><i class="fas fa-clipboard-list"></i> Assessment</h4>
+                    <ul style="margin: 0;">
+                        <li>3 Hands-on Activities</li>
+                        <li>3 Quiz Questions</li>
+                        <li>1 Integration Project</li>
+                        <li>Estimated Time: 4-6 hours</li>
+                    </ul>
+                </div>
+            </aside>
+        </div>
+    </div>
+</main>
+
+<!-- Footer -->
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>ICT Learning Hub</h3>
+                <p>Empowering students with digital skills for the future.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#section1">Word Processing</a></li>
+                    <li><a href="shorts2.html">Shortcut Quiz</a></li>
+                </ul>
+            </div>
+            <div class="footer-social">
+                <h4>Connect</h4>
+                <div class="social-icons">
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Yiga Gerald. All rights reserved. | ICT Teacher | Digital Learning Creator</p>
+        </div>
+    </div>
+</footer>
+
+<script src="js/modules.js"></script>
+</body>
+</html>

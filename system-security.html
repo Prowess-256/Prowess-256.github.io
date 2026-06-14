@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System and Data Security | ICT Learning Module</title>
+    <meta name="description" content="Learn to protect computer systems, networks, and data from unauthorized access, damage, and theft">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/navigation.css">
+    <link rel="stylesheet" href="styles/components.css">
+    
+    <!-- Module-specific theme (Security - Dark Blue/Red) -->
+    <style>
+        :root {
+            --theme-primary: #1e3a5f;
+            --theme-primary-light: #2c5282;
+            --theme-primary-dark: #1a365d;
+            --theme-secondary: #dc2626;
+        }
+        
+        .section h2 {
+            color: var(--theme-primary);
+        }
+        
+        .section h2::after {
+            background: var(--theme-primary);
+        }
+        
+        /* Threat cards */
+        .threat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .threat-card {
+            background: var(--bg-secondary);
+            border-radius: var(--radius-lg);
+            padding: 1rem;
+            text-align: center;
+            transition: all var(--transition-normal);
+            border: 1px solid var(--border-light);
+            cursor: pointer;
+        }
+        
+        .threat-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--theme-secondary);
+        }
+        
+        .threat-card i {
+            font-size: 2rem;
+            color: var(--theme-secondary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .threat-card h4 {
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+        
+        .threat-card p {
+            font-size: 0.8rem;
+            margin-bottom: 0;
+        }
+        
+        /* CIA Triad */
+        .cia-triad {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin: 1.5rem 0;
+        }
+        
+        .cia-card {
+            background: var(--bg-secondary);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            text-align: center;
+            flex: 1;
+            min-width: 150px;
+            transition: all var(--transition-normal);
+        }
+        
+        .cia-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .cia-card.confidentiality { border-top: 4px solid #3b82f6; }
+        .cia-card.integrity { border-top: 4px solid #10b981; }
+        .cia-card.availability { border-top: 4px solid #f59e0b; }
+        
+        .cia-card i {
+            font-size: 2rem;
+            margin-bottom: 0.75rem;
+        }
+        
+        .cia-card.confidentiality i { color: #3b82f6; }
+        .cia-card.integrity i { color: #10b981; }
+        .cia-card.availability i { color: #f59e0b; }
+        
+        /* Password strength meter */
+        .password-demo {
+            background: var(--bg-secondary);
+            border-radius: var(--radius-lg);
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .strength-meter {
+            height: 8px;
+            background: var(--border-medium);
+            border-radius: var(--radius-full);
+            margin: 0.5rem 0;
+            overflow: hidden;
+        }
+        
+        .strength-fill {
+            width: 0%;
+            height: 100%;
+            transition: width 0.3s;
+        }
+        
+        .strength-weak { background: #ef4444; width: 25%; }
+        .strength-fair { background: #f59e0b; width: 50%; }
+        .strength-good { background: #10b981; width: 75%; }
+        .strength-strong { background: #06b6d4; width: 100%; }
+        
+        /* Security tips list */
+        .security-tips {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .security-tips li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--border-light);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .security-tips li:last-child {
+            border-bottom: none;
+        }
+        
+        .security-tips i {
+            color: var(--theme-secondary);
+            width: 24px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navigation Placeholder -->
+<div id="global-nav-placeholder"></div>
+
+<main>
+    <div class="container">
+        <!-- Breadcrumb -->
+        <div class="breadcrumb">
+            <a href="index.html">Home</a>
+            <span class="separator">/</span>
+            <a href="#">Learning Hub</a>
+            <span class="separator">/</span>
+            <span class="current" id="page-title">System and Data Security</span>
+        </div>
+        
+        <!-- Module Header -->
+        <div class="section-header" style="margin-bottom: 2rem;">
+            <h1>System and Data Security</h1>
+            <p>Protecting computers, networks, and data from unauthorized access, damage, or theft</p>
+            <div class="keywords" style="display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; margin-top: 1rem;">
+                <span style="background: var(--bg-secondary); padding: 0.25rem 0.75rem; border-radius: 2rem; font-size: 0.8rem;">Cybersecurity</span>
+                <span style="background: var(--bg-secondary); padding: 0.25rem 0.75rem; border-radius: 2rem; font-size: 0.8rem;">Malware</span>
+                <span style="background: var(--bg-secondary); padding: 0.25rem 0.75rem; border-radius: 2rem; font-size: 0.8rem;">Phishing</span>
+                <span style="background: var(--bg-secondary); padding: 0.25rem 0.75rem; border-radius: 2rem; font-size: 0.8rem;">Passwords</span>
+                <span style="background: var(--bg-secondary); padding: 0.25rem 0.75rem; border-radius: 2rem; font-size: 0.8rem;">Antivirus</span>
+                <span style="background: var(--bg-secondary); padding: 0.25rem 0.75rem; border-radius: 2rem; font-size: 0.8rem;">Encryption</span>
+            </div>
+        </div>
+        
+        <!-- Module Layout: 2-column -->
+        <div class="module-wrapper">
+            <!-- Main Content Area -->
+            <div class="module-content">
+                <!-- Learning Outcomes -->
+                <div class="info-box" style="margin-bottom: 2rem;">
+                    <h4><i class="fas fa-bullseye"></i> Learning Outcomes</h4>
+                    <ul>
+                        <li>Explain the concept of computer security and the CIA Triad</li>
+                        <li>Identify common security threats and malware types</li>
+                        <li>Secure computer systems using passwords, antivirus, and firewalls</li>
+                        <li>Practice safe online behavior and recognize phishing attempts</li>
+                        <li>Understand ethical practices and intellectual property rights</li>
+                        <li>Implement data backup and recovery procedures</li>
+                    </ul>
+                </div>
+                
+                <!-- Section 1: Introduction to Security -->
+                <section id="section1" class="section">
+                    <h2><i class="fas fa-shield-alt"></i> Introduction to System Security</h2>
+                    
+                    <p><strong>System and data security</strong> refers to the protection of computer systems, networks, and data from unauthorized access, damage, or theft. In today's digital world, where information is a valuable asset, security has become essential for individuals, businesses, and governments.</p>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-lock"></i> What is Computer Security?</h4>
+                        <p>Computer security is the protection of computer systems and information from harm, theft, and unauthorized use. It involves three key principles known as the <strong>CIA Triad</strong>:</p>
+                    </div>
+                    
+                    <div class="cia-triad">
+                        <div class="cia-card confidentiality">
+                            <i class="fas fa-user-secret"></i>
+                            <h3>Confidentiality</h3>
+                            <p>Information is accessible only to authorized users</p>
+                        </div>
+                        <div class="cia-card integrity">
+                            <i class="fas fa-check-double"></i>
+                            <h3>Integrity</h3>
+                            <p>Information is accurate and complete</p>
+                        </div>
+                        <div class="cia-card availability">
+                            <i class="fas fa-server"></i>
+                            <h3>Availability</h3>
+                            <p>Information is accessible when needed</p>
+                        </div>
+                    </div>
+                    
+                    <h3>Why Security Matters</h3>
+                    <table class="data-table">
+                        <thead>
+                            <tr><th>Impact Area</th><th>Potential Consequences</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>Financial Loss</strong></td><td>Theft of money, fraud, recovery costs, fines for data breaches</td></tr>
+                            <tr><td><strong>Reputation Damage</strong></td><td>Loss of customer trust, negative publicity, brand damage</td></tr>
+                            <tr><td><strong>Legal Issues</strong></td><td>Lawsuits, regulatory fines, compliance violations</td></tr>
+                            <tr><td><strong>Operational Disruption</strong></td><td>System downtime, loss of productivity, data loss</td></tr>
+                            <tr><td><strong>Personal Harm</strong></td><td>Identity theft, privacy violations, harassment</td></tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="activity-box">
+                        <div class="activity-header">
+                            <div class="activity-number">1</div>
+                            <div class="activity-title">Activity: Security Concept Brainstorming</div>
+                        </div>
+                        <p><strong>Instructions:</strong> In small groups, discuss what you already know about computer and data security.</p>
+                        <ol class="activity-steps">
+                            <li>What does "security" mean to you in the context of computers?</li>
+                            <li>List any security incidents you've heard about (hacked accounts, viruses, stolen information)</li>
+                            <li>What security measures do you currently use on your devices?</li>
+                            <li>Why is security important for individuals and organizations?</li>
+                            <li>Prepare a 2-minute summary of your group's discussion to share with the class</li>
+                        </ol>
+                    </div>
+                </section>
+                
+                <!-- Section 2: Security Threats and Malware -->
+                <section id="section2" class="section">
+                    <h2><i class="fas fa-exclamation-triangle"></i> Security Threats and Malware</h2>
+                    
+                    <p><strong>Computer security risks</strong> are events or actions that could cause loss or damage to computer systems, data, or information. Understanding these risks is the first step in protecting against them.</p>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-bug"></i> What is Malware?</h4>
+                        <p><strong>Malware</strong> (malicious software) is any software intentionally designed to cause damage to a computer, server, or network. Malware comes in many forms, each with different characteristics.</p>
+                    </div>
+                    
+                    <h3>Types of Malware</h3>
+                    <div class="threat-grid">
+                        <div class="threat-card">
+                            <i class="fas fa-biohazard"></i>
+                            <h4>Virus</h4>
+                            <p>Attaches to clean files and spreads</p>
+                        </div>
+                        <div class="threat-card">
+                            <i class="fas fa-worm"></i>
+                            <h4>Worm</h4>
+                            <p>Self-replicates without user action</p>
+                        </div>
+                        <div class="threat-card">
+                            <i class="fas fa-horse-head"></i>
+                            <h4>Trojan Horse</h4>
+                            <p>Disguised as legitimate software</p>
+                        </div>
+                        <div class="threat-card">
+                            <i class="fas fa-lock"></i>
+                            <h4>Ransomware</h4>
+                            <p>Encrypts files, demands payment</p>
+                        </div>
+                        <div class="threat-card">
+                            <i class="fas fa-eye"></i>
+                            <h4>Spyware</h4>
+                            <p>Secretly monitors user activity</p>
+                        </div>
+                        <div class="threat-card">
+                            <i class="fas fa-ad"></i>
+                            <h4>Adware</h4>
+                            <p>Displays unwanted advertisements</p>
+                        </div>
+                    </div>
+                    
+                    <h3>Other Security Threats</h3>
+                    <table class="data-table">
+                        <thead>
+                            <tr><th>Threat Type</th><th>Description</th><th>How to Recognize</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>Phishing</strong></td><td>Fraudulent attempts to obtain sensitive information by disguising as trustworthy entities</td><td>Urgent language, suspicious links, spelling errors, fake sender address</td></tr>
+                            <tr><td><strong>Social Engineering</strong></td><td>Manipulating people into breaking security procedures</td><td>Someone asking for passwords, pretending to be IT support</td></tr>
+                            <tr><td><strong>Denial of Service (DoS)</strong></td><td>Overwhelming a system to make it unavailable</td><td>Website extremely slow or completely down</td></tr>
+                            <tr><td><strong>Man-in-the-Middle</strong></td><td>Intercepting communication between two parties</td><td>Unsecured public Wi-Fi, suspicious certificate warnings</td></tr>
+                            <tr><td><strong>Insider Threats</strong></td><td>Employees or associates who misuse their access</td><td>Unauthorized data access, copying sensitive information</td></tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="activity-box">
+                        <div class="activity-header">
+                            <div class="activity-number">2</div>
+                            <div class="activity-title">Activity: Malware Classification</div>
+                        </div>
+                        <p><strong>Instructions:</strong> Read each description and identify what type of malware or security threat is being described.</p>
+                        <ol class="activity-steps">
+                            <li>A program that looks like a useful screen saver but secretly records all keystrokes → ___________</li>
+                            <li>Malicious code that spreads through email by automatically sending itself to everyone in the address book → ___________</li>
+                            <li>An email claiming to be from a bank asking you to verify your account details → ___________</li>
+                            <li>Software that encrypts all files and demands payment to unlock them → ___________</li>
+                            <li>Code that attaches itself to a legitimate program and runs when that program is executed → ___________</li>
+                        </ol>
+                    </div>
+                </section>
+                
+                <!-- Section 3: Securing Your System -->
+                <section id="section3" class="section">
+                    <h2><i class="fas fa-shield-haltered"></i> Securing Your Computer System</h2>
+                    
+                    <p>Protecting computer systems requires a multi-layered approach. No single security measure is sufficient on its own. This is called <strong>Defense in Depth</strong>.</p>
+                    
+                    <h3>1. Strong Passwords</h3>
+                    <div class="password-demo">
+                        <h4><i class="fas fa-key"></i> Password Strength Checker (Demo)</h4>
+                        <input type="text" id="passwordInput" placeholder="Type a password to test its strength" style="width: 100%; padding: 0.5rem; margin-bottom: 0.5rem; border-radius: 0.5rem; border: 1px solid var(--border-light);">
+                        <div class="strength-meter">
+                            <div class="strength-fill" id="strengthFill"></div>
+                        </div>
+                        <p id="strengthText" style="font-size: 0.8rem;">Enter a password to see strength</p>
+                    </div>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-check-circle"></i> Password Best Practices</h4>
+                        <ul>
+                            <li>Use at least <strong>12 characters</strong> (longer is better)</li>
+                            <li>Include <strong>uppercase, lowercase, numbers, and symbols</strong></li>
+                            <li><strong>Don't use personal information</strong> (name, birthday, pet name)</li>
+                            <li><strong>Don't reuse passwords</strong> across different accounts</li>
+                            <li>Use a <strong>password manager</strong> to generate and store complex passwords</li>
+                            <li>Enable <strong>Two-Factor Authentication (2FA)</strong> whenever possible</li>
+                        </ul>
+                    </div>
+                    
+                    <h3>2. Antivirus and Anti-malware Software</h3>
+                    <div class="info-box">
+                        <h4><i class="fas fa-shield-virus"></i> Essential Security Software</h4>
+                        <ul>
+                            <li><strong>Antivirus:</strong> Detects and removes viruses, worms, trojans</li>
+                            <li><strong>Anti-malware:</strong> Specialized protection against spyware, adware, ransomware</li>
+                            <li><strong>Firewall:</strong> Monitors and controls network traffic</li>
+                            <li><strong>Keep software updated:</strong> Regular updates patch security vulnerabilities</li>
+                        </ul>
+                    </div>
+                    
+                    <h3>Popular Security Software</h3>
+                    <table class="data-table">
+                        <thead>
+                            <tr><th>Software</th><th>Type</th><th>Free Version</th><th>Platform</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Windows Defender</td><td>Antivirus + Firewall</td><td>Built into Windows</td><td>Windows</td></tr>
+                            <tr><td>Malwarebytes</td><td>Anti-malware</td><td>Yes (basic)</td><td>Windows, Mac, Android, iOS</td></tr>
+                            <tr><td>Avast Free Antivirus</td><td>Antivirus</td><td>Yes</td><td>Windows, Mac, Android</td></tr>
+                            <tr><td>Bitdefender</td><td>Antivirus</td><td>Yes</td><td>Windows, Mac, Android, iOS</td></tr>
+                            <tr><td>Kaspersky</td><td>Antivirus</td><td>Yes</td><td>Windows, Mac, Android, iOS</td></tr>
+                        </tbody>
+                    </table>
+                    
+                    <h3>3. Firewall Protection</h3>
+                    <div class="info-box">
+                        <h4><i class="fas fa-fire"></i> What is a Firewall?</h4>
+                        <p>A firewall is a network security system that monitors and controls incoming and outgoing network traffic based on predetermined security rules. It acts as a barrier between your trusted internal network and untrusted external networks like the Internet.</p>
+                        <ul>
+                            <li><strong>Hardware Firewall:</strong> Physical device protecting entire network</li>
+                            <li><strong>Software Firewall:</strong> Program protecting individual computer</li>
+                            <li>Windows includes a built-in firewall (Windows Defender Firewall)</li>
+                            <li>Routers also have built-in firewall capabilities</li>
+                        </ul>
+                    </div>
+                    
+                    <h3>4. Regular Updates</h3>
+                    <div class="info-box">
+                        <h4><i class="fas fa-sync-alt"></i> Why Updates Matter</h4>
+                        <ul>
+                            <li>Security patches fix known vulnerabilities</li>
+                            <li>Updates often include critical security fixes for zero-day exploits</li>
+                            <li>Enable <strong>automatic updates</strong> for your operating system and software</li>
+                            <li>Don't ignore update notifications - they're important for your security</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="activity-box">
+                        <div class="activity-header">
+                            <div class="activity-number">3</div>
+                            <div class="activity-title">Activity: Password Strength Testing</div>
+                        </div>
+                        <p><strong>Instructions:</strong> Test different passwords using the strength meter above or an online tool.</p>
+                        <ol class="activity-steps">
+                            <li>Test "password123" - how strong is it? Why?</li>
+                            <li>Test "John2005" - how strong is it? Why?</li>
+                            <li>Test "P@ssw0rd!" - how strong is it? Why?</li>
+                            <li>Test "Tr0ub4dor&3" - how strong is it? Why?</li>
+                            <li>Create a strong password using the best practices and test it</li>
+                            <li>Write down your strong password (don't share it!) and memorize it</li>
+                        </ol>
+                    </div>
+                </section>
+                
+                <!-- Section 4: Phishing and Social Engineering -->
+                <section id="section4" class="section">
+                    <h2><i class="fas fa-user-secret"></i> Phishing and Social Engineering</h2>
+                    
+                    <p>Phishing is one of the most common and dangerous security threats. Attackers trick you into revealing sensitive information by pretending to be a legitimate organization.</p>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-envelope"></i> How to Spot a Phishing Email</h4>
+                        <ul class="security-tips">
+                            <li><i class="fas fa-exclamation-circle"></i> <strong>Urgent or threatening language</strong> - "Your account will be closed immediately!"</li>
+                            <li><i class="fas fa-link"></i> <strong>Suspicious links</strong> - Hover over links to see the real destination (don't click!)</li>
+                            <li><i class="fas fa-spell-check"></i> <strong>Spelling and grammar mistakes</strong> - Professional companies proofread their emails</li>
+                            <li><i class="fas fa-user"></i> <strong>Generic greetings</strong> - "Dear Customer" instead of your name</li>
+                            <li><i class="fas fa-paperclip"></i> <strong>Unexpected attachments</strong> - Especially .exe, .zip, .scr files</li>
+                            <li><i class="fas fa-dollar-sign"></i> <strong>Requests for personal information</strong> - Legitimate companies don't ask for passwords via email</li>
+                            <li><i class="fas fa-envelope-open-text"></i> <strong>Spoofed email address</strong> - Looks similar but has small differences (arnazon.com vs amazon.com)</li>
+                        </ul>
+                    </div>
+                    
+                    <h3>Example Phishing Email</h3>
+                    <div class="mail-merge-demo" style="background: #fee2e2; border-left: 4px solid #dc2626;">
+                        <p><strong>Subject: URGENT: Your Account Will Be Suspended</strong></p>
+                        <p><strong>From:</strong> security@your-bank-security.com</p>
+                        <p><strong>Message:</strong> Dear Customer, We have detected unusual activity on your account. To prevent suspension, please verify your information immediately by clicking <span style="color: #dc2626;">http://bank-verify-account.com/login</span>. Failure to do so within 24 hours will result in account suspension.</p>
+                        <p style="margin-top: 0.5rem; color: #dc2626;"><strong>⚠️ RED FLAGS:</strong> Suspicious sender address, urgent language, generic greeting, fake link</p>
+                    </div>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-shield-alt"></i> What to Do If You Receive a Phishing Email</h4>
+                        <ul>
+                            <li><strong>DO NOT click any links or download attachments</strong></li>
+                            <li><strong>DO NOT reply</strong> or provide any information</li>
+                            <li><strong>Report it</strong> - Forward to the company being impersonated</li>
+                            <li><strong>Delete the email</strong> - Then empty your trash folder</li>
+                            <li>If you accidentally clicked a link, run a security scan immediately</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="activity-box">
+                        <div class="activity-header">
+                            <div class="activity-number">4</div>
+                            <div class="activity-title">Activity: Phishing Email Analysis</div>
+                        </div>
+                        <p><strong>Instructions:</strong> Examine the suspicious emails below and identify at least 5 red flags in each.</p>
+                        <div style="margin-bottom: 1rem; padding: 1rem; background: var(--bg-primary); border-radius: 0.5rem; border: 1px solid var(--border-light);">
+                            <p><strong>Email 1:</strong></p>
+                            <p>From: noreply@paypa1.com<br>
+                            Subject: Your account has been limited<br>
+                            Dear User, We noticed unusual activity. Click here to verify: http://paypa1-verify.com</p>
+                        </div>
+                        <div style="margin-bottom: 1rem; padding: 1rem; background: var(--bg-primary); border-radius: 0.5rem; border: 1px solid var(--border-light);">
+                            <p><strong>Email 2:</strong></p>
+                            <p>From: info@lottery-winners.net<br>
+                            Subject: YOU WON $1,000,000!<br>
+                            Congratulations! You have been selected as a winner. Send $50 processing fee to claim your prize.</p>
+                        </div>
+                        <ol class="activity-steps">
+                            <li>List 5 red flags in Email 1</li>
+                            <li>List 5 red flags in Email 2</li>
+                            <li>What emotions do phishing emails try to trigger?</li>
+                            <li>What should you do if you receive a suspicious email?</li>
+                        </ol>
+                    </div>
+                </section>
+                
+                <!-- Section 5: Data Backup and Recovery -->
+                <section id="section5" class="section">
+                    <h2><i class="fas fa-database"></i> Data Backup and Recovery</h2>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-cloud-upload-alt"></i> The 3-2-1 Backup Rule</h4>
+                        <ul>
+                            <li><strong>3</strong> - Keep at least 3 copies of your data</li>
+                            <li><strong>2</strong> - Store copies on 2 different media types</li>
+                            <li><strong>1</strong> - Keep 1 copy off-site (cloud or different location)</li>
+                        </ul>
+                    </div>
+                    
+                    <h3>Backup Methods</h3>
+                    <table class="data-table">
+                        <thead>
+                            <tr><th>Method</th><th>Best For</th><th>Pros</th><th>Cons</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>External Hard Drive</strong></td><td>Full system backups</td><td>Fast, large capacity, one-time cost</td><td>Can fail, susceptible to theft/damage</td></tr>
+                            <tr><td><strong>USB Flash Drive</strong></td><td>Important documents</td><td>Portable, inexpensive</td><td>Small capacity, easy to lose</td></tr>
+                            <tr><td><strong>Cloud Storage</strong></td><td>Automatic backup, access anywhere</td><td>Off-site, automatic, accessible from anywhere</td><td>Requires internet, monthly cost for large storage</td></tr>
+                            <tr><td><strong>NAS (Network Attached Storage)</strong></td><td>Home/office networks</td><td>Centralized, multiple users, RAID protection</td><td>Expensive, requires setup</td></tr>
+                            <tr><td><strong>Optical Discs (CD/DVD/Blu-ray)</strong></td><td>Archival storage</td><td>Long-lasting if stored properly</td><td>Slow, limited capacity</td></tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-history"></i> What to Back Up</h4>
+                        <ul>
+                            <li><strong>Documents</strong> - School work, projects, important files</li>
+                            <li><strong>Photos and videos</strong> - Personal memories, irreplaceable</li>
+                            <li><strong>Contacts and calendars</strong> - Personal and professional information</li>
+                            <li><strong>Browser bookmarks</strong> - Saved websites and resources</li>
+                            <li><strong>Application settings</strong> - Custom configurations</li>
+                            <li><strong>System image</strong> - Complete backup of your operating system</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="activity-box">
+                        <div class="activity-header">
+                            <div class="activity-number">5</div>
+                            <div class="activity-title">Activity: Create a Backup Plan</div>
+                        </div>
+                        <p><strong>Instructions:</strong> Develop a personal backup strategy for your school assignments and important files.</p>
+                        <ol class="activity-steps">
+                            <li>List all the important files on your computer that you would not want to lose</li>
+                            <li>Estimate how much storage space you need for backups</li>
+                            <li>Choose a backup method (external drive, cloud, or both)</li>
+                            <li>Create a backup schedule (daily, weekly, monthly)</li>
+                            <li>Write down your backup plan as a step-by-step procedure</li>
+                            <li>Test your plan by actually backing up a small set of files</li>
+                        </ol>
+                    </div>
+                </section>
+                
+                <!-- Section 6: Ethical Practices -->
+                <section id="section6" class="section">
+                    <h2><i class="fas fa-balance-scale"></i> Ethical Practices in ICT</h2>
+                    
+                    <p>Technology ethics involves making morally sound decisions when using ICTs. Ethical practices go beyond following laws to consider the impact of our actions on others and society.</p>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-gavel"></i> Core Principles of Digital Ethics</h4>
+                        <ul>
+                            <li><strong>Respect for Privacy</strong> - Protect personal information and respect others' privacy settings</li>
+                            <li><strong>Honesty and Integrity</strong> - Be truthful online, don't spread misinformation</li>
+                            <li><strong>Responsibility</strong> - Consider consequences of online actions</li>
+                            <li><strong>Respect for Property</strong> - Respect intellectual property rights (copyright, software licenses)</li>
+                            <li><strong>Non-Maleficence</strong> - Do no harm with technology</li>
+                            <li><strong>Beneficence</strong> - Use technology to help others and improve society</li>
+                        </ul>
+                    </div>
+                    
+                    <h3>Intellectual Property Rights</h3>
+                    <div class="info-box">
+                        <h4><i class="fas fa-copyright"></i> Types of Intellectual Property</h4>
+                        <ul>
+                            <li><strong>Copyright:</strong> Protects original creative works (books, music, software, photos)</li>
+                            <li><strong>Patents:</strong> Protects inventions and processes</li>
+                            <li><strong>Trademarks:</strong> Protects brand identifiers (logos, names, slogans)</li>
+                            <li><strong>Trade Secrets:</strong> Protects confidential business information</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-graduation-cap"></i> Ethical Use of Digital Content</h4>
+                        <ul>
+                            <li>Use licensed software and pay for subscriptions</li>
+                            <li>Cite sources when using others' work</li>
+                            <li>Use open-source or Creative Commons materials when appropriate</li>
+                            <li>Don't share copyrighted materials without permission</li>
+                            <li>Understand fair use provisions for education and research</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="activity-box">
+                        <div class="activity-header">
+                            <div class="activity-number">6</div>
+                            <div class="activity-title">Activity: Ethical Dilemma Scenarios</div>
+                        </div>
+                        <p><strong>Instructions:</strong> Read each scenario and decide whether the action is ethical or unethical. Explain your reasoning.</p>
+                        <ol class="activity-steps">
+                            <li>Downloading a paid software program from a file-sharing website instead of purchasing it</li>
+                            <li>Using a photo from a website in a school presentation and citing the source</li>
+                            <li>Copying paragraphs from three different websites and presenting them as your own original essay</li>
+                            <li>Sharing your Netflix password with a friend who lives in a different household</li>
+                            <li>Modifying open-source software and distributing your modified version with credit to the original creators</li>
+                            <li>Recording a movie in a theater to watch later at home</li>
+                        </ol>
+                    </div>
+                </section>
+                
+                <!-- Section 7: Security Checklist -->
+                <section id="section7" class="section">
+                    <h2><i class="fas fa-clipboard-list"></i> Personal Security Checklist</h2>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-check-circle"></i> Daily/Weekly Security Habits</h4>
+                        <ul class="security-tips">
+                            <li><i class="fas fa-key"></i> Use strong, unique passwords for all accounts</li>
+                            <li><i class="fas fa-shield-virus"></i> Keep antivirus software running and updated</li>
+                            <li><i class="fas fa-sync-alt"></i> Install operating system and software updates</li>
+                            <li><i class="fas fa-cloud-upload-alt"></i> Back up important files regularly</li>
+                            <li><i class="fas fa-envelope"></i> Be suspicious of unexpected emails and links</li>
+                            <li><i class="fas fa-wifi"></i> Avoid using public Wi-Fi for sensitive activities</li>
+                            <li><i class="fas fa-mobile-alt"></i> Lock your devices when not in use</li>
+                            <li><i class="fas fa-download"></i> Only download software from official sources</li>
+                            <li><i class="fas fa-fingerprint"></i> Enable two-factor authentication (2FA) when available</li>
+                            <li><i class="fas fa-history"></i> Review account activity regularly for suspicious access</li>
+                        </ul>
+                    </div>
+                </section>
+                
+                <!-- Integration Activity -->
+                <section id="integration" class="section">
+                    <h2><i class="fas fa-tasks"></i> Activity of Integration</h2>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-school"></i> Community Security Awareness Program</h4>
+                        <p>A local community center wants to improve digital security for its members, particularly elderly residents who are vulnerable to online scams. Your class has been asked to develop a comprehensive security awareness program.</p>
+                    </div>
+                    
+                    <div class="activity-box">
+                        <div class="activity-header">
+                            <div class="activity-number">FINAL</div>
+                            <div class="activity-title">Community Security Awareness Project</div>
+                        </div>
+                        <p><strong>Requirements:</strong></p>
+                        <ol class="activity-steps">
+                            <li><strong>Needs Assessment:</strong> Identify the specific security challenges faced by elderly technology users</li>
+                            <li><strong>Workshop Curriculum:</strong> Create a 2-hour beginner security workshop outline including:
+                                <ul>
+                                    <li>Password basics (how to create strong, memorable passwords)</li>
+                                    <li>Recognizing phishing and scam emails/messages</li>
+                                    <li>Safe online shopping and mobile money practices</li>
+                                    <li>How to identify and report suspicious activity</li>
+                                </ul>
+                            </li>
+                            <li><strong>Quick Reference Guide:</strong> Design a one-page handout with essential security tips (using simple language, large font)</li>
+                            <li><strong>Scam Recognition Cards:</strong> Create visual aids showing common scam patterns (lottery scams, fake tech support, phishing emails)</li>
+                            <li><strong>Poster Campaign:</strong> Design 3 posters promoting different security awareness messages</li>
+                            <li><strong>Evaluation Plan:</strong> How will you measure the success of your program?</li>
+                        </ol>
+                    </div>
+                </section>
+                
+                <!-- Quiz Section -->
+                <section id="quiz" class="section">
+                    <h2><i class="fas fa-question-circle"></i> Knowledge Check</h2>
+                    
+                    <div class="quiz-box">
+                        <div class="quiz-question">
+                            1. What does the "C" in the CIA Triad of security stand for?
+                        </div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="true">Confidentiality</div>
+                            <div class="quiz-option" data-correct="false">Control</div>
+                            <div class="quiz-option" data-correct="false">Compliance</div>
+                            <div class="quiz-option" data-correct="false">Connection</div>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                    
+                    <div class="quiz-box">
+                        <div class="quiz-question">
+                            2. Which type of malware disguises itself as legitimate software?
+                        </div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false">Virus</div>
+                            <div class="quiz-option" data-correct="false">Worm</div>
+                            <div class="quiz-option" data-correct="true">Trojan Horse</div>
+                            <div class="quiz-option" data-correct="false">Ransomware</div>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                    
+                    <div class="quiz-box">
+                        <div class="quiz-question">
+                            3. What is the minimum recommended length for a strong password?
+                        </div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false">6 characters</div>
+                            <div class="quiz-option" data-correct="false">8 characters</div>
+                            <div class="quiz-option" data-correct="true">12 characters</div>
+                            <div class="quiz-option" data-correct="false">16 characters</div>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                    
+                    <div class="quiz-box">
+                        <div class="quiz-question">
+                            4. What does the 3-2-1 backup rule refer to?
+                        </div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false">3 backups, 2 days, 1 week</div>
+                            <div class="quiz-option" data-correct="true">3 copies, 2 media types, 1 off-site</div>
+                            <div class="quiz-option" data-correct="false">3 passwords, 2 devices, 1 backup</div>
+                            <div class="quiz-option" data-correct="false">3 years, 2 months, 1 week</div>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                    
+                    <div class="quiz-box">
+                        <div class="quiz-question">
+                            5. Which of these is a red flag in a phishing email?
+                        </div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false">Correct spelling and grammar</div>
+                            <div class="quiz-option" data-correct="true">Urgent language threatening account closure</div>
+                            <div class="quiz-option" data-correct="false">Personalized greeting with your name</div>
+                            <div class="quiz-option" data-correct="false">A legitimate company logo</div>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                    
+                    <div class="quiz-box">
+                        <div class="quiz-question">
+                            6. What does two-factor authentication (2FA) add to the login process?
+                        </div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false">A stronger password requirement</div>
+                            <div class="quiz-option" data-correct="false">Biometric verification only</div>
+                            <div class="quiz-option" data-correct="true">A second verification method (SMS code, authenticator app, etc.)</div>
+                            <div class="quiz-option" data-correct="false">A CAPTCHA test</div>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                </section>
+                
+                <!-- Download PDF Button -->
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button id="downloadPdf" class="btn btn-outline">
+                        <i class="fas fa-download"></i> Download as PDF
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Sidebar -->
+            <aside class="module-sidebar">
+                <!-- Progress Tracker -->
+                <div class="progress-container">
+                    <h3><i class="fas fa-chart-line"></i> Your Progress</h3>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <div class="progress-text">
+                        <span>0% Complete</span>
+                        <span id="progressPercent">0%</span>
+                    </div>
+                </div>
+                
+                <!-- Sidebar Navigation -->
+                <div class="sidebar-nav">
+                    <h3><i class="fas fa-list"></i> Module Sections</h3>
+                    <ul>
+                        <li><a href="#section1"><i class="fas fa-chevron-right"></i> Introduction to Security</a></li>
+                        <li><a href="#section2"><i class="fas fa-chevron-right"></i> Security Threats & Malware</a></li>
+                        <li><a href="#section3"><i class="fas fa-chevron-right"></i> Securing Your System</a></li>
+                        <li><a href="#section4"><i class="fas fa-chevron-right"></i> Phishing & Social Engineering</a></li>
+                        <li><a href="#section5"><i class="fas fa-chevron-right"></i> Data Backup & Recovery</a></li>
+                        <li><a href="#section6"><i class="fas fa-chevron-right"></i> Ethical Practices</a></li>
+                        <li><a href="#section7"><i class="fas fa-chevron-right"></i> Security Checklist</a></li>
+                        <li><a href="#integration"><i class="fas fa-chevron-right"></i> Final Project</a></li>
+                        <li><a href="#quiz"><i class="fas fa-chevron-right"></i> Knowledge Check</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Quick Security Tips -->
+                <div class="info-box">
+                    <h4><i class="fas fa-lightbulb"></i> Quick Security Tips</h4>
+                    <ul style="margin: 0; font-size: 0.85rem;">
+                        <li>🔒 Use a password manager</li>
+                        <li>📱 Enable 2FA on important accounts</li>
+                        <li>🔄 Back up your files regularly</li>
+                        <li>📧 Don't click suspicious links</li>
+                        <li>🔧 Keep software updated</li>
+                        <li>🛡️ Use antivirus software</li>
+                        <li>📁 Encrypt sensitive files</li>
+                        <li>🌐 Avoid public Wi-Fi for banking</li>
+                    </ul>
+                </div>
+                
+                <!-- Emergency Contacts -->
+                <div class="info-box">
+                    <h4><i class="fas fa-phone-alt"></i> If You've Been Hacked</h4>
+                    <ul style="margin: 0; font-size: 0.85rem;">
+                        <li>Change your passwords immediately</li>
+                        <li>Run a full antivirus scan</li>
+                        <li>Check account settings for changes</li>
+                        <li>Notify your bank if financial info exposed</li>
+                        <li>Report to the appropriate authorities</li>
+                    </ul>
+                </div>
+                
+                <!-- Assessment Info -->
+                <div class="info-box">
+                    <h4><i class="fas fa-clipboard-list"></i> Assessment</h4>
+                    <ul style="margin: 0;">
+                        <li>6 Hands-on Activities</li>
+                        <li>6 Quiz Questions</li>
+                        <li>1 Final Project</li>
+                        <li>Estimated Time: 6-8 hours</li>
+                    </ul>
+                </div>
+            </aside>
+        </div>
+    </div>
+</main>
+
+<!-- Footer -->
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>ICT Learning Hub</h3>
+                <p>Empowering students with digital skills for the future.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="word-processing.html">Word Processing</a></li>
+                    <li><a href="spreadsheets-1.html">Spreadsheets</a></li>
+                    <li><a href="computer-hardware.html">Hardware</a></li>
+                </ul>
+            </div>
+            <div class="footer-modules">
+                <h4>More Modules</h4>
+                <ul>
+                    <li><a href="system-security.html">System Security</a></li>
+                    <li><a href="web-design.html">Web Design</a></li>
+                    <li><a href="shorts2.html">Shortcut Quiz</a></li>
+                </ul>
+            </div>
+            <div class="footer-social">
+                <h4>Connect</h4>
+                <div class="social-icons">
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Yiga Gerald. All rights reserved. | ICT Teacher | Digital Learning Creator</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Password strength meter
+    const passwordInput = document.getElementById('passwordInput');
+    const strengthFill = document.getElementById('strengthFill');
+    const strengthText = document.getElementById('strengthText');
+    
+    if (passwordInput) {
+        passwordInput.addEventListener('input', function() {
+            const password = this.value;
+            const strength = checkPasswordStrength(password);
+            
+            strengthFill.className = 'strength-fill';
+            if (strength === 'weak') {
+                strengthFill.classList.add('strength-weak');
+                strengthText.textContent = 'Weak - Try adding more characters, numbers, and symbols';
+                strengthText.style.color = '#ef4444';
+            } else if (strength === 'fair') {
+                strengthFill.classList.add('strength-fair');
+                strengthText.textContent = 'Fair - Could be stronger. Add uppercase letters and symbols.';
+                strengthText.style.color = '#f59e0b';
+            } else if (strength === 'good') {
+                strengthFill.classList.add('strength-good');
+                strengthText.textContent = 'Good - Pretty strong, but could be longer.';
+                strengthText.style.color = '#10b981';
+            } else if (strength === 'strong') {
+                strengthFill.classList.add('strength-strong');
+                strengthText.textContent = 'Strong! Excellent password.';
+                strengthText.style.color = '#06b6d4';
+            } else {
+                strengthFill.style.width = '0%';
+                strengthText.textContent = 'Enter a password to test its strength';
+                strengthText.style.color = 'var(--text-muted)';
+            }
+        });
+    }
+    
+    function checkPasswordStrength(password) {
+        if (!password) return 'none';
+        
+        let score = 0;
+        
+        // Length
+        if (password.length >= 12) score += 2;
+        else if (password.length >= 8) score += 1;
+        
+        // Uppercase
+        if (/[A-Z]/.test(password)) score += 1;
+        
+        // Lowercase
+        if (/[a-z]/.test(password)) score += 1;
+        
+        // Numbers
+        if (/[0-9]/.test(password)) score += 1;
+        
+        // Special characters
+        if (/[^A-Za-z0-9]/.test(password)) score += 1;
+        
+        if (score >= 6) return 'strong';
+        if (score >= 4) return 'good';
+        if (score >= 2) return 'fair';
+        return 'weak';
+    }
+</script>
+
+<script src="js/modules.js"></script>
+</body>
+</html>

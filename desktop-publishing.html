@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desktop Publishing | ICT Learning Module</title>
+    <meta name="description" content="Learn to create professional-quality publications for print and digital media using desktop publishing software">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/navigation.css">
+    <link rel="stylesheet" href="styles/components.css">
+    
+    <!-- Module-specific theme (Desktop Publishing - Orange/Gold) -->
+    <style>
+        :root {
+            --theme-primary: #d97706;
+            --theme-primary-light: #f59e0b;
+            --theme-primary-dark: #b45309;
+            --theme-secondary: #ea580c;
+        }
+        
+        .section h2 {
+            color: var(--theme-primary);
+        }
+        
+        .section h2::after {
+            background: var(--theme-primary);
+        }
+        
+        /* Software cards */
+        .software-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .software-card {
+            background: var(--bg-secondary);
+            border-radius: var(--radius-lg);
+            padding: 1rem;
+            text-align: center;
+            transition: all var(--transition-normal);
+            border: 1px solid var(--border-light);
+        }
+        
+        .software-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--theme-primary);
+        }
+        
+        .software-card i {
+            font-size: 2rem;
+            color: var(--theme-primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .software-card h4 {
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+        }
+        
+        .software-card p {
+            font-size: 0.7rem;
+            margin-bottom: 0;
+        }
+        
+        /* Design principle cards */
+        .principle-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .principle-card {
+            background: var(--bg-secondary);
+            border-radius: var(--radius-lg);
+            padding: 1rem;
+            text-align: center;
+            transition: all var(--transition-normal);
+            border-top: 4px solid var(--theme-primary);
+        }
+        
+        .principle-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .principle-card i {
+            font-size: 2rem;
+            color: var(--theme-primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .principle-card h4 {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .principle-card p {
+            font-size: 0.85rem;
+            margin-bottom: 0;
+        }
+        
+        /* Publication types */
+        .publication-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .publication-card {
+            background: var(--bg-secondary);
+            border-radius: var(--radius-lg);
+            padding: 0.75rem;
+            border-left: 3px solid var(--theme-primary);
+            transition: all var(--transition-normal);
+        }
+        
+        .publication-card:hover {
+            transform: translateX(4px);
+        }
+        
+        .publication-card i {
+            color: var(--theme-primary);
+            margin-right: 0.5rem;
+        }
+        
+        /* Color palette demo */
+        .palette-demo {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin: 1rem 0;
+        }
+        
+        .color-swatch {
+            width: 80px;
+            height: 80px;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            color: white;
+            font-weight: bold;
+            text-align: center;
+            padding: 0.25rem;
+        }
+        
+        /* Print terms */
+        .print-term {
+            background: var(--bg-secondary);
+            border-radius: var(--radius-lg);
+            padding: 0.5rem 1rem;
+            margin: 0.5rem 0;
+            font-size: 0.85rem;
+        }
+        
+        .print-term strong {
+            color: var(--theme-primary);
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navigation Placeholder -->
+<div id="global-nav-placeholder"></div>
+
+<main>
+    <div class="container">
+        <!-- Breadcrumb -->
+        <div class="breadcrumb">
+            <a href="index.html">Home</a>
+            <span class="separator">/</span>
+            <a href="#">Learning Hub</a>
+            <span class="separator">/</span>
+            <span class="current" id="page-title">Desktop Publishing</span>
+        </div>
+        
+        <!-- Module Header -->
+        <div class="section-header" style="margin-bottom: 2rem;">
+            <h1>Desktop Publishing</h1>
+            <p>Creating professional-quality publications for print and digital media</p>
+            <div class="keywords" style="display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; margin-top: 1rem;">
+                <span style="background: var(--bg-secondary); padding: 0.25rem 0.75rem; border-radius: 2rem; font-size: 0.8rem;">Layout Design</span>
+                <span style="background: var(--bg-secondary); padding: 0.25rem 0.75rem; border-radius: 2rem; font-size: 0.8rem;">Typography</span>
+                <span style="background: var(--bg-secondary); padding: 0.25rem 0.75rem; border-radius: 2rem; font-size: 0.8rem;">Brochures</span>
+                <span style="background: var(--bg-secondary); padding: 0.25rem 0.75rem; border-radius: 2rem; font-size: 0.8rem;">Flyers</span>
+                <span style="background: var(--bg-secondary); padding: 0.25rem 0.75rem; border-radius: 2rem; font-size: 0.8rem;">Newsletters</span>
+                <span style="background: var(--bg-secondary); padding: 0.25rem 0.75rem; border-radius: 2rem; font-size: 0.8rem;">Print Design</span>
+            </div>
+        </div>
+        
+        <!-- Module Layout: 2-column -->
+        <div class="module-wrapper">
+            <!-- Main Content Area -->
+            <div class="module-content">
+                <!-- Learning Outcomes -->
+                <div class="info-box" style="margin-bottom: 2rem;">
+                    <h4><i class="fas fa-bullseye"></i> Learning Outcomes</h4>
+                    <ul>
+                        <li>Understand desktop publishing concepts and terminology</li>
+                        <li>Identify and use common DTP software applications</li>
+                        <li>Apply design principles to create effective publications</li>
+                        <li>Create professional publications (flyers, brochures, newsletters, business cards)</li>
+                        <li>Prepare files for print and digital output</li>
+                        <li>Understand color modes (CMYK vs RGB) and resolution requirements</li>
+                    </ul>
+                </div>
+                
+                <!-- Section 1: Introduction to DTP -->
+                <section id="section1" class="section">
+                    <h2><i class="fas fa-print"></i> Introduction to Desktop Publishing</h2>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-info-circle"></i> What is Desktop Publishing?</h4>
+                        <p><strong>Desktop Publishing (DTP)</strong> is the process of using computer software to create professional-quality documents for print or digital distribution. DTP combines text, graphics, and layout design to produce publications like brochures, flyers, newsletters, magazines, and books.</p>
+                    </div>
+                    
+                    <h3>DTP vs Word Processing</h3>
+                    <table class="data-table">
+                        <thead>
+                            <tr><th>Aspect</th><th>Word Processing</th><th>Desktop Publishing</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Primary Use</strong>
+                                <td>Creating and editing text documents
+                                <td>Designing complex layouts with graphics
+                            </tr>
+                            <tr>
+                                <td><strong>Page Layout</strong>
+                                <td>Simple, linear flow
+                                <td>Precise control, multi-column, layers
+                            </tr>
+                            </tr>
+                                <td><strong>Graphics Handling</strong>
+                                <td>Basic image insertion
+                                <td>Advanced image manipulation, text wrap, layering
+                            </tr>
+                            <tr>
+                                <td><strong>Typography</strong>
+                                <td>Basic fonts and sizes
+                                <td>Advanced kerning, leading, tracking, font pairing
+                            </tr>
+                            <tr>
+                                <td><strong>Best For</strong>
+                                <td>Letters, reports, essays, memos
+                                <td>Brochures, flyers, magazines, newsletters, business cards
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="activity-box">
+                        <div class="activity-header">
+                            <div class="activity-number">1</div>
+                            <div class="activity-title">Activity: DTP Examples Hunt</div>
+                        </div>
+                        <p><strong>Instructions:</strong> Collect examples of desktop-published materials from your environment.</p>
+                        <ol class="activity-steps">
+                            <li>Find 5 examples of professionally printed materials (brochures, flyers, magazines, menus, business cards, posters)</li>
+                            <li>For each example, note the elements: text, images, colors, fonts, layout</li>
+                            <li>Create a collage or digital collection of your findings</li>
+                            <li>Analyze what makes each design effective or ineffective</li>
+                            <li>Present your findings to the class</li>
+                        </ol>
+                    </div>
+                </section>
+                
+                <!-- Section 2: DTP Software -->
+                <section id="section2" class="section">
+                    <h2><i class="fas fa-laptop-code"></i> DTP Software</h2>
+                    
+                    <div class="software-grid">
+                        <div class="software-card">
+                            <i class="fab fa-adobe"></i>
+                            <h4>Adobe InDesign</h4>
+                            <p>Industry standard for professional publishing</p>
+                        </div>
+                        <div class="software-card">
+                            <i class="fas fa-file-alt"></i>
+                            <h4>Microsoft Publisher</h4>
+                            <p>Easy-to-use, included with Office</p>
+                        </div>
+                        <div class="software-card">
+                            <i class="fas fa-paintbrush"></i>
+                            <h4>Canva</h4>
+                            <p>Web-based, templates, easy for beginners</p>
+                        </div>
+                        <div class="software-card">
+                            <i class="fas fa-code"></i>
+                            <h4>Scribus</h4>
+                            <p>Free, open-source alternative</p>
+                        </div>
+                        <div class="software-card">
+                            <i class="fab fa-figma"></i>
+                            <h4>Figma</h4>
+                            <p>Web-based design, prototyping</p>
+                        </div>
+                        <div class="software-card">
+                            <i class="fas fa-pencil-ruler"></i>
+                            <h4>Affinity Publisher</h4>
+                            <p>One-time purchase, professional features</p>
+                        </div>
+                    </div>
+                    
+                    <h3>Software Comparison</h3>
+                    <table class="data-table">
+                        <thead>
+                            <tr><th>Software</th><th>Cost</th><th>Platform</th><th>Difficulty</th><th>Best For</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Adobe InDesign</strong>
+                                <td>Subscription ($20.99/mo)
+                                <td>Windows, Mac
+                                <td>Advanced
+                                <td>Professional print publications
+                            </tr>
+                            <tr>
+                                <td><strong>Microsoft Publisher</strong>
+                                <td>Part of Office
+                                <td>Windows only
+                                <td>Beginner
+                                <td>Small business, education
+                            </tr>
+                            <tr>
+                                <td><strong>Canva</strong>
+                                <td>Free/Pro ($12.99/mo)
+                                <td>Web, mobile
+                                <td>Beginner
+                                <td>Social media, quick designs
+                            </tr>
+                            <tr>
+                                <td><strong>Scribus</strong>
+                                <td>Free
+                                <td>Windows, Mac, Linux
+                                <td>Intermediate
+                                <td>Open-source, professional layouts
+                            </tr>
+                            <tr>
+                                <td><strong>Affinity Publisher</strong>
+                                <td>$54.99 one-time
+                                <td>Windows, Mac, iPad
+                                <td>Intermediate
+                                <td>Cost-effective professional work
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="activity-box">
+                        <div class="activity-header">
+                            <div class="activity-number">2</div>
+                            <div class="activity-title">Activity: Try a DTP Tool</div>
+                        </div>
+                        <p><strong>Instructions:</strong> Create a simple flyer using any DTP tool.</p>
+                        <ol class="activity-steps">
+                            <li>Choose a DTP tool (Canva, Publisher, or any available software)</li>
+                            <li>Create a simple event flyer (school event, club meeting, or community announcement)</li>
+                            <li>Include: title, date, time, location, description, and contact information</li>
+                            <li>Add at least one image or graphic</li>
+                            <li>Export as PDF and share with the class</li>
+                        </ol>
+                    </div>
+                </section>
+                
+                <!-- Section 3: Design Principles -->
+                <section id="section3" class="section">
+                    <h2><i class="fas fa-palette"></i> Design Principles</h2>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-lightbulb"></i> The Building Blocks of Good Design</h4>
+                        <p>Professional-looking publications follow these fundamental design principles. Understanding and applying them will dramatically improve your work.</p>
+                    </div>
+                    
+                    <div class="principle-grid">
+                        <div class="principle-card">
+                            <i class="fas fa-balance-scale"></i>
+                            <h4>Balance</h4>
+                            <p>Distribute elements evenly for visual stability. Symmetrical or asymmetrical balance.</p>
+                        </div>
+                        <div class="principle-card">
+                            <i class="fas fa-adjust"></i>
+                            <h4>Contrast</h4>
+                            <p>Use differences in size, color, shape, and weight to create visual interest and emphasis.</p>
+                        </div>
+                        <div class="principle-card">
+                            <i class="fas fa-align-left"></i>
+                            <h4>Alignment</h4>
+                            <p>Line up elements to create a clean, organized, and professional look.</p>
+                        </div>
+                        <div class="principle-card">
+                            <i class="fas fa-object-group"></i>
+                            <h4>Proximity</h4>
+                            <p>Group related items together to show relationships and organize information.</p>
+                        </div>
+                        <div class="principle-card">
+                            <i class="fas fa-chart-line"></i>
+                            <h4>Hierarchy</h4>
+                            <p>Guide the reader's eye through content by importance using size, color, and placement.</p>
+                        </div>
+                        <div class="principle-card">
+                            <i class="fas fa-fill-drip"></i>
+                            <h4>White Space</h4>
+                            <p>Use empty space to improve readability and focus attention on important elements.</p>
+                        </div>
+                        <div class="principle-card">
+                            <i class="fas fa-repeat"></i>
+                            <h4>Repetition</h4>
+                            <p>Repeat visual elements (colors, fonts, shapes) to create consistency and unity.</p>
+                        </div>
+                        <div class="principle-card">
+                            <i class="fas fa-arrows-alt"></i>
+                            <h4>Movement</h4>
+                            <p>Direct the viewer's eye through the layout using lines, shapes, and positioning.</p>
+                        </div>
+                    </div>
+                    
+                    <h3>Typography Basics</h3>
+                    <table class="data-table">
+                        <thead>
+                            <tr><th>Term</th><th>Description</th><th>Example</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Serif</strong>
+                                <td>Fonts with small decorative strokes
+                                <td>Times New Roman, Georgia, Garamond
+                            </tr>
+                            <tr>
+                                <td><strong>Sans-Serif</strong>
+                                <td>Clean fonts without decorative strokes
+                                <td>Arial, Helvetica, Open Sans, Roboto
+                            </tr>
+                            <tr>
+                                <td><strong>Script</strong>
+                                <td>Cursive, handwriting-style fonts
+                                <td>Brush Script, Pacifico, Lobster
+                            </tr>
+                            <tr>
+                                <td><strong>Display/Decorative</strong>
+                                <td>Unique, attention-grabbing fonts
+                                <td>Impact, Cooper Black, Broadway
+                            </tr>
+                            <td>
+                                <td><strong>Font Pairing</strong>
+                                <td>Combining complementary fonts
+                                <td>Serif heading + Sans-serif body text
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="activity-box">
+                        <div class="activity-header">
+                            <div class="activity-number">3</div>
+                            <div class="activity-title">Activity: Design Analysis</div>
+                        </div>
+                        <p><strong>Instructions:</strong> Analyze a professionally designed publication using the design principles.</p>
+                        <ol class="activity-steps">
+                            <li>Choose a magazine, brochure, or well-designed flyer</li>
+                            <li>Identify examples of each design principle (balance, contrast, alignment, proximity, hierarchy, white space, repetition)</li>
+                            <li>Note the typography choices (fonts used, sizes, pairing)</li>
+                            <li>Write an analysis of what makes the design effective</li>
+                            <li>Present your analysis to the class</li>
+                        </ol>
+                    </div>
+                </section>
+                
+                <!-- Section 4: Color in DTP -->
+                <section id="section4" class="section">
+                    <h2><i class="fas fa-fill-drip"></i> Color in Desktop Publishing</h2>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-palette"></i> Color Modes</h4>
+                        <ul>
+                            <li><strong>CMYK (Cyan, Magenta, Yellow, Black)</strong> - Used for PRINT. Colors are created by mixing inks.</li>
+                            <li><strong>RGB (Red, Green, Blue)</strong> - Used for DIGITAL screens. Colors are created by mixing light.</li>
+                        </ul>
+                    </div>
+                    
+                    <h3>CMYK vs RGB</h3>
+                    <div class="palette-demo">
+                        <div class="color-swatch" style="background-color: #00ffff; color: #333;">CMYK: Cyan</div>
+                        <div class="color-swatch" style="background-color: #ff00ff; color: #333;">CMYK: Magenta</div>
+                        <div class="color-swatch" style="background-color: #ffff00; color: #333;">CMYK: Yellow</div>
+                        <div class="color-swatch" style="background-color: #000000;">CMYK: Black</div>
+                    </div>
+                    <div class="palette-demo">
+                        <div class="color-swatch" style="background-color: #ff0000;">RGB: Red</div>
+                        <div class="color-swatch" style="background-color: #00ff00; color: #333;">RGB: Green</div>
+                        <div class="color-swatch" style="background-color: #0000ff;">RGB: Blue</div>
+                    </div>
+                    
+                    <h3>Color Psychology</h3>
+                    <table class="data-table">
+                        <thead>
+                            <tr><th>Color</th><th>Emotion/Message</th><th>Best Used For</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span style="color: #ef4444;">❤️ Red</span>
+                                <td>Energy, urgency, excitement, passion
+                                <td>Sales, warnings, calls to action
+                            </tr>
+                            <tr>
+                                <td><span style="color: #3b82f6;">💙 Blue</span>
+                                <td>Trust, professionalism, calm, reliability
+                                <td>Corporate, finance, technology, healthcare
+                            </tr>
+                            <tr>
+                                <td><span style="color: #10b981;">💚 Green</span>
+                                <td>Growth, health, nature, wealth
+                                <td>Environmental, wellness, finance, organic products
+                            </tr>
+                            <tr>
+                                <td><span style="color: #f59e0b;">🧡 Orange</span>
+                                <td>Creativity, enthusiasm, warmth, energy
+                                <td>Youth brands, food, entertainment
+                            </tr>
+                            <tr>
+                                <td><span style="color: #8b5cf6;">💜 Purple</span>
+                                <td>Luxury, wisdom, creativity, spirituality
+                                <td>Beauty, luxury products, creative industries
+                            </tr>
+                            <tr>
+                                <td><span style="color: #fbbf24;">💛 Yellow</span>
+                                <td>Optimism, happiness, attention-grabbing
+                                <td>Warnings, children's products, sales
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="activity-box">
+                        <div class="activity-header">
+                            <div class="activity-number">4</div>
+                            <div class="activity-title">Activity: Create a Color Palette</div>
+                        </div>
+                        <p><strong>Instructions:</strong> Create a color palette for a fictional brand or event.</p>
+                        <ol class="activity-steps">
+                            <li>Choose a brand/event type (e.g., eco-friendly cafe, tech startup, yoga studio, music festival)</li>
+                            <li>Select 3-5 colors that match the brand personality</li>
+                            <li>Use a color tool like Coolors.co or Adobe Color to generate the palette</li>
+                            <li>Create a visual showing your palette with color codes (HEX values)</li>
+                            <li>Explain why you chose each color and what it communicates</li>
+                        </ol>
+                    </div>
+                </section>
+                
+                <!-- Section 5: Publication Types -->
+                <section id="section5" class="section">
+                    <h2><i class="fas fa-newspaper"></i> Types of Publications</h2>
+                    
+                    <div class="publication-grid">
+                        <div class="publication-card">
+                            <i class="fas fa-ticket-alt"></i> <strong>Flyers</strong><br>
+                            Single-page promotional materials, often distributed by hand
+                        </div>
+                        <div class="publication-card">
+                            <i class="fas fa-book-open"></i> <strong>Brochures</strong><br>
+                            Folded documents (bi-fold, tri-fold) with multiple panels
+                        </div>
+                        <div class="publication-card">
+                            <i class="fas fa-newspaper"></i> <strong>Newsletters</strong><br>
+                            Regular publications with multiple articles, often for organizations
+                        </div>
+                        <div class="publication-card">
+                            <i class="fas fa-id-card"></i> <strong>Business Cards</strong><br>
+                            Small cards with contact information, usually 2"×3.5"
+                        </div>
+                        <div class="publication-card">
+                            <i class="fas fa-book"></i> <strong>Magazines</strong><br>
+                            Multi-page publications with articles, images, advertisements
+                        </div>
+                        <div class="publication-card">
+                            <i class="fas fa-chalkboard"></i> <strong>Posters</strong><br>
+                            Large-format prints for display, high visual impact
+                        </div>
+                        <div class="publication-card">
+                            <i class="fas fa-envelope"></i> <strong>Letterheads</strong><br>
+                            Company stationery with logo and contact information
+                        </div>
+                        <div class="publication-card">
+                            <i class="fas fa-tags"></i> <strong>Labels & Packaging</strong><br>
+                            Product labels, packaging design, stickers
+                        </div>
+                    </div>
+                    
+                    <h3>Standard Sizes</h3>
+                    <table class="data-table">
+                        <thead>
+                            <tr><th>Publication</th><th>Standard Size</th><th>Notes</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Business Card</span>
+                                <td>2" × 3.5" (51mm × 89mm)
+                                <td>Often printed 10 per sheet
+                            </tr>
+                            <tr>
+                                <td>Flyer/Postcard</span>
+                                <td>4" × 6" or 5.5" × 8.5"
+                                <td>Fits in standard envelopes
+                            </tr>
+                            <tr>
+                                <td>Letter/A4 Flyer</span>
+                                <td>8.5" × 11" (Letter) or A4 (210mm × 297mm)
+                                <td>Standard document size
+                            </tr>
+                            <tr>
+                                <td>Brochure (tri-fold)</span>
+                                <td>8.5" × 11" (folded)
+                                <td>Folds into 3 equal panels
+                            </tr>
+                            <tr>
+                                <td>Poster</span>
+                                <td>11" × 17", 18" × 24", 24" × 36"
+                                <td>Larger sizes for display
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+                
+                <!-- Section 6: Print Preparation -->
+                <section id="section6" class="section">
+                    <h2><i class="fas fa-print"></i> Preparing for Print</h2>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-cog"></i> Important Print Terms</h4>
+                    </div>
+                    
+                    <div class="print-term">
+                        <strong><i class="fas fa-expand"></i> Bleed</strong> - Extra area beyond the trim line (usually 1/8" or 3mm). Ensures color goes to the edge of the paper.
+                    </div>
+                    <div class="print-term">
+                        <strong><i class="fas fa-cut"></i> Trim</strong> - The final size of the printed piece after cutting.
+                    </div>
+                    <div class="print-term">
+                        <strong><i class="fas fa-chart-line"></i> Resolution (DPI/PPI)</strong> - Dots per inch (print) or Pixels per inch (screen). Print requires 300 DPI minimum.
+                    </div>
+                    <div class="print-term">
+                        <strong><i class="fas fa-crop"></i> Margins / Safe Zone</strong> - Area where important content should stay (usually 1/4" or 6mm from edge).
+                    </div>
+                    <div class="print-term">
+                        <strong><i class="fas fa-layer-group"></i> Crop Marks</strong> - Small lines indicating where to cut the paper.
+                    </div>
+                    
+                    <h3>Print Checklist</h3>
+                    <ul class="security-tips">
+                        <li><i class="fas fa-check-circle"></i> Convert colors to CMYK (not RGB) for print</li>
+                        <li><i class="fas fa-check-circle"></i> Ensure images are 300 DPI minimum</li>
+                        <li><i class="fas fa-check-circle"></i> Add 1/8" bleed if design goes to edge</li>
+                        <li><i class="fas fa-check-circle"></i> Keep important text 1/4" from edges</li>
+                        <li><i class="fas fa-check-circle"></i> Embed all fonts or convert to outlines</li>
+                        <li><i class="fas fa-check-circle"></i> Export as PDF/X-1a or PDF/X-4 (industry standard)</li>
+                        <li><i class="fas fa-check-circle"></i> Proofread everything before sending to printer</li>
+                        <li><i class="fas fa-check-circle"></i> Request a physical proof for large print runs</li>
+                    </ul>
+                    
+                    <div class="activity-box">
+                        <div class="activity-header">
+                            <div class="activity-number">5</div>
+                            <div class="activity-title">Activity: Prepare a File for Print</div>
+                        </div>
+                        <p><strong>Instructions:</strong> Take a design and prepare it for professional printing.</p>
+                        <ol class="activity-steps">
+                            <li>Create a simple business card design (3.5" × 2")</li>
+                            <li>Set up the document with 1/8" bleed on all sides</li>
+                            <li>Keep text at least 1/4" from the edge</li>
+                            <li>Export as a high-quality PDF with crop marks and bleed</li>
+                            <li>Review your file using the print checklist</li>
+                            <li>Explain the steps you took to prepare the file</li>
+                        </ol>
+                    </div>
+                </section>
+                
+                <!-- Section 7: Digital Publishing -->
+                <section id="section7" class="section">
+                    <h2><i class="fas fa-digital-tiling"></i> Digital Publishing</h2>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-tablet-alt"></i> Publishing for Screens</h4>
+                        <p>Digital publications are viewed on computers, tablets, and phones. They require different considerations than print.</p>
+                    </div>
+                    
+                    <h3>Digital vs Print Considerations</h3>
+                    <table class="data-table">
+                        <thead>
+                            <tr><th>Aspect</th><th>Print</th><th>Digital</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Color Mode</strong>
+                                <td>CMYK
+                                <td>RGB
+                            </tr>
+                            </tr>
+                                <td><strong>Resolution</strong>
+                                <td>300 DPI
+                                <td>72-150 PPI
+                            </tr>
+                            <tr>
+                                <td><strong>File Format</strong>
+                                <td>PDF/X, EPS, TIFF
+                                <td>PDF, PNG, JPG, HTML
+                            </tr>
+                            <tr>
+                                <td><strong>Interactivity</strong>
+                                <td>None
+                                <td>Hyperlinks, videos, animations, forms
+                            </tr>
+                            <tr>
+                                <td><strong>Distribution</strong>
+                                <td>Physical shipping
+                                <td>Email, download, website
+                            </tr>
+                            <tr>
+                                <td><strong>Updates</strong>
+                                <td>Re-print needed
+                                 .=Easy to update
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <h3>Digital Publication Platforms</h3>
+                    <div class="software-grid">
+                        <div class="software-card">
+                            <i class="fas fa-file-pdf"></i>
+                            <h4>PDF</h4>
+                            <p>Universal format, preserves layout</p>
+                        </div>
+                        <div class="software-card">
+                            <i class="fas fa-issuu"></i>
+                            <h4>Issuu</h4>
+                            <p>Digital magazine platform</p>
+                        </div>
+                        <div class="software-card">
+                            <i class="fab fa-flickr"></i>
+                            <h4>FlipHTML5</h4>
+                            <p>Interactive flipbooks</p>
+                        </div>
+                        <div class="software-card">
+                            <i class="fas fa-envelope"></i>
+                            <h4>Email Newsletters</h4>
+                            <p>Mailchimp, Constant Contact</p>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Integration Activity -->
+                <section id="integration" class="section">
+                    <h2><i class="fas fa-tasks"></i> Activity of Integration</h2>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-chalkboard"></i> School Event Promotion Project</h4>
+                        <p>Your school is hosting an annual cultural festival. You are the lead designer responsible for creating all promotional materials.</p>
+                    </div>
+                    
+                    <div class="activity-box">
+                        <div class="activity-header">
+                            <div class="activity-number">FINAL</div>
+                            <div class="activity-title">School Festival Promotional Kit</div>
+                        </div>
+                        <p><strong>Requirements:</strong></p>
+                        <ol class="activity-steps">
+                            <li><strong>Brand Identity:</strong> Choose a theme, create a color palette (3-5 colors), select 2 fonts (one for headings, one for body)</li>
+                            <li><strong>Event Flyer:</strong> Create an 8.5" × 11" flyer promoting the festival (include: event name, date, time, location, featured activities, contact info)</li>
+                            <li><strong>Tri-fold Brochure:</strong> Create a tri-fold brochure with schedule of events, map, performer bios, and sponsor information</li>
+                            <li><strong>Poster:</strong> Create a large-format poster (11" × 17") with high visual impact for hallways and bulletin boards</li>
+                            <li><strong>Social Media Graphics:</strong> Create 3 social media posts (square format, 1080×1080px) to promote the event online</li>
+                            <li><strong>Print Preparation:</strong> Prepare the flyer and brochure for print with proper bleed, margins, and CMYK color mode</li>
+                            <li><strong>Style Guide:</strong> Create a one-page style guide documenting your design choices (colors, fonts, logo usage)</li>
+                        </ol>
+                    </div>
+                </section>
+                
+                <!-- Quiz Section -->
+                <section id="quiz" class="section">
+                    <h2><i class="fas fa-question-circle"></i> Knowledge Check</h2>
+                    
+                    <div class="quiz-box">
+                        <div class="quiz-question">
+                            1. What does DTP stand for?
+                        </div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false">Digital Text Processing</div>
+                            <div class="quiz-option" data-correct="true">Desktop Publishing</div>
+                            <div class="quiz-option" data-correct="false">Document Transfer Protocol</div>
+                            <div class="quiz-option" data-correct="false">Data Typing Program</div>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                    
+                    <div class="quiz-box">
+                        <div class="quiz-question">
+                            2. Which color mode should you use for a document that will be professionally printed?
+                        </div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false">RGB</div>
+                            <div class="quiz-option" data-correct="true">CMYK</div>
+                            <div class="quiz-option" data-correct="false">HEX</div>
+                            <div class="quiz-option" data-correct="false">HSL</div>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                    
+                    <div class="quiz-box">
+                        <div class="quiz-question">
+                            3. What is "bleed" in print design?
+                        </div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false">A printing error</div>
+                            <div class="quiz-option" data-correct="true">Extra area beyond the trim line that ensures color goes to the edge</div>
+                            <div class="quiz-option" data-correct="false">A type of ink</div>
+                            <div class="quiz-option" data-correct="false">The margin around text</div>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                    
+                    <div class="quiz-box">
+                        <div class="quiz-question">
+                            4. Which design principle involves grouping related items together?
+                        </div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false">Contrast</div>
+                            <div class="quiz-option" data-correct="false">Alignment</div>
+                            <div class="quiz-option" data-correct="true">Proximity</div>
+                            <div class="quiz-option" data-correct="false">Repetition</div>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                    
+                    <div class="quiz-box">
+                        <div class="quiz-question">
+                            5. What resolution (DPI) is recommended for professional print work?
+                        </div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false">72 DPI</div>
+                            <div class="quiz-option" data-correct="false">150 DPI</div>
+                            <div class="quiz-option" data-correct="true">300 DPI</div>
+                            <div class="quiz-option" data-correct="false">600 DPI</div>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                    
+                    <div class="quiz-box">
+                        <div class="quiz-question">
+                            6. Which of these is a sans-serif font?
+                        </div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false">Times New Roman</div>
+                            <div class="quiz-option" data-correct="false">Georgia</div>
+                            <div class="quiz-option" data-correct="true">Arial</div>
+                            <div class="quiz-option" data-correct="false">Garamond</div>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                </section>
+                
+                <!-- Download PDF Button -->
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button id="downloadPdf" class="btn btn-outline">
+                        <i class="fas fa-download"></i> Download as PDF
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Sidebar -->
+            <aside class="module-sidebar">
+                <!-- Progress Tracker -->
+                <div class="progress-container">
+                    <h3><i class="fas fa-chart-line"></i> Your Progress</h3>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <div class="progress-text">
+                        <span>0% Complete</span>
+                        <span id="progressPercent">0%</span>
+                    </div>
+                </div>
+                
+                <!-- Sidebar Navigation -->
+                <div class="sidebar-nav">
+                    <h3><i class="fas fa-list"></i> Module Sections</h3>
+                    <ul>
+                        <li><a href="#section1"><i class="fas fa-chevron-right"></i> Introduction to DTP</a></li>
+                        <li><a href="#section2"><i class="fas fa-chevron-right"></i> DTP Software</a></li>
+                        <li><a href="#section3"><i class="fas fa-chevron-right"></i> Design Principles</a></li>
+                        <li><a href="#section4"><i class="fas fa-chevron-right"></i> Color in DTP</a></li>
+                        <li><a href="#section5"><i class="fas fa-chevron-right"></i> Publication Types</a></li>
+                        <li><a href="#section6"><i class="fas fa-chevron-right"></i> Print Preparation</a></li>
+                        <li><a href="#section7"><i class="fas fa-chevron-right"></i> Digital Publishing</a></li>
+                        <li><a href="#integration"><i class="fas fa-chevron-right"></i> Final Project</a></li>
+                        <li><a href="#quiz"><i class="fas fa-chevron-right"></i> Knowledge Check</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Quick Reference -->
+                <div class="info-box">
+                    <h4><i class="fas fa-ruler"></i> Print Sizes Cheat Sheet</h4>
+                    <ul style="margin: 0; font-size: 0.85rem;">
+                        <li><strong>Business Card:</strong> 2" × 3.5"</li>
+                        <li><strong>Flyer:</strong> 8.5" × 11"</li>
+                        <li><strong>Brochure (folded):</strong> 8.5" × 11"</li>
+                        <li><strong>Poster:</strong> 11" × 17", 18" × 24"</li>
+                        <li><strong>A4:</strong> 210mm × 297mm</li>
+                    </ul>
+                </div>
+                
+                <!-- Font Pairing Examples -->
+                <div class="info-box">
+                    <h4><i class="fas fa-font"></i> Font Pairings</h4>
+                    <ul style="margin: 0; font-size: 0.85rem;">
+                        <li>Bebas Neue + Open Sans</li>
+                        <li>Playfair Display + Lato</li>
+                        <li>Montserrat + Merriweather</li>
+                        <li>Oswald + Roboto</li>
+                        <li>Cinema + Poppins</li>
+                    </ul>
+                </div>
+                
+                <!-- Assessment Info -->
+                <div class="info-box">
+                    <h4><i class="fas fa-clipboard-list"></i> Assessment</h4>
+                    <ul style="margin: 0;">
+                        <li>5 Hands-on Activities</li>
+                        <li>6 Quiz Questions</li>
+                        <li>1 Final Project (Promotional Kit)</li>
+                        <li>Estimated Time: 8-10 hours</li>
+                    </ul>
+                </div>
+            </aside>
+        </div>
+    </div>
+</main>
+
+<!-- Footer -->
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>ICT Learning Hub</h3>
+                <p>Empowering students with digital skills for the future.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="desktop-publishing.html">Desktop Publishing</a></li>
+                    <li><a href="web-design.html">Web Design</a></li>
+                </ul>
+            </div>
+            <div class="footer-modules">
+                <h4>More Modules</h4>
+                <ul>
+                    <li><a href="graphic-design.html">Graphic Design</a></li>
+                    <li><a href="typography.html">Typography</a></li>
+                    <li><a href="shorts2.html">Shortcut Quiz</a></li>
+                </ul>
+            </div>
+            <div class="footer-social">
+                <h4>Connect</h4>
+                <div class="social-icons">
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Yiga Gerald. All rights reserved. | ICT Teacher | Digital Learning Creator</p>
+        </div>
+    </div>
+</footer>
+
+<script src="js/modules.js"></script>
+</body>
+</html>

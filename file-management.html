@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File and Folder Management | ICT Learning Module</title>
+    <meta name="description" content="Learn to organize, manage, and store digital files and folders effectively on your computer">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/navigation.css">
+    <link rel="stylesheet" href="styles/components.css">
+    
+    <!-- Module-specific theme (File Management - Teal/Cyan) -->
+    <style>
+        :root {
+            --theme-primary: #0d9488;
+            --theme-primary-light: #14b8a6;
+            --theme-primary-dark: #0f766e;
+            --theme-secondary: #06b6d4;
+        }
+        
+        .section h2 {
+            color: var(--theme-primary);
+        }
+        
+        .section h2::after {
+            background: var(--theme-primary);
+        }
+        
+        /* File type icons */
+        .file-type-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .file-type-item {
+            background: var(--bg-secondary);
+            border-radius: var(--radius-lg);
+            padding: 1rem;
+            text-align: center;
+            transition: all var(--transition-normal);
+            border: 1px solid var(--border-light);
+        }
+        
+        .file-type-item:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--theme-primary);
+        }
+        
+        .file-type-item i {
+            font-size: 2rem;
+            color: var(--theme-primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .file-type-item .ext {
+            font-family: monospace;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--theme-primary);
+            margin-top: 0.25rem;
+        }
+        
+        /* Folder structure diagram */
+        .folder-tree {
+            background: var(--bg-secondary);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            font-family: monospace;
+            font-size: 0.85rem;
+            margin: 1.5rem 0;
+        }
+        
+        .folder-tree .root {
+            color: var(--theme-primary);
+            font-weight: bold;
+        }
+        
+        .folder-tree .dir {
+            color: var(--theme-primary);
+        }
+        
+        .folder-tree .file {
+            color: var(--text-muted);
+        }
+        
+        .folder-tree .indent-1 { margin-left: 1.5rem; }
+        .indent-2 { margin-left: 3rem; }
+        .indent-3 { margin-left: 4.5rem; }
+        
+        /* Storage units table */
+        .storage-units {
+            background: var(--bg-secondary);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            margin: 1.5rem 0;
+        }
+        
+        .storage-units table {
+            margin: 0;
+        }
+        
+        /* File operations icons */
+        .op-icons {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .op-icon {
+            text-align: center;
+            padding: 1rem;
+            background: var(--bg-secondary);
+            border-radius: var(--radius-lg);
+            min-width: 80px;
+            transition: all var(--transition-normal);
+        }
+        
+        .op-icon:hover {
+            transform: translateY(-4px);
+            background: var(--theme-primary);
+            color: white;
+        }
+        
+        .op-icon i {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        
+        .op-icon span {
+            font-size: 0.7rem;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navigation Placeholder -->
+<div id="global-nav-placeholder"></div>
+
+<main>
+    <div class="container">
+        <!-- Breadcrumb -->
+        <div class="breadcrumb">
+            <a href="index.html">Home</a>
+            <span class="separator">/</span>
+            <a href="#">Learning Hub</a>
+            <span class="separator">/</span>
+            <span class="current" id="page-title">File and Folder Management</span>
+        </div>
+        
+        <!-- Module Header -->
+        <div class="section-header" style="margin-bottom: 2rem;">
+            <h1>File and Folder Management</h1>
+            <p>Organizing, managing, and storing digital files and folders effectively on your computer</p>
+            <div class="keywords" style="display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; margin-top: 1rem;">
+                <span style="background: var(--bg-secondary); padding: 0.25rem 0.75rem; border-radius: 2rem; font-size: 0.8rem;">Files</span>
+                <span style="background: var(--bg-secondary); padding: 0.25rem 0.75rem; border-radius: 2rem; font-size: 0.8rem;">Folders</span>
+                <span style="background: var(--bg-secondary); padding: 0.25rem 0.75rem; border-radius: 2rem; font-size: 0.8rem;">File Extensions</span>
+                <span style="background: var(--bg-secondary); padding: 0.25rem 0.75rem; border-radius: 2rem; font-size: 0.8rem;">Storage</span>
+                <span style="background: var(--bg-secondary); padding: 0.25rem 0.75rem; border-radius: 2rem; font-size: 0.8rem;">Recycle Bin</span>
+                <span style="background: var(--bg-secondary); padding: 0.25rem 0.75rem; border-radius: 2rem; font-size: 0.8rem;">Data Units</span>
+            </div>
+        </div>
+        
+        <!-- Module Layout: 2-column -->
+        <div class="module-wrapper">
+            <!-- Main Content Area -->
+            <div class="module-content">
+                <!-- Learning Outcomes -->
+                <div class="info-box" style="margin-bottom: 2rem;">
+                    <h4><i class="fas fa-bullseye"></i> Learning Outcomes</h4>
+                    <ul>
+                        <li>Use different types of storage media to create, save and transfer files</li>
+                        <li>Understand file extensions and their meanings</li>
+                        <li>Organize files using folders and subfolders</li>
+                        <li>Perform file operations: copy, move, rename, delete</li>
+                        <li>Convert data storage units (bits, bytes, KB, MB, GB, TB)</li>
+                        <li>Use the Recycle Bin to recover deleted files</li>
+                    </ul>
+                </div>
+                
+                <!-- Section 1: What are Files and Folders -->
+                <section id="section1" class="section">
+                    <h2><i class="fas fa-file"></i> What are Files and Folders?</h2>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-info-circle"></i> Understanding Files and Folders</h4>
+                        <p><strong>Files</strong> can be stored in <strong>folders</strong>. Folders can be stored within other folders and these are referred to as <strong>sub-folders</strong>. This creates a hierarchical structure similar to a filing cabinet.</p>
+                    </div>
+                    
+                    <h3>File Names and Extensions</h3>
+                    <p>File names are made up of two parts: the <strong>document name</strong> and the <strong>file extension</strong>. The document name can be up to 255 characters long, while the file extension is determined by the application used to create the file.</p>
+                    
+                    <div class="file-type-grid">
+                        <div class="file-type-item">
+                            <i class="fas fa-file-word"></i>
+                            <div>Microsoft Word</div>
+                            <div class="ext">.doc / .docx</div>
+                        </div>
+                        <div class="file-type-item">
+                            <i class="fas fa-file-excel"></i>
+                            <div>Microsoft Excel</div>
+                            <div class="ext">.xls / .xlsx</div>
+                        </div>
+                        <div class="file-type-item">
+                            <i class="fas fa-file-powerpoint"></i>
+                            <div>PowerPoint</div>
+                            <div class="ext">.ppt / .pptx</div>
+                        </div>
+                        <div class="file-type-item">
+                            <i class="fas fa-file-pdf"></i>
+                            <div>PDF Document</div>
+                            <div class="ext">.pdf</div>
+                        </div>
+                        <div class="file-type-item">
+                            <i class="fas fa-file-image"></i>
+                            <div>Image File</div>
+                            <div class="ext">.jpg / .png / .gif</div>
+                        </div>
+                        <div class="file-type-item">
+                            <i class="fas fa-file-audio"></i>
+                            <div>Audio File</div>
+                            <div class="ext">.mp3 / .wav / .m4a</div>
+                        </div>
+                        <div class="file-type-item">
+                            <i class="fas fa-file-video"></i>
+                            <div>Video File</div>
+                            <div class="ext">.mp4 / .avi / .mov</div>
+                        </div>
+                        <div class="file-type-item">
+                            <i class="fas fa-file-archive"></i>
+                            <div>Compressed File</div>
+                            <div class="ext">.zip / .rar / .7z</div>
+                        </div>
+                        <div class="file-type-item">
+                            <i class="fas fa-file-code"></i>
+                            <div>Web Page</div>
+                            <div class="ext">.html / .htm / .css</div>
+                        </div>
+                        <div class="file-type-item">
+                            <i class="fas fa-file-alt"></i>
+                            <div>Text File</div>
+                            <div class="ext">.txt / .rtf</div>
+                        </div>
+                    </div>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-lightbulb"></i> Why File Extensions Matter</h4>
+                        <ul>
+                            <li>The operating system uses extensions to know which program to open the file with</li>
+                            <li>Changing an extension does NOT change the file type (it just confuses the computer)</li>
+                            <li>Windows hides extensions by default - you can enable them in Folder Options</li>
+                            <li>Some extensions can contain harmful code (.exe, .scr, .vbs) - be careful with unknown files</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="activity-box">
+                        <div class="activity-header">
+                            <div class="activity-number">1</div>
+                            <div class="activity-title">Activity: Identify File Extensions</div>
+                        </div>
+                        <p><strong>Instructions:</strong> Explore your computer and identify different file types.</p>
+                        <ol class="activity-steps">
+                            <li>Open File Explorer and navigate to your Documents folder</li>
+                            <li>Look at different files and note their extensions</li>
+                            <li>Create a table listing 10 files with their names, extensions, and associated applications</li>
+                            <li>What program opens a .docx file? What about .pdf? .jpg?</li>
+                            <li>Enable "File name extensions" in the View tab of File Explorer</li>
+                        </ol>
+                    </div>
+                </section>
+                
+                <!-- Section 2: Storage Media -->
+                <section id="section2" class="section">
+                    <h2><i class="fas fa-database"></i> Storage Media</h2>
+                    
+                    <p>Files and folders can be stored on various storage media. Different storage media have different characteristics in terms of capacity, speed, portability, and durability.</p>
+                    
+                    <table class="data-table">
+                        <thead>
+                            <tr><th>Storage Media</th><th>Capacity Range</th><th>Advantages</th><th>Disadvantages</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Hard Disk Drive (HDD)</strong></td>
+                                <td>500GB - 10TB+</span></td>
+                                <td>High capacity, cost-effective, fast access</span></td>
+                                <td>Not portable, sensitive to shock, moving parts</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Solid State Drive (SSD)</strong></span></td>
+                                <td>120GB - 4TB</span></td>
+                                <td>Very fast, durable, no moving parts</span></td>
+                                <td>More expensive per GB, limited write cycles</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>USB Flash Drive</strong></span></td>
+                                <td>1GB - 1TB+</span></td>
+                                <td>Portable, durable, widely compatible</span></td>
+                                <td>Can be easily lost, smaller capacity than HDDs</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Memory Card (SD/microSD)</strong></span></td>
+                                <td>1GB - 1TB</span></td>
+                                <td>Small, portable, used in phones/cameras</span></td>
+                                <td>Easy to lose, can be fragile</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>CD/DVD/Blu-ray</strong></span></td>
+                                <td>700MB - 100GB</span></td>
+                                <td>Inexpensive, good for distribution, archival</span></td>
+                                <td>Slow, can scratch, many new computers lack drives</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Cloud Storage</strong></span></td>
+                                <td>5GB - Unlimited (paid)</span></td>
+                                <td>Access from anywhere, automatic backup, sharing</span></td>
+                                <td>Requires internet, monthly fees for large storage</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-cloud-upload-alt"></i> Popular Cloud Storage Services</h4>
+                        <ul>
+                            <li><strong>Google Drive:</strong> 15GB free, integrates with Google Workspace</li>
+                            <li><strong>Microsoft OneDrive:</strong> 5GB free, integrates with Windows and Office</li>
+                            <li><strong>Dropbox:</strong> 2GB free, simple and reliable</li>
+                            <li><strong>iCloud:</strong> 5GB free, for Apple users</li>
+                            <li><strong>Mega:</strong> 20GB free, encrypted storage</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="activity-box">
+                        <div class="activity-header">
+                            <div class="activity-number">2</div>
+                            <div class="activity-title">Activity: Compare Storage Media</div>
+                        </div>
+                        <p><strong>Instructions:</strong> Research and compare different storage options.</p>
+                        <ol class="activity-steps">
+                            <li>Find three different storage devices in your computer lab (e.g., HDD, USB, DVD)</li>
+                            <li>Note their storage capacity, read/write speed (if available), and physical size</li>
+                            <li>Research current prices for a 1TB external HDD vs a 1TB USB flash drive</li>
+                            <li>List the pros and cons of each storage type</li>
+                            <li>Which storage type would you recommend for backing up family photos? Why?</li>
+                        </ol>
+                    </div>
+                </section>
+                
+                <!-- Section 3: Organizing Files with Folders -->
+                <section id="section3" class="section">
+                    <h2><i class="fas fa-folder-tree"></i> Organizing Files with Folders</h2>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-sitemap"></i> Why Organization Matters</h4>
+                        <p>If all paper documents were stored in a single drawer without using folders, it would soon become impossible to find anything. Files on a computer should be managed in the same systematic way.</p>
+                    </div>
+                    
+                    <h3>Sample Folder Structure</h3>
+                    <div class="folder-tree">
+                        <div class="root">📁 My Documents (Root Folder)</div>
+                        <div class="indent-1">
+                            <span class="dir">📁 School Work</span>
+                            <div class="indent-2">
+                                <span class="dir">📁 Mathematics</span>
+                                <div class="indent-3"><span class="file">📄 Algebra_Assignment.docx</span></div>
+                                <div class="indent-3"><span class="file">📄 Geometry_Notes.pdf</span></div>
+                            </div>
+                            <div class="indent-2">
+                                <span class="dir">📁 English</span>
+                                <div class="indent-3"><span class="file">📄 Essay_FirstDraft.docx</span></div>
+                                <div class="indent-3"><span class="file">📄 Vocabulary_List.xlsx</span></div>
+                            </div>
+                            <div class="indent-2">
+                                <span class="dir">📁 Science</span>
+                                <div class="indent-3"><span class="file">📄 Chemistry_Report.pdf</span></div>
+                                <div class="indent-3"><span class="file">📄 Physics_Project.pptx</span></div>
+                            </div>
+                        </div>
+                        <div class="indent-1">
+                            <span class="dir">📁 Personal</span>
+                            <div class="indent-2">
+                                <span class="dir">📁 Photos</span>
+                                <div class="indent-3"><span class="file">🖼️ Birthday_2024.jpg</span></div>
+                                <div class="indent-3"><span class="file">🖼️ Family_Vacation.png</span></div>
+                            </div>
+                            <div class="indent-2">
+                                <span class="dir">📁 Music</span>
+                                <div class="indent-3"><span class="file">🎵 Favorite_Songs.mp3</span></div>
+                            </div>
+                        </div>
+                        <div class="indent-1">
+                            <span class="dir">📁 Work</span>
+                            <div class="indent-2">
+                                <span class="dir">📁 Projects</span>
+                                <div class="indent-3"><span class="file">📄 Project_Proposal.docx</span></div>
+                                <div class="indent-3"><span class="file">📊 Budget.xlsx</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h3>Creating Folders - Multiple Methods</h3>
+                    <div class="op-icons">
+                        <div class="op-icon">
+                            <i class="fas fa-folder-plus"></i>
+                            <span>Right-click → New → Folder</span>
+                        </div>
+                        <div class="op-icon">
+                            <i class="fas fa-file-alt"></i>
+                            <span>File Menu → New → Folder</span>
+                        </div>
+                        <div class="op-icon">
+                            <i class="fas fa-save"></i>
+                            <span>Save As → New Folder</span>
+                        </div>
+                        <div class="op-icon">
+                            <i class="fas fa-keyboard"></i>
+                            <span>Ctrl+Shift+N</span>
+                        </div>
+                    </div>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-tips"></i> Folder Naming Best Practices</h4>
+                        <ul>
+                            <li>Use descriptive names (e.g., "Math Homework" not "Stuff")</li>
+                            <li>Use consistent naming conventions (e.g., "YYYY-MM-DD_ProjectName")</li>
+                            <li>Avoid special characters: \ / : * ? " < > |</li>
+                            <li>Use underscores or hyphens instead of spaces (optional)</li>
+                            <li>Keep names reasonably short but meaningful</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="activity-box">
+                        <div class="activity-header">
+                            <div class="activity-number">3</div>
+                            <div class="activity-title">Activity: Create an Organized Folder Structure</div>
+                        </div>
+                        <p><strong>Objective:</strong> Create a well-organized folder system for your school subjects.</p>
+                        <ol class="activity-steps">
+                            <li>Navigate to your Documents folder</li>
+                            <li>Create a main folder called "School_2025"</li>
+                            <li>Inside it, create folders for each of your subjects (Math, English, Science, History, ICT)</li>
+                            <li>Inside each subject folder, create subfolders: "Assignments", "Notes", "Exams"</li>
+                            <li>Create a sample document in one of the folders and save it correctly</li>
+                            <li>Draw a diagram of your folder structure on paper</li>
+                        </ol>
+                    </div>
+                </section>
+                
+                <!-- Section 4: File Operations -->
+                <section id="section4" class="section">
+                    <h2><i class="fas fa-cogs"></i> File Operations</h2>
+                    
+                    <p>Managing files involves several basic operations: selecting, copying, moving, renaming, and deleting files and folders.</p>
+                    
+                    <h3>Selecting Files</h3>
+                    <table class="data-table">
+                        <thead>
+                            <tr><th>Selection Type</th><th>Method</th><th>Keyboard Shortcut</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>Single File</strong></td><td>Click the file once</span></td><td>-</span></td></tr>
+                            <tr><td><strong>Multiple (Consecutive)</strong></span></td><td>Click first file, hold Shift, click last file</span></td><td>Shift + Click</span></td></tr>
+                            <tr><td><strong>Multiple (Non-consecutive)</strong></span></td><td>Hold Ctrl while clicking each file</span></td><td>Ctrl + Click</span></td></tr>
+                            <tr><td><strong>All Files in Folder</strong></span></td><td>Edit → Select All or Ctrl+A</span></td><td>Ctrl + A</span></td></tr>
+                        </tbody>
+                    </table>
+                    
+                    <h3>Copy, Move, Rename, Delete</h3>
+                    <table class="data-table">
+                        <thead>
+                            <tr><th>Operation</th><th>Method (Mouse)</th><th>Method (Keyboard)</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>Copy</strong></td><td>Right-click → Copy → Right-click destination → Paste</span></td><td>Ctrl+C, then Ctrl+V</span></td></tr>
+                            <tr><td><strong>Move</strong></span></td><td>Right-click → Cut → Right-click destination → Paste</span></td><td>Ctrl+X, then Ctrl+V</span></td></tr>
+                            <tr><td><strong>Rename</strong></span></td><td>Right-click → Rename → Type new name → Enter</span></td><td>Select file → F2 → Type → Enter</span></td></tr>
+                            <tr><td><strong>Delete</strong></span></td><td>Right-click → Delete → Confirm</span></td><td>Select file → Delete key → Confirm</span></td></tr>
+                            <tr><td><strong>Copy via Drag & Drop</strong></span></td><td>Drag file to another folder while holding Ctrl</span></td><td>-</span></td></tr>
+                            <tr><td><strong>Move via Drag & Drop</strong></span></td><td>Drag file to another folder (no modifier key)</span></td><td>-</span></td></tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-gripfire"></i> Pro Tips for File Management</h4>
+                        <ul>
+                            <li><strong>Undo</strong> (Ctrl+Z) can reverse most file operations (delete, rename, move)</li>
+                            <li><strong>Drag and drop</strong> moves files on the same drive, copies to different drives</li>
+                            <li>Use <strong>Ctrl while dragging</strong> to force a copy</li>
+                            <li>Use <strong>Shift while dragging</strong> to force a move</li>
+                            <li>Press <strong>Alt while dragging</strong> to create a shortcut</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="activity-box">
+                        <div class="activity-header">
+                            <div class="activity-number">4</div>
+                            <div class="activity-title">Activity: Practice File Operations</div>
+                        </div>
+                        <p><strong>Objective:</strong> Practice all basic file operations.</p>
+                        <ol class="activity-steps">
+                            <li>Create a new folder called "Practice" on your Desktop</li>
+                            <li>Create 5 sample text files inside (right-click → New → Text Document)</li>
+                            <li>Practice selecting different combinations of files (single, multiple consecutive, multiple non-consecutive)</li>
+                            <li>Copy two files to a new subfolder called "Backup"</li>
+                            <li>Move one file to a different location</li>
+                            <li>Rename three files with descriptive names</li>
+                            <li>Delete one file, then restore it from Recycle Bin</li>
+                            <li>Delete the entire Practice folder when done</li>
+                        </ol>
+                    </div>
+                </section>
+                
+                <!-- Section 5: The Recycle Bin -->
+                <section id="section5" class="section">
+                    <h2><i class="fas fa-trash-alt"></i> The Recycle Bin</h2>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-recycle"></i> What is the Recycle Bin?</h4>
+                        <p>The Recycle Bin is a temporary storage area for deleted files. When you delete a file, it is moved to the Recycle Bin, not permanently erased. This gives you a chance to recover files deleted by mistake.</p>
+                    </div>
+                    
+                    <h3>Working with the Recycle Bin</h3>
+                    <table class="data-table">
+                        <thead>
+                            <tr><th>Action</th><th>How To</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>Restore a file</strong></span></td>:<span>Open Recycle Bin → Right-click file → Restore</span></td></tr>
+                            <tr><td><strong>Restore all files</strong></span></td>:<span>Open Recycle Bin → Restore all items (in toolbar)</span></td></tr>
+                            <tr><td><strong>Delete permanently (single)</strong></span></td>:<span>Open Recycle Bin → Right-click file → Delete</span></td></tr>
+                            <tr><td><strong>Empty Recycle Bin</strong></span></td>:<span>Right-click Recycle Bin icon → Empty Recycle Bin</span></td></tr>
+                            <tr><td><strong>Bypass Recycle Bin</strong></span></td>:<span>Shift + Delete (deletes permanently without sending to Recycle Bin)</span></td></tr>
+                            <tr><td><strong>Check Recycle Bin size</strong></span></td>:<span>Right-click Recycle Bin → Properties</span></td></tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-exclamation-triangle"></i> Important Notes</h4>
+                        <ul>
+                            <li>Files deleted from network drives or USB drives go directly to permanent deletion (no Recycle Bin)</li>
+                            <li>Files larger than the Recycle Bin's capacity are permanently deleted</li>
+                            <li>The Recycle Bin has a maximum size (default is about 5-10% of your drive)</li>
+                            <li>Once you empty the Recycle Bin, files cannot be easily recovered (requires special software)</li>
+                            <li>You can change Recycle Bin properties (size, delete confirmation) by right-clicking the icon</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="activity-box">
+                        <div class="activity-header">
+                            <div class="activity-number">5</div>
+                            <div class="activity-title">Activity: Recycle Bin Practice</div>
+                        </div>
+                        <p><strong>Objective:</strong> Learn to use the Recycle Bin for file recovery.</p>
+                        <ol class="activity-steps">
+                            <li>Create a new text file on your Desktop called "test.txt"</li>
+                            <li>Delete the file normally (right-click → Delete)</li>
+                            <li>Open the Recycle Bin and verify the file is there</li>
+                            <li>Restore the file and verify it reappears on Desktop</li>
+                            <li>Delete it again, then empty the Recycle Bin</li>
+                            <li>Try to restore the file (it won't work - it's permanently gone)</li>
+                            <li>Shift+Delete a test file and note that it doesn't go to Recycle Bin</li>
+                        </ol>
+                    </div>
+                </section>
+                
+                <!-- Section 6: Storage Capacity and Data Units -->
+                <section id="section6" class="section">
+                    <h2><i class="fas fa-chart-simple"></i> Storage Capacity and Data Units</h2>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-calculator"></i> Understanding Data Units</h4>
+                        <p>In a computer system, data is represented using the binary system - combinations of binary digits (<strong>bits</strong>). There are only two binary digits: <strong>0 and 1</strong>.</p>
+                    </div>
+                    
+                    <div class="storage-units">
+                        <table class="data-table">
+                            <thead>
+                                <tr><th>Unit</th><th>Abbreviation</th><th>Size in Bytes</th><th>Example</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>Bit</td><td>b</td><td>1/8 byte</td><td>Single 0 or 1</td></tr>
+                                <tr><td>Byte</td><td>B</td><td>8 bits</td><td>One character (e.g., "A")</td></tr>
+                                <tr><td>Kilobyte</td><td>KB</td><td>1,024 bytes</td><td>About half a page of text</td></tr>
+                                <tr><td>Megabyte</td><td>MB</td><td>1,024 KB</td><td>A small photo (1-5 MB)</td></tr>
+                                <tr><td>Gigabyte</td><td>GB</td><td>1,024 MB</td><td>A full-length movie (~1-2 GB)</td></tr>
+                                <tr><td>Terabyte</td><td>TB</td><td>1,024 GB</td><td>500 hours of video</td></tr>
+                                <tr><td>Petabyte</td><td>PB</td><td>1,024 TB</td><td>Large data centers</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <h3>Converting Between Units</h3>
+                    <div class="info-box">
+                        <ul>
+                            <li><strong>To convert from Bytes to KB:</strong> Divide by 1,024</li>
+                            <li><strong>To convert from KB to MB:</strong> Divide by 1,024</li>
+                            <li><strong>To convert from MB to GB:</strong> Divide by 1,024</li>
+                            <li><strong>To convert from GB to TB:</strong> Divide by 1,024</li>
+                            <li><strong>To convert to larger units, multiply</strong> (KB × 1,024 = Bytes)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-exclamation-circle"></i> Important Note</h4>
+                        <p>Many hard drive manufacturers use the decimal system (1 KB = 1,000 bytes) while computers use binary (1 KB = 1,024 bytes). This is why a "1 TB" drive might show as only 931 GB in your computer.</p>
+                    </div>
+                    
+                    <h3>Example Conversions</h3>
+                    <table class="data-table">
+                        <thead>
+                            <tr><th>Conversion</th><th>Calculation</th><th>Result</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>2,048 bytes to KB</td><td>2,048 ÷ 1,024</td><td>2 KB</td></tr>
+                            <tr><td>3,072 KB to MB</td><td>3,072 ÷ 1,024</td><td>3 MB</td></tr>
+                            <tr><td>4,096 MB to GB</td><td>4,096 ÷ 1,024</td><td>4 GB</td></tr>
+                            <tr><td>2 GB to MB</td><td>2 × 1,024</td><td>2,048 MB</td></tr>
+                            <tr><td>5 MB to KB</td><td>5 × 1,024</td><td>5,120 KB</td></tr>
+                            <tr><td>10 KB to bytes</td><td>10 × 1,024</td><td>10,240 bytes</td></tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="activity-box">
+                        <div class="activity-header">
+                            <div class="activity-number">6</div>
+                            <div class="activity-title">Activity: Data Unit Conversions</div>
+                        </div>
+                        <p><strong>Objective:</strong> Practice converting between data storage units.</p>
+                        <ol class="activity-steps">
+                            <li>Convert the following:
+                                <ul>
+                                    <li>8,192 bytes to KB</li>
+                                    <li>10,240 KB to MB</li>
+                                    <li>8,192 MB to GB</li>
+                                    <li>3 GB to MB</li>
+                                    <li>500 MB to KB</li>
+                                    <li>15 KB to bytes</li>
+                                </ul>
+                            </li>
+                            <li>If a flash drive has 16 GB capacity, how many MB is that?</li>
+                            <li>If a photo is 4 MB, how many photos can fit on a 32 GB drive?</li>
+                            <li>If a song is 5 MB, how many songs can fit on a 64 GB phone?</li>
+                        </ol>
+                    </div>
+                </section>
+                
+                <!-- Section 7: Search and Find Files -->
+                <section id="section7" class="section">
+                    <h2><i class="fas fa-search"></i> Finding Files and Folders</h2>
+                    
+                    <p>As you accumulate more files, finding what you need becomes challenging. Windows provides powerful search tools to help locate files quickly.</p>
+                    
+                    <h3>Search Methods</h3>
+                    <table class="data-table">
+                        <thead>
+                            <tr><th>Method</th><th>How To</th><th>Best For</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>Start Menu Search</strong></span></td>:<span>Click Start and type filename</span></td>:<span>Quickly finding recently used files and apps</span></td></tr>
+                            <tr><td><strong>File Explorer Search Box</strong></span></td>:<span>Type in the search box at top-right of any folder</span></td>:<span>Searching within a specific folder</span></td></tr>
+                            <tr><td><strong>Search Operators</strong></span></td>:<span>Use: name:*.jpg, type:document, size:>1MB</span></td>:<span>Advanced, filtered searches</span></td></tr>
+                            <tr><td><strong>Saved Searches</strong></span></td>:<span>After searching, click "Save search" in the Search tab</span></td>:<span>Reusing complex searches</span></td></tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-filter"></i> Search Operators and Filters</h4>
+                        <ul>
+                            <li><strong>name:</strong> - Search by filename (e.g., name:report)</li>
+                            <li><strong>type:</strong> - Search by file type (e.g., type:docx, type:pdf, type:jpg)</li>
+                            <li><strong>size:</strong> - Search by file size (e.g., size:>1MB, size:&lt;100KB)</li>
+                            <li><strong>date:</strong> - Search by date modified (e.g., date:today, date:last week)</li>
+                            <li><strong>Wildcards:</strong> * (any characters) and ? (single character)</li>
+                        </ul>
+                    </div>
+                </section>
+                
+                <!-- Integration Activity -->
+                <section id="integration" class="section">
+                    <h2><i class="fas fa-tasks"></i> Activity of Integration</h2>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-school"></i> School Computer Lab Scenario</h4>
+                        <p>Your school's computer lab has 40 student computers. Students frequently save files to the Desktop instead of organized folders, causing clutter and lost assignments. You've been asked to help create a file management system.</p>
+                    </div>
+                    
+                    <div class="activity-box">
+                        <div class="activity-header">
+                            <div class="activity-number">FINAL</div>
+                            <div class="activity-title">File Management System Project</div>
+                        </div>
+                        <p><strong>Requirements:</strong></p>
+                        <ol class="activity-steps">
+                            <li><strong>Folder Structure Design:</strong> Design a recommended folder structure for students to organize their school work (draw a diagram)</li>
+                            <li><strong>Naming Convention:</strong> Propose a file naming convention for assignments (e.g., "LastName_Subject_AssignmentName_Date")</li>
+                            <li><strong>Storage Recommendation:</strong> Recommend the best storage media for students to back up their work (and justify your choice)</li>
+                            <li><strong>User Guide:</strong> Create a 1-page illustrated guide for students showing how to:
+                                <ul>
+                                    <li>Create folders</li>
+                                    <li>Copy and move files</li>
+                                    <li>Rename files using the naming convention</li>
+                                    <li>Restore deleted files from Recycle Bin</li>
+                                </ul>
+                            </li>
+                            <li><strong>Cleanup Script:</strong> Write step-by-step instructions for cleaning up a cluttered Desktop</li>
+                            <li><strong>Capacity Planning:</strong> If each student needs 5GB of storage, how much total storage is needed for 40 students? How many 500GB drives would that require?</li>
+                        </ol>
+                    </div>
+                </section>
+                
+                <!-- Quiz Section -->
+                <section id="quiz" class="section">
+                    <h2><i class="fas fa-question-circle"></i> Knowledge Check</h2>
+                    
+                    <div class="quiz-box">
+                        <div class="quiz-question">
+                            1. What is the file extension for a Microsoft Word document?
+                        </div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false">.txt</div>
+                            <div class="quiz-option" data-correct="true">.docx</div>
+                            <div class="quiz-option" data-correct="false">.xlsx</div>
+                            <div class="quiz-option" data-correct="false">.pptx</div>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                    
+                    <div class="quiz-box">
+                        <div class="quiz-question">
+                            2. How many bytes are in a kilobyte (KB) in binary (computer) terms?
+                        </div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false">1,000 bytes</div>
+                            <div class="quiz-option" data-correct="true">1,024 bytes</div>
+                            <div class="quiz-option" data-correct="false">512 bytes</div>
+                            <div class="quiz-option" data-correct="false">8 bytes</div>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                    
+                    <div class="quiz-box">
+                        <div class="quiz-question">
+                            3. What happens to a file when you normally delete it in Windows?
+                        </div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false">It is permanently erased immediately</div>
+                            <div class="quiz-option" data-correct="true">It goes to the Recycle Bin where it can be restored</div>
+                            <div class="quiz-option" data-correct="false">It is compressed to save space</div>
+                            <div class="quiz-option" data-correct="false">It is sent to cloud backup</div>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                    
+                    <div class="quiz-box">
+                        <div class="quiz-question">
+                            4. Which keyboard shortcut selects all files in a folder?
+                        </div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false">Ctrl+C</div>
+                            <div class="quiz-option" data-correct="false">Ctrl+X</div>
+                            <div class="quiz-option" data-correct="true">Ctrl+A</div>
+                            <div class="quiz-option" data-correct="false">Ctrl+S</div>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                    
+                    <div class="quiz-box">
+                        <div class="quiz-question">
+                            5. Which shortcut key permanently deletes a file without sending it to the Recycle Bin?
+                        </div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false">Ctrl+Delete</div>
+                            <div class="quiz-option" data-correct="false">Alt+Delete</div>
+                            <div class="quiz-option" data-correct="true">Shift+Delete</div>
+                            <div class="quiz-option" data-correct="false">Win+Delete</div>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                    
+                    <div class="quiz-box">
+                        <div class="quiz-question">
+                            6. If you have a 16 GB USB drive, approximately how many 4 MB photos can it store?
+                        </div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false">1,000 photos</div>
+                            <div class="quiz-option" data-correct="false">2,000 photos</div>
+                            <div class="quiz-option" data-correct="true">4,000 photos</div>
+                            <div class="quiz-option" data-correct="false">8,000 photos</div>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                </section>
+                
+                <!-- Download PDF Button -->
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button id="downloadPdf" class="btn btn-outline">
+                        <i class="fas fa-download"></i> Download as PDF
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Sidebar -->
+            <aside class="module-sidebar">
+                <!-- Progress Tracker -->
+                <div class="progress-container">
+                    <h3><i class="fas fa-chart-line"></i> Your Progress</h3>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <div class="progress-text">
+                        <span>0% Complete</span>
+                        <span id="progressPercent">0%</span>
+                    </div>
+                </div>
+                
+                <!-- Sidebar Navigation -->
+                <div class="sidebar-nav">
+                    <h3><i class="fas fa-list"></i> Module Sections</h3>
+                    <ul>
+                        <li><a href="#section1"><i class="fas fa-chevron-right"></i> Files and Folders</a></li>
+                        <li><a href="#section2"><i class="fas fa-chevron-right"></i> Storage Media</a></li>
+                        <li><a href="#section3"><i class="fas fa-chevron-right"></i> Organizing with Folders</a></li>
+                        <li><a href="#section4"><i class="fas fa-chevron-right"></i> File Operations</a></li>
+                        <li><a href="#section5"><i class="fas fa-chevron-right"></i> Recycle Bin</a></li>
+                        <li><a href="#section6"><i class="fas fa-chevron-right"></i> Storage Capacity</a></li>
+                        <li><a href="#section7"><i class="fas fa-chevron-right"></i> Finding Files</a></li>
+                        <li><a href="#integration"><i class="fas fa-chevron-right"></i> Final Project</a></li>
+                        <li><a href="#quiz"><i class="fas fa-chevron-right"></i> Knowledge Check</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Quick Reference - File Operations -->
+                <div class="info-box">
+                    <h4><i class="fas fa-keyboard"></i> File Operation Shortcuts</h4>
+                    <ul style="margin: 0; font-size: 0.85rem;">
+                        <li><kbd>Ctrl+C</kbd> - Copy</li>
+                        <li><kbd>Ctrl+X</kbd> - Cut</li>
+                        <li><kbd>Ctrl+V</kbd> - Paste</li>
+                        <li><kbd>Ctrl+A</kbd> - Select All</li>
+                        <li><kbd>F2</kbd> - Rename</li>
+                        <li><kbd>Delete</kbd> - Delete (to Recycle Bin)</li>
+                        <li><kbd>Shift+Delete</kbd> - Permanent Delete</li>
+                        <li><kbd>Ctrl+Z</kbd> - Undo</li>
+                    </ul>
+                </div>
+                
+                <!-- Common File Extensions -->
+                <div class="info-box">
+                    <h4><i class="fas fa-file-alt"></i> Common Extensions</h4>
+                    <ul style="margin: 0; font-size: 0.85rem;">
+                        <li><strong>.docx</strong> - Word document</li>
+                        <li><strong>.xlsx</strong> - Excel spreadsheet</li>
+                        <li><strong>.pptx</strong> - PowerPoint</li>
+                        <li><strong>.pdf</strong> - PDF document</li>
+                        <li><strong>.jpg/.png</strong> - Images</li>
+                        <li><strong>.mp3</strong> - Audio</li>
+                        <li><strong>.mp4</strong> - Video</li>
+                        <li><strong>.zip</strong> - Compressed file</li>
+                    </ul>
+                </div>
+                
+                <!-- Assessment Info -->
+                <div class="info-box">
+                    <h4><i class="fas fa-clipboard-list"></i> Assessment</h4>
+                    <ul style="margin: 0;">
+                        <li>6 Hands-on Activities</li>
+                        <li>6 Quiz Questions</li>
+                        <li>1 Final Project</li>
+                        <li>Estimated Time: 5-7 hours</li>
+                    </ul>
+                </div>
+            </aside>
+        </div>
+    </div>
+</main>
+
+<!-- Footer -->
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>ICT Learning Hub</h3>
+                <p>Empowering students with digital skills for the future.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="word-processing.html">Word Processing</a></li>
+                    <li><a href="spreadsheets-1.html">Spreadsheets</a></li>
+                    <li><a href="file-management.html">File Management</a></li>
+                </ul>
+            </div>
+            <div class="footer-modules">
+                <h4>More Modules</h4>
+                <ul>
+                    <li><a href="computer-hardware.html">Computer Hardware</a></li>
+                    <li><a href="web-design.html">Web Design</a></li>
+                    <li><a href="shorts2.html">Shortcut Quiz</a></li>
+                </ul>
+            </div>
+            <div class="footer-social">
+                <h4>Connect</h4>
+                <div class="social-icons">
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Yiga Gerald. All rights reserved. | ICT Teacher | Digital Learning Creator</p>
+        </div>
+    </div>
+</footer>
+
+<script src="js/modules.js"></script>
+</body>
+</html>

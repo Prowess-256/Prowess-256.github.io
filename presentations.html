@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electronic Presentations | ICT Learning Module</title>
+    <meta name="description" content="Master electronic presentations - create, design, and deliver professional slides using PowerPoint and other tools">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/navigation.css">
+    <link rel="stylesheet" href="styles/components.css">
+    
+    <!-- Module-specific theme (Presentations - Purple/Teal) -->
+    <style>
+        :root {
+            --theme-primary: #8b5cf6;
+            --theme-primary-light: #a78bfa;
+            --theme-primary-dark: #7c3aed;
+            --theme-secondary: #06b6d4;
+        }
+        
+        .section h2 {
+            color: var(--theme-primary);
+        }
+        
+        .section h2::after {
+            background: var(--theme-primary);
+        }
+        
+        /* Slide example styling */
+        .slide-example {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            text-align: center;
+            color: white;
+            margin: 1.5rem 0;
+        }
+        
+        .slide-example h3 {
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .slide-example p {
+            color: rgba(255,255,255,0.9);
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navigation Placeholder -->
+<div id="global-nav-placeholder"></div>
+
+<main>
+    <div class="container">
+        <!-- Breadcrumb -->
+        <div class="breadcrumb">
+            <a href="index.html">Home</a>
+            <span class="separator">/</span>
+            <a href="#">Learning Hub</a>
+            <span class="separator">/</span>
+            <span class="current" id="page-title">Electronic Presentations</span>
+        </div>
+        
+        <!-- Module Header -->
+        <div class="section-header" style="margin-bottom: 2rem;">
+            <h1>Electronic Presentations</h1>
+            <p>Master the art of creating compelling digital presentations for effective communication</p>
+            <div class="keywords" style="display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; margin-top: 1rem;">
+                <span style="background: var(--bg-secondary); padding: 0.25rem 0.75rem; border-radius: 2rem; font-size: 0.8rem;">PowerPoint</span>
+                <span style="background: var(--bg-secondary); padding: 0.25rem 0.75rem; border-radius: 2rem; font-size: 0.8rem;">Google Slides</span>
+                <span style="background: var(--bg-secondary); padding: 0.25rem 0.75rem; border-radius: 2rem; font-size: 0.8rem;">Slide Design</span>
+                <span style="background: var(--bg-secondary); padding: 0.25rem 0.75rem; border-radius: 2rem; font-size: 0.8rem;">Animations</span>
+                <span style="background: var(--bg-secondary); padding: 0.25rem 0.75rem; border-radius: 2rem; font-size: 0.8rem;">Public Speaking</span>
+            </div>
+        </div>
+        
+        <!-- Module Layout: 2-column -->
+        <div class="module-wrapper">
+            <!-- Main Content Area -->
+            <div class="module-content">
+                <!-- Learning Outcomes -->
+                <div class="info-box" style="margin-bottom: 2rem;">
+                    <h4><i class="fas fa-bullseye"></i> Learning Outcomes</h4>
+                    <ul>
+                        <li>Design effective presentation slides following best practices</li>
+                        <li>Use advanced features of presentation software</li>
+                        <li>Incorporate multimedia elements effectively</li>
+                        <li>Apply visual design principles for clarity and impact</li>
+                        <li>Deliver engaging presentations with confidence</li>
+                    </ul>
+                </div>
+                
+                <!-- Section 1: Introduction -->
+                <section id="section1" class="section">
+                    <h2><i class="fas fa-home"></i> Introduction to Electronic Presentations</h2>
+                    
+                    <p>Electronic presentations have become the standard for sharing information in business, education, and professional settings. When done well, they can enhance understanding, engage audiences, and make complex information accessible.</p>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-lightbulb"></i> Why Presentation Skills Matter</h4>
+                        <p>Effective presentations combine <strong>visual design</strong>, <strong>content organization</strong>, and <strong>delivery skills</strong>. Research shows that people remember only 10% of what they hear, but 65% of what they see and hear together.</p>
+                    </div>
+                    
+                    <h3>Popular Presentation Software</h3>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Software</th>
+                                <th>Strengths</th>
+                                <th>Best For</th>
+                                <th>Platform</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Microsoft PowerPoint</strong></td>
+                                <td>Advanced features, templates, animation tools</span></td>
+                                <td>Professional business presentations</span></td>
+                                <td>Windows, Mac, Web, Mobile</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Google Slides</strong></span></td>
+                                <td>Real-time collaboration, cloud-based, free</span></td>
+                                <td>Team projects, educational use</span></td>
+                                <td>Web-based, all platforms</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Apple Keynote</strong></span></td>
+                                <td>Beautiful templates, smooth animations</span></td>
+                                <td>Creative presentations, Apple ecosystem</span></td>
+                                <td>Mac, iOS, Web</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Canva</strong></span></td>
+                                <td>Easy to use, extensive template library</span></td>
+                                <td>Quick designs, social media, students</span></td>
+                                <td>Web-based</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="slide-example">
+                        <h3>Effective Presentations</h3>
+                        <p>Combining visual design with compelling content</p>
+                        <p style="font-size: 0.8rem; margin-top: 1rem;">Example of a well-designed title slide</p>
+                    </div>
+                </section>
+                
+                <!-- Section 2: Planning & Structure -->
+                <section id="section2" class="section">
+                    <h2><i class="fas fa-brain"></i> Presentation Planning & Structure</h2>
+                    
+                    <p>Before you open your presentation software, planning is essential. A well-structured presentation follows a logical flow that guides your audience through your message.</p>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-ruler"></i> The 10/20/30 Rule</h4>
+                        <p><strong>10 Slides:</strong> Maximum number of slides for a 20-minute presentation<br>
+                        <strong>20 Minutes:</strong> Ideal presentation length to maintain attention<br>
+                        <strong>30-Point Font:</strong> Minimum font size for readability</p>
+                    </div>
+                    
+                    <h3>Presentation Structure</h3>
+                    <ol class="activity-steps">
+                        <li><strong>Title Slide</strong> - Clear title, subtitle, presenter name</li>
+                        <li><strong>Agenda/Overview</strong> - Outline of presentation structure</li>
+                        <li><strong>Introduction</strong> - Hook, problem statement, context</li>
+                        <li><strong>Body (3-5 slides)</strong> - Main points with supporting evidence</li>
+                        <li><strong>Case Study/Example</strong> - Real-world application</li>
+                        <li><strong>Conclusion</strong> - Summary and key takeaways</li>
+                        <li><strong>Q&A Slide</strong> - Questions and contact information</li>
+                    </ol>
+                    
+                    <div class="activity-box">
+                        <div class="activity-header">
+                            <div class="activity-number">1</div>
+                            <div class="activity-title">Activity: Plan Your Presentation Structure</div>
+                        </div>
+                        <p><strong>Objective:</strong> Create a detailed outline for a 10-minute presentation on a topic of your choice.</p>
+                        <ol class="activity-steps">
+                            <li>Choose a topic (e.g., "The Benefits of Remote Work," "Introduction to Renewable Energy")</li>
+                            <li>Define your main objective: What should your audience learn or do?</li>
+                            <li>Create a storyboard with 8-10 slides following the structure above</li>
+                            <li>For each slide, write 1-2 sentences describing the content</li>
+                        </ol>
+                    </div>
+                </section>
+                
+                <!-- Section 3: Slide Design Principles -->
+                <section id="section3" class="section">
+                    <h2><i class="fas fa-palette"></i> Slide Design Principles</h2>
+                    
+                    <p>Good design makes your presentation more effective, professional, and memorable. Follow these principles to create visually appealing slides.</p>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-exclamation-circle"></i> Common Design Mistakes to Avoid</h4>
+                        <ul>
+                            <li><strong>Text-heavy slides:</strong> Avoid paragraphs; use bullet points with 5-7 words each</li>
+                            <li><strong>Inconsistent formatting:</strong> Maintain consistent fonts, colors, and spacing</li>
+                            <li><strong>Poor color contrast:</strong> Ensure text is readable against background</li>
+                            <li><strong>Overuse of animations:</strong> Use animations purposefully, not excessively</li>
+                            <li><strong>Low-quality images:</strong> Use high-resolution, relevant images</li>
+                        </ul>
+                    </div>
+                    
+                    <h3>Typography Guidelines</h3>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Element</th>
+                                <th>Recommended Size</th>
+                                <th>Style</th>
+                                <th>Usage</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Title</span></td>
+                                <td>44-54 pt</span></td>
+                                <td>Bold, Sans-serif</span></td>
+                                <td>Slide titles</span></td>
+                            </tr>
+                            <tr>
+                                <td>Headings</span></td>
+                                <td>32-40 pt</span></td>
+                                如何Semibold</span></td>
+                                <td>Section headings</span></td>
+                            </tr>
+                            <tr>
+                                <td>Body Text</span></td>
+                                <td>24-32 pt</span></td>
+                                <td>Regular</span></td>
+                                <td>Bullet points</span></td>
+                            </tr>
+                            <tr>
+                                <td>Captions</span></td>
+                                <td>18-22 pt</span></td>
+                                <td>Regular, Italic</span></td>
+                                <td>Image captions, references</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <h3>Color Psychology in Presentations</h3>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Color</th>
+                                <th>Emotion/Message</th>
+                                <th>Best Used For</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>🔴 Red</span></td>
+                                <td>Energy, urgency, excitement</span></td>
+                                <td>Warnings, calls to action</span></td>
+                            </tr>
+                            <tr>
+                                <td>🔵 Blue</span></td>
+                                <td>Trust, professionalism, calm</span></td>
+                                <td>Corporate, education, technology</span></td>
+                            </tr>
+                            <tr>
+                                <td>🟢 Green</span></td>
+                                <td>Growth, health, nature</span></td>
+                                <td>Environmental, health, finance</span></td>
+                            </tr>
+                            <tr>
+                                <td>🟡 Yellow/Orange</span></td>
+                                <td>Optimism, creativity, warmth</span></td>
+                                <td>Creative industries, highlights</span></td>
+                            </tr>
+                            <tr>
+                                <td>🟣 Purple</span></td>
+                                <td>Luxury, wisdom, creativity</span></td>
+                                <td>Beauty, spiritual, innovative</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="activity-box">
+                        <div class="activity-header">
+                            <div class="activity-number">2</div>
+                            <div class="activity-title">Activity: Design a Visual Slide</div>
+                        </div>
+                        <p><strong>Objective:</strong> Apply design principles to create an effective content slide.</p>
+                        <ol class="activity-steps">
+                            <li>Choose one of your content slides from Activity 1</li>
+                            <li>Create a new slide with a clear, descriptive title</li>
+                            <li>Convert any paragraphs into 3-5 bullet points (max 7 words each)</li>
+                            <li>Choose a professional color scheme (2-3 colors max)</li>
+                            <li>Add a relevant visual element (icon, simple graphic, or image)</li>
+                            <li>Ensure ample white space between elements</li>
+                        </ol>
+                    </div>
+                </section>
+                
+                <!-- Section 4: Multimedia Elements -->
+                <section id="section4" class="section">
+                    <h2><i class="fas fa-photo-video"></i> Multimedia Elements</h2>
+                    
+                    <p>Multimedia elements like images, videos, and audio can enhance your presentation when used appropriately. They should support your message, not distract from it.</p>
+                    
+                    <h3>Using Images Effectively</h3>
+                    <div class="info-box">
+                        <h4><i class="fas fa-image"></i> Image Best Practices</h4>
+                        <ul>
+                            <li>Use high-resolution images (avoid pixelation)</li>
+                            <li>Choose relevant images that support your message</li>
+                            <li>Avoid clipart and overused stock photos</li>
+                            <li>Consider using your own photos for authenticity</li>
+                            <li>Always cite image sources when required</li>
+                        </ul>
+                    </div>
+                    
+                    <h3>Incorporating Video and Audio</h3>
+                    <div class="info-box">
+                        <h4><i class="fas fa-film"></i> Best Practices for Video</h4>
+                        <ul>
+                            <li><strong>Keep it short:</strong> Videos should be 30-60 seconds maximum in presentations</li>
+                            <li><strong>Test playback:</strong> Always test video playback on the presentation computer</li>
+                            <li><strong>Have a backup:</strong> Prepare screenshots in case of technical issues</li>
+                            <li><strong>Embed properly:</strong> Either embed the video or link with a thumbnail</li>
+                        </ul>
+                    </div>
+                    
+                    <h3>Animation and Transitions</h3>
+                    <p>Use animations and transitions purposefully to guide attention, not to entertain.</p>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Animation Type</th>
+                                <th>Appropriate Use</th>
+                                <th>When to Avoid</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Appear/Fade</strong></span></td>
+                                <td>Revealing points one at a time</span></td>
+                                <td>On every element; becomes distracting</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Motion Paths</strong></span></td>
+                                <td>Showing processes or movement</span></td>
+                                <td>On text or basic elements</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Slide Transitions</strong></span></td>
+                                <td>Signaling section changes</span></td>
+                                <td>Different transitions on every slide</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Grow/Shrink</strong></span></td>
+                                <td>Emphasizing key points</span></td>
+                                <td>Overusing on every bullet</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+                
+                <!-- Section 5: Delivery Techniques -->
+                <section id="section5" class="section">
+                    <h2><i class="fas fa-microphone"></i> Presentation Delivery Techniques</h2>
+                    
+                    <p>A beautifully designed presentation can still fail if delivered poorly. Effective delivery combines preparation, practice, and engagement techniques.</p>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-user-check"></i> Know Your Audience</h4>
+                        <ul>
+                            <li><strong>Technical level:</strong> Adjust terminology based on audience expertise</li>
+                            <li><strong>Size:</strong> Adjust volume and engagement techniques for audience size</li>
+                            <li><strong>Expectations:</strong> Understand what your audience hopes to gain</li>
+                            <li><strong>Environment:</strong> Check room setup, technology, and acoustics in advance</li>
+                        </ul>
+                    </div>
+                    
+                    <h3>Delivery Best Practices</h3>
+                    <div class="slide-example" style="background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);">
+                        <h3>Speaker Notes View</h3>
+                        <p style="font-size: 1rem;">Key points to cover on each slide</p>
+                        <ul style="text-align: left; margin-top: 1rem;">
+                            <li>Explain the three main benefits</li>
+                            <li>Share the case study example</li>
+                            <li>Transition to implementation steps</li>
+                        </ul>
+                        <p style="font-size: 0.8rem; margin-top: 1rem;">Speaker notes are visible to you, not the audience</p>
+                    </div>
+                    
+                    <h3>Handling Q&A Sessions</h3>
+                    <ul class="activity-steps">
+                        <li><strong>Prepare anticipated questions:</strong> Have slides ready for likely questions</li>
+                        <li><strong>Repeat questions:</strong> Ensure everyone hears before answering</li>
+                        <li><strong>Be honest:</strong> It's okay to say "I don't know" and offer to follow up</li>
+                        <li><strong>Control time:</strong> Set expectations for Q&A duration at the beginning</li>
+                        <li><strong>End strong:</strong> Close with a final summary or call to action</li>
+                    </ul>
+                    
+                    <div class="activity-box">
+                        <div class="activity-header">
+                            <div class="activity-number">3</div>
+                            <div class="activity-title">Activity: Practice Delivery with Recording</div>
+                        </div>
+                        <p><strong>Objective:</strong> Improve presentation delivery through practice and self-review.</p>
+                        <ol class="activity-steps">
+                            <li>Complete your presentation from previous activities (minimum 5 slides)</li>
+                            <li>Add speaker notes to each slide with key talking points</li>
+                            <li>Practice delivering your presentation 3 times</li>
+                            <li>Record yourself (use phone or computer camera)</li>
+                            <li>Watch your recording and note verbal fillers, body language, and pacing</li>
+                        </ol>
+                    </div>
+                </section>
+                
+                <!-- Section 6: Keyboard Shortcuts -->
+                <section id="section6" class="section">
+                    <h2><i class="fas fa-keyboard"></i> PowerPoint Keyboard Shortcuts</h2>
+                    
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Shortcut</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><kbd style="background: var(--bg-secondary); padding: 0.25rem 0.5rem; border-radius: 0.25rem;">F5</kbd></span></td>
+                                <td>Start slideshow from beginning</span></td>
+                            </tr>
+                            <tr>
+                                <td><kbd style="background: var(--bg-secondary); padding: 0.25rem 0.5rem; border-radius: 0.25rem;">Shift + F5</kbd></span></td>
+                                <td>Start slideshow from current slide</span></td>
+                            </tr>
+                            <tr>
+                                <td><kbd style="background: var(--bg-secondary); padding: 0.25rem 0.5rem; border-radius: 0.25rem;">Ctrl + M</kbd></span></td>
+                                <td>Insert new slide</span></td>
+                            </tr>
+                            <tr>
+                                <td><kbd style="background: var(--bg-secondary); padding: 0.25rem 0.5rem; border-radius: 0.25rem;">Ctrl + D</kbd></span></td>
+                                <td>Duplicate slide</span></td>
+                            </tr>
+                            <tr>
+                                <td><kbd style="background: var(--bg-secondary); padding: 0.25rem 0.5rem; border-radius: 0.25rem;">Ctrl + K</kbd></span></td>
+                                <td>Insert hyperlink</span></td>
+                            </tr>
+                            <tr>
+                                <td><kbd style="background: var(--bg-secondary); padding: 0.25rem 0.5rem; border-radius: 0.25rem;">Ctrl + G</kbd></span></td>
+                                <td>Group objects</span></td>
+                            </tr>
+                            <tr>
+                                <td><kbd style="background: var(--bg-secondary); padding: 0.25rem 0.5rem; border-radius: 0.25rem;">Ctrl + Shift + G</kbd></span></td>
+                                <td>Ungroup objects</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+                
+                <!-- Integration Activity -->
+                <section id="integration" class="section">
+                    <h2><i class="fas fa-tasks"></i> Activity of Integration</h2>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-project-diagram"></i> Final Presentation Project</h4>
+                        <p>Create a complete 8-10 minute presentation on a topic of your choice.</p>
+                    </div>
+                    
+                    <div class="activity-box">
+                        <div class="activity-header">
+                            <div class="activity-number">FINAL</div>
+                            <div class="activity-title">Complete Presentation Project</div>
+                        </div>
+                        <p><strong>Requirements:</strong></p>
+                        <ul class="activity-steps">
+                            <li>Title slide with your name and topic</li>
+                            <li>Agenda/overview slide</li>
+                            <li>5-7 content slides following design principles</li>
+                            <li>At least one relevant image or graphic</li>
+                            <li>Proper use of visual hierarchy and consistent formatting</li>
+                            <li>Speaker notes for each slide</li>
+                            <li>Conclusion slide with key takeaways</li>
+                            <li>Q&A slide</li>
+                        </ul>
+                        <p style="margin-top: 1rem;"><strong>Bonus:</strong> Record yourself delivering the presentation.</p>
+                    </div>
+                </section>
+                
+                <!-- Quiz Section -->
+                <section id="quiz" class="section">
+                    <h2><i class="fas fa-question-circle"></i> Knowledge Check</h2>
+                    
+                    <div class="quiz-box">
+                        <div class="quiz-question">
+                            1. According to the 10/20/30 rule, what is the maximum recommended number of slides for a 20-minute presentation?
+                        </div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="true">10 slides</div>
+                            <div class="quiz-option" data-correct="false">20 slides</div>
+                            <div class="quiz-option" data-correct="false">30 slides</div>
+                            <div class="quiz-option" data-correct="false">15 slides</div>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                    
+                    <div class="quiz-box">
+                        <div class="quiz-question">
+                            2. Which of these is NOT a recommended practice for presentation design?
+                        </div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false">Using consistent formatting throughout</div>
+                            <div class="quiz-option" data-correct="true">Including long paragraphs of text on slides</div>
+                            <div class="quiz-option" data-correct="false">Maintaining good color contrast for readability</div>
+                            <div class="quiz-option" data-correct="false">Using bullet points with 5-7 words each</div>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                    
+                    <div class="quiz-box">
+                        <div class="quiz-question">
+                            3. What keyboard shortcut starts a slideshow from the beginning in PowerPoint?
+                        </div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false">Shift + F5</div>
+                            <div class="quiz-option" data-correct="true">F5</div>
+                            <div class="quiz-option" data-correct="false">Ctrl + F5</div>
+                            <div class="quiz-option" data-correct="false">Alt + F5</div>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                    
+                    <div class="quiz-box">
+                        <div class="quiz-question">
+                            4. What should you do during Q&A if you don't know the answer to a question?
+                        </div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false">Make up an answer to avoid appearing unprepared</div>
+                            <div class="quiz-option" data-correct="false">Ignore the question and move to the next one</div>
+                            <div class="quiz-option" data-correct="true">Admit you don't know and offer to follow up later</div>
+                            <div class="quiz-option" data-correct="false">Criticize the question as irrelevant</div>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                    
+                    <div class="quiz-box">
+                        <div class="quiz-question">
+                            5. What is the 20-20-20 rule for eye health during presentations?
+                        </div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="true">Every 20 minutes, look 20 feet away for 20 seconds</div>
+                            <div class="quiz-option" data-correct="false">Use 20pt font, 20 slides, 20 minutes</div>
+                            <div class="quiz-option" data-correct="false">20 words per slide, 20 slides total</div>
+                            <div class="quiz-option" data-correct="false">20% images, 20% text, 60% white space</div>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                </section>
+                
+                <!-- Download PDF Button -->
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button id="downloadPdf" class="btn btn-outline">
+                        <i class="fas fa-download"></i> Download as PDF
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Sidebar -->
+            <aside class="module-sidebar">
+                <!-- Progress Tracker -->
+                <div class="progress-container">
+                    <h3><i class="fas fa-chart-line"></i> Your Progress</h3>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <div class="progress-text">
+                        <span>0% Complete</span>
+                        <span id="progressPercent">0%</span>
+                    </div>
+                </div>
+                
+                <!-- Sidebar Navigation -->
+                <div class="sidebar-nav">
+                    <h3><i class="fas fa-list"></i> Module Sections</h3>
+                    <ul>
+                        <li><a href="#section1"><i class="fas fa-chevron-right"></i> Introduction</a></li>
+                        <li><a href="#section2"><i class="fas fa-chevron-right"></i> Planning & Structure</a></li>
+                        <li><a href="#section3"><i class="fas fa-chevron-right"></i> Slide Design</a></li>
+                        <li><a href="#section4"><i class="fas fa-chevron-right"></i> Multimedia Elements</a></li>
+                        <li><a href="#section5"><i class="fas fa-chevron-right"></i> Delivery Techniques</a></li>
+                        <li><a href="#section6"><i class="fas fa-chevron-right"></i> Keyboard Shortcuts</a></li>
+                        <li><a href="#integration"><i class="fas fa-chevron-right"></i> Final Project</a></li>
+                        <li><a href="#quiz"><i class="fas fa-chevron-right"></i> Knowledge Check</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Quick Tips Box -->
+                <div class="info-box">
+                    <h4><i class="fas fa-lightbulb"></i> Quick Tips</h4>
+                    <ul style="margin: 0;">
+                        <li>Use the 10/20/30 rule as a guideline</li>
+                        <li>Practice your delivery multiple times</li>
+                        <li>Keep text minimal and visuals impactful</li>
+                        <li>Always have a backup of your presentation</li>
+                        <li>Arrive early to test equipment</li>
+                    </ul>
+                </div>
+                
+                <!-- Resources Box -->
+                <div class="info-box">
+                    <h4><i class="fas fa-download"></i> Resources</h4>
+                    <ul style="margin: 0;">
+                        <li><a href="#">Presentation Planning Template</a></li>
+                        <li><a href="#">Free Image Sources Guide</a></li>
+                        <li><a href="#">Color Scheme Generator</a></li>
+                        <li><a href="#">Presentation Checklist</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Assessment Info -->
+                <div class="info-box">
+                    <h4><i class="fas fa-clipboard-list"></i> Assessment</h4>
+                    <ul style="margin: 0;">
+                        <li>3 Hands-on Activities</li>
+                        <li>5 Quiz Questions</li>
+                        <li>1 Final Presentation Project</li>
+                        <li>Estimated Time: 5-8 hours</li>
+                    </ul>
+                </div>
+            </aside>
+        </div>
+    </div>
+</main>
+
+<!-- Footer -->
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>ICT Learning Hub</h3>
+                <p>Empowering students with digital skills for the future.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="word-processing.html">Word Processing</a></li>
+                    <li><a href="presentations.html">Presentations</a></li>
+                    <li><a href="spreadsheets-1.html">Spreadsheets</a></li>
+                </ul>
+            </div>
+            <div class="footer-modules">
+                <h4>More Modules</h4>
+                <ul>
+                    <li><a href="computer-hardware.html">Computer Hardware</a></li>
+                    <li><a href="web-design.html">Web Design</a></li>
+                    <li><a href="health-safety.html">Health & Safety</a></li>
+                    <li><a href="shorts2.html">Shortcut Quiz</a></li>
+                </ul>
+            </div>
+            <div class="footer-social">
+                <h4>Connect</h4>
+                <div class="social-icons">
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Yiga Gerald. All rights reserved. | ICT Teacher | Digital Learning Creator</p>
+        </div>
+    </div>
+</footer>
+
+<script src="js/modules.js"></script>
+</body>
+</html>

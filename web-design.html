@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Design | ICT Learning Module</title>
+    <meta name="description" content="Learn the fundamentals of web design - HTML, CSS, responsive design, and user experience principles">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/navigation.css">
+    <link rel="stylesheet" href="styles/components.css">
+    
+    <!-- Module-specific theme (Web Design - Blue/Purple) -->
+    <style>
+        :root {
+            --theme-primary: #4f46e5;
+            --theme-primary-light: #6366f1;
+            --theme-primary-dark: #4338ca;
+            --theme-secondary: #06b6d4;
+        }
+        
+        .section h2 {
+            color: var(--theme-primary);
+        }
+        
+        .section h2::after {
+            background: var(--theme-primary);
+        }
+        
+        /* Code block styling */
+        .code-block {
+            background: #1e1e2e;
+            color: #e2e8f0;
+            padding: 1rem;
+            border-radius: var(--radius-lg);
+            font-family: 'Courier New', 'Fira Code', monospace;
+            font-size: 0.85rem;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+        
+        .code-block .tag {
+            color: #f87171;
+        }
+        
+        .code-block .attr {
+            color: #fbbf24;
+        }
+        
+        .code-block .value {
+            color: #a3e635;
+        }
+        
+        .code-block .comment {
+            color: #6b7280;
+        }
+        
+        /* Color palette demo */
+        .palette-demo {
+            display: flex;
+            gap: 0.5rem;
+            margin: 1rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .color-swatch {
+            width: 60px;
+            height: 60px;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            color: white;
+            font-weight: bold;
+        }
+        
+        /* Wireframe sketch */
+        .wireframe {
+            background: var(--bg-secondary);
+            border-radius: var(--radius-lg);
+            padding: 1rem;
+            margin: 1rem 0;
+            border: 2px dashed var(--border-light);
+        }
+        
+        .wireframe-header {
+            background: var(--border-medium);
+            height: 40px;
+            border-radius: var(--radius-md);
+            margin-bottom: 1rem;
+        }
+        
+        .wireframe-content {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .wireframe-sidebar {
+            background: var(--border-medium);
+            width: 30%;
+            height: 150px;
+            border-radius: var(--radius-md);
+        }
+        
+        .wireframe-main {
+            background: var(--border-medium);
+            width: 70%;
+            height: 150px;
+            border-radius: var(--radius-md);
+        }
+        
+        .wireframe-footer {
+            background: var(--border-medium);
+            height: 40px;
+            border-radius: var(--radius-md);
+            margin-top: 1rem;
+        }
+        
+        /* Technology icons */
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .tech-card {
+            background: var(--bg-secondary);
+            border-radius: var(--radius-lg);
+            padding: 1rem;
+            text-align: center;
+            transition: all var(--transition-normal);
+            border: 1px solid var(--border-light);
+        }
+        
+        .tech-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--theme-primary);
+        }
+        
+        .tech-card i {
+            font-size: 2.5rem;
+            color: var(--theme-primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .tech-card h4 {
+            margin-bottom: 0.25rem;
+            font-size: 1rem;
+        }
+        
+        .tech-card p {
+            font-size: 0.7rem;
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navigation Placeholder -->
+<div id="global-nav-placeholder"></div>
+
+<main>
+    <div class="container">
+        <!-- Breadcrumb -->
+        <div class="breadcrumb">
+            <a href="index.html">Home</a>
+            <span class="separator">/</span>
+            <a href="#">Learning Hub</a>
+            <span class="separator">/</span>
+            <span class="current" id="page-title">Web Design</span>
+        </div>
+        
+        <!-- Module Header -->
+        <div class="section-header" style="margin-bottom: 2rem;">
+            <h1>Web Design</h1>
+            <p>Learn the fundamentals of creating effective, user-friendly websites for the modern web</p>
+            <div class="keywords" style="display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; margin-top: 1rem;">
+                <span style="background: var(--bg-secondary); padding: 0.25rem 0.75rem; border-radius: 2rem; font-size: 0.8rem;">HTML</span>
+                <span style="background: var(--bg-secondary); padding: 0.25rem 0.75rem; border-radius: 2rem; font-size: 0.8rem;">CSS</span>
+                <span style="background: var(--bg-secondary); padding: 0.25rem 0.75rem; border-radius: 2rem; font-size: 0.8rem;">JavaScript</span>
+                <span style="background: var(--bg-secondary); padding: 0.25rem 0.75rem; border-radius: 2rem; font-size: 0.8rem;">Responsive Design</span>
+                <span style="background: var(--bg-secondary); padding: 0.25rem 0.75rem; border-radius: 2rem; font-size: 0.8rem;">UI/UX</span>
+                <span style="background: var(--bg-secondary); padding: 0.25rem 0.75rem; border-radius: 2rem; font-size: 0.8rem;">Wireframing</span>
+            </div>
+        </div>
+        
+        <!-- Module Layout: 2-column -->
+        <div class="module-wrapper">
+            <!-- Main Content Area -->
+            <div class="module-content">
+                <!-- Learning Outcomes -->
+                <div class="info-box" style="margin-bottom: 2rem;">
+                    <h4><i class="fas fa-bullseye"></i> Learning Outcomes</h4>
+                    <ul>
+                        <li>Understand the basic technologies of web design (HTML, CSS, JavaScript)</li>
+                        <li>Create structured web pages using HTML elements</li>
+                        <li>Apply styling and layout using CSS</li>
+                        <li>Design responsive websites that work on all devices</li>
+                        <li>Apply UX/UI principles to create user-friendly interfaces</li>
+                        <li>Plan website structure using wireframes and sitemaps</li>
+                    </ul>
+                </div>
+                
+                <!-- Section 1: Introduction to Web Design -->
+                <section id="section1" class="section">
+                    <h2><i class="fas fa-globe"></i> Introduction to Web Design</h2>
+                    
+                    <p>Web design is the process of creating websites. It encompasses several different aspects, including webpage layout, content production, and graphic design. While web design and web development are often used interchangeably, web design is technically a subset of the broader category of web development.</p>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-cube"></i> The Three Pillars of Web Design</h4>
+                        <ul>
+                            <li><strong>HTML (HyperText Markup Language):</strong> The structure and content of a webpage</li>
+                            <li><strong>CSS (Cascading Style Sheets):</strong> The visual appearance and layout</li>
+                            <li><strong>JavaScript:</strong> Interactivity and dynamic behavior</li>
+                        </ul>
+                    </div>
+                    
+                    <h3>Popular Web Design Tools</h3>
+                    <div class="tech-grid">
+                        <div class="tech-card">
+                            <i class="fas fa-code"></i>
+                            <h4>VS Code</h4>
+                            <p>Code editor</p>
+                        </div>
+                        <div class="tech-card">
+                            <i class="fab fa-figma"></i>
+                            <h4>Figma</h4>
+                            <p>Design & prototyping</p>
+                        </div>
+                        <div class="tech-card">
+                            <i class="fab fa-adobe"></i>
+                            <h4>Adobe XD</h4>
+                            <p>UX/UI design</p>
+                        </div>
+                        <div class="tech-card">
+                            <i class="fab fa-chrome"></i>
+                            <h4>Chrome DevTools</h4>
+                            <p>Testing & debugging</p>
+                        </div>
+                        <div class="tech-card">
+                            <i class="fab fa-github"></i>
+                            <h4>GitHub</h4>
+                            <p>Version control</p>
+                        </div>
+                        <div class="tech-card">
+                            <i class="fas fa-pencil-ruler"></i>
+                            <h4>Pen & Paper</h4>
+                            <p>Wireframing</p>
+                        </div>
+                    </div>
+                    
+                    <div class="activity-box">
+                        <div class="activity-header">
+                            <div class="activity-number">1</div>
+                            <div class="activity-title">Activity: Website Analysis</div>
+                        </div>
+                        <p><strong>Instructions:</strong> Visit 3 different websites and analyze their design.</p>
+                        <ol class="activity-steps">
+                            <li>Choose 3 websites (e.g., news site, e-commerce, educational, personal blog)</li>
+                            <li>For each site, note: color scheme, font choices, layout structure, navigation menu, images</li>
+                            <li>Identify what works well and what could be improved</li>
+                            <li>Create a comparison table of your findings</li>
+                            <li>Share your analysis with the class</li>
+                        </ol>
+                    </div>
+                </section>
+                
+                <!-- Section 2: HTML Basics -->
+                <section id="section2" class="section">
+                    <h2><i class="fab fa-html5"></i> HTML Basics</h2>
+                    
+                    <p>HTML (HyperText Markup Language) is the standard markup language for creating web pages. It describes the structure of a webpage using elements represented by tags.</p>
+                    
+                    <h3>Basic HTML Structure</h3>
+                    <div class="code-block">
+                        <span class="comment">&lt;!-- This is a comment --&gt;</span><br>
+                        <span class="tag">&lt;!DOCTYPE html&gt;</span><br>
+                        <span class="tag">&lt;html</span> <span class="attr">lang</span>=<span class="value">"en"</span><span class="tag">&gt;</span><br>
+                        <span class="tag">&lt;head&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;meta</span> <span class="attr">charset</span>=<span class="value">"UTF-8"</span><span class="tag">&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;title&gt;</span>Page Title<span class="tag">&lt;/title&gt;</span><br>
+                        <span class="tag">&lt;/head&gt;</span><br>
+                        <span class="tag">&lt;body&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;h1&gt;</span>Main Heading<span class="tag">&lt;/h1&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;p&gt;</span>This is a paragraph of text.<span class="tag">&lt;/p&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;a</span> <span class="attr">href</span>=<span class="value">"https://example.com"</span><span class="tag">&gt;</span>Click here<span class="tag">&lt;/a&gt;</span><br>
+                        <span class="tag">&lt;/body&gt;</span><br>
+                        <span class="tag">&lt;/html&gt;</span>
+                    </div>
+                    
+                    <h3>Common HTML Elements</h3>
+                    <table class="data-table">
+                        <thead>
+                            <tr><th>Element</th><th>Description</th><th>Example</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><code>&lt;h1&gt; to &lt;h6&gt;</code></td><td>Headings (largest to smallest)</span></td><td><code>&lt;h1&gt;Title&lt;/h1&gt;</code></span></td></tr>
+                            <tr><td><code>&lt;p&gt;</code></span></td><td>Paragraph</span></td><td><code>&lt;p&gt;Text here&lt;/p&gt;</code></span></td></tr>
+                            <tr><td><code>&lt;a&gt;</code></span></td><td>Hyperlink</span></td><td><code>&lt;a href="url"&gt;Link&lt;/a&gt;</code></span></td></tr>
+                            <tr><td><code>&lt;img&gt;</code></span></td><td>Image</span></td><td><code>&lt;img src="image.jpg" alt="description"&gt;</code></span></td></tr>
+                            <tr><td><code>&lt;ul&gt;, &lt;ol&gt;, &lt;li&gt;</code></span></td><td>Lists (unordered, ordered, list items)</span></td><td><code>&lt;ul&gt;&lt;li&gt;Item&lt;/li&gt;&lt;/ul&gt;</code></span></td></tr>
+                            <tr><td><code>&lt;div&gt;</code></span></td><td>Division/container</span></td><td><code>&lt;div class="container"&gt;...&lt;/div&gt;</code></span></td></tr>
+                            <tr><td><code>&lt;span&gt;</code></span></td><td>Inline container</span></td><td><code>&lt;span class="highlight"&gt;text&lt;/span&gt;</code></span></td></tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="activity-box">
+                        <div class="activity-header">
+                            <div class="activity-number">2</div>
+                            <div class="activity-title">Activity: Create Your First Web Page</div>
+                        </div>
+                        <p><strong>Objective:</strong> Create a simple HTML page about yourself.</p>
+                        <ol class="activity-steps">
+                            <li>Open a text editor (Notepad, VS Code, or any code editor)</li>
+                            <li>Create the basic HTML structure (DOCTYPE, html, head, body)</li>
+                            <li>Add a title in the head section</li>
+                            <li>In the body, add: an h1 heading with your name, a paragraph about yourself, an image (use a placeholder URL), a list of your hobbies, and a link to your favorite website</li>
+                            <li>Save the file as "aboutme.html" and open it in a web browser</li>
+                            <li>Share your page with a classmate</li>
+                        </ol>
+                    </div>
+                </section>
+                
+                <!-- Section 3: CSS Fundamentals -->
+                <section id="section3" class="section">
+                    <h2><i class="fab fa-css3-alt"></i> CSS Fundamentals</h2>
+                    
+                    <p>CSS (Cascading Style Sheets) is used to control the presentation of HTML elements. It allows you to change colors, fonts, spacing, layout, and even create animations.</p>
+                    
+                    <h3>CSS Syntax</h3>
+                    <div class="code-block">
+                        <span class="comment">/* This is a CSS comment */</span><br>
+                        <span class="attr">selector</span> {<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="attr">property</span>: <span class="value">value</span>;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="attr">another-property</span>: <span class="value">value</span>;<br>
+                        }
+                    </div>
+                    
+                    <h3>Three Ways to Add CSS</h3>
+                    <table class="data-table">
+                        <thead>
+                            <tr><th>Method</th><th>Description</th><th>Best For</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>Inline CSS</strong></span></td>:<span>Using the style attribute on individual elements</span></td>:<span>Quick, one-off styling</span></td></tr>
+                            <tr><td><strong>Internal CSS</strong></span></td>:<span>Using &lt;style&gt; tag in the &lt;head&gt; section</span></td>:<span>Single-page websites</span></td></tr>
+                            <tr><td><strong>External CSS</strong></span></td>:<span>Linking to a separate .css file</span></td>:<span>Multi-page websites (best practice)</span></td></tr>
+                        </tbody>
+                    </table>
+                    
+                    <h3>Common CSS Properties</h3>
+                    <table class="data-table">
+                        <thead>
+                            <tr><th>Property</th><th>Description</th><th>Example Value</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><code>color</code></td><td>Text color</span></td><td>blue, #ff0000, rgb(255,0,0)</span></td></tr>
+                            <tr><td><code>background-color</code></span></td><td>Background color</span></td><td>lightgray, #f0f0f0</span></td></tr>
+                            <tr><td><code>font-size</code></span></td><td>Text size</span></td><td>16px, 1.2rem, 100%</span></td></tr>
+                            <tr><td><code>font-family</code></span></td><td>Typeface</span></td><td>Arial, 'Open Sans', sans-serif</span></td></tr>
+                            <tr><td><code>margin</code></span></td><td>Space outside element</span></td><td>20px, 1rem, auto</span></td></tr>
+                            <tr><td><code>padding</code></span></td><td>Space inside element</span></td><td>15px, 0.5rem</span></td></tr>
+                            <tr><td><code>border</code></span></td>:<span>Border around element</span></td><td>1px solid black</span></td></tr>
+                            <tr><td><code>display</code></span></td>:<span>Layout behavior</span></td><td>flex, block, inline, grid</span></td></tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-palette"></i> CSS Color Example</h4>
+                        <div class="palette-demo">
+                            <div class="color-swatch" style="background-color: #4f46e5;">#4f46e5</div>
+                            <div class="color-swatch" style="background-color: #06b6d4;">#06b6d4</div>
+                            <div class="color-swatch" style="background-color: #10b981;">#10b981</div>
+                            <div class="color-swatch" style="background-color: #f59e0b;">#f59e0b</div>
+                            <div class="color-swatch" style="background-color: #ef4444;">#ef4444</div>
+                            <div class="color-swatch" style="background-color: #1e293b;">#1e293b</div>
+                        </div>
+                    </div>
+                    
+                    <div class="activity-box">
+                        <div class="activity-header">
+                            <div class="activity-number">3</div>
+                            <div class="activity-title">Activity: Style Your Web Page</div>
+                        </div>
+                        <p><strong>Objective:</strong> Add CSS to the HTML page you created.</p>
+                        <ol class="activity-steps">
+                            <li>Create an external CSS file called "styles.css"</li>
+                            <li>Link it to your HTML page using &lt;link&gt; tag</li>
+                            <li>Style your page: change the background color, text color, and font</li>
+                            <li>Style your headings (h1, h2) with different colors and sizes</li>
+                            <li>Add hover effects to your links</li>
+                            <li>Add spacing using margin and padding</li>
+                            <li>Save and refresh your browser to see the changes</li>
+                        </ol>
+                    </div>
+                </section>
+                
+                <!-- Section 4: Layout and Flexbox -->
+                <section id="section4" class="section">
+                    <h2><i class="fas fa-layer-group"></i> Layout and Flexbox</h2>
+                    
+                    <p>Creating complex layouts is one of the most important aspects of web design. CSS Flexbox makes it easy to create flexible, responsive layouts without using complex floats or positioning.</p>
+                    
+                    <h3>Flexbox Properties</h3>
+                    <div class="code-block">
+                        <span class="comment">/* Container properties */</span><br>
+                        .container {<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="attr">display</span>: <span class="value">flex</span>;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="attr">flex-direction</span>: <span class="value">row | column</span>;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="attr">justify-content</span>: <span class="value">center | space-between | flex-start | flex-end</span>;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="attr">align-items</span>: <span class="value">center | stretch | flex-start | flex-end</span>;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="attr">gap</span>: <span class="value">20px</span>;<br>
+                        }<br><br>
+                        <span class="comment">/* Child properties */</span><br>
+                        .item {<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="attr">flex</span>: <span class="value">1</span>;<br>
+                        }
+                    </div>
+                    
+                    <h3>Common Layout Patterns</h3>
+                    <div class="wireframe">
+                        <div class="wireframe-header"></div>
+                        <div class="wireframe-content">
+                            <div class="wireframe-sidebar"></div>
+                            <div class="wireframe-main"></div>
+                        </div>
+                        <div class="wireframe-footer"></div>
+                        <p style="text-align: center; margin-top: 0.5rem; font-size: 0.7rem;">Typical 2-column layout (sidebar + main content)</p>
+                    </div>
+                    
+                    <div class="activity-box">
+                        <div class="activity-header">
+                            <div class="activity-number">4</div>
+                            <div class="activity-title">Activity: Create a Navigation Bar</div>
+                        </div>
+                        <p><strong>Objective:</strong> Create a responsive navigation bar using Flexbox.</p>
+                        <ol class="activity-steps">
+                            <li>Create an HTML structure with a nav element containing logo and menu links</li>
+                            <li>Use Flexbox to align items horizontally</li>
+                            <li>Add space between the logo and navigation links using justify-content: space-between</li>
+                            <li>Style the navigation links (remove bullets, add hover effects)</li>
+                            <li>Add a background color and padding to the navigation bar</li>
+                            <li>Make the navigation responsive (stack vertically on mobile using media queries)</li>
+                        </ol>
+                    </div>
+                </section>
+                
+                <!-- Section 5: Responsive Design -->
+                <section id="section5" class="section">
+                    <h2><i class="fas fa-mobile-alt"></i> Responsive Design</h2>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-chart-line"></i> What is Responsive Design?</h4>
+                        <p>Responsive design ensures that websites look good and function properly on all devices - desktops, tablets, and mobile phones. It uses flexible layouts, flexible images, and CSS media queries.</p>
+                    </div>
+                    
+                    <h3>Media Queries</h3>
+                    <div class="code-block">
+                        <span class="comment">/* Mobile styles (default) */</span><br>
+                        .container { <span class="attr">display</span>: <span class="value">block</span>; }<br><br>
+                        
+                        <span class="comment">/* Tablet styles (768px and up) */</span><br>
+                        @media <span class="attr">(min-width</span>: <span class="value">768px</span>) {<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;.container { <span class="attr">display</span>: <span class="value">flex</span>; }<br>
+                        }<br><br>
+                        
+                        <span class="comment">/* Desktop styles (1024px and up) */</span><br>
+                        @media <span class="attr">(min-width</span>: <span class="value">1024px</span>) {<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;.container { <span class="attr">max-width</span>: <span class="value">1200px</span>; }<br>
+                        }
+                    </div>
+                    
+                    <h3>Responsive Design Principles</h3>
+                    <ul class="security-tips">
+                        <li><i class="fas fa-mobile-alt"></i> <strong>Mobile First:</strong> Design for mobile screens first, then scale up</li>
+                        <li><i class="fas fa-image"></i> <strong>Fluid Images:</strong> Use max-width: 100% to prevent images from overflowing</li>
+                        <li><i class="fas fa-ruler-combined"></i> <strong>Relative Units:</strong> Use rem, em, vw, vh instead of fixed pixels</li>
+                        <li><i class="fas fa-columns"></i> <strong>Flexible Grids:</strong> Use Flexbox or CSS Grid for flexible layouts</li>
+                        <li><i class="fas fa-eye"></i> <strong>Touch-Friendly:</strong> Make buttons and links large enough for touch (min 44x44px)</li>
+                    </ul>
+                    
+                    <div class="activity-box">
+                        <div class="activity-header">
+                            <div class="activity-number">5</div>
+                            <div class="activity-title">Activity: Make Your Page Responsive</div>
+                        </div>
+                        <p><strong>Objective:</strong> Add media queries to make your webpage responsive.</p>
+                        <ol class="activity-steps">
+                            <li>Add a meta viewport tag to your HTML: &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;</li>
+                            <li>Use relative units (%, rem, vw) instead of fixed pixels where possible</li>
+                            <li>Add a media query for tablets (min-width: 768px) that changes your layout</li>
+                            <li>Add a media query for desktops (min-width: 1024px) that sets a max-width container</li>
+                            <li>Test your page by resizing your browser window</li>
+                            <li>Use Chrome DevTools Device Toolbar to test on different devices</li>
+                        </ol>
+                    </div>
+                </section>
+                
+                <!-- Section 6: Design Principles -->
+                <section id="section6" class="section">
+                    <h2><i class="fas fa-paint-brush"></i> Web Design Principles</h2>
+                    
+                    <h3>Key Design Principles</h3>
+                    <div class="health-grid">
+                        <div class="health-card">
+                            <i class="fas fa-balance-scale"></i>
+                            <h4>Balance</h4>
+                            <p>Distribute elements evenly for visual stability</p>
+                        </div>
+                        <div class="health-card">
+                            <i class="fas fa-adjust"></i>
+                            <h4>Contrast</h4>
+                            <p>Use differences to create visual interest and emphasis</p>
+                        </div>
+                        <div class="health-card">
+                            <i class="fas fa-align-left"></i>
+                            <h4>Alignment</h4>
+                            <p>Line up elements for a clean, organized look</p>
+                        </div>
+                        <div class="health-card">
+                            <i class="fas fa-object-group"></i>
+                            <h4>Proximity</h4>
+                            <p>Group related items together</p>
+                        </div>
+                        <div class="health-card">
+                            <i class="fas fa-chart-line"></i>
+                            <h4>Hierarchy</h4>
+                            <p>Guide users through content by importance</p>
+                        </div>
+                        <div class="health-card">
+                            <i class="fas fa-fill-drip"></i>
+                            <h4>White Space</h4>
+                            <p>Use empty space to improve readability</p>
+                        </div>
+                    </div>
+                    
+                    <h3>Typography Guidelines</h3>
+                    <table class="data-table">
+                        <thead>
+                            <tr><th>Element</th><th>Recommended Size</th><th>Font Style</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Body text</span></td>:<span>16px (1rem)</span></td>:<span>Clean, readable font (Arial, Roboto, Open Sans)</span></td></tr>
+                            <tr><td>Headings (h1)</span></td>:<span>32px (2rem)</span></td>:<span>Bold, larger, may be more decorative</span></td></tr>
+                            <tr><td>Headings (h2)</span></td>:<span>28px (1.75rem)</span></td>:<span>Bold, consistent with h1 style</span></td></tr>
+                            <tr><td>Headings (h3)</span></td>:<span>24px (1.5rem)</span></td>:<span>Semi-bold</span></td></tr>
+                            <tr><td>Small text</span></td>:<span>12-14px (0.75-0.875rem)</span></td>:<span>Regular, low contrast for less important info</span></td></tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="activity-box">
+                        <div class="activity-header">
+                            <div class="activity-number">6</div>
+                            <div class="activity-title">Activity: Create a Color Palette</div>
+                        </div>
+                        <p><strong>Objective:</strong> Create a cohesive color scheme for a website.</p>
+                        <ol class="activity-steps">
+                            <li>Choose a primary color (for headings, buttons, links)</li>
+                            <li>Choose a secondary color (for accents, highlights)</li>
+                            <li>Choose a neutral background color (light) and text color (dark)</li>
+                            <li>Use a color tool like Coolors.co or Adobe Color to generate a palette</li>
+                            <li>Apply your color palette to your webpage</li>
+                            <li>Document your color choices and why you chose them</li>
+                        </ol>
+                    </div>
+                </section>
+                
+                <!-- Section 7: Wireframing and Planning -->
+                <section id="section7" class="section">
+                    <h2><i class="fas fa-drafting-compass"></i> Wireframing and Planning</h2>
+                    
+                    <p>Before writing code, professional web designers create wireframes - simple sketches of the website layout that focus on structure, not visual details.</p>
+                    
+                    <h3>The Web Design Process</h3>
+                    <div class="process-step">
+                        <div class="process-number">1</div>
+                        <div class="process-content">
+                            <h4>Planning</h4>
+                            <p>Define goals, target audience, content strategy, and sitemap</p>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="process-number">2</div>
+                        <div class="process-content">
+                            <h4>Wireframing</h4>
+                            <p>Create low-fidelity sketches of page layouts</p>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="process-number">3</div>
+                        <div class="process-content">
+                            <h4>Prototyping</h4>
+                            <p>Create interactive mockups (Figma, Adobe XD)</p>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="process-number">4</div>
+                        <div class="process-content">
+                            <h4>Design</h4>
+                            <p>Apply visual design (colors, typography, images)</p>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="process-number">5</div>
+                        <div class="process-content">
+                            <h4>Development</h4>
+                            <p>Code the website using HTML, CSS, JavaScript</p>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="process-number">6</div>
+                        <div class="process-content">
+                            <h4>Testing & Launch</h4>
+                            <p>Test on multiple devices/browsers, launch, and maintain</p>
+                        </div>
+                    </div>
+                    
+                    <div class="activity-box">
+                        <div class="activity-header">
+                            <div class="activity-number">7</div>
+                            <div class="activity-title">Activity: Wireframe a Personal Portfolio</div>
+                        </div>
+                        <p><strong>Objective:</strong> Create a wireframe for a personal portfolio website.</p>
+                        <ol class="activity-steps">
+                            <li>Sketch (on paper or using a digital tool) the layout for a portfolio website</li>
+                            <li>Include: header, navigation, hero section, about section, project gallery, contact section, footer</li>
+                            <li>Create both desktop and mobile versions</li>
+                            <li>Label each section and add notes about functionality</li>
+                            <li>Share your wireframe with a partner for feedback</li>
+                            <li>Revise based on feedback</li>
+                        </ol>
+                    </div>
+                </section>
+                
+                <!-- Integration Activity -->
+                <section id="integration" class="section">
+                    <h2><i class="fas fa-tasks"></i> Activity of Integration</h2>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-briefcase"></i> Personal Portfolio Project</h4>
+                        <p>You are a junior web designer. Create a personal portfolio website to showcase your skills and projects to potential employers or clients.</p>
+                    </div>
+                    
+                    <div class="activity-box">
+                        <div class="activity-header">
+                            <div class="activity-number">FINAL</div>
+                            <div class="activity-title">Personal Portfolio Website</div>
+                        </div>
+                        <p><strong>Requirements:</strong></p>
+                        <ol class="activity-steps">
+                            <li><strong>Planning:</strong> Create a sitemap and wireframes for desktop and mobile</li>
+                            <li><strong>HTML Structure:</strong> Build semantic HTML with header, main, sections, footer</li>
+                            <li><strong>CSS Styling:</strong> Apply a cohesive color palette and typography system</li>
+                            <li><strong>Layout:</strong> Use Flexbox or Grid for a responsive layout</li>
+                            <li><strong>Responsive:</strong> Use media queries to ensure the site works on all devices</li>
+                            <li><strong>Portfolio Section:</strong> Display at least 3 sample projects with images and descriptions</li>
+                            <li><strong>Contact Form:</strong> Create a simple contact form (name, email, message)</li>
+                            <li><strong>Navigation:</strong> Create a navigation menu that links to all sections</li>
+                            <li><strong>Hosting:</strong> Publish your portfolio using GitHub Pages or a similar free service</li>
+                        </ol>
+                    </div>
+                </section>
+                
+                <!-- Quiz Section -->
+                <section id="quiz" class="section">
+                    <h2><i class="fas fa-question-circle"></i> Knowledge Check</h2>
+                    
+                    <div class="quiz-box">
+                        <div class="quiz-question">
+                            1. What does HTML stand for?
+                        </div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false">Hyper Text Markup Language</div>
+                            <div class="quiz-option" data-correct="true">HyperText Markup Language</div>
+                            <div class="quiz-option" data-correct="false">High Tech Modern Language</div>
+                            <div class="quiz-option" data-correct="false">Hyper Transfer Markup Language</div>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                    
+                    <div class="quiz-box">
+                        <div class="quiz-question">
+                            2. Which CSS property is used to change the text color of an element?
+                        </div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false">text-color</div>
+                            <div class="quiz-option" data-correct="true">color</div>
+                            <div class="quiz-option" data-correct="false">font-color</div>
+                            <div class="quiz-option" data-correct="false">bgcolor</div>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                    
+                    <div class="quiz-box">
+                        <div class="quiz-question">
+                            3. What does CSS stand for?
+                        </div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false">Computer Style Sheets</div>
+                            <div class="quiz-option" data-correct="true">Cascading Style Sheets</div>
+                            <div class="quiz-option" data-correct="false">Creative Style Sheets</div>
+                            <div class="quiz-option" data-correct="false">Colorful Style Sheets</div>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                    
+                    <div class="quiz-box">
+                        <div class="quiz-question">
+                            4. Which HTML tag is used to create a hyperlink?
+                        </div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false">&lt;link&gt;</div>
+                            <div class="quiz-option" data-correct="true">&lt;a&gt;</div>
+                            <div class="quiz-option" data-correct="false">&lt;href&gt;</div>
+                            <div class="quiz-option" data-correct="false">&lt;url&gt;</div>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                    
+                    <div class="quiz-box">
+                        <div class="quiz-question">
+                            5. What is the purpose of a media query in CSS?
+                        </div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false">To embed videos in a webpage</div>
+                            <div class="quiz-option" data-correct="true">To apply different styles based on device characteristics (screen size, orientation)</div>
+                            <div class="quiz-option" data-correct="false">To create animations</div>
+                            <div class="quiz-option" data-correct="false">To connect to a database</div>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                    
+                    <div class="quiz-box">
+                        <div class="quiz-question">
+                            6. Which CSS property is used to create a flexible box layout?
+                        </div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false">flexible</div>
+                            <div class="quiz-option" data-correct="true">display: flex</div>
+                            <div class="quiz-option" data-correct="false">layout: flex</div>
+                            <div class="quiz-option" data-correct="false">box: flexible</div>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                </section>
+                
+                <!-- Download PDF Button -->
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button id="downloadPdf" class="btn btn-outline">
+                        <i class="fas fa-download"></i> Download as PDF
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Sidebar -->
+            <aside class="module-sidebar">
+                <!-- Progress Tracker -->
+                <div class="progress-container">
+                    <h3><i class="fas fa-chart-line"></i> Your Progress</h3>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <div class="progress-text">
+                        <span>0% Complete</span>
+                        <span id="progressPercent">0%</span>
+                    </div>
+                </div>
+                
+                <!-- Sidebar Navigation -->
+                <div class="sidebar-nav">
+                    <h3><i class="fas fa-list"></i> Module Sections</h3>
+                    <ul>
+                        <li><a href="#section1"><i class="fas fa-chevron-right"></i> Introduction to Web Design</a></li>
+                        <li><a href="#section2"><i class="fas fa-chevron-right"></i> HTML Basics</a></li>
+                        <li><a href="#section3"><i class="fas fa-chevron-right"></i> CSS Fundamentals</a></li>
+                        <li><a href="#section4"><i class="fas fa-chevron-right"></i> Layout & Flexbox</a></li>
+                        <li><a href="#section5"><i class="fas fa-chevron-right"></i> Responsive Design</a></li>
+                        <li><a href="#section6"><i class="fas fa-chevron-right"></i> Design Principles</a></li>
+                        <li><a href="#section7"><i class="fas fa-chevron-right"></i> Wireframing & Planning</a></li>
+                        <li><a href="#integration"><i class="fas fa-chevron-right"></i> Final Project</a></li>
+                        <li><a href="#quiz"><i class="fas fa-chevron-right"></i> Knowledge Check</a></li>
+                    </ul>
+                </div>
+                
+                <!-- HTML Reference -->
+                <div class="info-box">
+                    <h4><i class="fab fa-html5"></i> HTML Reference</h4>
+                    <ul style="margin: 0; font-size: 0.85rem;">
+                        <li><code>&lt;h1&gt;</code> - Main heading</li>
+                        <li><code>&lt;p&gt;</code> - Paragraph</li>
+                        <li><code>&lt;a&gt;</code> - Link</li>
+                        <li><code>&lt;img&gt;</code> - Image</li>
+                        <li><code>&lt;div&gt;</code> - Container</li>
+                        <li><code>&lt;ul&gt;/&lt;li&gt;</code> - List</li>
+                        <li><code>&lt;nav&gt;</code> - Navigation</li>
+                        <li><code>&lt;footer&gt;</code> - Footer</li>
+                    </ul>
+                </div>
+                
+                <!-- CSS Reference -->
+                <div class="info-box">
+                    <h4><i class="fab fa-css3-alt"></i> CSS Reference</h4>
+                    <ul style="margin: 0; font-size: 0.85rem;">
+                        <li><code>color</code> - Text color</li>
+                        <li><code>background</code> - Background</li>
+                        <li><code>margin</code> - Outside spacing</li>
+                        <li><code>padding</code> - Inside spacing</li>
+                        <li><code>display: flex</code> - Flexbox</li>
+                        <li><code>@media</code> - Media queries</li>
+                    </ul>
+                </div>
+                
+                <!-- Assessment Info -->
+                <div class="info-box">
+                    <h4><i class="fas fa-clipboard-list"></i> Assessment</h4>
+                    <ul style="margin: 0;">
+                        <li>7 Hands-on Activities</li>
+                        <li>6 Quiz Questions</li>
+                        <li>1 Final Project (Portfolio)</li>
+                        <li>Estimated Time: 8-10 hours</li>
+                    </ul>
+                </div>
+            </aside>
+        </div>
+    </div>
+</main>
+
+<!-- Footer -->
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>ICT Learning Hub</h3>
+                <p>Empowering students with digital skills for the future.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="word-processing.html">Word Processing</a></li>
+                    <li><a href="web-design.html">Web Design</a></li>
+                    <li><a href="shorts2.html">Shortcut Quiz</a></li>
+                </ul>
+            </div>
+            <div class="footer-modules">
+                <h4>More Modules</h4>
+                <ul>
+                    <li><a href="computer-hardware.html">Hardware</a></li>
+                    <li><a href="system-security.html">Security</a></li>
+                    <li><a href="health-safety.html">Health & Safety</a></li>
+                </ul>
+            </div>
+            <div class="footer-social">
+                <h4>Connect</h4>
+                <div class="social-icons">
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Yiga Gerald. All rights reserved. | ICT Teacher | Digital Learning Creator</p>
+        </div>
+    </div>
+</footer>
+
+<script src="js/modules.js"></script>
+</body>
+</html>

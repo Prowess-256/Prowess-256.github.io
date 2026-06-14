@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>⏰ Ticking Timer Challenge | ICT Learning Hub</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/navigation.css">
+    <link rel="stylesheet" href="styles/components.css">
+    
+    <style>
+        :root {
+            --theme-primary: #06b6d4;
+            --theme-primary-light: #22d3ee;
+            --theme-primary-dark: #0891b2;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+            min-height: 100vh;
+        }
+        
+        .timer-page {
+            min-height: calc(100vh - 64px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1rem;
+        }
+        
+        .timer-card {
+            max-width: 550px;
+            width: 100%;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(14px);
+            border-radius: 2rem;
+            padding: 2rem;
+            text-align: center;
+            border: 1px solid rgba(6, 182, 212, 0.3);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+        
+        .timer-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .timer-header h1 {
+            font-size: 1.5rem;
+            margin-bottom: 0;
+            background: linear-gradient(135deg, var(--theme-primary), #a78bfa);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .back-link {
+            color: var(--theme-primary);
+            text-decoration: none;
+            font-size: 0.85rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+        
+        .back-link:hover {
+            color: var(--theme-primary-light);
+        }
+        
+        /* Clock display */
+        .clock-container {
+            margin: 2rem 0;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .clock {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background: linear-gradient(145deg, #0f172a, #1e293b);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 -5px 15px rgba(0, 0, 0, 0.3);
+            border: 2px solid rgba(6, 182, 212, 0.3);
+        }
+        
+        .pulse-ring {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: rgba(6, 182, 212, 0.15);
+            opacity: 0;
+            transform: scale(0.5);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            pointer-events: none;
+        }
+        
+        .clock.pulse .pulse-ring {
+            opacity: 1;
+            transform: scale(1.2);
+            transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+        }
+        
+        .tick-label {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: #e2e8f0;
+            font-family: monospace;
+            letter-spacing: 2px;
+        }
+        
+        .tempo-label {
+            font-size: 1rem;
+            color: #94a3b8;
+            margin-top: 0.5rem;
+        }
+        
+        /* Controls */
+        .controls {
+            margin: 2rem 0;
+        }
+        
+        .control-group {
+            margin-bottom: 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+        
+        .control-group label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #cbd5e1;
+            font-size: 0.9rem;
+        }
+        
+        input[type="range"] {
+            flex: 1;
+            min-width: 150px;
+            height: 6px;
+            -webkit-appearance: none;
+            background: #334155;
+            border-radius: 3px;
+            outline: none;
+        }
+        
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 18px;
+            height: 18px;
+            background: var(--theme-primary);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        
+        input[type="range"]::-webkit-slider-thumb:hover {
+            transform: scale(1.2);
+        }
+        
+        .bpm-value {
+            min-width: 50px;
+            text-align: center;
+            font-weight: 600;
+            color: var(--theme-primary);
+            font-family: monospace;
+            font-size: 1.1rem;
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 0.75rem;
+            justify-content: center;
+            margin-top: 1.5rem;
+        }
+        
+        .timer-btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 2rem;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .timer-btn.start {
+            background: linear-gradient(135deg, var(--theme-primary), #0ea5e9);
+            color: white;
+            box-shadow: 0 4px 15px rgba(6, 182, 212, 0.3);
+        }
+        
+        .timer-btn.start:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(6, 182, 212, 0.4);
+        }
+        
+        .timer-btn.stop {
+            background: #334155;
+            color: #e2e8f0;
+        }
+        
+        .timer-btn.stop:hover {
+            background: #475569;
+            transform: translateY(-2px);
+        }
+        
+        .timer-btn.mute {
+            background: #1e293b;
+            color: #94a3b8;
+            border: 1px solid #334155;
+        }
+        
+        .timer-btn.mute:hover {
+            background: #334155;
+            color: white;
+        }
+        
+        /* Accent checkbox */
+        .accent-toggle {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+        }
+        
+        .accent-toggle input {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            accent-color: var(--theme-primary);
+        }
+        
+        /* Info section */
+        .info-section {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .shortcut-hint {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            font-size: 0.75rem;
+            color: #64748b;
+        }
+        
+        .shortcut-hint span {
+            background: #1e293b;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.5rem;
+            font-family: monospace;
+        }
+        
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.35rem 0.75rem;
+            border-radius: 2rem;
+            font-size: 0.75rem;
+            background: #1e293b;
+            color: #94a3b8;
+        }
+        
+        .status-badge.running {
+            background: rgba(6, 182, 212, 0.2);
+            color: var(--theme-primary);
+        }
+        
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #64748b;
+            display: inline-block;
+            animation: pulse 1.5s infinite;
+        }
+        
+        .status-dot.running {
+            background: var(--theme-primary);
+            animation: pulse-running 0.8s infinite;
+        }
+        
+        @keyframes pulse-running {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+        
+        /* Keyboard shortcut tooltips */
+        kbd {
+            background: #1e293b;
+            border-radius: 0.25rem;
+            padding: 0.125rem 0.375rem;
+            font-family: monospace;
+            font-size: 0.7rem;
+            border: 1px solid #334155;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navigation Placeholder -->
+<div id="global-nav-placeholder"></div>
+
+<main>
+    <div class="timer-page">
+        <div class="timer-card">
+            <div class="timer-header">
+                <a href="index.html" class="back-link">
+                    <i class="fas fa-arrow-left"></i> Back to Home
+                </a>
+                <h1><i class="fas fa-clock"></i> Ticking Timer Challenge</h1>
+                <div style="width: 80px;"></div> <!-- Spacer for alignment -->
+            </div>
+            
+            <!-- Clock Display -->
+            <div class="clock-container">
+                <div class="clock" id="clockFace">
+                    <div class="pulse-ring"></div>
+                    <div class="tick-label" id="tickLabel">🎵</div>
+                    <div class="tempo-label" id="tempoStatus">Ready</div>
+                </div>
+            </div>
+            
+            <!-- Controls -->
+            <div class="controls">
+                <div class="control-group">
+                    <label><i class="fas fa-tachometer-alt"></i> Tempo (BPM)</label>
+                    <input type="range" id="bpmSlider" min="40" max="200" value="100">
+                    <span class="bpm-value" id="bpmValue">100</span>
+                </div>
+                
+                <div class="control-group">
+                    <label class="accent-toggle">
+                        <i class="fas fa-star"></i> Accent every 4th beat
+                        <input type="checkbox" id="accentCheckbox" checked>
+                    </label>
+                </div>
+                
+                <div class="control-group">
+                    <label><i class="fas fa-volume-up"></i> Volume</label>
+                    <input type="range" id="volumeSlider" min="0" max="100" value="70">
+                    <span class="bpm-value" id="volumeValue">70%</span>
+                </div>
+            </div>
+            
+            <!-- Buttons -->
+            <div class="button-group">
+                <button class="timer-btn start" id="startBtn">
+                    <i class="fas fa-play"></i> Start
+                </button>
+                <button class="timer-btn stop" id="stopBtn" disabled>
+                    <i class="fas fa-stop"></i> Stop
+                </button>
+                <button class="timer-btn mute" id="muteBtn">
+                    <i class="fas fa-volume-mute"></i> Mute
+                </button>
+            </div>
+            
+            <!-- Status & Info -->
+            <div class="info-section">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.5rem;">
+                    <div class="status-badge" id="statusBadge">
+                        <span class="status-dot"></span>
+                        Stopped
+                    </div>
+                    <div class="shortcut-hint">
+                        <span><kbd>␣</kbd> Space</span>
+                        <span><i class="fas fa-play"></i> / <i class="fas fa-stop"></i></span>
+                    </div>
+                </div>
+                <p style="font-size: 0.8rem; color: #64748b; text-align: center; margin: 0;">
+                    A metronome-style timer with audio ticks. Perfect for practicing timing, 
+                    keeping rhythm, or timing activities. <strong>Click Start</strong> to begin.
+                </p>
+            </div>
+        </div>
+    </div>
+</main>
+
+<script>
+    // ==================== TICKING TIMER FUNCTIONALITY ====================
+    (function() {
+        // DOM Elements
+        const startBtn = document.getElementById('startBtn');
+        const stopBtn = document.getElementById('stopBtn');
+        const muteBtn = document.getElementById('muteBtn');
+        const bpmSlider = document.getElementById('bpmSlider');
+        const volumeSlider = document.getElementById('volumeSlider');
+        const accentCheckbox = document.getElementById('accentCheckbox');
+        const bpmValue = document.getElementById('bpmValue');
+        const volumeValue = document.getElementById('volumeValue');
+        const clockFace = document.getElementById('clockFace');
+        const tickLabel = document.getElementById('tickLabel');
+        const tempoStatus = document.getElementById('tempoStatus');
+        const statusBadge = document.getElementById('statusBadge');
+        const statusDot = statusBadge?.querySelector('.status-dot');
+        
+        // Audio variables
+        let audioCtx = null;
+        let masterGain = null;
+        let isRunning = false;
+        let nextTickTime = 0;
+        let schedulerInterval = null;
+        let currentBeat = 0;
+        let isMuted = false;
+        let currentVolume = 0.7;
+        let currentBPM = 100;
+        
+        // Visual pulse timeout
+        let pulseTimeout = null;
+        
+        // Initialize audio on first user interaction
+        function initAudio() {
+            if (audioCtx) return;
+            audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            masterGain = audioCtx.createGain();
+            masterGain.gain.value = currentVolume;
+            masterGain.connect(audioCtx.destination);
+        }
+        
+        // Generate a tick sound (oscillator click)
+        function scheduleTick(time, isAccent = false) {
+            if (!audioCtx || isMuted) return;
+            
+            const frequency = isAccent ? 1200 : 800;
+            const gainValue = isAccent ? 0.7 : 0.5;
+            
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            
+            osc.type = 'sine';
+            osc.frequency.value = frequency;
+            
+            gain.gain.setValueAtTime(0, time);
+            gain.gain.linearRampToValueAtTime(gainValue, time + 0.005);
+            gain.gain.exponentialRampToValueAtTime(0.0001, time + 0.08);
+            
+            osc.connect(gain);
+            gain.connect(masterGain);
+            
+            osc.start(time);
+            osc.stop(time + 0.08);
+        }
+        
+        // Visual feedback (pulse animation)
+        function doVisualPulse(isAccent = false) {
+            if (!clockFace) return;
+            
+            // Change tick label based on accent
+            if (tickLabel) {
+                if (isAccent) {
+                    tickLabel.textContent = '⚡';
+                    tickLabel.style.transform = 'scale(1.2)';
+                    setTimeout(() => {
+                        if (tickLabel) tickLabel.style.transform = 'scale(1)';
+                    }, 150);
+                } else {
+                    tickLabel.textContent = '🎵';
+                }
+            }
+            
+            // Pulse animation
+            clockFace.classList.add('pulse');
+            if (pulseTimeout) clearTimeout(pulseTimeout);
+            pulseTimeout = setTimeout(() => {
+                clockFace?.classList.remove('pulse');
+            }, 300);
+            
+            // Update tempo status text
+            if (tempoStatus && isRunning) {
+                if (isAccent) {
+                    tempoStatus.textContent = `Beat ${currentBeat + 1} ⚡ ACCENT`;
+                    tempoStatus.style.color = '#fbbf24';
+                    setTimeout(() => {
+                        if (tempoStatus && isRunning) {
+                            tempoStatus.textContent = `${currentBPM} BPM • Running`;
+                            tempoStatus.style.color = '#94a3b8';
+                        }
+                    }, 200);
+                } else {
+                    tempoStatus.textContent = `${currentBPM} BPM • Running`;
+                    tempoStatus.style.color = '#94a3b8';
+                }
+            }
+        }
+        
+        // Update UI status
+        function updateUIStatus() {
+            if (statusBadge) {
+                if (isRunning) {
+                    statusBadge.classList.add('running');
+                    if (statusDot) statusDot.classList.add('running');
+                    statusBadge.innerHTML = '<span class="status-dot running"></span> Running - ' + currentBPM + ' BPM';
+                } else {
+                    statusBadge.classList.remove('running');
+                    if (statusDot) statusDot.classList.remove('running');
+                    statusBadge.innerHTML = '<span class="status-dot"></span> Stopped';
+                }
+            }
+            if (tempoStatus && !isRunning) {
+                tempoStatus.textContent = 'Ready';
+                tickLabel.textContent = '🎵';
+            }
+        }
+        
+        // Scheduler function
+        function scheduler() {
+            if (!isRunning || !audioCtx) return;
+            
+            const currentTime = audioCtx.currentTime;
+            const secondsPerBeat = 60.0 / currentBPM;
+            const accentEnabled = accentCheckbox?.checked || false;
+            
+            while (nextTickTime < currentTime + 0.1) {
+                const isAccent = accentEnabled && (currentBeat % 4 === 0);
+                scheduleTick(nextTickTime, isAccent);
+                
+                const msDelay = Math.max(0, (nextTickTime - currentTime) * 1000);
+                setTimeout(() => doVisualPulse(isAccent), msDelay);
+                
+                nextTickTime += secondsPerBeat;
+                currentBeat = (currentBeat + 1) % 64;
+            }
+        }
+        
+        // Start the timer
+        function startTimer() {
+            if (isRunning) return;
+            
+            initAudio();
+            
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+            
+            isRunning = true;
+            nextTickTime = audioCtx.currentTime + 0.05;
+            currentBeat = 0;
+            
+            if (schedulerInterval) clearInterval(schedulerInterval);
+            schedulerInterval = setInterval(scheduler, 25);
+            
+            startBtn.disabled = true;
+            stopBtn.disabled = false;
+            updateUIStatus();
+        }
+        
+        // Stop the timer
+        function stopTimer() {
+            isRunning = false;
+            if (schedulerInterval) {
+                clearInterval(schedulerInterval);
+                schedulerInterval = null;
+            }
+            startBtn.disabled = false;
+            stopBtn.disabled = true;
+            updateUIStatus();
+            
+            if (tickLabel) tickLabel.textContent = '🎵';
+            if (tempoStatus) tempoStatus.textContent = 'Ready';
+        }
+        
+        // Toggle mute
+        function toggleMute() {
+            if (!audioCtx) initAudio();
+            isMuted = !isMuted;
+            if (masterGain) {
+                masterGain.gain.value = isMuted ? 0 : currentVolume;
+            }
+            muteBtn.innerHTML = isMuted ? '<i class="fas fa-volume-up"></i> Unmute' : '<i class="fas fa-volume-mute"></i> Mute';
+        }
+        
+        // Update BPM
+        function updateBPM() {
+            currentBPM = parseInt(bpmSlider.value);
+            bpmValue.textContent = currentBPM;
+            if (!isRunning && tempoStatus) {
+                tempoStatus.textContent = `${currentBPM} BPM • Ready`;
+            } else if (isRunning && tempoStatus) {
+                tempoStatus.textContent = `${currentBPM} BPM • Running`;
+            }
+        }
+        
+        // Update volume
+        function updateVolume() {
+            currentVolume = parseInt(volumeSlider.value) / 100;
+            volumeValue.textContent = parseInt(volumeSlider.value) + '%';
+            if (masterGain && !isMuted) {
+                masterGain.gain.value = currentVolume;
+            }
+        }
+        
+        // Event listeners
+        startBtn.addEventListener('click', startTimer);
+        stopBtn.addEventListener('click', stopTimer);
+        muteBtn.addEventListener('click', toggleMute);
+        bpmSlider.addEventListener('input', updateBPM);
+        volumeSlider.addEventListener('input', updateVolume);
+        
+        // Keyboard shortcut: Space to start/stop
+        document.addEventListener('keydown', (e) => {
+            if (e.code === 'Space') {
+                e.preventDefault();
+                if (!isRunning) {
+                    startTimer();
+                } else {
+                    stopTimer();
+                }
+            }
+        });
+        
+        // Initial UI setup
+        updateBPM();
+        updateVolume();
+        updateUIStatus();
+        muteBtn.innerHTML = '<i class="fas fa-volume-mute"></i> Mute';
+        
+        // Pre-touch to enable audio on first click (browser policies)
+        document.body.addEventListener('click', function initAudioOnFirstClick() {
+            if (!audioCtx) {
+                initAudio();
+                console.log('Audio context initialized');
+            }
+            document.body.removeEventListener('click', initAudioOnFirstClick);
+        });
+    })();
+</script>
+
+<script src="js/modules.js"></script>
+</body>
+</html>

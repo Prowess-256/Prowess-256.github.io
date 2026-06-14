@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spreadsheets 2 | Advanced ICT Learning Module</title>
+    <meta name="description" content="Advanced spreadsheet skills - pivot tables, complex formulas, data analysis, macros, and dashboards">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/navigation.css">
+    <link rel="stylesheet" href="styles/components.css">
+    
+    <!-- Module-specific theme (Advanced Spreadsheets - Dark Green/Gold) -->
+    <style>
+        :root {
+            --theme-primary: #059669;
+            --theme-primary-light: #10b981;
+            --theme-primary-dark: #047857;
+            --theme-secondary: #d97706;
+        }
+        
+        .section h2 {
+            color: var(--theme-primary);
+        }
+        
+        .section h2::after {
+            background: var(--theme-primary);
+        }
+        
+        /* Code block styling for formulas */
+        .code-block {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 1rem;
+            border-radius: var(--radius-lg);
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+        
+        .code-block span.keyword {
+            color: #38bdf8;
+        }
+        
+        .code-block span.function {
+            color: #fbbf24;
+        }
+        
+        .code-block span.string {
+            color: #a3e635;
+        }
+        
+        .pivot-demo {
+            background: var(--bg-secondary);
+            border-radius: var(--radius-lg);
+            padding: 1rem;
+            margin: 1.5rem 0;
+            border: 1px solid var(--border-light);
+        }
+        
+        .pivot-demo h4 {
+            margin-bottom: 0.5rem;
+            color: var(--theme-primary);
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navigation Placeholder -->
+<div id="global-nav-placeholder"></div>
+
+<main>
+    <div class="container">
+        <!-- Breadcrumb -->
+        <div class="breadcrumb">
+            <a href="index.html">Home</a>
+            <span class="separator">/</span>
+            <a href="#">Learning Hub</a>
+            <span class="separator">/</span>
+            <a href="spreadsheets-1.html">Spreadsheets 1</a>
+            <span class="separator">/</span>
+            <span class="current" id="page-title">Spreadsheets 2</span>
+        </div>
+        
+        <!-- Module Header -->
+        <div class="section-header" style="margin-bottom: 2rem;">
+            <h1>Spreadsheets 2 <span style="font-size: 1rem; color: var(--text-muted);">(Advanced)</span></h1>
+            <p>Advanced spreadsheet techniques for data analysis, automation, and professional dashboards</p>
+            <div class="keywords" style="display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; margin-top: 1rem;">
+                <span style="background: var(--bg-secondary); padding: 0.25rem 0.75rem; border-radius: 2rem; font-size: 0.8rem;">Pivot Tables</span>
+                <span style="background: var(--bg-secondary); padding: 0.25rem 0.75rem; border-radius: 2rem; font-size: 0.8rem;">VLOOKUP/XLOOKUP</span>
+                <span style="background: var(--bg-secondary); padding: 0.25rem 0.75rem; border-radius: 2rem; font-size: 0.8rem;">IF/SUMIFS</span>
+                <span style="background: var(--bg-secondary); padding: 0.25rem 0.75rem; border-radius: 2rem; font-size: 0.8rem;">Macros</span>
+                <span style="background: var(--bg-secondary); padding: 0.25rem 0.75rem; border-radius: 2rem; font-size: 0.8rem;">Dashboards</span>
+                <span style="background: var(--bg-secondary); padding: 0.25rem 0.75rem; border-radius: 2rem; font-size: 0.8rem;">Data Validation</span>
+            </div>
+        </div>
+        
+        <!-- Module Layout: 2-column -->
+        <div class="module-wrapper">
+            <!-- Main Content Area -->
+            <div class="module-content">
+                <!-- Learning Outcomes -->
+                <div class="info-box" style="margin-bottom: 2rem;">
+                    <h4><i class="fas fa-bullseye"></i> Learning Outcomes</h4>
+                    <ul>
+                        <li>Create and analyze data with pivot tables</li>
+                        <li>Use advanced lookup functions (VLOOKUP, XLOOKUP, INDEX-MATCH)</li>
+                        <li>Apply conditional logic with IF, SUMIFS, COUNTIFS functions</li>
+                        <li>Build interactive dashboards with slicers and charts</li>
+                        <li>Automate repetitive tasks with macros</li>
+                        <li>Perform what-if analysis and data validation</li>
+                    </ul>
+                </div>
+                
+                <!-- Section 1: Pivot Tables -->
+                <section id="section1" class="section">
+                    <h2><i class="fas fa-table"></i> Pivot Tables</h2>
+                    
+                    <p>Pivot tables are one of Excel's most powerful features. They allow you to summarize, analyze, and explore large datasets in seconds without writing formulas.</p>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-chart-pie"></i> What is a Pivot Table?</h4>
+                        <p>A pivot table is an interactive table that automatically extracts, organizes, and summarizes your data. You can "pivot" or rotate the data to view it from different perspectives, making it perfect for business intelligence and data analysis.</p>
+                    </div>
+                    
+                    <h3>Creating a Pivot Table</h3>
+                    <div class="activity-steps">
+                        <ol>
+                            <li><strong>Select your data range</strong> - Include headers, no blank rows/columns</li>
+                            <li><strong>Insert → Pivot Table</strong> - Choose location (new or existing worksheet)</li>
+                            <li><strong>Drag fields to areas</strong>:
+                                <ul>
+                                    <li><strong>Rows:</strong> Categories to group by (e.g., Product, Region)</li>
+                                    <li><strong>Columns:</strong> Additional grouping (optional)</li>
+                                    <li><strong>Values:</strong> Numbers to summarize (e.g., Sales, Quantity)</li>
+                                    <li><strong>Filters:</strong> Limit data shown (e.g., Year, Month)</li>
+                                </ul>
+                            </li>
+                            <li><strong>Customize</strong> - Change value field settings (Sum, Count, Average)</li>
+                        </ol>
+                    </div>
+                    
+                    <div class="pivot-demo">
+                        <h4><i class="fas fa-calculator"></i> Pivot Table Example</h4>
+                        <p><strong>Source Data:</strong> Sales records with Date, Product, Region, and Amount</p>
+                        <p><strong>Pivot Table Result:</strong> Total Sales by Product per Region</p>
+                        <div class="spreadsheet-demo" style="margin-top: 0.5rem;">
+                            <table style="width: 100%;">
+                                <thead>
+                                    <tr><th>Region</th><th>Product A</th><th>Product B</th><th>Product C</th><th>Total</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>North</td><td>$12,500</td><td>$8,200</td><td>$5,300</td><td>$26,000</td></tr>
+                                    <tr><td>South</td><td>$9,800</td><td>$11,400</td><td>$7,200</td><td>$28,400</td></tr>
+                                    <tr><td>East</td><td>$15,200</td><td>$6,500</td><td>$9,100</td><td>$30,800</td></tr>
+                                    <tr><td>West</td><td>$7,500</td><td>$13,800</td><td>$4,900</td><td>$26,200</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <div class="activity-box">
+                        <div class="activity-header">
+                            <div class="activity-number">1</div>
+                            <div class="activity-title">Activity: Create a Sales Pivot Table</div>
+                        </div>
+                        <p><strong>Objective:</strong> Create a pivot table to analyze sales data by region and product.</p>
+                        <ol class="activity-steps">
+                            <li>Create a sample dataset with columns: Date, Region, Product, Salesperson, Amount</li>
+                            <li>Enter at least 20 rows of sample sales data</li>
+                            <li>Insert a pivot table and drag Region to Rows, Product to Columns, Amount to Values</li>
+                            <li>Change the value calculation from Sum to Average</li>
+                            <li>Add a filter for Date (by quarter or month)</li>
+                            <li>Format the pivot table for professional presentation</li>
+                        </ol>
+                    </div>
+                </section>
+                
+                <!-- Section 2: Advanced Lookup Functions -->
+                <section id="section2" class="section">
+                    <h2><i class="fas fa-search"></i> Advanced Lookup Functions</h2>
+                    
+                    <p>Lookup functions allow you to search for a value in one table and return a corresponding value from another table - essential for combining data from different sources.</p>
+                    
+                    <h3>VLOOKUP (Vertical Lookup)</h3>
+                    <div class="code-block">
+                        <span class="keyword">=VLOOKUP</span>(<span class="string">lookup_value</span>, <span class="string">table_array</span>, <span class="string">col_index_num</span>, <span class="string">[range_lookup]</span>)
+                    </div>
+                    <ul class="activity-steps">
+                        <li><strong>lookup_value:</strong> The value to search for (must be in first column)</li>
+                        <li><strong>table_array:</strong> The table range containing the data</li>
+                        <li><strong>col_index_num:</strong> Which column number to return (1 = first column)</li>
+                        <li><strong>range_lookup:</strong> FALSE for exact match, TRUE for approximate</li>
+                    </ul>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-exclamation-triangle"></i> VLOOKUP Limitations</h4>
+                        <ul>
+                            <li>Lookup value must be in the <strong>first column</strong> of the table array</li>
+                            <li>Only searches <strong>vertically</strong> (top to bottom)</li>
+                            <li>Returns first match only</li>
+                            <li>Can break if columns are inserted/deleted</li>
+                        </ul>
+                    </div>
+                    
+                    <h3>XLOOKUP (Modern Replacement)</h3>
+                    <div class="code-block">
+                        <span class="keyword">=XLOOKUP</span>(<span class="string">lookup_value</span>, <span class="string">lookup_array</span>, <span class="string">return_array</span>, <span class="string">[if_not_found]</span>, <span class="string">[match_mode]</span>)
+                    </div>
+                    
+                    <h3>INDEX-MATCH (Flexible Alternative)</h3>
+                    <div class="code-block">
+                        <span class="keyword">=INDEX</span>(<span class="string">return_range</span>, <span class="keyword">MATCH</span>(<span class="string">lookup_value</span>, <span class="string">lookup_range</span>, <span class="string">0</span>))
+                    </div>
+                    
+                    <table class="data-table">
+                        <thead>
+                            <tr><th>Function</th><th>Pros</th><th>Cons</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>VLOOKUP</strong></td><td>Simple, widely known</td><td>Limited to first column, breaks with column inserts</td></tr>
+                            <tr><td><strong>XLOOKUP</strong></td><td>Flexible, can search left/right, built-in error handling</td><td>Only in newer Excel versions (2019+, 365)</td></tr>
+                            <tr><td><strong>INDEX-MATCH</strong></td><td>Most flexible, works in all versions, can search any direction</td><td>More complex syntax</td></tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="activity-box">
+                        <div class="activity-header">
+                            <div class="activity-number">2</div>
+                            <div class="activity-title">Activity: Using VLOOKUP and XLOOKUP</div>
+                        </div>
+                        <p><strong>Objective:</strong> Use lookup functions to combine data from multiple tables.</p>
+                        <ol class="activity-steps">
+                            <li>Create two tables: Employee Data (ID, Name, Department) and Salary Data (ID, Salary)</li>
+                            <li>Use VLOOKUP to add Salary to the Employee Data table</li>
+                            <li>Create a lookup table for commission rates based on sales tiers</li>
+                            <li>Use XLOOKUP (or INDEX-MATCH) to find commission rates</li>
+                            <li>Add error handling with IFERROR for missing values</li>
+                        </ol>
+                    </div>
+                </section>
+                
+                <!-- Section 3: Conditional Functions -->
+                <section id="section3" class="section">
+                    <h2><i class="fas fa-code-branch"></i> Conditional Functions</h2>
+                    
+                    <p>Conditional functions allow you to perform calculations or return values based on specific criteria - essential for data analysis and reporting.</p>
+                    
+                    <h3>Common Conditional Functions</h3>
+                    <table class="data-table">
+                        <thead>
+                            <tr><th>Function</th><th>Syntax</th><th>Purpose</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>IF</strong></td><td>=IF(logical_test, value_if_true, value_if_false)</td><td>Returns one value if condition is TRUE, another if FALSE</td></tr>
+                            <tr><td><strong>IFS</strong></td><td>=IFS(condition1, result1, condition2, result2...)</td><td>Tests multiple conditions (no nested IFs needed)</td></tr>
+                            <tr><td><strong>SUMIF</strong></td><td>=SUMIF(range, criteria, [sum_range])</td><td>Sums values based on a single condition</td></tr>
+                            <tr><td><strong>SUMIFS</strong></td><td>=SUMIFS(sum_range, criteria_range1, criteria1...)</td><td>Sums values based on multiple conditions</td></tr>
+                            <tr><td><strong>COUNTIF</strong></td><td>=COUNTIF(range, criteria)</td><td>Counts cells based on a single condition</td></tr>
+                            <tr><td><strong>COUNTIFS</strong></td><td>=COUNTIFS(criteria_range1, criteria1...)</td><td>Counts cells based on multiple conditions</td></tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="code-block">
+                        <span class="comment">// Example: Grade calculation with nested IF</span><br>
+                        <span class="keyword">=IF</span>(A1>=90, "A", <span class="keyword">IF</span>(A1>=80, "B", <span class="keyword">IF</span>(A1>=70, "C", <span class="keyword">IF</span>(A1>=60, "D", "F"))))<br><br>
+                        
+                        <span class="comment">// Example: SUMIFS for sales by region and product</span><br>
+                        <span class="keyword">=SUMIFS</span>(SalesAmount, RegionRange, "North", ProductRange, "Electronics")<br><br>
+                        
+                        <span class="comment">// Example: IFS (Excel 2019+)</span><br>
+                        <span class="keyword">=IFS</span>(A1>=90, "A", A1>=80, "B", A1>=70, "C", A1>=60, "D", TRUE, "F")
+                    </div>
+                    
+                    <div class="activity-box">
+                        <div class="activity-header">
+                            <div class="activity-number">3</div>
+                            <div class="activity-title">Activity: Creating a Performance Dashboard</div>
+                        </div>
+                        <p><strong>Objective:</strong> Use conditional functions to analyze sales performance.</p>
+                        <ol class="activity-steps">
+                            <li>Create a sales dataset with Salesperson, Region, Product, Quantity, Unit Price, Date</li>
+                            <li>Calculate Total Sales = Quantity × Unit Price</li>
+                            <li>Use SUMIFS to calculate total sales by region</li>
+                            <li>Use COUNTIFS to count transactions above $1000</li>
+                            <li>Create an IF formula to flag "High Value" transactions (>$5000)</li>
+                            <li>Build a summary table with key metrics</li>
+                        </ol>
+                    </div>
+                </section>
+                
+                <!-- Section 4: Data Validation -->
+                <section id="section4" class="section">
+                    <h2><i class="fas fa-check-circle"></i> Data Validation</h2>
+                    
+                    <p>Data validation controls what users can enter into cells, preventing errors and ensuring data consistency.</p>
+                    
+                    <h3>Types of Data Validation</h3>
+                    <table class="data-table">
+                        <thead>
+                            <tr><th>Validation Type</th><th>Description</th><th>Example</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>Whole Number</strong></td><td>Restrict to numbers within a range</td><td>Age between 18 and 65</td></tr>
+                            <tr><td><strong>Decimal</strong></td><td>Restrict to decimal values</td><td>Price between 0 and 1000</td></tr>
+                            <tr><td><strong>List</strong></td><td>Create drop-down menu from a list</td><td>Yes/No, Regions, Products</td></tr>
+                            <tr><td><strong>Date</strong></td><td>Restrict to date range</td><td>Dates in current year only</td></tr>
+                            <tr><td><strong>Time</strong></td><td>Restrict to time range</td><td>Business hours only</td></tr>
+                            <tr><td><strong>Text Length</strong></td><td>Limit number of characters</td><td>Postal codes (5 digits)</td></tr>
+                            <tr><td><strong>Custom</strong></td><td>Formula-based validation</td><td>=AND(A1&gt;0, A1&lt;100)</td></tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-list-dropdown"></i> Creating a Drop-Down List</h4>
+                        <ol>
+                            <li>Select the cell(s) where you want the drop-down</li>
+                            <li>Data → Data Validation → Settings tab</li>
+                            <li>Allow: List</li>
+                            <li>Source: Type items separated by commas OR select a range</li>
+                            <li>Check "In-cell dropdown"</li>
+                            <li>Add Input Message and Error Alert tabs for user guidance</li>
+                        </ol>
+                    </div>
+                </section>
+                
+                <!-- Section 5: Macros and Automation -->
+                <section id="section5" class="section">
+                    <h2><i class="fas fa-robot"></i> Macros and Automation</h2>
+                    
+                    <p>Macros are recorded sequences of actions that can be played back to automate repetitive tasks. They use VBA (Visual Basic for Applications) code.</p>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-microchip"></i> Getting Started with Macros</h4>
+                        <ol>
+                            <li><strong>Enable Developer Tab:</strong> File → Options → Customize Ribbon → Check "Developer"</li>
+                            <li><strong>Record a Macro:</strong> Developer → Record Macro → Name it → Perform actions → Stop Recording</li>
+                            <li><strong>Run a Macro:</strong> Developer → Macros → Select macro → Run</li>
+                            <li><strong>Assign to Button:</strong> Insert Form Control button → Assign macro</li>
+                        </ol>
+                    </div>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-shield-alt"></i> Macro Security Warning</h4>
+                        <p>Macros can contain harmful code. Only enable macros from trusted sources. Always save macro-enabled workbooks as .xlsm (not .xlsx).</p>
+                    </div>
+                    
+                    <h3>Common Macro Use Cases</h3>
+                    <ul class="activity-steps">
+                        <li><strong>Formatting reports</strong> - Apply consistent formatting to monthly reports</li>
+                        <li><strong>Data cleaning</strong> - Remove duplicates, trim spaces, fix formatting</li>
+                        <li><strong>Exporting data</strong> - Save specific sheets or ranges as PDF/CSV</li>
+                        <li><strong>Email automation</strong> - Generate and send emails from Excel data</li>
+                        <li><strong>Dashboard refresh</strong> - Update all pivot tables and charts with one click</li>
+                    </ul>
+                    
+                    <div class="activity-box">
+                        <div class="activity-header">
+                            <div class="activity-number">4</div>
+                            <div class="activity-title">Activity: Record and Run a Macro</div>
+                        </div>
+                        <p><strong>Objective:</strong> Record a macro to automate report formatting.</p>
+                        <ol class="activity-steps">
+                            <li>Enable the Developer tab in Excel</li>
+                            <li>Start recording a macro named "FormatReport"</li>
+                            <li>Apply formatting: bold headers, add borders, set column widths, add company logo</li>
+                            <li>Stop recording</li>
+                            <li>Test the macro on a new sheet</li>
+                            <li>Assign the macro to a button for one-click formatting</li>
+                        </ol>
+                    </div>
+                </section>
+                
+                <!-- Section 6: Dashboards -->
+                <section id="section6" class="section">
+                    <h2><i class="fas fa-tachometer-alt"></i> Creating Interactive Dashboards</h2>
+                    
+                    <p>A dashboard is a visual display of key metrics and data points, allowing users to monitor performance at a glance.</p>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-cog"></i> Dashboard Design Principles</h4>
+                        <ul>
+                            <li><strong>Keep it simple</strong> - Focus on key metrics, avoid clutter</li>
+                            <li><strong>Use consistent colors</strong> - Brand colors, color-coded categories</li>
+                            <li><strong>Add interactivity</strong> - Slicers, timelines, drop-downs</li>
+                            <li><strong>Make it readable</strong> - Clear labels, appropriate font sizes</li>
+                            <li><strong>Update automatically</strong> - Use pivot tables and dynamic ranges</li>
+                        </ul>
+                    </div>
+                    
+                    <h3>Dashboard Components</h3>
+                    <ul class="activity-steps">
+                        <li><strong>KPI Cards</strong> - Large numbers showing key metrics (Total Sales, Profit Margin)</li>
+                        <li><strong>Charts</strong> - Bar, line, pie charts for trends and comparisons</li>
+                        <li><strong>Slicers</strong> - Interactive filters for pivot tables/charts</li>
+                        <li><strong>Timeline</strong> - Date-based filter control</li>
+                        <li><strong>Sparklines</strong> - Mini charts inside cells showing trends</li>
+                        <li><strong>Conditional Formatting</strong> - Color-coded data bars, icon sets</li>
+                    </ul>
+                    
+                    <div class="activity-box">
+                        <div class="activity-header">
+                            <div class="activity-number">5</div>
+                            <div class="activity-title">Activity: Build a Sales Dashboard</div>
+                        </div>
+                        <p><strong>Objective:</strong> Create an interactive sales dashboard with multiple visualizations.</p>
+                        <ol class="activity-steps">
+                            <li>Prepare your data in a table format (Sales, Region, Product, Date, Amount)</li>
+                            <li>Create 3-4 pivot tables for different analyses (by region, by product, by month)</li>
+                            <li>Insert charts linked to each pivot table</li>
+                            <li>Add slicers connected to all pivot tables (Region, Product, Quarter)</li>
+                            <li>Add KPI cards using GETPIVOTDATA or formulas</li>
+                            <li>Arrange components on a single sheet with title and company logo</li>
+                            <li>Apply consistent formatting and colors</li>
+                        </ol>
+                    </div>
+                </section>
+                
+                <!-- Section 7: What-If Analysis -->
+                <section id="section7" class="section">
+                    <h2><i class="fas fa-chart-line"></i> What-If Analysis</h2>
+                    
+                    <p>What-If analysis tools help you explore how changing input values affects outcomes - essential for budgeting, forecasting, and decision-making.</p>
+                    
+                    <h3>Goal Seek</h3>
+                    <div class="code-block">
+                        <span class="comment">// Find the input needed to achieve a desired result</span><br>
+                        Data → What-If Analysis → Goal Seek<br>
+                        Set cell: (formula cell) → To value: (desired result) → By changing cell: (input cell)
+                    </div>
+                    
+                    <h3>Data Tables</h3>
+                    <div class="code-block">
+                        <span class="comment">// See how changing 1-2 variables affects results</span><br>
+                        Data → What-If Analysis → Data Table<br>
+                        Row input cell: (variable 1) → Column input cell: (variable 2)
+                    </div>
+                    
+                    <h3>Scenario Manager</h3>
+                    <div class="code-block">
+                        <span class="comment">// Compare multiple scenarios (Best Case, Worst Case, Most Likely)</span><br>
+                        Data → What-If Analysis → Scenario Manager → Add scenarios → Show results
+                    </div>
+                    
+                    <div class="activity-box">
+                        <div class="activity-header">
+                            <div class="activity-number">6</div>
+                            <div class="activity-title">Activity: Loan Payment Calculator with Goal Seek</div>
+                        </div>
+                        <p><strong>Objective:</strong> Use Goal Seek to find the loan amount for a desired monthly payment.</p>
+                        <ol class="activity-steps">
+                            <li>Create a loan calculator using PMT function: =PMT(rate/12, months, -loan_amount)</li>
+                            <li>Set up input cells: Loan Amount, Interest Rate, Loan Term (years)</li>
+                            <li>Calculate Monthly Payment</li>
+                            <li>Use Goal Seek to find the Loan Amount needed for a specific Monthly Payment</li>
+                            <li>Create a data table showing payments for different interest rates and terms</li>
+                            <li>Save as a template for future use</li>
+                        </ol>
+                    </div>
+                </section>
+                
+                <!-- Integration Activity -->
+                <section id="integration" class="section">
+                    <h2><i class="fas fa-tasks"></i> Activity of Integration</h2>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-store"></i> Business Scenario: Retail Sales Analysis</h4>
+                        <p>A retail company needs a comprehensive sales analysis tool to track performance across multiple stores, products, and time periods.</p>
+                    </div>
+                    
+                    <div class="activity-box">
+                        <div class="activity-header">
+                            <div class="activity-number">FINAL</div>
+                            <div class="activity-title">Complete Retail Analytics Project</div>
+                        </div>
+                        <p><strong>Requirements:</strong></p>
+                        <ul class="activity-steps">
+                            <li><strong>Data Preparation:</strong> Create a dataset with 100+ rows of sales data (Date, Store, Product Category, Product, Quantity, Unit Price)</li>
+                            <li><strong>Calculations:</strong> Add calculated columns for Total Sales, Profit (assume 30% margin), and Month/Quarter</li>
+                            <li><strong>Pivot Tables:</strong> Create pivot tables for: Sales by Store, Sales by Product Category, Monthly Trends</li>
+                            <li><strong>Lookup Tables:</strong> Create a product lookup table with Category and Margin %; use VLOOKUP/XLOOKUP to populate</li>
+                            <li><strong>Conditional Analysis:</strong> Flag "Top Performers" (sales > $5000) using IF formula</li>
+                            <li><strong>Dashboard:</strong> Create an interactive dashboard with charts, slicers, and KPI cards</li>
+                            <li><strong>What-If:</strong> Add a scenario analysis for projected sales growth (5%, 10%, 15%)</li>
+                            <li><strong>Documentation:</strong> Add instructions sheet and data validation for user inputs</li>
+                        </ul>
+                    </div>
+                </section>
+                
+                <!-- Quiz Section -->
+                <section id="quiz" class="section">
+                    <h2><i class="fas fa-question-circle"></i> Knowledge Check</h2>
+                    
+                    <div class="quiz-box">
+                        <div class="quiz-question">
+                            1. Which function would you use to find a value in a table and return a corresponding value from any column (left or right)?
+                        </div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false">VLOOKUP</div>
+                            <div class="quiz-option" data-correct="true">XLOOKUP</div>
+                            <div class="quiz-option" data-correct="false">HLOOKUP</div>
+                            <div class="quiz-option" data-correct="false">SUMIF</div>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                    
+                    <div class="quiz-box">
+                        <div class="quiz-question">
+                            2. What is the main limitation of VLOOKUP?
+                        </div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false">It's slow on large datasets</div>
+                            <div class="quiz-option" data-correct="false">It only works with numbers</div>
+                            <div class="quiz-option" data-correct="true">The lookup value must be in the first column</div>
+                            <div class="quiz-option" data-correct="false">It requires the table to be sorted</div>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                    
+                    <div class="quiz-box">
+                        <div class="quiz-question">
+                            3. Which function would you use to sum values that meet multiple criteria (e.g., sum sales for North region AND Electronics product)?
+                        </div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false">SUMIF</div>
+                            <div class="quiz-option" data-correct="true">SUMIFS</div>
+                            <div class="quiz-option" data-correct="false">VLOOKUP</div>
+                            <div class="quiz-option" data-correct="false">SUMPRODUCT</div>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                    
+                    <div class="quiz-box">
+                        <div class="quiz-question">
+                            4. What file extension should you use to save a workbook that contains macros?
+                        </div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false">.xlsx</div>
+                            <div class="quiz-option" data-correct="false">.xls</div>
+                            <div class="quiz-option" data-correct="true">.xlsm</div>
+                            <div class="quiz-option" data-correct="false">.csv</div>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                    
+                    <div class="quiz-box">
+                        <div class="quiz-question">
+                            5. Which What-If Analysis tool would you use to find the input needed to achieve a specific result?
+                        </div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false">Data Table</div>
+                            <div class="quiz-option" data-correct="true">Goal Seek</div>
+                            <div class="quiz-option" data-correct="false">Scenario Manager</div>
+                            <div class="quiz-option" data-correct="false">Solver</div>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                    
+                    <div class="quiz-box">
+                        <div class="quiz-question">
+                            6. What is a pivot table primarily used for?
+                        </div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false">Creating charts</div>
+                            <div class="quiz-option" data-correct="false">Writing formulas</div>
+                            <div class="quiz-option" data-correct="true">Summarizing and analyzing large datasets</div>
+                            <div class="quiz-option" data-correct="false">Formatting cells</div>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                </section>
+                
+                <!-- Download PDF Button -->
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button id="downloadPdf" class="btn btn-outline">
+                        <i class="fas fa-download"></i> Download as PDF
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Sidebar -->
+            <aside class="module-sidebar">
+                <!-- Progress Tracker -->
+                <div class="progress-container">
+                    <h3><i class="fas fa-chart-line"></i> Your Progress</h3>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <div class="progress-text">
+                        <span>0% Complete</span>
+                        <span id="progressPercent">0%</span>
+                    </div>
+                </div>
+                
+                <!-- Sidebar Navigation -->
+                <div class="sidebar-nav">
+                    <h3><i class="fas fa-list"></i> Module Sections</h3>
+                    <ul>
+                        <li><a href="#section1"><i class="fas fa-chevron-right"></i> Pivot Tables</a></li>
+                        <li><a href="#section2"><i class="fas fa-chevron-right"></i> Advanced Lookup Functions</a></li>
+                        <li><a href="#section3"><i class="fas fa-chevron-right"></i> Conditional Functions</a></li>
+                        <li><a href="#section4"><i class="fas fa-chevron-right"></i> Data Validation</a></li>
+                        <li><a href="#section5"><i class="fas fa-chevron-right"></i> Macros & Automation</a></li>
+                        <li><a href="#section6"><i class="fas fa-chevron-right"></i> Dashboards</a></li>
+                        <li><a href="#section7"><i class="fas fa-chevron-right"></i> What-If Analysis</a></li>
+                        <li><a href="#integration"><i class="fas fa-chevron-right"></i> Final Project</a></li>
+                        <li><a href="#quiz"><i class="fas fa-chevron-right"></i> Knowledge Check</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Formula Reference Box -->
+                <div class="info-box">
+                    <h4><i class="fas fa-calculator"></i> Formula Reference</h4>
+                    <ul style="margin: 0; font-size: 0.85rem;">
+                        <li><code>=VLOOKUP(A2, Data!A:B, 2, FALSE)</code></li>
+                        <li><code>=XLOOKUP(A2, LookupRange, ReturnRange)</code></li>
+                        <li><code>=SUMIFS(Sales, Region, "North", Product, "Electronics")</code></li>
+                        <li><code>=IF(A1>100, "High", "Low")</code></li>
+                        <li><code>=PMT(rate/12, nper, -pv)</code></li>
+                    </ul>
+                </div>
+                
+                <!-- Keyboard Shortcuts -->
+                <div class="info-box">
+                    <h4><i class="fas fa-keyboard"></i> Shortcuts</h4>
+                    <ul style="margin: 0; font-size: 0.85rem;">
+                        <li><kbd>Alt + =</kbd> - AutoSum</li>
+                        <li><kbd>Ctrl + T</kbd> - Create Table</li>
+                        <li><kbd>Alt + N + V</kbd> - Insert Pivot Table</li>
+                        <li><kbd>Alt + D + L</kbd> - Data Validation</li>
+                        <li><kbd>Alt + L + R</kbd> - Record Macro</li>
+                    </ul>
+                </div>
+                
+                <!-- Assessment Info -->
+                <div class="info-box">
+                    <h4><i class="fas fa-clipboard-list"></i> Assessment</h4>
+                    <ul style="margin: 0;">
+                        <li>6 Hands-on Activities</li>
+                        <li>6 Quiz Questions</li>
+                        <li>1 Final Project</li>
+                        <li>Estimated Time: 8-10 hours</li>
+                        <li>Prerequisite: Spreadsheets 1</li>
+                    </ul>
+                </div>
+            </aside>
+        </div>
+    </div>
+</main>
+
+<!-- Footer -->
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>ICT Learning Hub</h3>
+                <p>Empowering students with digital skills for the future.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="word-processing.html">Word Processing</a></li>
+                    <li><a href="presentations.html">Presentations</a></li>
+                    <li><a href="spreadsheets-1.html">Spreadsheets 1</a></li>
+                    <li><a href="spreadsheets-2.html">Spreadsheets 2</a></li>
+                </ul>
+            </div>
+            <div class="footer-modules">
+                <h4>More Modules</h4>
+                <ul>
+                    <li><a href="computer-hardware.html">Computer Hardware</a></li>
+                    <li><a href="web-design.html">Web Design</a></li>
+                    <li><a href="health-safety.html">Health & Safety</a></li>
+                    <li><a href="shorts2.html">Shortcut Quiz</a></li>
+                </ul>
+            </div>
+            <div class="footer-social">
+                <h4>Connect</h4>
+                <div class="social-icons">
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Yiga Gerald. All rights reserved. | ICT Teacher | Digital Learning Creator</p>
+        </div>
+    </div>
+</footer>
+
+<script src="js/modules.js"></script>
+</body>
+</html>

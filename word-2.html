@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Processing 2 | Advanced ICT Learning Module</title>
+    <meta name="description" content="Advanced word processing skills - styles, templates, mail merge, macros, collaboration, and professional document formatting">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/navigation.css">
+    <link rel="stylesheet" href="styles/components.css">
+    
+    <!-- Module-specific theme (Advanced Word - Indigo/Deep Purple) -->
+    <style>
+        :root {
+            --theme-primary: #4f46e5;
+            --theme-primary-light: #6366f1;
+            --theme-primary-dark: #4338ca;
+            --theme-secondary: #8b5cf6;
+        }
+        
+        .section h2 {
+            color: var(--theme-primary);
+        }
+        
+        .section h2::after {
+            background: var(--theme-primary);
+        }
+        
+        /* Style preview boxes */
+        .style-preview {
+            background: var(--bg-secondary);
+            border-radius: var(--radius-lg);
+            padding: 1rem;
+            margin: 1rem 0;
+            border-left: 4px solid var(--theme-primary);
+        }
+        
+        .style-preview h1, .style-preview h2, .style-preview h3 {
+            margin-bottom: 0.25rem;
+        }
+        
+        .style-preview p {
+            margin-bottom: 0;
+        }
+        
+        .mail-merge-demo {
+            background: var(--bg-secondary);
+            border-radius: var(--radius-lg);
+            padding: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .mail-merge-demo pre {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 0.75rem;
+            border-radius: var(--radius-md);
+            overflow-x: auto;
+            font-family: monospace;
+            font-size: 0.8rem;
+        }
+        
+        .track-changes-demo {
+            background: var(--bg-secondary);
+            border-radius: var(--radius-lg);
+            padding: 1rem;
+            margin: 1rem 0;
+            font-family: monospace;
+        }
+        
+        .insertion { background: #dbeafe; color: #1e40af; padding: 0.1rem 0.2rem; border-radius: 0.25rem; }
+        .deletion { background: #fee2e2; color: #b91c1c; text-decoration: line-through; padding: 0.1rem 0.2rem; border-radius: 0.25rem; }
+        .comment { background: #fef3c7; color: #b45309; padding: 0.1rem 0.2rem; border-radius: 0.25rem; }
+    </style>
+</head>
+<body>
+
+<!-- Navigation Placeholder -->
+<div id="global-nav-placeholder"></div>
+
+<main>
+    <div class="container">
+        <!-- Breadcrumb -->
+        <div class="breadcrumb">
+            <a href="index.html">Home</a>
+            <span class="separator">/</span>
+            <a href="#">Learning Hub</a>
+            <span class="separator">/</span>
+            <a href="word-processing.html">Word Processing 1</a>
+            <span class="separator">/</span>
+            <span class="current" id="page-title">Word Processing 2</span>
+        </div>
+        
+        <!-- Module Header -->
+        <div class="section-header" style="margin-bottom: 2rem;">
+            <h1>Word Processing 2 <span style="font-size: 1rem; color: var(--text-muted);">(Advanced)</span></h1>
+            <p>Advanced document creation, formatting, collaboration, and automation techniques</p>
+            <div class="keywords" style="display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; margin-top: 1rem;">
+                <span style="background: var(--bg-secondary); padding: 0.25rem 0.75rem; border-radius: 2rem; font-size: 0.8rem;">Styles</span>
+                <span style="background: var(--bg-secondary); padding: 0.25rem 0.75rem; border-radius: 2rem; font-size: 0.8rem;">Templates</span>
+                <span style="background: var(--bg-secondary); padding: 0.25rem 0.75rem; border-radius: 2rem; font-size: 0.8rem;">Mail Merge</span>
+                <span style="background: var(--bg-secondary); padding: 0.25rem 0.75rem; border-radius: 2rem; font-size: 0.8rem;">Track Changes</span>
+                <span style="background: var(--bg-secondary); padding: 0.25rem 0.75rem; border-radius: 2rem; font-size: 0.8rem;">Macros</span>
+                <span style="background: var(--bg-secondary); padding: 0.25rem 0.75rem; border-radius: 2rem; font-size: 0.8rem;">Table of Contents</span>
+            </div>
+        </div>
+        
+        <!-- Module Layout: 2-column -->
+        <div class="module-wrapper">
+            <!-- Main Content Area -->
+            <div class="module-content">
+                <!-- Learning Outcomes -->
+                <div class="info-box" style="margin-bottom: 2rem;">
+                    <h4><i class="fas fa-bullseye"></i> Learning Outcomes</h4>
+                    <ul>
+                        <li>Apply advanced formatting techniques using styles</li>
+                        <li>Create and use templates for consistent document design</li>
+                        <li>Implement mail merge for bulk communications</li>
+                        <li>Collaborate on documents using track changes and comments</li>
+                        <li>Create automatic tables of contents, indexes, and references</li>
+                        <li>Automate repetitive tasks with macros</li>
+                    </ul>
+                </div>
+                
+                <!-- Section 1: Styles -->
+                <section id="section1" class="section">
+                    <h2><i class="fas fa-paint-brush"></i> Styles and Formatting</h2>
+                    
+                    <p>Styles are one of the most powerful features in word processors. They ensure consistent formatting throughout your document and make global changes easy.</p>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-magic"></i> What are Styles?</h4>
+                        <p>A <strong>style</strong> is a set of formatting attributes (font, size, color, spacing, etc.) saved under a name. When you apply a style, all selected text receives those attributes. Changing the style updates all text using that style.</p>
+                    </div>
+                    
+                    <h3>Types of Styles</h3>
+                    <table class="data-table">
+                        <thead>
+                            <tr><th>Style Type</th><th>Purpose</th><th>Example</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>Heading Styles</strong></td><td>Create document structure for TOC</td><td>Heading 1, Heading 2, Heading 3</td></tr>
+                            <tr><td><strong>Paragraph Styles</strong></td><td>Format entire paragraphs</td><td>Normal, Body Text, Caption</td></tr>
+                            <tr><td><strong>Character Styles</strong></td><td>Format selected text within a paragraph</td><td>Emphasis, Strong, Hyperlink</td></tr>
+                            <tr><td><strong>List Styles</strong></td><td>Format bulleted or numbered lists</td><td>Bulleted List, Numbered List</td></tr>
+                            <tr><td><strong>Table Styles</strong></td><td>Format tables consistently</td><td>Grid Table, List Table</td></tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="style-preview">
+                        <h1>Heading 1 - Document Title</h1>
+                        <p style="color: var(--text-muted); font-size: 0.8rem;">Example of Heading 1 style</p>
+                        <h2>Heading 2 - Major Section</h2>
+                        <p style="color: var(--text-muted); font-size: 0.8rem;">Example of Heading 2 style</p>
+                        <h3>Heading 3 - Subsection</h3>
+                        <p style="color: var(--text-muted); font-size: 0.8rem;">Example of Heading 3 style</p>
+                        <p><strong>Normal paragraph text</strong> - This is how regular body text appears. It has standard font, size, and line spacing.</p>
+                    </div>
+                    
+                    <h3>Creating and Modifying Styles</h3>
+                    <ol class="activity-steps">
+                        <li><strong>Create a new style:</strong> Home tab → Styles group → Create a Style (or use Alt+Ctrl+Shift+S)</li>
+                        <li><strong>Modify a style:</strong> Right-click a style in the Styles gallery → Modify → Change formatting → OK</li>
+                        <li><strong>Update style to match selection:</strong> Select text with desired formatting → Right-click style → Update [Style Name] to Match Selection</li>
+                        <li><strong>Apply a style:</strong> Select text → Click style name in Styles gallery</li>
+                    </ol>
+                    
+                    <div class="activity-box">
+                        <div class="activity-header">
+                            <div class="activity-number">1</div>
+                            <div class="activity-title">Activity: Create and Apply Custom Styles</div>
+                        </div>
+                        <p><strong>Objective:</strong> Create a custom style set for a company report.</p>
+                        <ol class="activity-steps">
+                            <li>Create a new document and type some sample content with headings and paragraphs</li>
+                            <li>Create a new style called "Company Heading" with: Arial, 18pt, Bold, Blue, 24pt spacing after</li>
+                            <li>Create a new style called "Company Body" with: Calibri, 11pt, Dark Gray, 1.15 line spacing</li>
+                            <li>Apply your custom styles to the document</li>
+                            <li>Modify the "Company Heading" style to change the color to Teal and watch all headings update automatically</li>
+                            <li>Save your document as a template for future use</li>
+                        </ol>
+                    </div>
+                </section>
+                
+                <!-- Section 2: Templates -->
+                <section id="section2" class="section">
+                    <h2><i class="fas fa-file-alt"></i> Templates</h2>
+                    
+                    <p>Templates are pre-designed documents that save time and ensure consistency across similar documents like letters, reports, invoices, and newsletters.</p>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-copy"></i> What is a Template?</h4>
+                        <p>A <strong>template</strong> is a document with predefined settings, styles, and content that serves as a starting point for new documents. Templates can contain boilerplate text, logos, headers, footers, and styles.</p>
+                    </div>
+                    
+                    <h3>Creating and Using Templates</h3>
+                    <table class="data-table">
+                        <thead>
+                            <tr><th>Action</th><th>Steps</th><th>File Extension</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>Create Template</strong></td><td>Design document → File → Save As → Browse → Save as type: Word Template (*.dotx)</td><td>.dotx</td></tr>
+                            <tr><td><strong>Use Template</strong></td><td>File → New → Personal → Select your template → Create</td><td>-</td></tr>
+                            <tr><td><strong>Edit Template</strong></td><td>Right-click template file → Open (not New) → Edit → Save</td><td>.dotx</td></tr>
+                            <tr><td><strong>Template with Macros</strong></td><td>Save as type: Word Macro-Enabled Template (*.dotm)</td><td>.dotm</td></tr>
+                        </tbody>
+                    </table>
+                    
+                    <h3>Common Template Types</h3>
+                    <ul class="activity-steps">
+                        <li><strong>Business Letter:</strong> Company letterhead, date, inside address, salutation, closing</li>
+                        <li><strong>Report:</strong> Cover page, table of contents, headings styles, page numbers</li>
+                        <li><strong>Invoice:</strong> Company logo, customer info, line items, totals, payment terms</li>
+                        <li><strong>Resume/CV:</strong> Professional layout with sections for experience, education, skills</li>
+                        <li><strong>Newsletter:</strong> Multi-column layout, placeholders for articles and images</li>
+                    </ul>
+                    
+                    <div class="activity-box">
+                        <div class="activity-header">
+                            <div class="activity-number">2</div>
+                            <div class="activity-title">Activity: Create a Company Letterhead Template</div>
+                        </div>
+                        <p><strong>Objective:</strong> Create a reusable letterhead template for a business.</p>
+                        <ol class="activity-steps">
+                            <li>Create a new document and add a header with company logo, name, address, phone, email</li>
+                            <li>Add a footer with website, tagline, and page number field</li>
+                            <li>Set up margins (usually 1 inch all around)</li>
+                            <li>Create custom styles for letter content</li>
+                            <li>Save as a Word Template (.dotx)</li>
+                            <li>Test by creating a new letter using your template</li>
+                        </ol>
+                    </div>
+                </section>
+                
+                <!-- Section 3: Mail Merge -->
+                <section id="section3" class="section">
+                    <h2><i class="fas fa-envelope-open-text"></i> Mail Merge</h2>
+                    
+                    <p>Mail merge allows you to create personalized letters, emails, labels, or envelopes for multiple recipients using a data source.</p>
+                    
+                    <div class="mail-merge-demo">
+                        <h4><i class="fas fa-database"></i> Mail Merge Components</h4>
+                        <ul>
+                            <li><strong>Main Document:</strong> The template with placeholders (merge fields)</li>
+                            <li><strong>Data Source:</strong> The list of recipient information (Excel spreadsheet, Outlook contacts, Access database)</li>
+                            <li><strong>Merged Document:</strong> The final personalized documents</li>
+                        </ul>
+                    </div>
+                    
+                    <h3>Mail Merge Process</h3>
+                    <ol class="activity-steps">
+                        <li><strong>Prepare Data Source:</strong> Create an Excel file with column headers (Name, Address, City, etc.)</li>
+                        <li><strong>Create Main Document:</strong> Write your letter or email with placeholders</li>
+                        <li><strong>Start Mail Merge:</strong> Mailings tab → Start Mail Merge → Letters (or Email Messages)</li>
+                        <li><strong>Select Recipients:</strong> Use an existing list → Browse → Select your Excel file</li>
+                        <li><strong>Insert Merge Fields:</strong> Place cursor → Insert Merge Field → Choose field (e.g., «Name», «Address»)</li>
+                        <li><strong>Preview Results:</strong> Check that data appears correctly</li>
+                        <li><strong>Complete Merge:</strong> Finish & Merge → Print Documents or Send Email Messages</li>
+                    </ol>
+                    
+                    <div class="mail-merge-demo">
+                        <h4><i class="fas fa-code"></i> Example: Mail Merge Main Document</h4>
+                        <pre>
+«Date»
+
+«Name»
+«Address»
+«City», «State» «Zip»
+
+Dear «Name»,
+
+Thank you for your interest in our products. We have received 
+your inquiry regarding «Product».
+
+Our customer service team will contact you within 2 business days.
+
+Sincerely,
+Customer Service Team
+                        </pre>
+                    </div>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-envelope"></i> Mail Merge for Email</h4>
+                        <p>To send personalized emails via Outlook:</p>
+                        <ul>
+                            <li>Data source must include an Email column</li>
+                            <li>Select "Email Messages" as document type</li>
+                            <li>Set Subject line with or without merge fields</li>
+                            <li>Choose HTML or Plain Text format</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="activity-box">
+                        <div class="activity-header">
+                            <div class="activity-number">3</div>
+                            <div class="activity-title">Activity: Create a Mail Merge Letter</div>
+                        </div>
+                        <p><strong>Objective:</strong> Create personalized letters for 10 customers.</p>
+                        <ol class="activity-steps">
+                            <li>Create an Excel data source with: First Name, Last Name, Address, City, Product Purchased</li>
+                            <li>Create a thank you letter in Word with merge fields for Name, Address, and Product</li>
+                            <li>Connect the data source to your letter</li>
+                            <li>Preview the merged letters and fix any formatting issues</li>
+                            <li>Complete the merge to a new document and save</li>
+                            <li>Create mailing labels for the same recipients</li>
+                        </ol>
+                    </div>
+                </section>
+                
+                <!-- Section 4: Table of Contents and References -->
+                <section id="section4" class="section">
+                    <h2><i class="fas fa-book"></i> Table of Contents and References</h2>
+                    
+                    <p>Professional documents often require automatic tables of contents, indexes, citations, and cross-references.</p>
+                    
+                    <h3>Creating a Table of Contents (TOC)</h3>
+                    <ol class="activity-steps">
+                        <li>Apply Heading Styles (Heading 1, Heading 2, Heading 3) to your headings</li>
+                        <li>Place cursor where you want the TOC (usually after title page)</li>
+                        <li>References tab → Table of Contents → Choose a style</li>
+                        <li>TOC is automatically generated based on heading levels</li>
+                        <li>Update TOC: Click anywhere in TOC → Update Table → Update entire table</li>
+                    </ol>
+                    
+                    <h3>Adding Captions and Cross-References</h3>
+                    <ol class="activity-steps">
+                        <li><strong>Add caption:</strong> Right-click image/table → Insert Caption → Choose label (Figure/Table)</li>
+                        <li><strong>Cross-reference:</strong> References tab → Cross-reference → Reference type (Figure/Table) → Insert</li>
+                        <li><strong>Update fields:</strong> Select all (Ctrl+A) → F9 to update cross-references</li>
+                    </ol>
+                    
+                    <h3>Citations and Bibliography</h3>
+                    <table class="data-table">
+                        <thead>
+                            <tr><th>Feature</th><th>Purpose</th><th>How To</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>Insert Citation</strong></td><td>Add source reference in text</td><td>References → Insert Citation → Add New Source</td></tr>
+                            <tr><td><strong>Manage Sources</strong></td><td>View/edit all citations</td><td>References → Manage Sources</td></tr>
+                            <tr><td><strong>Bibliography</strong></td><td>Generate reference list</td><td>References → Bibliography → Choose style</td></tr>
+                            <tr><td><strong>Style</strong></td><td>APA, MLA, Chicago, etc.</td><td>References → Style dropdown</td></tr>
+                        </tbody>
+                    </table>
+                    
+                    <h3>Footnotes and Endnotes</h3>
+                    <ol class="activity-steps">
+                        <li><strong>Insert Footnote:</strong> References → Insert Footnote (Ctrl+Alt+F)</li>
+                        <li><strong>Insert Endnote:</strong> References → Insert Endnote (Ctrl+Alt+D)</li>
+                        <li>Footnotes appear at bottom of page; endnotes appear at end of document</li>
+                    </ol>
+                    
+                    <div class="activity-box">
+                        <div class="activity-header">
+                            <div class="activity-number">4</div>
+                            <div class="activity-title">Activity: Create a Report with TOC and References</div>
+                        </div>
+                        <p><strong>Objective:</strong> Create a structured report with automatic table of contents.</p>
+                        <ol class="activity-steps">
+                            <li>Write a 3-page report on a topic of your choice</li>
+                            <li>Apply Heading 1 to main sections, Heading 2 to subsections</li>
+                            <li>Insert a Table of Contents at the beginning</li>
+                            <li>Add at least 3 images with captions (Figure 1, Figure 2, etc.)</li>
+                            <li>Insert cross-references to your figures in the text</li>
+                            <li>Add 2-3 footnotes with additional information</li>
+                            <li>Add a bibliography with 3 sources</li>
+                            <li>Update all fields (Ctrl+A → F9)</li>
+                        </ol>
+                    </div>
+                </section>
+                
+                <!-- Section 5: Collaboration Tools -->
+                <section id="section5" class="section">
+                    <h2><i class="fas fa-users"></i> Collaboration Tools</h2>
+                    
+                    <p>Modern word processors include powerful collaboration features that allow multiple people to work on the same document.</p>
+                    
+                    <div class="track-changes-demo">
+                        <h4><i class="fas fa-pen"></i> Track Changes Example</h4>
+                        <p>This is <span class="insertion">an example of inserted text</span> <span class="deletion">and deleted text</span> with track changes enabled. <span class="comment">[Comment: This is a reviewer comment]</span></p>
+                    </div>
+                    
+                    <h3>Track Changes</h3>
+                    <ol class="activity-steps">
+                        <li><strong>Turn on Track Changes:</strong> Review tab → Track Changes (Ctrl+Shift+E)</li>
+                        <li>Edits appear in different colors for each reviewer</li>
+                        <li><strong>Accept/Reject Changes:</strong> Review tab → Accept or Reject buttons</li>
+                        <li><strong>Change user name:</strong> Review tab → Track Changes dropdown → Change User Name</li>
+                    </ol>
+                    
+                    <h3>Comments</h3>
+                    <ol class="activity-steps">
+                        <li><strong>Add comment:</strong> Select text → Review tab → New Comment (Ctrl+Alt+M)</li>
+                        <li><strong>Reply to comment:</strong> Click Reply button below comment</li>
+                        <li><strong>Resolve comment:</strong> Click Resolve button when issue is addressed</li>
+                        <li><strong>Delete comment:</strong> Right-click comment → Delete Comment</li>
+                    </ol>
+                    
+                    <h3>Comparing and Combining Documents</h3>
+                    <table class="data-table">
+                        <thead>
+                            <tr><th>Feature</th><th>Purpose</th><th>Location</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>Compare Documents</strong></td><td>See differences between two versions</td><td>Review → Compare → Compare</td></tr>
+                            <tr><td><strong>Combine Documents</strong></td><td>Merge changes from multiple reviewers</td><td>Review → Compare → Combine</td></tr>
+                            <tr><td><strong>Restrict Editing</strong></td><td>Limit changes to comments only or specific sections</td><td>Review → Restrict Editing</td></tr>
+                        </tbody>
+                    </table>
+                    
+                    <h3>Real-time Co-authoring (Office 365 / Google Docs)</h3>
+                    <ul class="activity-steps">
+                        <li>Save document to OneDrive, SharePoint, or Google Drive</li>
+                        <li>Share with others via Share button</li>
+                        <li>Multiple people can edit simultaneously</li>
+                        <li>See other users' cursors and changes in real-time</li>
+                        <li>Chat with co-authors within the document</li>
+                    </ul>
+                    
+                    <div class="activity-box">
+                        <div class="activity-header">
+                            <div class="activity-number">5</div>
+                            <div class="activity-title">Activity: Collaborative Document Review</div>
+                        </div>
+                        <p><strong>Objective:</strong> Practice using track changes and comments in a peer review.</p>
+                        <ol class="activity-steps">
+                            <li>Write a 1-page document (e.g., proposal, essay, report)</li>
+                            <li>Share your document with a partner (or use cloud sharing)</li>
+                            <li>Turn on Track Changes and review your partner's document</li>
+                            <li>Make at least 5 changes (additions, deletions, formatting)</li>
+                            <li>Add at least 3 comments with suggestions</li>
+                            <li>Review changes on your own document and accept/reject each suggestion</li>
+                            <li>Compare original and final versions using Compare Documents</li>
+                        </ol>
+                    </div>
+                </section>
+                
+                <!-- Section 6: Macros and Automation -->
+                <section id="section6" class="section">
+                    <h2><i class="fas fa-robot"></i> Macros and Automation</h2>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-microchip"></i> What are Macros?</h4>
+                        <p>Macros are recorded sequences of commands that automate repetitive tasks. They use VBA (Visual Basic for Applications) code and can save hours of manual work.</p>
+                    </div>
+                    
+                    <h3>Recording a Macro</h3>
+                    <ol class="activity-steps">
+                        <li><strong>Enable Developer Tab:</strong> File → Options → Customize Ribbon → Check "Developer"</li>
+                        <li><strong>Record Macro:</strong> Developer tab → Record Macro</li>
+                        <li><strong>Name your macro:</strong> No spaces, start with letter (e.g., FormatReport)</li>
+                        <li><strong>Assign shortcut key (optional):</strong> Ctrl + Shift + (letter)</li>
+                        <li><strong>Store macro in:</strong> Normal.dotm (all documents) or Current Document</li>
+                        <li><strong>Perform actions:</strong> Formatting, inserting, deleting, etc.</li>
+                        <li><strong>Stop Recording:</strong> Developer tab → Stop Recording</li>
+                        <li><strong>Run Macro:</strong> Developer tab → Macros → Select macro → Run</li>
+                    </ol>
+                    
+                    <h3>Macro Security</h3>
+                    <div class="info-box">
+                        <h4><i class="fas fa-shield-alt"></i> Important Security Notes</h4>
+                        <ul>
+                            <li>Macros can contain harmful code (viruses)</li>
+                            <li>Only enable macros from trusted sources</li>
+                            <li>Save macro-enabled documents as .docm (not .docx)</li>
+                            <li>Change macro settings: File → Options → Trust Center → Trust Center Settings → Macro Settings</li>
+                            <li>Recommended setting: "Disable all macros with notification"</li>
+                        </ul>
+                    </div>
+                    
+                    <h3>Common Macro Examples</h3>
+                    <ul class="activity-steps">
+                        <li><strong>Format Report:</strong> Apply headers, footers, margins, font styles</li>
+                        <li><strong>Insert Company Signature:</strong> Add closing and signature block</li>
+                        <li><strong>Clean Up Text:</strong> Remove extra spaces, fix capitalization</li>
+                        <li><strong>Export as PDF:</strong> Automatically save document as PDF</li>
+                        <li><strong>Batch Processing:</strong> Apply same formatting to multiple documents</li>
+                    </ul>
+                    
+                    <div class="activity-box">
+                        <div class="activity-header">
+                            <div class="activity-number">6</div>
+                            <div class="activity-title">Activity: Record and Run a Macro</div>
+                        </div>
+                        <p><strong>Objective:</strong> Automate a repetitive formatting task.</p>
+                        <ol class="activity-steps">
+                            <li>Enable the Developer tab in Word</li>
+                            <li>Record a macro named "ReportFormat" with shortcut Ctrl+Shift+R</li>
+                            <li>While recording: set margins to 1 inch, add page numbers, apply Heading 1 style to title, apply Normal style to body</li>
+                            <li>Stop recording</li>
+                            <li>Create a new document and type some sample text</li>
+                            <li>Run your macro using the shortcut key</li>
+                            <li>Observe how the formatting is applied automatically</li>
+                            <li>Save the document as a macro-enabled template (.dotm)</li>
+                        </ol>
+                    </div>
+                </section>
+                
+                <!-- Section 7: Advanced Tables and Graphics -->
+                <section id="section7" class="section">
+                    <h2><i class="fas fa-table"></i> Advanced Tables and Graphics</h2>
+                    
+                    <h3>Advanced Table Features</h3>
+                    <table class="data-table">
+                        <thead>
+                            <tr><th>Feature</th><th>How To</th><th>Use Case</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>Formula in Table</strong></td><td>Layout → Data → Formula</td><td>=SUM(ABOVE), =AVERAGE(LEFT)</td></tr>
+                            <tr><td><strong>Sort Table</strong></td><td>Layout → Data → Sort</td><td>Alphabetize rows by column</td></tr>
+                            <tr><td><strong>Repeat Header Rows</strong></td><td>Layout → Data → Repeat Header Rows</td><td>Multi-page tables</td></tr>
+                            <tr><td><strong>Convert Text to Table</strong></td><td>Insert → Table → Convert Text to Table</td><td>Organize tab-separated data</td></tr>
+                            <tr><td><strong>Table Styles</strong></td><td>Table Design → Table Styles gallery</td><td>Professional look with banded rows</td></tr>
+                        </tbody>
+                    </table>
+                    
+                    <h3>Advanced Graphics</h3>
+                    <ul class="activity-steps">
+                        <li><strong>SmartArt:</strong> Insert → SmartArt → Choose diagram type (process, hierarchy, cycle, matrix)</li>
+                        <li><strong>Charts:</strong> Insert → Chart → Choose chart type (bar, line, pie)</li>
+                        <li><strong>Text Boxes:</strong> Insert → Text Box → Draw Text Box</li>
+                        <li><strong>WordArt:</strong> Insert → WordArt → Choose style</li>
+                        <li><strong>Watermark:</strong> Design → Watermark → Confidential, Draft, Custom</li>
+                        <li><strong>Page Border:</strong> Design → Page Borders → Box, Shadow, 3D, Art</li>
+                    </ul>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-crop"></i> Image Formatting Shortcuts</h4>
+                        <ul>
+                            <li><strong>Crop:</strong> Select image → Picture Format → Crop → Drag handles</li>
+                            <li><strong>Remove Background:</strong> Picture Format → Remove Background</li>
+                            <li><strong>Compress Pictures:</strong> Picture Format → Compress Pictures → Reduce file size</li>
+                            <li><strong>Alt Text:</strong> Right-click image → Edit Alt Text → Add description for accessibility</li>
+                        </ul>
+                    </div>
+                </section>
+                
+                <!-- Section 8: Keyboard Shortcuts Reference -->
+                <section id="section8" class="section">
+                    <h2><i class="fas fa-keyboard"></i> Advanced Keyboard Shortcuts</h2>
+                    
+                    <table class="data-table">
+                        <thead>
+                            <tr><th>Shortcut</th><th>Action</th><th>Shortcut</th><th>Action</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Ctrl+Shift+S</td><td>Apply Styles</td><td>Alt+Ctrl+Shift+S</td><td>Styles Pane</td></tr>
+                            <tr><td>Ctrl+Alt+1</td><td>Apply Heading 1</td><td>Ctrl+Alt+2</td><td>Apply Heading 2</td></tr>
+                            <tr><td>Ctrl+Shift+N</td><td>Apply Normal style</td><td>Ctrl+Space</td><td>Clear character formatting</td></tr>
+                            <tr><td>Alt+Shift+O</td><td>Mark Table of Contents entry</td><td>Alt+Shift+X</td><td>Mark Index entry</td></tr>
+                            <tr><td>Alt+Shift+I</td><td>Mark Citation</td><td>Ctrl+Alt+F</td><td>Insert footnote</td></tr>
+                            <tr><td>Ctrl+Alt+D</td><td>Insert endnote</td><td>F9</td><td>Update fields</td></tr>
+                            <tr><td>Alt+F9</td><td>Toggle field codes</td><td>Ctrl+Shift+E</td><td>Toggle Track Changes</td></tr>
+                            <tr><td>Ctrl+Alt+M</td><td>Insert comment</td><td>Alt+F11</td><td>Open VBA Editor</td></tr>
+                        </tbody>
+                    </table>
+                </section>
+                
+                <!-- Integration Activity -->
+                <section id="integration" class="section">
+                    <h2><i class="fas fa-tasks"></i> Activity of Integration</h2>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-briefcase"></i> Business Scenario: Company Newsletter</h4>
+                        <p>Your company needs a monthly newsletter to communicate with employees. You are responsible for creating a template and automating the process.</p>
+                    </div>
+                    
+                    <div class="activity-box">
+                        <div class="activity-header">
+                            <div class="activity-number">FINAL</div>
+                            <div class="activity-title">Company Newsletter Project</div>
+                        </div>
+                        <p><strong>Requirements:</strong></p>
+                        <ol class="activity-steps">
+                            <li><strong>Template Design:</strong> Create a newsletter template with: company logo, date field, issue number, masthead, footer with page numbers</li>
+                            <li><strong>Styles:</strong> Create custom styles for: Article Title, Subheading, Byline, Body Text, Pull Quote</li>
+                            <li><strong>Layout:</strong> Use columns (2 or 3) for the main content area</li>
+                            <li><strong>Automation:</strong> Record a macro that formats a new article (applies styles, inserts byline, etc.)</li>
+                            <li><strong>Mail Merge:</strong> Create a mailing list and use mail merge to address envelopes for newsletter distribution</li>
+                            <li><strong>Collaboration:</strong> Use track changes and comments to review content with a partner</li>
+                            <li><strong>Final Output:</strong> Save the newsletter as a template (.dotx) and create a sample issue</li>
+                        </ol>
+                    </div>
+                </section>
+                
+                <!-- Quiz Section -->
+                <section id="quiz" class="section">
+                    <h2><i class="fas fa-question-circle"></i> Knowledge Check</h2>
+                    
+                    <div class="quiz-box">
+                        <div class="quiz-question">
+                            1. What is the primary benefit of using styles in a document?
+                        </div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false">They make text look colorful</div>
+                            <div class="quiz-option" data-correct="true">They ensure consistent formatting and allow easy global changes</div>
+                            <div class="quiz-option" data-correct="false">They automatically save the document</div>
+                            <div class="quiz-option" data-correct="false">They print documents faster</div>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                    
+                    <div class="quiz-box">
+                        <div class="quiz-question">
+                            2. Which file extension is used for a Word template (without macros)?
+                        </div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false">.docx</div>
+                            <div class="quiz-option" data-correct="true">.dotx</div>
+                            <div class="quiz-option" data-correct="false">.dotm</div>
+                            <div class="quiz-option" data-correct="false">.docm</div>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                    
+                    <div class="quiz-box">
+                        <div class="quiz-question">
+                            3. What is the purpose of mail merge?
+                        </div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false">To merge multiple documents into one</div>
+                            <div class="quiz-option" data-correct="true">To create personalized letters for multiple recipients</div>
+                            <div class="quiz-option" data-correct="false">To combine email and Word documents</div>
+                            <div class="quiz-option" data-correct="false">To spell-check multiple documents</div>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                    
+                    <div class="quiz-box">
+                        <div class="quiz-question">
+                            4. Which shortcut key toggles Track Changes on and off?
+                        </div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false">Ctrl+Shift+T</div>
+                            <div class="quiz-option" data-correct="true">Ctrl+Shift+E</div>
+                            <div class="quiz-option" data-correct="false">Ctrl+Alt+T</div>
+                            <div class="quiz-option" data-correct="false">Ctrl+Alt+Shift+T</div>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                    
+                    <div class="quiz-box">
+                        <div class="quiz-question">
+                            5. What must be applied to headings before inserting a Table of Contents?
+                        </div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="true">Heading Styles (Heading 1, Heading 2, etc.)</div>
+                            <div class="quiz-option" data-correct="false">Bold formatting</div>
+                            <div class="quiz-option" data-correct="false">A specific font color</div>
+                            <div class="quiz-option" data-correct="false">Manual bookmarks</div>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                    
+                    <div class="quiz-box">
+                        <div class="quiz-question">
+                            6. What is a macro?
+                        </div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false">A type of font style</div>
+                            <div class="quiz-option" data-correct="false">A page layout setting</div>
+                            <div class="quiz-option" data-correct="true">A recorded sequence of commands that automates tasks</div>
+                            <div class="quiz-option" data-correct="false">A spell-check function</div>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                </section>
+                
+                <!-- Download PDF Button -->
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button id="downloadPdf" class="btn btn-outline">
+                        <i class="fas fa-download"></i> Download as PDF
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Sidebar -->
+            <aside class="module-sidebar">
+                <!-- Progress Tracker -->
+                <div class="progress-container">
+                    <h3><i class="fas fa-chart-line"></i> Your Progress</h3>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <div class="progress-text">
+                        <span>0% Complete</span>
+                        <span id="progressPercent">0%</span>
+                    </div>
+                </div>
+                
+                <!-- Sidebar Navigation -->
+                <div class="sidebar-nav">
+                    <h3><i class="fas fa-list"></i> Module Sections</h3>
+                    <ul>
+                        <li><a href="#section1"><i class="fas fa-chevron-right"></i> Styles & Formatting</a></li>
+                        <li><a href="#section2"><i class="fas fa-chevron-right"></i> Templates</a></li>
+                        <li><a href="#section3"><i class="fas fa-chevron-right"></i> Mail Merge</a></li>
+                        <li><a href="#section4"><i class="fas fa-chevron-right"></i> Table of Contents & References</a></li>
+                        <li><a href="#section5"><i class="fas fa-chevron-right"></i> Collaboration Tools</a></li>
+                        <li><a href="#section6"><i class="fas fa-chevron-right"></i> Macros & Automation</a></li>
+                        <li><a href="#section7"><i class="fas fa-chevron-right"></i> Advanced Tables & Graphics</a></li>
+                        <li><a href="#section8"><i class="fas fa-chevron-right"></i> Keyboard Shortcuts</a></li>
+                        <li><a href="#integration"><i class="fas fa-chevron-right"></i> Final Project</a></li>
+                        <li><a href="#quiz"><i class="fas fa-chevron-right"></i> Knowledge Check</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Quick Reference -->
+                <div class="info-box">
+                    <h4><i class="fas fa-magic"></i> Style Shortcuts</h4>
+                    <ul style="margin: 0; font-size: 0.85rem;">
+                        <li><kbd>Ctrl+Alt+1</kbd> - Heading 1</li>
+                        <li><kbd>Ctrl+Alt+2</kbd> - Heading 2</li>
+                        <li><kbd>Ctrl+Alt+3</kbd> - Heading 3</li>
+                        <li><kbd>Ctrl+Shift+N</kbd> - Normal style</li>
+                        <li><kbd>Ctrl+Shift+S</kbd> - Apply Styles</li>
+                    </ul>
+                </div>
+                
+                <!-- Mail Merge Checklist -->
+                <div class="info-box">
+                    <h4><i class="fas fa-envelope"></i> Mail Merge Checklist</h4>
+                    <ul style="margin: 0; font-size: 0.85rem;">
+                        <li>✓ Data source ready (Excel file with headers)</li>
+                        <li>✓ Main document created</li>
+                        <li>✓ Merge fields inserted</li>
+                        <li>✓ Preview checked</li>
+                        <li>✓ Finish & Merge</li>
+                    </ul>
+                </div>
+                
+                <!-- Assessment Info -->
+                <div class="info-box">
+                    <h4><i class="fas fa-clipboard-list"></i> Assessment</h4>
+                    <ul style="margin: 0;">
+                        <li>6 Hands-on Activities</li>
+                        <li>6 Quiz Questions</li>
+                        <li>1 Final Project</li>
+                        <li>Estimated Time: 8-10 hours</li>
+                        <li>Prerequisite: Word Processing 1</li>
+                    </ul>
+                </div>
+            </aside>
+        </div>
+    </div>
+</main>
+
+<!-- Footer -->
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>ICT Learning Hub</h3>
+                <p>Empowering students with digital skills for the future.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="word-processing.html">Word Processing 1</a></li>
+                    <li><a href="word-2.html">Word Processing 2</a></li>
+                    <li><a href="presentations.html">Presentations</a></li>
+                </ul>
+            </div>
+            <div class="footer-modules">
+                <h4>More Modules</h4>
+                <ul>
+                    <li><a href="spreadsheets-1.html">Spreadsheets</a></li>
+                    <li><a href="computer-hardware.html">Computer Hardware</a></li>
+                    <li><a href="shorts2.html">Shortcut Quiz</a></li>
+                </ul>
+            </div>
+            <div class="footer-social">
+                <h4>Connect</h4>
+                <div class="social-icons">
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Yiga Gerald. All rights reserved. | ICT Teacher | Digital Learning Creator</p>
+        </div>
+    </div>
+</footer>
+
+<script src="js/modules.js"></script>
+</body>
+</html>

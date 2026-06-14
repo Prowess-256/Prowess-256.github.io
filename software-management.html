@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Software Management | ICT Learning Module</title>
+    <meta name="description" content="Learn essential skills for installing, updating, and maintaining software applications on your computer">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/navigation.css">
+    <link rel="stylesheet" href="styles/components.css">
+    
+    <!-- Module-specific theme (Software Management - Orange/Brown) -->
+    <style>
+        :root {
+            --theme-primary: #ea580c;
+            --theme-primary-light: #f97316;
+            --theme-primary-dark: #c2410c;
+            --theme-secondary: #eab308;
+        }
+        
+        .section h2 {
+            color: var(--theme-primary);
+        }
+        
+        .section h2::after {
+            background: var(--theme-primary);
+        }
+        
+        /* Software type cards */
+        .software-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .software-card {
+            background: var(--bg-secondary);
+            border-radius: var(--radius-lg);
+            padding: 1rem;
+            text-align: center;
+            transition: all var(--transition-normal);
+            border: 1px solid var(--border-light);
+        }
+        
+        .software-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--theme-primary);
+        }
+        
+        .software-card i {
+            font-size: 2rem;
+            color: var(--theme-primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .software-card h4 {
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+        }
+        
+        .software-card p {
+            font-size: 0.75rem;
+            margin-bottom: 0;
+            color: var(--text-muted);
+        }
+        
+        /* Installation steps */
+        .install-step {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding: 0.75rem;
+            background: var(--bg-secondary);
+            border-radius: var(--radius-lg);
+            align-items: flex-start;
+        }
+        
+        .install-number {
+            width: 32px;
+            height: 32px;
+            background: var(--theme-primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        
+        /* Update badges */
+        .update-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: var(--radius-full);
+            font-size: 0.7rem;
+            font-weight: 600;
+            margin-right: 0.5rem;
+        }
+        
+        .update-critical {
+            background: #dc2626;
+            color: white;
+        }
+        
+        .update-security {
+            background: #f59e0b;
+            color: white;
+        }
+        
+        .update-feature {
+            background: #10b981;
+            color: white;
+        }
+        
+        /* Version table */
+        .version-table {
+            background: var(--bg-secondary);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navigation Placeholder -->
+<div id="global-nav-placeholder"></div>
+
+<main>
+    <div class="container">
+        <!-- Breadcrumb -->
+        <div class="breadcrumb">
+            <a href="index.html">Home</a>
+            <span class="separator">/</span>
+            <a href="#">Learning Hub</a>
+            <span class="separator">/</span>
+            <span class="current" id="page-title">Software Management</span>
+        </div>
+        
+        <!-- Module Header -->
+        <div class="section-header" style="margin-bottom: 2rem;">
+            <h1>Software Management</h1>
+            <p>Essential skills for installing, updating, and maintaining software applications on your computer</p>
+            <div class="keywords" style="display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; margin-top: 1rem;">
+                <span style="background: var(--bg-secondary); padding: 0.25rem 0.75rem; border-radius: 2rem; font-size: 0.8rem;">Installation</span>
+                <span style="background: var(--bg-secondary); padding: 0.25rem 0.75rem; border-radius: 2rem; font-size: 0.8rem;">Updates</span>
+                <span style="background: var(--bg-secondary); padding: 0.25rem 0.75rem; border-radius: 2rem; font-size: 0.8rem;">Uninstallation</span>
+                <span style="background: var(--bg-secondary); padding: 0.25rem 0.75rem; border-radius: 2rem; font-size: 0.8rem;">Licensing</span>
+                <span style="background: var(--bg-secondary); padding: 0.25rem 0.75rem; border-radius: 2rem; font-size: 0.8rem;">Troubleshooting</span>
+                <span style="background: var(--bg-secondary); padding: 0.25rem 0.75rem; border-radius: 2rem; font-size: 0.8rem;">Security</span>
+            </div>
+        </div>
+        
+        <!-- Module Layout: 2-column -->
+        <div class="module-wrapper">
+            <!-- Main Content Area -->
+            <div class="module-content">
+                <!-- Learning Outcomes -->
+                <div class="info-box" style="margin-bottom: 2rem;">
+                    <h4><i class="fas fa-bullseye"></i> Learning Outcomes</h4>
+                    <ul>
+                        <li>Understand different software types and their purposes</li>
+                        <li>Safely install and uninstall software applications</li>
+                        <li>Manage software updates and security patches</li>
+                        <li>Understand software licensing and compliance</li>
+                        <li>Troubleshoot common software installation issues</li>
+                        <li>Maintain optimal system performance</li>
+                    </ul>
+                </div>
+                
+                <!-- Section 1: Types of Software -->
+                <section id="section1" class="section">
+                    <h2><i class="fas fa-cube"></i> Types of Software</h2>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-info-circle"></i> What is Software?</h4>
+                        <p><strong>Software</strong> refers to the programs, instructions, and data that tell the computer hardware what to do. Unlike hardware (physical components), software is intangible and can be copied, modified, and distributed.</p>
+                    </div>
+                    
+                    <h3>Software Categories</h3>
+                    <div class="software-grid">
+                        <div class="software-card">
+                            <i class="fas fa-desktop"></i>
+                            <h4>Operating Systems</h4>
+                            <p>Windows, macOS, Linux, Android, iOS</p>
+                        </div>
+                        <div class="software-card">
+                            <i class="fas fa-file-alt"></i>
+                            <h4>Applications</h4>
+                            <p>Word processors, spreadsheets, browsers</p>
+                        </div>
+                        <div class="software-card">
+                            <i class="fas fa-tools"></i>
+                            <h4>Utilities</h4>
+                            <p>Antivirus, disk cleaners, backup tools</p>
+                        </div>
+                        <div class="software-card">
+                            <i class="fas fa-microchip"></i>
+                            <h4>Drivers</h4>
+                            <p>Printer drivers, graphics drivers, sound drivers</p>
+                        </div>
+                        <div class="software-card">
+                            <i class="fas fa-code"></i>
+                            <h4>Programming Tools</h4>
+                            <p>Compilers, IDEs, debuggers</p>
+                        </div>
+                        <div class="software-card">
+                            <i class="fas fa-gamepad"></i>
+                            <h4>Entertainment</h4>
+                            <p>Games, media players, streaming apps</p>
+                        </div>
+                    </div>
+                    
+                    <h3>Software by Licensing Model</h3>
+                    <table class="data-table">
+                        <thead>
+                            <tr><th>Type</th><th>Description</th><th>Examples</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Freeware</strong></span>
+                                <td>Free to use, may have restrictions
+                                <td>Adobe Reader, Skype, Zoom
+                            </tr>
+                            <tr>
+                                <td><strong>Open Source</strong></span>
+                                <td>Free to use, modify, and distribute
+                                <td>Linux, Firefox, VLC, GIMP
+                            </tr>
+                            <tr>
+                                <td><strong>Shareware/Trial</strong></span>
+                                <td>Free for limited time or features
+                                <td>WinRAR, many games
+                            </tr>
+                            <tr>
+                                <td><strong>Commercial</strong></span>
+                                <td>Requires purchase/license fee
+                                <td>Microsoft Office, Adobe Photoshop
+                            </tr>
+                            <tr>
+                                <td><strong>SaaS (Cloud)</strong></span>
+                                <td>Subscription-based, accessed online
+                                <td>Google Workspace, Office 365, Netflix
+                            </tr>
+                            <tr>
+                                <td><strong>Freemium</strong></span>
+                                <td>Free base version, paid premium features
+                                <td>Spotify, Dropbox, Canva
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="activity-box">
+                        <div class="activity-header">
+                            <div class="activity-number">1</div>
+                            <div class="activity-title">Activity: Software Categorization</div>
+                        </div>
+                        <p><strong>Instructions:</strong> Identify and categorize software on your computer.</p>
+                        <ol class="activity-steps">
+                            <li>Open your computer's Start menu or Applications folder</li>
+                            <li>List at least 15 installed programs</li>
+                            <li>Classify each as: OS, Application, Utility, or Driver</li>
+                            <li>For each application, note its licensing type (Freeware, Commercial, Open Source, etc.)</li>
+                            <li>Create a table showing your findings</li>
+                            <li>Which category has the most software on your computer?</li>
+                        </ol>
+                    </div>
+                </section>
+                
+                <!-- Section 2: Software Installation -->
+                <section id="section2" class="section">
+                    <h2><i class="fas fa-download"></i> Software Installation</h2>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-shield-alt"></i> Safe Installation Practices</h4>
+                        <ul>
+                            <li>Download only from <strong>official websites</strong> or trusted app stores</li>
+                            <li>Check <strong>user reviews and ratings</strong> before downloading</li>
+                            <li>Read <strong>permissions requested</strong> during installation</li>
+                            <li><strong>Avoid bundled software</strong> (opt-out of extra programs)</li>
+                            <li>Create a <strong>system restore point</strong> before major installations</li>
+                            <li>Scan downloaded files with <strong>antivirus software</strong></li>
+                        </ul>
+                    </div>
+                    
+                    <h3>Installation Methods</h3>
+                    <div class="install-step">
+                        <div class="install-number">1</div>
+                        <div class="process-content">
+                            <h4>Download the Installer</h4>
+                            <p>Get the installation file (.exe, .msi, .dmg, .appimage) from the official source</p>
+                        </div>
+                    </div>
+                    
+                    <div class="install-step">
+                        <div class="install-number">2</div>
+                        <div class="process-content">
+                            <h4>Run the Installer</h4>
+                            <p>Double-click the downloaded file (may need administrator permission)</p>
+                        </div>
+                    </div>
+                    
+                    <div class="install-step">
+                        <div class="install-number">3</div>
+                        <div class="process-content">
+                            <h4>Follow Setup Wizard</h4>
+                            <p>Accept license agreement, choose installation location, select components</p>
+                        </div>
+                    </div>
+                    
+                    <div class="install-step">
+                        <div class="install-number">4</div>
+                        <div class="process-content">
+                            <h4>Watch for "Bundled Offers"</h4>
+                            <p>Uncheck optional software offers (toolbars, browser extensions, etc.)</p>
+                        </div>
+                    </div>
+                    
+                    <div class="install-step">
+                        <div class="install-number">5</div>
+                        <div class="process-content">
+                            <h4>Complete Installation</h4>
+                            <p>Click Finish/Close, restart if prompted</p>
+                        </div>
+                    </div>
+                    
+                    <h3>Modern Installation Methods</h3>
+                    <table class="data-table">
+                        <thead>
+                            <tr><th>Method</th><th>Platform</th><th>Description</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Microsoft Store</strong>
+                                <td>Windows
+                                <td>Centralized app store, automatic updates
+                            </tr>
+                            <tr>
+                                <td><strong>App Store</strong>
+                                <td>macOS/iOS
+                                <td>Curated apps, secure installation
+                            </tr>
+                            <tr>
+                                <td><strong>Google Play</strong>
+                                <td>Android
+                                <td>Largest mobile app store
+                            </tr>
+                            </tr>
+                                <td><strong>Package Managers</strong>
+                                <td>Linux
+                                <td>apt, yum, brew - command-line installation
+                            </tr>
+                            <tr>
+                                <td><strong>Chocolatey/Winget</strong>
+                                <td>Windows
+                                <td>Command-line package managers for Windows
+                            </tr>
+                            <tr>
+                                <td><strong>Portable Apps</strong>
+                                <td>All
+                                <td>No installation required, run from USB
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="activity-box">
+                        <div class="activity-header">
+                            <div class="activity-number">2</div>
+                            <div class="activity-title">Activity: Install a Free Application</div>
+                        </div>
+                        <p><strong>Objective:</strong> Practice safe software installation procedures.</p>
+                        <ol class="activity-steps">
+                            <li>Choose a reputable free application (VLC Media Player, Firefox, 7-Zip, or GIMP)</li>
+                            <li>Visit the official website (not a third-party download site)</li>
+                            <li>Download the correct version for your operating system</li>
+                            <li>During installation, carefully read each screen</li>
+                            <li>Decline any bundled software offers (toolbars, browser extensions)</li>
+                            <li>Complete the installation and test the application</li>
+                            <li>Document each step with screenshots or notes</li>
+                            <li>Write a summary of your experience</li>
+                        </ol>
+                    </div>
+                </section>
+                
+                <!-- Section 3: Software Updates -->
+                <section id="section3" class="section">
+                    <h2><i class="fas fa-sync-alt"></i> Software Updates</h2>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-lightbulb"></i> Why Updates Matter</h4>
+                        <p>Regular updates fix bugs, improve performance, and patch security vulnerabilities. Outdated software is a major security risk.</p>
+                    </div>
+                    
+                    <h3>Types of Updates</h3>
+                    <table class="data-table">
+                        <thead>
+                            <tr><th>Type</th><th>Frequency</th><th>Importance</th><th>Description</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span class="update-badge update-critical">Critical</span>
+                                <td>As needed
+                                <td><span style="color: #dc2626;">HIGH</span>
+                                <td>Fixes urgent security vulnerabilities
+                            </tr>
+                            <tr>
+                                <td><span class="update-badge update-security">Security</span>
+                                <td>Monthly/Quarterly
+                                <td><span style="color: #f59e0b;">HIGH</span>
+                                <td>Patches security flaws
+                            </tr>
+                            <tr>
+                                <td><span class="update-badge update-feature">Feature</span>
+                                <td>Yearly
+                                <td><span style="color: #10b981;">MEDIUM</span>
+                                <td>Adds new functionality
+                            </tr>
+                            <tr>
+                                <td><span class="update-badge" style="background: #6b7280; color: white;">Bug Fix</span>
+                                <td>Monthly/Quarterly
+                                <td><span style="color: #6b7280;">MEDIUM</span>
+                                <td>Fixes non-security issues
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <h3>Update Best Practices</h3>
+                    <ul class="security-tips">
+                        <li><i class="fas fa-toggle-on"></i> <strong>Enable automatic updates</strong> for operating system and critical software</li>
+                        <li><i class="fas fa-moon"></i> <strong>Schedule updates</strong> during non-working hours to avoid disruption</li>
+                        <li><i class="fas fa-database"></i> <strong>Backup important data</strong> before major updates</li>
+                        <li><i class="fas fa-power-off"></i> <strong>Restart when prompted</strong> - many updates need reboot to complete</li>
+                        <li><i class="fas fa-list"></i> <strong>Keep an inventory</strong> of installed software to check for updates</li>
+                        <li><i class="fas fa-clock"></i> <strong>Don't postpone indefinitely</strong> - update within a reasonable timeframe</li>
+                    </ul>
+                    
+                    <h3>Update Channels</h3>
+                    <div class="software-grid">
+                        <div class="software-card">
+                            <i class="fab fa-windows"></i>
+                            <h4>Windows Update</h4>
+                            <p>OS and Microsoft software</p>
+                        </div>
+                        <div class="software-card">
+                            <i class="fab fa-apple"></i>
+                            <h4>macOS Software Update</h4>
+                            <p>Apple ecosystem updates</p>
+                        </div>
+                        <div class="software-card">
+                            <i class="fab fa-android"></i>
+                            <h4>Google Play / App Store</h4>
+                            <p>Mobile app updates</p>
+                        </div>
+                        <div class="software-card">
+                            <i class="fas fa-terminal"></i>
+                            <h4>Package Manager (Linux)</h4>
+                            <p>sudo apt update & upgrade</p>
+                        </div>
+                    </div>
+                    
+                    <div class="activity-box">
+                        <div class="activity-header">
+                            <div class="activity-number">3</div>
+                            <div class="activity-title">Activity: Check and Apply Updates</div>
+                        </div>
+                        <p><strong>Objective:</strong> Learn to check for and apply software updates.</p>
+                        <ol class="activity-steps">
+                            <li>Check for Windows/macOS operating system updates</li>
+                            <li>Check for updates in 5 different installed applications</li>
+                            <li>Note which updates are security updates vs feature updates</li>
+                            <li>Apply pending updates (with teacher permission)</li>
+                            <li>Create an update schedule for a computer</li>
+                            <li>Document the update process you followed</li>
+                        </ol>
+                    </div>
+                </section>
+                
+                <!-- Section 4: Software Uninstallation -->
+                <section id="section4" class="section">
+                    <h2><i class="fas fa-trash-alt"></i> Software Uninstallation</h2>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-exclamation-triangle"></i> Why Uninstall Properly?</h4>
+                        <p>Simply deleting a program's folder leaves behind files, registry entries, and settings that waste disk space and can cause conflicts. Use proper uninstallation methods.</p>
+                    </div>
+                    
+                    <h3>Uninstall Methods by Platform</h3>
+                    <table class="data-table">
+                        <thead>
+                            <tr><th>Platform</th><th>Method</th><th>Steps</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Windows</strong>
+                                <td>Control Panel / Settings
+                                <td>Settings → Apps → Apps & features → Select → Uninstall
+                            </tr>
+                            <tr>
+                                <td><strong>Windows</strong>
+                                <td>Third-party uninstaller
+                                <td>Revo Uninstaller, Geek Uninstaller (removes leftover files)
+                            </tr>
+                            <tr>
+                                <td><strong>macOS</strong>
+                                <td>Drag to Trash
+                                <td>Drag app from Applications folder to Trash
+                            </tr>
+                            <tr>
+                                <td><strong>macOS</strong>
+                                <td>App Cleaner
+                                <td>Removes associated files and preferences
+                            </tr>
+                            <tr>
+                                <td><strong>Linux</strong>
+                                <td>Package Manager
+                                <td>sudo apt remove [package] or sudo snap remove [package]
+                            </tr>
+                            </tr>
+                                <td><strong>Mobile</strong>
+                                <td>App Store / Settings
+                                <td>Long-press app → Uninstall, or use Settings
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="activity-box">
+                        <div class="activity-header">
+                            <div class="activity-number">4</div>
+                            <div class="activity-title">Activity: Uninstall Unused Software</div>
+                        </div>
+                        <p><strong>Objective:</strong> Safely remove unused programs from a computer.</p>
+                        <ol class="activity-steps">
+                            <li>Open the list of installed programs on your computer</li>
+                            <li>Identify software you never use or recognize</li>
+                            <li>Research any unknown software before uninstalling</li>
+                            <li>Uninstall at least 3 unused programs properly</li>
+                            <li>Note any leftover files or folders after uninstallation</li>
+                            <li>Empty the Recycle Bin after uninstalling</li>
+                            <li>Document which programs you removed and why</li>
+                        </ol>
+                    </div>
+                </section>
+                
+                <!-- Section 5: Software Licensing and Compliance -->
+                <section id="section5" class="section">
+                    <h2><i class="fas fa-gavel"></i> Software Licensing and Compliance</h2>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-balance-scale"></i> Why Licensing Matters</h4>
+                        <p>Software is intellectual property. Using unlicensed software is illegal, exposes you to security risks, and denies creators fair compensation for their work.</p>
+                    </div>
+                    
+                    <h3>Common License Types</h3>
+                    <table class="data-table">
+                        <thead>
+                            <td><th>License</th><th>Permitted</th><th>Restrictions</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Perpetual</strong>
+                                <td>One-time purchase, use indefinitely
+                                <td>No updates after support period
+                            </tr>
+                            <tr>
+                                <td><strong>Subscription</strong>
+                                <td>Use while paying monthly/yearly
+                                <td>Stops working if subscription lapses
+                            </tr>
+                            <tr>
+                                <td><strong>Volume License</strong>
+                                <td>Install on multiple computers (organization)
+                                <td>Limited to organization employees
+                            </tr>
+                            <tr>
+                                <td><strong>OEM License</strong>
+                                <td>Comes with new computer
+                                 .=Tied to specific hardware, non-transferable
+                            </tr>
+                            <tr>
+                                <td><strong>Educational License</strong>
+                                <td>Free/discounted for students/teachers
+                                <td>Cannot be used commercially
+                            </tr>
+                            <tr>
+                                <td><strong>Open Source License</strong>
+                                <td>Use, modify, distribute freely
+                                <td>May require sharing source code (GPL)
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <h3>License Compliance Checklist</h3>
+                    <ul class="security-tips">
+                        <li><i class="fas fa-clipboard-list"></i> <strong>Keep records</strong> of all software licenses and purchase dates</li>
+                        <li><i class="fas fa-chart-line"></i> <strong>Track installations</strong> - ensure you don't exceed license limits</li>
+                        <li><i class="fas fa-calendar-alt"></i> <strong>Monitor renewals</strong> for subscription software</li>
+                        <li><i class="fas fa-exchange-alt"></i> <strong>Manage transfers</strong> - when computers are decommissioned, transfer licenses or uninstall</li>
+                        <li><i class="fas fa-file-invoice"></i> <strong>Use license management tools</strong> for larger organizations</li>
+                        <li><i class="fas fa-gavel"></i> <strong>Conduct regular audits</strong> to ensure compliance</li>
+                    </ul>
+                    
+                    <div class="activity-box">
+                        <div class="activity-header">
+                            <div class="activity-number">5</div>
+                            <div class="activity-title">Activity: Software License Audit</div>
+                        </div>
+                        <p><strong>Instructions:</strong> Conduct a software license audit for a sample organization.</p>
+                        <ol class="activity-steps">
+                            <li>Create a spreadsheet listing all installed software on a computer</li>
+                            <li>For each program, research the license type</li>
+                            <li>Note any software that may be unlicensed or using expired trials</li>
+                            <li>Calculate the total cost if all commercial software were properly licensed</li>
+                            <li>Recommend open source alternatives for any expensive commercial software</li>
+                            <li>Create a license compliance report</li>
+                        </ol>
+                    </div>
+                </section>
+                
+                <!-- Section 6: Troubleshooting Software Issues -->
+                <section id="section6" class="section">
+                    <h2><i class="fas fa-tools"></i> Troubleshooting Software Issues</h2>
+                    
+                    <h3>Common Problems and Solutions</h3>
+                    <table class="data-table">
+                        <thead>
+                            <tr><th>Problem</th><th>Possible Causes</th><th>Solutions</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Software won't install</strong>
+                                <td>Insufficient permissions, disk space, incompatible OS, missing dependencies
+                                <td>Run as administrator, free up space, check system requirements, install prerequisites
+                            </tr>
+                            <tr>
+                                <td><strong>Program crashes frequently</strong>
+                                <td>Corrupted files, conflicts with other software, insufficient RAM
+                                <td>Reinstall, check for updates, close other programs, check Event Viewer
+                            </tr>
+                            <tr>
+                                <td><strong>Slow performance</strong>
+                                <td>Too many programs running, insufficient RAM, malware, fragmented hard drive
+                                <td>Close unused programs, add more RAM, run antivirus, defragment HDD
+                            </tr>
+                            <tr>
+                                <td><strong>Can't uninstall software</strong>
+                                <td>Corrupted uninstaller, files in use, insufficient permissions
+                                <td>Use uninstall tool (Revo, Geek), restart and try again, safe mode
+                            </tr>
+                            <tr>
+                                <td><strong>"DLL missing" errors</strong>
+                                <td>Required DLL file missing or corrupted
+                                <td>Reinstall program, download missing DLL (carefully), run SFC scan
+                            </tr>
+                            <tr>
+                                <td><strong>Compatibility issues</strong>
+                                <td>Program not designed for current OS
+                                <td>Run in compatibility mode, use virtual machine, find alternative
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <h3>Troubleshooting Tools</h3>
+                    <div class="software-grid">
+                        <div class="software-card">
+                            <i class="fas fa-tachometer-alt"></i>
+                            <h4>Task Manager</h4>
+                            <p>Monitor processes, performance, startup programs</p>
+                        </div>
+                        <div class="software-card">
+                            <i class="fas fa-chart-line"></i>
+                            <h4>Resource Monitor</h4>
+                            <p>Detailed CPU, memory, disk, network usage</p>
+                        </div>
+                        <div class="software-card">
+                            <i class="fas fa-terminal"></i>
+                            <h4>Event Viewer</h4>
+                            <p>View system and application error logs</p>
+                        </div>
+                        <div class="software-card">
+                            <i class="fas fa-sync-alt"></i>
+                            <h4>System Restore</h4>
+                            <p>Revert system state to previous point</p>
+                        </div>
+                    </div>
+                    
+                    <div class="activity-box">
+                        <div class="activity-header">
+                            <div class="activity-number">6</div>
+                            <div class="activity-title">Activity: Troubleshooting Simulation</div>
+                        </div>
+                        <p><strong>Instructions:</strong> Work through simulated software problems and find solutions.</p>
+                        <ol class="activity-steps">
+                            <li>Scenario: A program won't install because it says "Another installation is in progress" - How do you fix it?</li>
+                            <li>Scenario: Your web browser keeps freezing after opening 3+ tabs - What do you check?</li>
+                            <li>Scenario: You get a "Missing MSVCP140.dll" error - What does this mean and how do you fix it?</li>
+                            <li>Scenario: An old game won't run on Windows 11 - What are your options?</li>
+                            <li>Create a troubleshooting flowchart for a common software problem</li>
+                        </ol>
+                    </div>
+                </section>
+                
+                <!-- Section 7: Software Security -->
+                <section id="section7" class="section">
+                    <h2><i class="fas fa-shield-alt"></i> Software Security</h2>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-lock"></i> Essential Security Software</h4>
+                        <ul>
+                            <li><strong>Antivirus/Antimalware:</strong> Detects and removes malicious software</li>
+                            <li><strong>Firewall:</strong> Controls network traffic to/from your computer</li>
+                            <li><strong>Password Manager:</strong> Securely stores login credentials</li>
+                            <li><strong>Backup Software:</strong> Creates copies of important data</li>
+                            <li><strong>VPN Client:</strong> Encrypts internet connection for privacy</li>
+                        </ul>
+                    </div>
+                    
+                    <h3>Security Software Recommendations</h3>
+                    <table class="data-table">
+                        <thead>
+                            <tr><th>Software</th><th>Type</th><th>Free Option</th><th>Platform</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Windows Defender</span>
+                                <td>Antivirus + Firewall</span>
+                                <td>Built-in</span>
+                                <td>Windows</span>
+                            </tr>
+                            <tr>
+                                <td>Malwarebytes</span>
+                                <td>Anti-malware</span>
+                                <td>Yes (basic)</span>
+                                <td>Windows, Mac, Android, iOS</span>
+                            </tr>
+                            <tr>
+                                <td>Bitwarden</span>
+                                <td>Password Manager</span>
+                                <td>Yes</span>
+                                <td>All platforms</span>
+                            </tr>
+                            <tr>
+                                <td>ProtonVPN</span>
+                                <td>VPN</span>
+                                <td>Yes (limited)</span>
+                                <td>All platforms</span>
+                            </tr>
+                            <tr>
+                                <td>VeraCrypt</span>
+                                <td>Encryption</span>
+                                <td>Yes</span>
+                                <td>Windows, Mac, Linux</span>
+                            </tr>
+                            <tr>
+                                <td>Macrium Reflect Free</span>
+                                <td>Backup</span>
+                                <td>Yes</span>
+                                <td>Windows</span>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="activity-box">
+                        <div class="activity-header">
+                            <div class="activity-number">7</div>
+                            <div class="activity-title">Activity: Security Software Assessment</div>
+                        </div>
+                        <p><strong>Instructions:</strong> Evaluate the security software on your computer.</p>
+                        <ol class="activity-steps">
+                            <li>Check if antivirus software is installed and up-to-date</li>
+                            <li>Verify the Windows Firewall (or other firewall) is enabled</li>
+                            <li>Check if you have backup software configured</li>
+                            <li>Run a security scan on your computer</li>
+                            <li>Document any security gaps you find</li>
+                            <li>Create an action plan to address security issues</li>
+                        </ol>
+                    </div>
+                </section>
+                
+                <!-- Integration Activity -->
+                <section id="integration" class="section">
+                    <h2><i class="fas fa-tasks"></i> Activity of Integration</h2>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-building"></i> Business Scenario: IT Support for a Small Office</h4>
+                        <p>A small office with 20 computers needs help managing their software. They have a mix of licensed and unlicensed software, outdated systems, and frequent computer problems.</p>
+                    </div>
+                    
+                    <div class="activity-box">
+                        <div class="activity-header">
+                            <div class="activity-number">FINAL</div>
+                            <div class="activity-title">IT Software Management Plan</div>
+                        </div>
+                        <p><strong>Requirements:</strong></p>
+                        <ol class="activity-steps">
+                            <li><strong>Inventory Audit:</strong> Create a template for tracking all software on each computer (name, version, license type, installation date)</li>
+                            <li><strong>License Compliance:</strong> Analyze sample license data and identify compliance issues</li>
+                            <li><strong>Update Policy:</strong> Create an update schedule and policy for the organization</li>
+                            <li><strong>Installation Standard:</strong> Develop standard operating procedures for installing new software (including security checks)</li>
+                            <li><strong>Troubleshooting Guide:</strong> Create a troubleshooting guide for common software issues (10 common problems with solutions)</li>
+                            <li><strong>Security Recommendations:</strong> Recommend essential security software for all computers</li>
+                            <li><strong>Budget Analysis:</strong> Estimate the cost of proper software licensing and security software for 20 computers</li>
+                            <li><strong>Training Plan:</strong> Create a training outline to teach employees about software management best practices</li>
+                        </ol>
+                    </div>
+                </section>
+                
+                <!-- Quiz Section -->
+                <section id="quiz" class="section">
+                    <h2><i class="fas fa-question-circle"></i> Knowledge Check</h2>
+                    
+                    <div class="quiz-box">
+                        <div class="quiz-question">
+                            1. What is the safest way to download software?
+                        </div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false">From any website that offers it for free</div>
+                            <div class="quiz-option" data-correct="true">From the official developer website or trusted app store</div>
+                            <div class="quiz-option" data-correct="false">From torrent sites</div>
+                            <div class="quiz-option" data-correct="false">From pop-up ads</div>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                    
+                    <div class="quiz-box">
+                        <div class="quiz-question">
+                            2. Which type of software update is most critical to apply immediately?
+                        </div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false">Feature update</div>
+                            <div class="quiz-option" data-correct="true">Security patch</div>
+                            <div class="quiz-option" data-correct="false">Bug fix</div>
+                            <div class="quiz-option" data-correct="false">UI improvement</div>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                    
+                    <div class="quiz-box">
+                        <div class="quiz-question">
+                            3. What does "freeware" mean?
+                        </div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="true">Software that is free to use</div>
+                            <div class="quiz-option" data-correct="false">Software whose source code is available</div>
+                            <div class="quiz-option" data-correct="false">Software that is only free for 30 days</div>
+                            <div class="quiz-option" data-correct="false">Software that requires payment after trial</div>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                    
+                    <div class="quiz-box">
+                        <div class="quiz-question">
+                            4. What should you do before installing major software?
+                        </div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false">Delete all files</div>
+                            <div class="quiz-option" data-correct="true">Create a system restore point</div>
+                            <div class="quiz-option" data-correct="false">Disable antivirus</div>
+                            <div class="quiz-option" data-correct="false">Format the hard drive</div>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                    
+                    <div class="quiz-box">
+                        <div class="quiz-question">
+                            5. Which of these is NOT a proper uninstallation method?
+                        </div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false">Using Control Panel / Settings</div>
+                            <div class="quiz-option" data-correct="false">Using a third-party uninstaller</div>
+                            <div class="quiz-option" data-correct="true">Deleting the program folder only</div>
+                            <div class="quiz-option" data-correct="false">Using the program's own uninstaller</div>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                    
+                    <div class="quiz-box">
+                        <div class="quiz-question">
+                            6. What is open source software?
+                        </div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false">Software that is always free</div>
+                            <div class="quiz-option" data-correct="true">Software with source code available to view, modify, and distribute</div>
+                            <div class="quiz-option" data-correct="false">Software that only works online</div>
+                            <div class="quiz-option" data-correct="false">Software without any documentation</div>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                </section>
+                
+                <!-- Download PDF Button -->
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button id="downloadPdf" class="btn btn-outline">
+                        <i class="fas fa-download"></i> Download as PDF
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Sidebar -->
+            <aside class="module-sidebar">
+                <!-- Progress Tracker -->
+                <div class="progress-container">
+                    <h3><i class="fas fa-chart-line"></i> Your Progress</h3>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <div class="progress-text">
+                        <span>0% Complete</span>
+                        <span id="progressPercent">0%</span>
+                    </div>
+                </div>
+                
+                <!-- Sidebar Navigation -->
+                <div class="sidebar-nav">
+                    <h3><i class="fas fa-list"></i> Module Sections</h3>
+                    <ul>
+                        <li><a href="#section1"><i class="fas fa-chevron-right"></i> Types of Software</a></li>
+                        <li><a href="#section2"><i class="fas fa-chevron-right"></i> Software Installation</a></li>
+                        <li><a href="#section3"><i class="fas fa-chevron-right"></i> Software Updates</a></li>
+                        <li><a href="#section4"><i class="fas fa-chevron-right"></i> Uninstallation</a></li>
+                        <li><a href="#section5"><i class="fas fa-chevron-right"></i> Licensing & Compliance</a></li>
+                        <li><a href="#section6"><i class="fas fa-chevron-right"></i> Troubleshooting</a></li>
+                        <li><a href="#section7"><i class="fas fa-chevron-right"></i> Software Security</a></li>
+                        <li><a href="#integration"><i class="fas fa-chevron-right"></i> Final Project</a></li>
+                        <li><a href="#quiz"><i class="fas fa-chevron-right"></i> Knowledge Check</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Quick Reference -->
+                <div class="info-box">
+                    <h4><i class="fas fa-keyboard"></i> Windows Shortcuts</h4>
+                    <ul style="margin: 0; font-size: 0.85rem;">
+                        <li><kbd>Win + I</kbd> - Open Settings</li>
+                        <li><kbd>Win + R</kbd> - Run dialog</li>
+                        <li><kbd>Ctrl + Shift + Esc</kbd> - Task Manager</li>
+                        <li><kbd>Win + X</kbd> - Quick Link menu</li>
+                    </ul>
+                </div>
+                
+                <!-- Trusted Sources -->
+                <div class="info-box">
+                    <h4><i class="fas fa-check-circle"></i> Trusted Download Sources</h4>
+                    <ul style="margin: 0; font-size: 0.85rem;">
+                        <li>✓ Official developer website</li>
+                        <li>✓ Microsoft Store</li>
+                        <li>✓ Ninite.com</li>
+                        <li>✓ Chocolatey (CLI)</li>
+                        <li>✓ GitHub (for open source)</li>
+                    </ul>
+                </div>
+                
+                <!-- Assessment Info -->
+                <div class="info-box">
+                    <h4><i class="fas fa-clipboard-list"></i> Assessment</h4>
+                    <ul style="margin: 0;">
+                        <li>7 Hands-on Activities</li>
+                        <li>6 Quiz Questions</li>
+                        <li>1 Final Project</li>
+                        <li>Estimated Time: 6-8 hours</li>
+                    </ul>
+                </div>
+            </aside>
+        </div>
+    </div>
+</main>
+
+<!-- Footer -->
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>ICT Learning Hub</h3>
+                <p>Empowering students with digital skills for the future.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="software-management.html">Software Management</a></li>
+                    <li><a href="system-security.html">Security</a></li>
+                </ul>
+            </div>
+            <div class="footer-modules">
+                <h4>More Modules</h4>
+                <ul>
+                    <li><a href="database.html">Database</a></li>
+                    <li><a href="web-design.html">Web Design</a></li>
+                    <li><a href="shorts2.html">Shortcut Quiz</a></li>
+                </ul>
+            </div>
+            <div class="footer-social">
+                <h4>Connect</h4>
+                <div class="social-icons">
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Yiga Gerald. All rights reserved. | ICT Teacher | Digital Learning Creator</p>
+        </div>
+    </div>
+</footer>
+
+<script src="js/modules.js"></script>
+</body>
+</html>

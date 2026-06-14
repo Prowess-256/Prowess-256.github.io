@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>⌨️ SHORTCUT MASTER | Keyboard Shortcuts Quiz</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/navigation.css">
+    <link rel="stylesheet" href="styles/components.css">
+    
+    <style>
+        :root {
+            --theme-primary: #06b6d4;
+            --theme-primary-light: #22d3ee;
+            --theme-primary-dark: #0891b2;
+        }
+        
+        .quiz-page {
+            min-height: calc(100vh - 64px);
+            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+            padding: 2rem 1rem;
+        }
+        
+        .quiz-card {
+            max-width: 700px;
+            margin: 0 auto;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(14px);
+            border-radius: 2rem;
+            padding: 1.5rem;
+            border: 1px solid rgba(6, 182, 212, 0.3);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+        
+        .user-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid rgba(6, 182, 212, 0.2);
+        }
+        
+        .user-control {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        
+        select, input {
+            background: #1e293b;
+            border: 1px solid #06b6d4;
+            color: #e2e8f0;
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+        }
+        
+        select option {
+            background: #1e293b;
+            color: #e2e8f0;
+        }
+        
+        button {
+            background: linear-gradient(95deg, #06b6d4, #0ea5e9);
+            color: #ffffff;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            font-size: 0.85rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(6, 182, 212, 0.3);
+        }
+        
+        .stats-badge {
+            background: #1e293b;
+            padding: 0.25rem 1rem;
+            border-radius: 2rem;
+            font-size: 0.75rem;
+            color: #fbbf24;
+        }
+        
+        .module-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 0.75rem;
+            margin: 1.5rem 0;
+        }
+        
+        .mod-item {
+            background: rgba(30, 41, 59, 0.8);
+            border-radius: 1.5rem;
+            padding: 1rem 0.5rem;
+            text-align: center;
+            cursor: pointer;
+            transition: 0.2s ease;
+            border: 1px solid rgba(6, 182, 212, 0.3);
+        }
+        
+        .mod-item:hover {
+            background: rgba(6, 182, 212, 0.2);
+            transform: scale(0.97);
+            border-color: #06b6d4;
+        }
+        
+        .mod-icon {
+            font-size: 2rem;
+        }
+        
+        .mod-title {
+            font-size: 0.85rem;
+            font-weight: bold;
+            margin-top: 0.5rem;
+            color: #e2e8f0;
+        }
+        
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            background: #1e293b;
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            margin-bottom: 1rem;
+            color: #cbd5e1;
+        }
+        
+        .progress-header span:first-child {
+            color: #06b6d4;
+        }
+        
+        .progress-header span:last-child {
+            color: #fbbf24;
+        }
+        
+        .question-box {
+            background: #1e293b;
+            padding: 1.25rem;
+            border-radius: 1.5rem;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.1rem;
+            color: #f1f5f9;
+            margin: 1rem 0;
+            border-left: 4px solid #06b6d4;
+        }
+        
+        .options-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            margin: 1rem 0;
+        }
+        
+        .opt-btn {
+            background: #1e293b;
+            padding: 0.75rem 1rem;
+            border-radius: 3rem;
+            font-size: 0.85rem;
+            cursor: pointer;
+            border: 1px solid #334155;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: 0.2s ease;
+            color: #e2e8f0;
+        }
+        
+        .opt-letter {
+            background: rgba(6, 182, 212, 0.2);
+            width: 28px;
+            height: 28px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-weight: bold;
+            color: #06b6d4;
+        }
+        
+        .opt-btn:hover:not(.disabled) {
+            background: #334155;
+            border-color: #06b6d4;
+            transform: translateX(4px);
+        }
+        
+        .disabled {
+            opacity: 0.6;
+            pointer-events: none;
+        }
+        
+        .feedback {
+            margin: 0.75rem 0;
+            padding: 0.75rem 1rem;
+            border-radius: 1rem;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+        
+        .correct-fb { 
+            background: rgba(16, 185, 129, 0.15); 
+            border-left: 4px solid #10b981; 
+            color: #a7f3d0;
+        }
+        
+        .wrong-fb { 
+            background: rgba(239, 68, 68, 0.15); 
+            border-left: 4px solid #ef4444; 
+            color: #fecaca;
+        }
+        
+        .next-tip {
+            text-align: center;
+            font-size: 0.7rem;
+            color: #94a3b8;
+            margin-top: 0.5rem;
+        }
+        
+        .action-row {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1rem;
+            gap: 1rem;
+        }
+        
+        .result-circle {
+            width: 100px;
+            height: 100px;
+            margin: 1rem auto;
+            background: radial-gradient(circle, #06b6d4, #0f172a);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: bold;
+            border: 2px solid #fbbf24;
+            color: #fbbf24;
+        }
+        
+        .advice-msg {
+            background: #1e293b;
+            padding: 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.85rem;
+            margin: 1rem 0;
+            text-align: center;
+            color: #cbd5e1;
+        }
+        
+        hr {
+            border-color: rgba(6, 182, 212, 0.2);
+            margin: 0.75rem 0;
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #06b6d4;
+            text-decoration: none;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+        
+        .back-link:hover {
+            color: #22d3ee;
+        }
+        
+        h3 {
+            color: #e2e8f0;
+        }
+        
+        p {
+            color: #cbd5e1;
+        }
+        
+        .small-text {
+            color: #94a3b8;
+            font-size: 0.7rem;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navigation Placeholder -->
+<div id="global-nav-placeholder"></div>
+
+<div class="quiz-page">
+    <div class="container">
+        <div id="appRoot"></div>
+    </div>
+</div>
+
+<script>
+    // ------------------- SHORTCUT DATABASE -------------------
+    const SHORTCUT_MODULES = {
+        "Windows": {
+            icon: "🪟",
+            list: [
+                { q: "Copy selected item", correct: "Ctrl + C", opts: ["Ctrl + X", "Ctrl + C", "Ctrl + V", "Ctrl + Z", "Not in list"] },
+                { q: "Paste copied item", correct: "Ctrl + V", opts: ["Ctrl + P", "Ctrl + V", "Ctrl + Shift + V", "Alt + V", "Not in list"] },
+                { q: "Cut selected item", correct: "Ctrl + X", opts: ["Ctrl + C", "Ctrl + X", "Ctrl + D", "Shift + Del", "Not in list"] },
+                { q: "Undo action", correct: "Ctrl + Z", opts: ["Ctrl + Y", "Ctrl + Z", "Alt + Backspace", "Ctrl + U", "Not in list"] },
+                { q: "Open Task Manager", correct: "Ctrl + Shift + Esc", opts: ["Ctrl + Alt + Del", "Ctrl + Shift + Esc", "Win + X", "Alt + F4", "Not in list"] },
+                { q: "Lock PC", correct: "Win + L", opts: ["Win + D", "Win + L", "Ctrl + L", "Alt + L", "Not in list"] },
+                { q: "Switch between apps", correct: "Alt + Tab", opts: ["Win + Tab", "Alt + Tab", "Ctrl + Tab", "Win + Arrow", "Not in list"] },
+                { q: "Open File Explorer", correct: "Win + E", opts: ["Win + F", "Win + E", "Ctrl + E", "Win + R", "Not in list"] },
+                { q: "Open Run dialog", correct: "Win + R", opts: ["Win + R", "Ctrl + R", "Win + X", "Win + D", "Not in list"] },
+                { q: "Rename selected item", correct: "F2", opts: ["F2", "Ctrl + R", "Alt + Enter", "F5", "Not in list"] }
+            ]
+        },
+        "MS Word": {
+            icon: "📄",
+            list: [
+                { q: "Bold text", correct: "Ctrl + B", opts: ["Ctrl + B", "Ctrl + Shift + B", "Alt + B", "Ctrl + W", "Not in list"] },
+                { q: "Italicize", correct: "Ctrl + I", opts: ["Ctrl + L", "Ctrl + I", "Ctrl + Shift + I", "Alt + I", "Not in list"] },
+                { q: "Underline", correct: "Ctrl + U", opts: ["Ctrl + U", "Ctrl + Shift + U", "Ctrl + T", "Alt + U", "Not in list"] },
+                { q: "Save document", correct: "Ctrl + S", opts: ["Ctrl + P", "Ctrl + S", "Shift + S", "F12", "Not in list"] },
+                { q: "Find text", correct: "Ctrl + F", opts: ["Ctrl + H", "Ctrl + F", "F3", "Alt + F", "Not in list"] },
+                { q: "Replace text", correct: "Ctrl + H", opts: ["Ctrl + R", "Ctrl + H", "Shift + F5", "Ctrl + G", "Not in list"] },
+                { q: "Align Center", correct: "Ctrl + E", opts: ["Ctrl + L", "Ctrl + R", "Ctrl + E", "Ctrl + M", "Not in list"] },
+                { q: "Insert Hyperlink", correct: "Ctrl + K", opts: ["Ctrl + H", "Ctrl + K", "Alt + K", "Ctrl + Shift + L", "Not in list"] },
+                { q: "Increase font size", correct: "Ctrl + Shift + >", opts: ["Ctrl + ]", "Ctrl + Shift + >", "Ctrl + +", "Ctrl + Shift + .", "Not in list"] },
+                { q: "Decrease font size", correct: "Ctrl + Shift + <", opts: ["Ctrl + [", "Ctrl + Shift + <", "Ctrl + -", "Alt + <", "Not in list"] }
+            ]
+        },
+        "Excel": {
+            icon: "📊",
+            list: [
+                { q: "Edit active cell", correct: "F2", opts: ["Enter", "F2", "Ctrl + U", "F4", "Not in list"] },
+                { q: "AutoSum", correct: "Alt + =", opts: ["Ctrl + =", "Alt + =", "Shift + =", "Ctrl + Shift + +", "Not in list"] },
+                { q: "Insert new worksheet", correct: "Shift + F11", opts: ["Ctrl + N", "Shift + F11", "Alt + Shift + F1", "F11", "Not in list"] },
+                { q: "Select entire column", correct: "Ctrl + Space", opts: ["Shift + Space", "Ctrl + Space", "Alt + Space", "Ctrl + Shift + C", "Not in list"] },
+                { q: "Select entire row", correct: "Shift + Space", opts: ["Ctrl + Space", "Shift + Space", "Ctrl + Shift + R", "Alt + R", "Not in list"] },
+                { q: "Apply outline border", correct: "Ctrl + Shift + &", opts: ["Ctrl + 1", "Ctrl + Shift + &", "Alt + B", "Ctrl + B", "Not in list"] },
+                { q: "Hide row", correct: "Ctrl + 9", opts: ["Ctrl + 0", "Ctrl + 9", "Ctrl + Shift + 9", "Alt + 9", "Not in list"] },
+                { q: "Unhide row", correct: "Ctrl + Shift + 9", opts: ["Ctrl + 9", "Ctrl + Shift + 9", "Ctrl + Shift + 0", "Alt + 9", "Not in list"] },
+                { q: "Create chart", correct: "Alt + F1", opts: ["F11", "Alt + F1", "Ctrl + F1", "Shift + F1", "Not in list"] },
+                { q: "Go to formula tab", correct: "Alt + M", opts: ["Alt + M", "Ctrl + M", "F4", "Ctrl + Shift + F", "Not in list"] }
+            ]
+        },
+        "PowerPoint": {
+            icon: "🎭",
+            list: [
+                { q: "Start slideshow (current)", correct: "Shift + F5", opts: ["F5", "Shift + F5", "Ctrl + F5", "Alt + F5", "Not in list"] },
+                { q: "Start from beginning", correct: "F5", opts: ["F5", "Shift + F5", "Ctrl + B", "Alt + F5", "Not in list"] },
+                { q: "New slide", correct: "Ctrl + M", opts: ["Ctrl + N", "Ctrl + M", "Ctrl + Shift + N", "Ctrl + D", "Not in list"] },
+                { q: "Duplicate slide", correct: "Ctrl + D", opts: ["Ctrl + C", "Ctrl + D", "Ctrl + Shift + D", "Alt + D", "Not in list"] },
+                { q: "Open animation pane", correct: "Alt + A, C", opts: ["Ctrl + A", "Alt + A, C", "Alt + Shift + A", "Ctrl + Shift + A", "Not in list"] },
+                { q: "Insert picture", correct: "Alt + N, P", opts: ["Alt + I, P", "Alt + N, P", "Ctrl + I", "Ctrl + Shift + P", "Not in list"] },
+                { q: "Group objects", correct: "Ctrl + G", opts: ["Ctrl + Shift + G", "Ctrl + G", "Ctrl + J", "Alt + G", "Not in list"] },
+                { q: "Ungroup", correct: "Ctrl + Shift + G", opts: ["Ctrl + U", "Ctrl + Shift + G", "Alt + Shift + G", "Ctrl + H", "Not in list"] },
+                { q: "Send to back", correct: "Ctrl + Shift + [", opts: ["Ctrl + [", "Ctrl + Shift + [", "Alt + [", "Ctrl + Shift + B", "Not in list"] },
+                { q: "Bring to front", correct: "Ctrl + Shift + ]", opts: ["Ctrl + ]", "Ctrl + Shift + ]", "Alt + ]", "Ctrl + Shift + F", "Not in list"] }
+            ]
+        },
+        "Web Browsers": {
+            icon: "🌐",
+            list: [
+                { q: "New tab", correct: "Ctrl + T", opts: ["Ctrl + N", "Ctrl + T", "Ctrl + Shift + T", "Ctrl + W", "Not in list"] },
+                { q: "Close tab", correct: "Ctrl + W", opts: ["Ctrl + F4", "Ctrl + W", "Alt + F4", "Ctrl + Q", "Not in list"] },
+                { q: "Reopen closed tab", correct: "Ctrl + Shift + T", opts: ["Ctrl + Z", "Ctrl + Shift + T", "Alt + Z", "Ctrl + Shift + N", "Not in list"] },
+                { q: "Refresh page", correct: "Ctrl + R", opts: ["F5", "Ctrl + R", "Ctrl + F5", "Both F5 & Ctrl+R", "Not in list"] },
+                { q: "Incognito/Private", correct: "Ctrl + Shift + N", opts: ["Ctrl + Shift + P", "Ctrl + Shift + N", "Ctrl + N", "Shift + N", "Not in list"] },
+                { q: "Bookmark page", correct: "Ctrl + D", opts: ["Ctrl + B", "Ctrl + D", "Ctrl + Shift + B", "Alt + D", "Not in list"] },
+                { q: "History", correct: "Ctrl + H", opts: ["Ctrl + Y", "Ctrl + H", "Ctrl + Shift + H", "Alt + H", "Not in list"] },
+                { q: "Zoom in", correct: "Ctrl + +", opts: ["Ctrl + =", "Ctrl + +", "Ctrl + Shift + +", "Ctrl + Up", "Not in list"] },
+                { q: "Zoom out", correct: "Ctrl + -", opts: ["Ctrl + _", "Ctrl + -", "Ctrl + Shift + -", "Ctrl + Down", "Not in list"] },
+                { q: "Switch to next tab", correct: "Ctrl + Tab", opts: ["Ctrl + PageDown", "Ctrl + Tab", "Ctrl + Shift + Tab", "Alt + Tab", "Not in list"] }
+            ]
+        },
+        "General+": {
+            icon: "⌨️",
+            list: [
+                { q: "Screenshot (Windows)", correct: "Win + Shift + S", opts: ["Print Screen", "Win + Shift + S", "Ctrl + Print Screen", "Alt + Print Screen", "Not in list"] },
+                { q: "Open settings", correct: "Win + I", opts: ["Win + S", "Win + I", "Ctrl + I", "Win + X", "Not in list"] },
+                { q: "Show desktop", correct: "Win + D", opts: ["Win + M", "Win + D", "Ctrl + D", "Alt + D", "Not in list"] },
+                { q: "Lock orientation", correct: "Win + O", opts: ["Win + P", "Win + O", "Ctrl + O", "Not in list"] }
+            ]
+        }
+    };
+
+    // Pad modules to have at least 10 questions
+    for(let mod in SHORTCUT_MODULES) {
+        let arr = SHORTCUT_MODULES[mod].list;
+        while(arr.length < 10) {
+            arr.push({ q: `Expert ${mod} tip`, correct: "Practice", opts: ["Ctrl + ?", "Practice", "Alt + F4", "Win + X", "Not in list"] });
+        }
+    }
+
+    // User storage
+    let usersDB = JSON.parse(localStorage.getItem("shortcutUsersCompact")) || { "Guest": { totalPts: 0, quizzesDone: 0 } };
+    let currentUserName = "Guest";
+    let activeModule = null;
+    let quizQuestions = [];
+    let qIndex = 0;
+    let sessionScore = 0;
+    let answeredFlag = false;
+    let autoTimer = null;
+    let currentCorrectAnswer = "";
+    
+    const root = document.getElementById("appRoot");
+
+    function saveUsers() {
+        localStorage.setItem("shortcutUsersCompact", JSON.stringify(usersDB));
+    }
+
+    function render() {
+        if (!activeModule) {
+            renderModuleMenu();
+        } else {
+            if (qIndex >= 10 || qIndex >= quizQuestions.length) {
+                finishQuiz();
+            } else {
+                renderQuestion();
+            }
+        }
+    }
+
+    function renderModuleMenu() {
+        const userList = Object.keys(usersDB);
+        root.innerHTML = `
+            <div class="quiz-card">
+                <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Home</a>
+                <div class="user-row">
+                    <div class="user-control">
+                        <select id="userSelectCompact">
+                            ${userList.map(u => `<option value="${u}" ${u === currentUserName ? "selected" : ""}>${u}</option>`).join('')}
+                        </select>
+                        <input type="text" id="newUserNameCompact" placeholder="new user" maxlength="16">
+                        <button id="switchUserBtn">Switch/Add</button>
+                    </div>
+                    <div class="stats-badge">✨ ${usersDB[currentUserName]?.totalPts || 0} pts | 🧠 ${usersDB[currentUserName]?.quizzesDone || 0} quizzes</div>
+                </div>
+                <div style="text-align:center; margin:0.5rem 0;"><span style="color:#06b6d4;">⚡ CHOOSE MODULE ⚡</span></div>
+                <div class="module-grid" id="moduleGridCompact"></div>
+                <hr>
+                <div class="small-text">pick a program → 10 questions | each correct = 10 pts</div>
+            </div>
+        `;
+        
+        const grid = document.getElementById("moduleGridCompact");
+        for(let mod in SHORTCUT_MODULES) {
+            const card = document.createElement("div");
+            card.className = "mod-item";
+            card.innerHTML = `<div class="mod-icon">${SHORTCUT_MODULES[mod].icon}</div>
+                              <div class="mod-title">${mod}</div>`;
+            card.addEventListener("click", () => startModule(mod));
+            grid.appendChild(card);
+        }
+
+        document.getElementById("switchUserBtn")?.addEventListener("click", () => {
+            const selectVal = document.getElementById("userSelectCompact").value;
+            const newName = document.getElementById("newUserNameCompact").value.trim();
+            if(newName && !usersDB[newName]) {
+                usersDB[newName] = { totalPts: 0, quizzesDone: 0 };
+                currentUserName = newName;
+                saveUsers();
+            } else if(selectVal) {
+                currentUserName = selectVal;
+            } else if(newName && usersDB[newName]) {
+                currentUserName = newName;
+            }
+            render();
+        });
+    }
+
+    function startModule(moduleName) {
+        activeModule = moduleName;
+        const moduleData = SHORTCUT_MODULES[moduleName].list;
+        let shuffled = [...moduleData];
+        for(let i=shuffled.length-1;i>0;i--) {
+            const j = Math.floor(Math.random()*(i+1));
+            [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+        }
+        quizQuestions = shuffled.slice(0,10);
+        qIndex = 0;
+        sessionScore = 0;
+        answeredFlag = false;
+        if(autoTimer) clearTimeout(autoTimer);
+        render();
+    }
+
+    function renderQuestion() {
+        if(!quizQuestions.length || qIndex >= quizQuestions.length) return;
+        const qData = quizQuestions[qIndex];
+        currentCorrectAnswer = qData.correct;
+        let options = [...qData.opts];
+        for(let i=options.length-1;i>0;i--) {
+            const j = Math.floor(Math.random()*(i+1));
+            [options[i], options[j]] = [options[j], options[i]];
+        }
+        const letters = ["A","B","C","D","E"];
+        
+        root.innerHTML = `
+            <div class="quiz-card">
+                <a href="#" class="back-link" id="exitModuleBtn"><i class="fas fa-arrow-left"></i> Exit Quiz</a>
+                <div class="progress-header">
+                    <span>📌 ${qIndex+1}/10 · ${activeModule}</span>
+                    <span>🏆 ${sessionScore} pts</span>
+                </div>
+                <div class="question-box">❓ ${escapeHtml(qData.q)}</div>
+                <div class="options-list" id="optsList"></div>
+                <div id="feedbackMsg"></div>
+                <div class="next-tip" id="nextTip"></div>
+            </div>
+        `;
+        
+        const optsContainer = document.getElementById("optsList");
+        options.forEach((opt, idx) => {
+            const btn = document.createElement("div");
+            btn.className = `opt-btn ${answeredFlag ? "disabled" : ""}`;
+            btn.innerHTML = `<span class="opt-letter">${letters[idx]}</span><span>${escapeHtml(opt)}</span>`;
+            if(!answeredFlag) {
+                btn.addEventListener("click", () => handleAnswer(opt, qData.correct));
+            }
+            optsContainer.appendChild(btn);
+        });
+        
+        document.getElementById("exitModuleBtn")?.addEventListener("click", (e) => {
+            e.preventDefault();
+            activeModule = null;
+            if(autoTimer) clearTimeout(autoTimer);
+            render();
+        });
+    }
+
+    function escapeHtml(str) {
+        if (!str) return '';
+        return str.replace(/[&<>]/g, function(m) {
+            if (m === '&') return '&amp;';
+            if (m === '<') return '&lt;';
+            if (m === '>') return '&gt;';
+            return m;
+        });
+    }
+
+    let lastWasCorrect = false;
+
+    function handleAnswer(selected, correct) {
+        if(answeredFlag) return;
+        answeredFlag = true;
+        const isCorrect = (selected === correct);
+        if(isCorrect) {
+            sessionScore += 10;
+            lastWasCorrect = true;
+        } else {
+            lastWasCorrect = false;
+        }
+        
+        const fbDiv = document.getElementById("feedbackMsg");
+        if(fbDiv) {
+            fbDiv.innerHTML = `<div class="feedback ${isCorrect ? 'correct-fb' : 'wrong-fb'}">
+                ${isCorrect ? '✅ CORRECT! +10 points' : '❌ WRONG! Answer: ' + escapeHtml(correct)}
+            </div>`;
+        }
+        
+        const tipDiv = document.getElementById("nextTip");
+        if(tipDiv) tipDiv.innerHTML = `⏩ Next question in 1 second...`;
+        
+        document.querySelectorAll(".opt-btn").forEach(btn => btn.classList.add("disabled"));
+        
+        if(autoTimer) clearTimeout(autoTimer);
+        autoTimer = setTimeout(() => {
+            moveToNext();
+        }, 1000);
+    }
+
+    function moveToNext() {
+        if(!activeModule) return;
+        qIndex++;
+        if(qIndex >= 10) {
+            finishQuiz();
+        } else {
+            answeredFlag = false;
+            if(autoTimer) clearTimeout(autoTimer);
+            render();
+        }
+    }
+
+    function finishQuiz() {
+        if(autoTimer) clearTimeout(autoTimer);
+        const finalScore = sessionScore;
+        let advice = "";
+        if(finalScore === 100) advice = "🏆 PERFECT SCORE! Keyboard master! 🌟";
+        else if(finalScore >= 80) advice = "🔥 Great! You're a shortcut pro! Keep going.";
+        else if(finalScore >= 60) advice = "👍 Nice work! Review a bit & you'll be expert.";
+        else advice = "📘 Keep practicing! Shortcuts speed up everything. Try again!";
+        
+        if(!usersDB[currentUserName]) usersDB[currentUserName] = { totalPts: 0, quizzesDone: 0 };
+        usersDB[currentUserName].totalPts += finalScore;
+        usersDB[currentUserName].quizzesDone += 1;
+        saveUsers();
+
+        root.innerHTML = `
+            <div class="quiz-card">
+                <div style="text-align:center;">
+                    <h3 style="color:#06b6d4;">📊 QUIZ COMPLETE</h3>
+                    <div class="result-circle">${finalScore}/100</div>
+                    <p style="font-size:1.2rem; font-weight:bold; color:#e2e8f0;">${finalScore} points</p>
+                    <div class="advice-msg">💡 ${advice}</div>
+                    <div style="display:flex; gap:1rem; justify-content:center; margin:1.5rem 0;">
+                        <button id="retrySameBtn">🔄 Retry ${escapeHtml(activeModule)}</button>
+                        <button id="newModuleBtn" style="background:transparent; border:1px solid #06b6d4; color:#06b6d4;">🎯 Different Module</button>
+                    </div>
+                </div>
+            </div>
+        `;
+        
+        document.getElementById("retrySameBtn")?.addEventListener("click", () => {
+            startModule(activeModule);
+        });
+        document.getElementById("newModuleBtn")?.addEventListener("click", () => {
+            activeModule = null;
+            render();
+        });
+    }
+
+    render();
+</script>
+
+<script src="js/modules.js"></script>
+</body>
+</html>

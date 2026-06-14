@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health and Safety in ICT | ICT Learning Module</title>
+    <meta name="description" content="Learn about health risks associated with prolonged computer use and how to prevent them">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/navigation.css">
+    <link rel="stylesheet" href="styles/components.css">
+    
+    <!-- Module-specific theme (Health & Safety - Green) -->
+    <style>
+        :root {
+            --theme-primary: #15803d;
+            --theme-primary-light: #16a34a;
+            --theme-primary-dark: #166534;
+            --theme-secondary: #eab308;
+        }
+        
+        .section h2 {
+            color: var(--theme-primary);
+        }
+        
+        .section h2::after {
+            background: var(--theme-primary);
+        }
+        
+        /* Health problem cards */
+        .health-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 1.25rem;
+            margin: 1.5rem 0;
+        }
+        
+        .health-card {
+            background: var(--bg-secondary);
+            border-radius: var(--radius-lg);
+            padding: 1.25rem;
+            transition: all var(--transition-normal);
+            border: 1px solid var(--border-light);
+            cursor: pointer;
+        }
+        
+        .health-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--theme-primary);
+        }
+        
+        .health-card i {
+            font-size: 2rem;
+            color: var(--theme-primary);
+            margin-bottom: 0.75rem;
+        }
+        
+        .health-card h4 {
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .health-card p {
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .health-card .symptom {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+            padding-top: 0.5rem;
+            border-top: 1px solid var(--border-light);
+        }
+        
+        /* Ergonomic workspace diagram */
+        .ergonomic-workspace {
+            background: var(--bg-secondary);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            position: relative;
+        }
+        
+        .workspace-label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin: 0.5rem 0;
+            font-size: 0.85rem;
+        }
+        
+        .workspace-label i {
+            width: 24px;
+            color: var(--theme-primary);
+        }
+        
+        /* Exercise cards */
+        .exercise-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .exercise-card {
+            background: var(--bg-secondary);
+            border-radius: var(--radius-lg);
+            padding: 1rem;
+            text-align: center;
+            transition: all var(--transition-normal);
+            border: 1px solid var(--border-light);
+        }
+        
+        .exercise-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .exercise-card i {
+            font-size: 1.5rem;
+            color: var(--theme-primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .exercise-card h4 {
+            font-size: 0.9rem;
+            margin-bottom: 0.25rem;
+        }
+        
+        .exercise-card p {
+            font-size: 0.75rem;
+            margin-bottom: 0;
+        }
+        
+        /* Period distribution table */
+        .period-table {
+            background: var(--bg-secondary);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            margin: 1rem 0;
+        }
+        
+        .period-table table {
+            margin: 0;
+        }
+        
+        /* 20-20-20 rule banner */
+        .rule-banner {
+            background: linear-gradient(135deg, var(--theme-primary) 0%, var(--theme-primary-dark) 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: var(--radius-lg);
+            text-align: center;
+            margin: 1.5rem 0;
+        }
+        
+        .rule-banner h3 {
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+        
+        .rule-banner p {
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 0;
+        }
+        
+        .rule-banner .big-number {
+            font-size: 2rem;
+            font-weight: bold;
+            display: inline-block;
+            margin: 0 0.25rem;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navigation Placeholder -->
+<div id="global-nav-placeholder"></div>
+
+<main>
+    <div class="container">
+        <!-- Breadcrumb -->
+        <div class="breadcrumb">
+            <a href="index.html">Home</a>
+            <span class="separator">/</span>
+            <a href="#">Learning Hub</a>
+            <span class="separator">/</span>
+            <span class="current" id="page-title">Health and Safety in ICT</span>
+        </div>
+        
+        <!-- Module Header -->
+        <div class="section-header" style="margin-bottom: 2rem;">
+            <h1>Health and Safety in ICT</h1>
+            <p>Understanding health risks and safety measures for prolonged computer and ICT device use</p>
+            <div class="keywords" style="display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; margin-top: 1rem;">
+                <span style="background: var(--bg-secondary); padding: 0.25rem 0.75rem; border-radius: 2rem; font-size: 0.8rem;">Ergonomics</span>
+                <span style="background: var(--bg-secondary); padding: 0.25rem 0.75rem; border-radius: 2rem; font-size: 0.8rem;">RSI</span>
+                <span style="background: var(--bg-secondary); padding: 0.25rem 0.75rem; border-radius: 2rem; font-size: 0.8rem;">Eye Strain</span>
+                <span style="background: var(--bg-secondary); padding: 0.25rem 0.75rem; border-radius: 2rem; font-size: 0.8rem;">Posture</span>
+                <span style="background: var(--bg-secondary); padding: 0.25rem 0.75rem; border-radius: 2rem; font-size: 0.8rem;">Workplace Safety</span>
+                <span style="background: var(--bg-secondary); padding: 0.25rem 0.75rem; border-radius: 2rem; font-size: 0.8rem;">Ergonomics</span>
+            </div>
+        </div>
+        
+        <!-- Module Layout: 2-column -->
+        <div class="module-wrapper">
+            <!-- Main Content Area -->
+            <div class="module-content">
+                <!-- Learning Outcomes -->
+                <div class="info-box" style="margin-bottom: 2rem;">
+                    <h4><i class="fas fa-bullseye"></i> Learning Outcomes</h4>
+                    <ul>
+                        <li>Analyze common health problems associated with prolonged use of computers</li>
+                        <li>Explain possible ways to avoid each health problem associated with ICT device use</li>
+                        <li>Set up an ergonomic workspace to prevent injuries</li>
+                        <li>Perform exercises and stretches to reduce strain</li>
+                        <li>Communicate information on health and safety measures for computer use</li>
+                    </ul>
+                </div>
+                
+                <!-- Section 1: Introduction -->
+                <section id="section1" class="section">
+                    <h2><i class="fas fa-heartbeat"></i> Introduction to Health and Safety in ICT</h2>
+                    
+                    <p>Increased use of ICT today has greatly improved the quality of human life. However, it is important to note that if not carefully used, ICT can bring health hazards to human beings in a number of different ways. This is similar to a motor vehicle that eases transportation, but can cause accidents and even loss of lives when driven carelessly.</p>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-lightbulb"></i> Key Concept: Health and Safety in ICT</h4>
+                        <p>Health and safety in ICT refers to the practices and measures taken to protect users from potential health risks associated with prolonged use of computers and other ICT devices. Just as we take precautions when using other tools, we must also be mindful of how we use technology to maintain our wellbeing.</p>
+                    </div>
+                    
+                    <div class="rule-banner">
+                        <h3><i class="fas fa-chalkboard-user"></i> Period Distribution</h3>
+                        <p>This module is designed to be covered in <strong>6 periods</strong></p>
+                        <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-top: 0.5rem;">
+                            <span style="background: rgba(255,255,255,0.2); padding: 0.25rem 0.75rem; border-radius: 2rem;">Intro: ¼ period</span>
+                            <span style="background: rgba(255,255,255,0.2); padding: 0.25rem 0.75rem; border-radius: 2rem;">Health Problems: 1 period</span>
+                            <span style="background: rgba(255,255,255,0.2); padding: 0.25rem 0.75rem; border-radius: 2rem;">Prevention: ¾ period</span>
+                            <span style="background: rgba(255,255,255,0.2); padding: 0.25rem 0.75rem; border-radius: 2rem;">Publicity: 2 periods</span>
+                            <span style="background: rgba(255,255,255,0.2); padding: 0.25rem 0.75rem; border-radius: 2rem;">Integration: 2 periods</span>
+                        </div>
+                    </div>
+                    
+                    <div class="activity-box">
+                        <div class="activity-header">
+                            <div class="activity-number">1</div>
+                            <div class="activity-title">Activity: Brainstorming Health and Safety</div>
+                        </div>
+                        <p><strong>Instructions:</strong> In small groups, discuss what you already know about health and safety when using computers and ICT devices.</p>
+                        <ol class="activity-steps">
+                            <li>Think about times when you've felt discomfort while using a computer or phone</li>
+                            <li>List any health problems you've heard are associated with computer use</li>
+                            <li>What safety measures do you already practice when using technology?</li>
+                            <li>What terms related to health and safety in ICT are you familiar with?</li>
+                            <li>Prepare to share your group's findings with the class in 2 minutes</li>
+                        </ol>
+                    </div>
+                </section>
+                
+                <!-- Section 2: Health Problems -->
+                <section id="section2" class="section">
+                    <h2><i class="fas fa-stethoscope"></i> Health Problems from Prolonged Computer Use</h2>
+                    
+                    <p>People spend several hours a day in front of a computer without thinking about the impact on their bodies. They physically strain themselves daily by extending their wrists, slouching, sitting without foot support, and straining to look at poorly placed monitors.</p>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-exclamation-triangle"></i> Understanding Cumulative Trauma Disorders</h4>
+                        <p>These practices can lead to <strong>cumulative trauma disorders</strong> or <strong>repetitive stress injuries (RSI)</strong>, which create a life-long impact on health. Symptoms may include pain, muscle fatigue, loss of sensation, tingling, and reduced performance.</p>
+                    </div>
+                    
+                    <h3>Common Health Problems</h3>
+                    <div class="health-grid">
+                        <div class="health-card">
+                            <i class="fas fa-eye"></i>
+                            <h4>Computer Vision Syndrome (CVS)</h4>
+                            <p>Eye and vision problems from prolonged computer use</p>
+                            <div class="symptom">Symptoms: Dry eyes, blurred vision, headaches, eye strain</div>
+                        </div>
+                        <div class="health-card">
+                            <i class="fas fa-hand-peace"></i>
+                            <h4>Repetitive Strain Injury (RSI)</h4>
+                            <p>Damage to muscles, tendons, and nerves from repetitive motions</p>
+                            <div class="symptom">Symptoms: Pain, numbness, tingling, weakness in hands/wrists</div>
+                        </div>
+                        <div class="health-card">
+                            <i class="fas fa-spine"></i>
+                            <h4>Musculoskeletal Disorders</h4>
+                            <p>Problems affecting muscles, bones, and joints</p>
+                            <div class="symptom">Symptoms: Back pain, neck pain, shoulder pain</div>
+                        </div>
+                        <div class="health-card">
+                            <i class="fas fa-hand-holding-heart"></i>
+                            <h4>Carpal Tunnel Syndrome</h4>
+                            <p>Pressure on the median nerve in the wrist</p>
+                            <div class="symptom">Symptoms: Numbness, tingling, pain in hand and fingers</div>
+                        </div>
+                        <div class="health-card">
+                            <i class="fas fa-brain"></i>
+                            <h4>Mental Fatigue & Stress</h4>
+                            <p>Mental exhaustion from prolonged concentration</p>
+                            <div class="symptom">Symptoms: Headaches, irritability, difficulty concentrating</div>
+                        </div>
+                        <div class="health-card">
+                            <i class="fas fa-user"></i>
+                            <h4>Postural Problems</h4>
+                            <p>Poor posture from improper seating and screen positioning</p>
+                            <div class="symptom">Symptoms: Back pain, neck strain, rounded shoulders</div>
+                        </div>
+                    </div>
+                    
+                    <h3>Vulnerable Groups</h3>
+                    <div class="health-grid" style="grid-template-columns: repeat(4, 1fr);">
+                        <div class="health-card">
+                            <i class="fas fa-child"></i>
+                            <h4>Children</h4>
+                            <p>Developing bodies need frequent breaks</p>
+                        </div>
+                        <div class="health-card">
+                            <i class="fas fa-user-friends"></i>
+                            <h4>Elderly</h4>
+                            <p>Vision changes, arthritis risk</p>
+                        </div>
+                        <div class="health-card">
+                            <i class="fas fa-baby-carriage"></i>
+                            <h4>Pregnant Women</h4>
+                            <p>Postural changes, circulation issues</p>
+                        </div>
+                        <div class="health-card">
+                            <i class="fas fa-wheelchair"></i>
+                            <h4>People with Disabilities</h4>
+                            <p>Special equipment may be needed</p>
+                        </div>
+                    </div>
+                    
+                    <div class="activity-box">
+                        <div class="activity-header">
+                            <div class="activity-number">2</div>
+                            <div class="activity-title">Activity: Health Problem Case Studies</div>
+                        </div>
+                        <p><strong>Instructions:</strong> Read each case study and identify the health problem.</p>
+                        <ol class="activity-steps">
+                            <li>John works as a data entry clerk. After 6 months, he experiences pain and tingling in his right hand, especially in his thumb and first two fingers → ___________</li>
+                            <li>Mary is a graphic designer who works 10-hour days. She complains of constant headaches, dry eyes, and blurred vision, especially in the late afternoon → ___________</li>
+                            <li>David uses a kitchen chair and coffee table as his workspace. After 3 months, he develops constant lower back pain and neck stiffness → ___________</li>
+                            <li>Sarah spends 5-6 hours daily on her laptop and complains of frequent headaches and finds it hard to concentrate after 2 hours → ___________</li>
+                        </ol>
+                    </div>
+                </section>
+                
+                <!-- Section 3: Ergonomics and Prevention -->
+                <section id="section3" class="section">
+                    <h2><i class="fas fa-couch"></i> Ergonomics and Prevention</h2>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-info-circle"></i> What is Computer Ergonomics?</h4>
+                        <p><strong>Computer ergonomics</strong> is a field of study that attempts to reduce strain, fatigue, and injuries by improving the design of a computer and the workspace arrangement.</p>
+                    </div>
+                    
+                    <div class="rule-banner">
+                        <h3><i class="fas fa-hourglass-half"></i> The 20-20-20 Rule</h3>
+                        <p>Every <span class="big-number">20</span> minutes, look at something <span class="big-number">20</span> feet away for <span class="big-number">20</span> seconds</p>
+                        <p style="font-size: 0.85rem;">This gives your eye muscles a chance to relax and reduces eye strain</p>
+                    </div>
+                    
+                    <h3>Ergonomic Workspace Setup</h3>
+                    <div class="ergonomic-workspace">
+                        <div class="workspace-label">
+                            <i class="fas fa-desktop"></i>
+                            <span><strong>Monitor:</strong> Top of screen at or slightly below eye level, arm's length away (50-70 cm)</span>
+                        </div>
+                        <div class="workspace-label">
+                            <i class="fas fa-keyboard"></i>
+                            <span><strong>Keyboard:</strong> Wrists straight, elbows at 90°, keyboard slightly tilted away</span>
+                        </div>
+                        <div class="workspace-label">
+                            <i class="fas fa-mouse"></i>
+                            <span><strong>Mouse:</strong> Close to keyboard, use whole arm movement, not just wrist</span>
+                        </div>
+                        <div class="workspace-label">
+                            <i class="fas fa-chair"></i>
+                            <span><strong>Chair:</strong> Feet flat on floor, back supported, thighs parallel to floor</span>
+                        </div>
+                        <div class="workspace-label">
+                            <i class="fas fa-sun"></i>
+                            <span><strong>Lighting:</strong> Reduce glare, use blinds on windows, position monitor perpendicular to windows</span>
+                        </div>
+                        <div class="workspace-label">
+                            <i class="fas fa-mug-hot"></i>
+                            <span><strong>Breaks:</strong> Take 5-minute breaks every hour, stretch regularly</span>
+                        </div>
+                    </div>
+                    
+                    <h3>Quick Desk Exercises</h3>
+                    <div class="exercise-grid">
+                        <div class="exercise-card">
+                            <i class="fas fa-hand-peace"></i>
+                            <h4>Wrist Stretch</h4>
+                            <p>Extend arm, gently pull fingers back. Hold 15 seconds.</p>
+                        </div>
+                        <div class="exercise-card">
+                            <i class="fas fa-shrug"></i>
+                            <h4>Shoulder Rolls</h4>
+                            <p>Roll shoulders forward 5x, backward 5x. Releases tension.</p>
+                        </div>
+                        <div class="exercise-card">
+                            <i class="fas fa-user"></i>
+                            <h4>Neck Stretch</h4>
+                            <p>Slowly tilt head side to side. Hold each side 10 seconds.</p>
+                        </div>
+                        <div class="exercise-card">
+                            <i class="fas fa-hand-holding-heart"></i>
+                            <h4>Finger Stretch</h4>
+                            <p>Spread fingers wide, hold 5 seconds, relax.</p>
+                        </div>
+                        <div class="exercise-card">
+                            <i class="fas fa-eye"></i>
+                            <h4>Eye Palming</h4>
+                            <p>Rub hands together, cup over closed eyes. Relax for 30 seconds.</p>
+                        </div>
+                        <div class="exercise-card">
+                            <i class="fas fa-person-walking"></i>
+                            <h4>Stand & Walk</h4>
+                            <p>Stand up, walk around for 2-3 minutes every hour.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="activity-box">
+                        <div class="activity-header">
+                            <div class="activity-number">3</div>
+                            <div class="activity-title">Activity: Design an Ergonomic Workspace Poster</div>
+                        </div>
+                        <p><strong>Instructions:</strong> Create an educational poster showing proper ergonomic setup for a computer workstation.</p>
+                        <ol class="activity-steps">
+                            <li>Research proper ergonomic guidelines for computer workstations</li>
+                            <li>Sketch a design showing a person sitting correctly at a computer</li>
+                            <li>Include labels for at least 5 key ergonomic principles</li>
+                            <li>Add brief explanations of why each element is important</li>
+                            <li>Make the poster visually appealing and easy to understand</li>
+                            <li>Prepare to present your poster to the class</li>
+                        </ol>
+                    </div>
+                </section>
+                
+                <!-- Section 4: Computer Lab Safety -->
+                <section id="section4" class="section">
+                    <h2><i class="fas fa-school"></i> Computer Lab Safety Rules</h2>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-exclamation-triangle"></i> Essential Computer Lab Rules</h4>
+                        <ul>
+                            <li><strong>No food or drinks</strong> near computers (risk of spills and crumbs)</li>
+                            <li><strong>Wash hands</strong> before using equipment (prevents dirt and oil buildup)</li>
+                            <li><strong>Report problems immediately</strong> to the teacher or lab technician</li>
+                            <li><strong>Follow proper shutdown procedures</strong> - don't just turn off power</li>
+                            <li><strong>Keep the lab clean and organized</strong> - push in chairs, don't leave papers</li>
+                            <li><strong>No running or rough play</strong> - equipment is expensive and fragile</li>
+                            <li><strong>Handle cables carefully</strong> - don't pull or yank, don't overload outlets</li>
+                            <li><strong>Don't change settings</strong> - don't modify system configurations without permission</li>
+                            <li><strong>Use antivirus software</strong> and don't disable security features</li>
+                            <li><strong>No unauthorized software installation</strong> - ask permission first</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-bolt"></i> Electrical Safety</h4>
+                        <ul>
+                            <li>Use <strong>surge protectors</strong> to protect against power spikes</li>
+                            <li>Don't overload electrical outlets with too many devices</li>
+                            <li>Check cables for <strong>fraying or damage</strong> - report any issues</li>
+                            <li>Keep liquids <strong>away from electrical equipment</strong></li>
+                            <li>Don't use equipment with <strong>wet hands</strong></li>
+                            <li>During storms, <strong>unplug sensitive equipment</strong> if possible</li>
+                            <li>Use <strong>UPS (Uninterruptible Power Supply)</strong> for critical systems</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="activity-box">
+                        <div class="activity-header">
+                            <div class="activity-number">4</div>
+                            <div class="activity-title">Activity: Computer Lab Safety Inspection</div>
+                        </div>
+                        <p><strong>Instructions:</strong> Conduct a safety inspection of your school's computer laboratory.</p>
+                        <ol class="activity-steps">
+                            <li>Walk around the computer lab and identify potential safety hazards</li>
+                            <li>Check for: tripping hazards (cables), food/drink containers, damaged equipment, overloaded outlets</li>
+                            <li>Note which safety rules are being followed and which are being ignored</li>
+                            <li>Write a report with your findings and recommendations for improvement</li>
+                            <li>Present your findings to the class</li>
+                        </ol>
+                    </div>
+                </section>
+                
+                <!-- Section 5: Publicity and Awareness -->
+                <section id="section5" class="section">
+                    <h2><i class="fas fa-bullhorn"></i> Raising Awareness</h2>
+                    
+                    <p>Raising awareness about computer health and safety is essential for preventing problems before they occur. Effective publicity campaigns can reach diverse audiences and promote healthy computing habits.</p>
+                    
+                    <h3>Effective Communication Channels</h3>
+                    <table class="data-table">
+                        <thead>
+                            <tr><th>Channel</th><th>Advantages</th><th>Example Activities</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>Posters & Infographics</strong></span></td><td>Visual, easy to understand, can be placed in relevant locations</span></td><td>Ergonomic setup guides, exercise reminders, symptom checklists</span></td></tr>
+                            <tr><td><strong>Workshops & Training</strong></span></td><td>Interactive, allows for questions, hands-on practice</span></td><td>Ergonomic assessments, stretching sessions, posture workshops</span></td></tr>
+                            <tr><td><strong>Digital Campaigns</strong></span></td><td>Wide reach, can include multimedia, easily shared</span></td><td>Social media posts, email newsletters, website resources</span></td></tr>
+                            <tr><td><strong>School/Workplace Policies</strong></span></td><td>Formalizes commitment, ensures consistency</span></td><td>Break schedules, equipment standards, health guidelines</span></td></tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="activity-box">
+                        <div class="activity-header">
+                            <div class="activity-number">5</div>
+                            <div class="activity-title">Activity: Create a Public Service Announcement (PSA)</div>
+                        </div>
+                        <p><strong>Instructions:</strong> Create a 60-second Public Service Announcement about computer health and safety.</p>
+                        <ol class="activity-steps">
+                            <li>Choose your target audience (students, office workers, elderly, etc.)</li>
+                            <li>Determine the main message you want to communicate</li>
+                            <li>Write a script for your 60-second PSA</li>
+                            <li>Include at least 3 specific health tips or recommendations</li>
+                            <li>Plan how you would deliver your PSA (radio, video, social media, etc.)</li>
+                            <li>Present your PSA to the class or record it if possible</li>
+                        </ol>
+                    </div>
+                </section>
+                
+                <!-- Integration Activity -->
+                <section id="integration" class="section">
+                    <h2><i class="fas fa-tasks"></i> Activity of Integration</h2>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-school"></i> School Health Campaign</h4>
+                        <p>The Ministry of Education is concerned about increasing reports of health problems among students who use computers extensively. Your class has been tasked with developing a comprehensive health and safety campaign for your school.</p>
+                    </div>
+                    
+                    <div class="activity-box">
+                        <div class="activity-header">
+                            <div class="activity-number">FINAL</div>
+                            <div class="activity-title">School Health and Safety Campaign</div>
+                        </div>
+                        <p><strong>Requirements:</strong></p>
+                        <ol class="activity-steps">
+                            <li><strong>Research:</strong> Survey students about their computer use habits and any health issues they experience</li>
+                            <li><strong>Campaign Name & Slogan:</strong> Create a catchy, memorable name for your campaign</li>
+                            <li><strong>Educational Materials:</strong> Create at least 2 different types (poster, handout, video, etc.)</li>
+                            <li><strong>School Improvements:</strong> Recommend specific changes for computer labs and classrooms</li>
+                            <li><strong>Events/Activities:</strong> Plan initiatives to launch and sustain the campaign</li>
+                            <li><strong>Evaluation Plan:</strong> How will you measure the campaign's impact?</li>
+                        </ol>
+                    </div>
+                </section>
+                
+                <!-- Quiz Section -->
+                <section id="quiz" class="section">
+                    <h2><i class="fas fa-question-circle"></i> Knowledge Check</h2>
+                    
+                    <div class="quiz-box">
+                        <div class="quiz-question">
+                            1. What does RSI stand for in the context of computer use?
+                        </div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false">Rapid System Integration</div>
+                            <div class="quiz-option" data-correct="true">Repetitive Strain Injury</div>
+                            <div class="quiz-option" data-correct="false">Regular Screen Interaction</div>
+                            <div class="quiz-option" data-correct="false">Recommended Sitting Interval</div>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                    
+                    <div class="quiz-box">
+                        <div class="quiz-question">
+                            2. What is the 20-20-20 rule for eye health?
+                        </div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="true">Every 20 minutes, look at something 20 feet away for 20 seconds</div>
+                            <div class="quiz-option" data-correct="false">Sit 20 inches from the screen, adjust brightness to 20%, take 20-minute breaks</div>
+                            <div class="quiz-option" data-correct="false">Blink 20 times per minute, use 20-point font, work for 20 hours maximum</div>
+                            <div class="quiz-option" data-correct="false">Exercise for 20 minutes, drink 20 ounces of water, sleep 20 hours per day</div>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                    
+                    <div class="quiz-box">
+                        <div class="quiz-question">
+                            3. Which of these is NOT a symptom of Computer Vision Syndrome?
+                        </div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false">Dry eyes</div>
+                            <div class="quiz-option" data-correct="false">Blurred vision</div>
+                            <div class="quiz-option" data-correct="false">Headaches</div>
+                            <div class="quiz-option" data-correct="true">Tingling in the feet</div>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                    
+                    <div class="quiz-box">
+                        <div class="quiz-question">
+                            4. What is the ideal distance between your eyes and the computer monitor?
+                        </div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false">20-30 cm</div>
+                            <div class="quiz-option" data-correct="true">50-70 cm</div>
+                            <div class="quiz-option" data-correct="false">100-120 cm</div>
+                            <div class="quiz-option" data-correct="false">As close as possible for clarity</div>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                    
+                    <div class="quiz-box">
+                        <div class="quiz-question">
+                            5. Which of these is an effective way to prevent back pain while using a computer?
+                        </div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false">Slouching to relax your muscles</div>
+                            <div class="quiz-option" data-correct="false">Using a stool without back support</div>
+                            <div class="quiz-option" data-correct="true">Sitting with your back straight and supported</div>
+                            <div class="quiz-option" data-correct="false">Working without standing up for several hours</div>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                    
+                    <div class="quiz-box">
+                        <div class="quiz-question">
+                            6. How often should you take a break from computer work?
+                        </div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false">Every 2 hours</div>
+                            <div class="quiz-option" data-correct="true">Every 50-60 minutes (5-minute break)</div>
+                            <div class="quiz-option" data-correct="false">Only at lunchtime</div>
+                            <div class="quiz-option" data-correct="false">Never, if you're focused on work</div>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                </section>
+                
+                <!-- Download PDF Button -->
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button id="downloadPdf" class="btn btn-outline">
+                        <i class="fas fa-download"></i> Download as PDF
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Sidebar -->
+            <aside class="module-sidebar">
+                <!-- Progress Tracker -->
+                <div class="progress-container">
+                    <h3><i class="fas fa-chart-line"></i> Your Progress</h3>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <div class="progress-text">
+                        <span>0% Complete</span>
+                        <span id="progressPercent">0%</span>
+                    </div>
+                </div>
+                
+                <!-- Sidebar Navigation -->
+                <div class="sidebar-nav">
+                    <h3><i class="fas fa-list"></i> Module Sections</h3>
+                    <ul>
+                        <li><a href="#section1"><i class="fas fa-chevron-right"></i> Introduction</a></li>
+                        <li><a href="#section2"><i class="fas fa-chevron-right"></i> Health Problems</a></li>
+                        <li><a href="#section3"><i class="fas fa-chevron-right"></i> Ergonomics & Prevention</a></li>
+                        <li><a href="#section4"><i class="fas fa-chevron-right"></i> Computer Lab Safety</a></li>
+                        <li><a href="#section5"><i class="fas fa-chevron-right"></i> Raising Awareness</a></li>
+                        <li><a href="#integration"><i class="fas fa-chevron-right"></i> Final Project</a></li>
+                        <li><a href="#quiz"><i class="fas fa-chevron-right"></i> Knowledge Check</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Quick Stretches -->
+                <div class="info-box">
+                    <h4><i class="fas fa-heartbeat"></i> Desk Stretches</h4>
+                    <ul style="margin: 0; font-size: 0.85rem;">
+                        <li>🙌 <strong>Shoulder shrugs</strong> - 5x</li>
+                        <li>🖐️ <strong>Wrist rotations</strong> - each direction 5x</li>
+                        <li>👀 <strong>Eye rolls</strong> - slowly, each direction</li>
+                        <li>🧘 <strong>Seated twist</strong> - hold 10 seconds each side</li>
+                        <li>🦵 <strong>Ankle rotations</strong> - 5x each foot</li>
+                    </ul>
+                </div>
+                
+                <!-- Ergonomic Checklist -->
+                <div class="info-box">
+                    <h4><i class="fas fa-clipboard-list"></i> Ergonomic Checklist</h4>
+                    <ul style="margin: 0; font-size: 0.85rem;">
+                        <li>☐ Monitor at eye level</li>
+                        <li>☐ Feet flat on floor</li>
+                        <li>☐ Wrists straight while typing</li>
+                        <li>☐ Back supported by chair</li>
+                        <li>☐ Screen free of glare</li>
+                        <li>☐ Regular breaks scheduled</li>
+                    </ul>
+                </div>
+                
+                <!-- Assessment Info -->
+                <div class="info-box">
+                    <h4><i class="fas fa-clipboard-list"></i> Assessment</h4>
+                    <ul style="margin: 0;">
+                        <li>5 Hands-on Activities</li>
+                        <li>6 Quiz Questions</li>
+                        <li>1 Final Project</li>
+                        <li>Estimated Time: 6 periods</li>
+                    </ul>
+                </div>
+            </aside>
+        </div>
+    </div>
+</main>
+
+<!-- Footer -->
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>ICT Learning Hub</h3>
+                <p>Empowering students with digital skills for the future.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="word-processing.html">Word Processing</a></li>
+                    <li><a href="computer-hardware.html">Hardware</a></li>
+                    <li><a href="system-security.html">Security</a></li>
+                </ul>
+            </div>
+            <div class="footer-modules">
+                <h4>More Modules</h4>
+                <ul>
+                    <li><a href="health-safety.html">Health & Safety</a></li>
+                    <li><a href="web-design.html">Web Design</a></li>
+                    <li><a href="shorts2.html">Shortcut Quiz</a></li>
+                </ul>
+            </div>
+            <div class="footer-social">
+                <h4>Connect</h4>
+                <div class="social-icons">
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Yiga Gerald. All rights reserved. | ICT Teacher | Digital Learning Creator</p>
+        </div>
+    </div>
+</footer>
+
+<script src="js/modules.js"></script>
+</body>
+</html>

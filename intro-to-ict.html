@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introduction to ICT | ICT Learning Module</title>
+    <meta name="description" content="Learn the fundamentals of Information and Communication Technology - basic concepts, tools, applications, and safety">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/navigation.css">
+    <link rel="stylesheet" href="styles/components.css">
+    
+    <!-- Module-specific theme (Introduction to ICT - Blue) -->
+    <style>
+        :root {
+            --theme-primary: #2563eb;
+            --theme-primary-light: #3b82f6;
+            --theme-primary-dark: #1d4ed8;
+            --theme-secondary: #06b6d4;
+        }
+        
+        .section h2 {
+            color: var(--theme-primary);
+        }
+        
+        .section h2::after {
+            background: var(--theme-primary);
+        }
+        
+        /* ICT tools grid */
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .tool-card {
+            background: var(--bg-secondary);
+            border-radius: var(--radius-lg);
+            padding: 1rem;
+            text-align: center;
+            transition: all var(--transition-normal);
+            border: 1px solid var(--border-light);
+            cursor: pointer;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--theme-primary);
+        }
+        
+        .tool-card i {
+            font-size: 2rem;
+            color: var(--theme-primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .tool-card h4 {
+            font-size: 0.9rem;
+            margin-bottom: 0.25rem;
+        }
+        
+        .tool-card p {
+            font-size: 0.7rem;
+            margin-bottom: 0;
+            color: var(--text-muted);
+        }
+        
+        /* Application areas */
+        .app-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .app-card {
+            background: var(--bg-secondary);
+            border-radius: var(--radius-lg);
+            padding: 1rem;
+            transition: all var(--transition-normal);
+            border-left: 4px solid var(--theme-primary);
+        }
+        
+        .app-card:hover {
+            transform: translateX(4px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .app-card i {
+            font-size: 1.5rem;
+            color: var(--theme-primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .app-card h4 {
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+        }
+        
+        /* Maintenance tools */
+        .maintenance-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin: 1rem 0;
+        }
+        
+        .maintenance-badge {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-light);
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius-full);
+            font-size: 0.85rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .maintenance-badge i {
+            color: var(--theme-primary);
+        }
+        
+        /* Period table */
+        .period-table {
+            background: var(--bg-secondary);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            margin: 1rem 0;
+        }
+        
+        .period-table table {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navigation Placeholder -->
+<div id="global-nav-placeholder"></div>
+
+<main>
+    <div class="container">
+        <!-- Breadcrumb -->
+        <div class="breadcrumb">
+            <a href="index.html">Home</a>
+            <span class="separator">/</span>
+            <a href="#">Learning Hub</a>
+            <span class="separator">/</span>
+            <span class="current" id="page-title">Introduction to ICT</span>
+        </div>
+        
+        <!-- Module Header -->
+        <div class="section-header" style="margin-bottom: 2rem;">
+            <h1>Introduction to ICT</h1>
+            <p>Understanding Information and Communication Technology and its applications in daily life</p>
+            <div class="keywords" style="display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; margin-top: 1rem;">
+                <span style="background: var(--bg-secondary); padding: 0.25rem 0.75rem; border-radius: 2rem; font-size: 0.8rem;">Information</span>
+                <span style="background: var(--bg-secondary); padding: 0.25rem 0.75rem; border-radius: 2rem; font-size: 0.8rem;">Communication</span>
+                <span style="background: var(--bg-secondary); padding: 0.25rem 0.75rem; border-radius: 2rem; font-size: 0.8rem;">Technology</span>
+                <span style="background: var(--bg-secondary); padding: 0.25rem 0.75rem; border-radius: 2rem; font-size: 0.8rem;">Hardware</span>
+                <span style="background: var(--bg-secondary); padding: 0.25rem 0.75rem; border-radius: 2rem; font-size: 0.8rem;">Software</span>
+                <span style="background: var(--bg-secondary); padding: 0.25rem 0.75rem; border-radius: 2rem; font-size: 0.8rem;">Applications</span>
+            </div>
+        </div>
+        
+        <!-- Module Layout: 2-column -->
+        <div class="module-wrapper">
+            <!-- Main Content Area -->
+            <div class="module-content">
+                <!-- Learning Outcomes -->
+                <div class="info-box" style="margin-bottom: 2rem;">
+                    <h4><i class="fas fa-bullseye"></i> Learning Outcomes</h4>
+                    <ul>
+                        <li>Explain what ICT is all about</li>
+                        <li>Identify common ICT tools and their functions</li>
+                        <li>Describe the uses of ICTs in various fields</li>
+                        <li>Explain safety precautions for different ICT tools</li>
+                        <li>Understand how to handle and maintain ICT equipment</li>
+                        <li>Interpret user manuals for ICT devices</li>
+                    </ul>
+                </div>
+                
+                <!-- Section 1: Meaning of ICT -->
+                <section id="section1" class="section">
+                    <h2><i class="fas fa-info-circle"></i> Meaning of ICT</h2>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-lightbulb"></i> What is ICT?</h4>
+                        <p><strong>ICT</strong> stands for <strong>I</strong>nformation, <strong>C</strong>ommunication, and <strong>T</strong>echnology. It refers to technologies that provide access to information through telecommunications. Hardly a day passes when ICT does not intrude into our lives.</p>
+                    </div>
+                    
+                    <h3>Understanding the Components</h3>
+                    <p>ICT can be compared with other systems to help understand its components. Think of ICT as similar to a water system:</p>
+                    
+                    <table class="data-table">
+                        <thead>
+                            <tr><th>Water System Component</th><th>ICT Equivalent</th><th>Explanation</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Taps, water tank, pipes</span></td>:<strong>Technology</strong></span></td>:<span>The physical devices and infrastructure</span></td></tr>
+                            <tr><td>Water</span></td>:<strong>Information</strong></span></td>:<span>The data or content being transmitted</span></td></tr>
+                            <tr><td>Water flowing through pipes</span></td>:<strong>Communication</strong></span></td>:<span>The transmission of information</span></td></tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="activity-box">
+                        <div class="activity-header">
+                            <div class="activity-number">1</div>
+                            <div class="activity-title">Activity: Understanding ICT</div>
+                        </div>
+                        <p><strong>Instructions:</strong> In groups, identify ICT tools around your school or community and complete the table below.</p>
+                        <ol class="activity-steps">
+                            <li>Walk around your school and identify at least 5 ICT tools</li>
+                            <li>For each tool, identify: What information does it handle? What communication does it enable? What technology does it use?</li>
+                            <li>Create a table showing your findings</li>
+                            <li>Select one ICT tool and demonstrate its use to the class</li>
+                        </ol>
+                    </div>
+                </section>
+                
+                <!-- Section 2: Common ICT Tools -->
+                <section id="section2" class="section">
+                    <h2><i class="fas fa-tools"></i> Common ICT Tools</h2>
+                    
+                    <p>ICT tools are devices or objects used in ICT for data capture, processing, information storage, and communication. They are not one solid thing but rather a collection of several electronic tools.</p>
+                    
+                    <h3>Basic ICT Tools</h3>
+                    <div class="tool-grid">
+                        <div class="tool-card">
+                            <i class="fas fa-desktop"></i>
+                            <h4>Desktop Computer</h4>
+                            <p>Complete computer system for various tasks</p>
+                        </div>
+                        <div class="tool-card">
+                            <i class="fas fa-laptop"></i>
+                            <h4>Laptop</h4>
+                            <p>Portable computer</p>
+                        </div>
+                        <div class="tool-card">
+                            <i class="fas fa-mobile-alt"></i>
+                            <h4>Smartphone</h4>
+                            <p>Mobile communication and computing</p>
+                        </div>
+                        <div class="tool-card">
+                            <i class="fas fa-tablet-alt"></i>
+                            <h4>Tablet</h4>
+                            <p>Touch-screen portable device</p>
+                        </div>
+                        <div class="tool-card">
+                            <i class="fas fa-tv"></i>
+                            <h4>Television</h4>
+                            <p>Receiving and displaying broadcast signals</p>
+                        </div>
+                        <div class="tool-card">
+                            <i class="fas fa-broadcast-tower"></i>
+                            <h4>Radio</h4>
+                            <p>Receiving audio broadcasts</p>
+                        </div>
+                        <div class="tool-card">
+                            <i class="fas fa-print"></i>
+                            <h4>Printer</h4>
+                            <p>Produces hard copy output</p>
+                        </div>
+                        <div class="tool-card">
+                            <i class="fas fa-camera"></i>
+                            <h4>Digital Camera</h4>
+                            <p>Captures digital images</p>
+                        </div>
+                    </div>
+                    
+                    <h3>Specialized ICT Tools</h3>
+                    <div class="tool-grid">
+                        <div class="tool-card">
+                            <i class="fas fa-x-ray"></i>
+                            <h4>X-ray Machine</h4>
+                            <p>Medical imaging</p>
+                        </div>
+                        <div class="tool-card">
+                            <i class="fas fa-fingerprint"></i>
+                            <h4>Biometric Scanner</h4>
+                            <p>Security identification</p>
+                        </div>
+                        <div class="tool-card">
+                            <i class="fas fa-credit-card"></i>
+                            <h4>POS Terminal</h4>
+                            <p>Payment processing</p>
+                        </div>
+                        <div class="tool-card">
+                            <i class="fas fa-microchip"></i>
+                            <h4>Smart Card Reader</h4>
+                            <p>Access control</p>
+                        </div>
+                    </div>
+                    
+                    <div class="activity-box">
+                        <div class="activity-header">
+                            <div class="activity-number">2</div>
+                            <div class="activity-title">Activity: ICT Tools Investigation</div>
+                        </div>
+                        <p><strong>Instructions:</strong> Investigate different ICT tools in your school or community.</p>
+                        <ol class="activity-steps">
+                            <li>Identify 3 ICT tools you haven't used before</li>
+                            <li>Research their functions and how they work</li>
+                            <li>Create a fact sheet for each tool including: name, purpose, key features, and how to use it safely</li>
+                            <li>Share your findings with the class</li>
+                        </ol>
+                    </div>
+                </section>
+                
+                <!-- Section 3: Applications of ICT -->
+                <section id="section3" class="section">
+                    <h2><i class="fas fa-globe"></i> Applications of ICT</h2>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-chart-line"></i> ICT in Our Society</h4>
+                        <p>ICT is increasingly used in all areas of our society to collect and communicate information. ICTs are used in homes, schools, hospitals, banking halls, entertainment industry, security, agriculture, and transport.</p>
+                    </div>
+                    
+                    <h3>Application Areas</h3>
+                    <div class="app-grid">
+                        <div class="app-card">
+                            <i class="fas fa-home"></i>
+                            <h4>Home</h4>
+                            <p>Smart TVs, home computers, smartphones, gaming consoles, smart home devices</p>
+                        </div>
+                        <div class="app-card">
+                            <i class="fas fa-school"></i>
+                            <h4>Education</h4>
+                            <p>Computers in labs, projectors, e-learning platforms, digital whiteboards</p>
+                        </div>
+                        <div class="app-card">
+                            <i class="fas fa-hospital"></i>
+                            <h4>Healthcare</h4>
+                            <p>Electronic medical records, diagnostic equipment, telemedicine</p>
+                        </div>
+                        <div class="app-card">
+                            <i class="fas fa-university"></i>
+                            <h4>Banking</h4>
+                            <p>ATMs, online banking, mobile money, POS terminals</p>
+                        </div>
+                        <div class="app-card">
+                            <i class="fas fa-chart-line"></i>
+                            <h4>Business</h4>
+                            <p>E-commerce, inventory systems, customer databases, video conferencing</p>
+                        </div>
+                        <div class="app-card">
+                            <i class="fas fa-video"></i>
+                            <h4>Entertainment</h4>
+                            <p>Streaming services, video games, digital music, virtual reality</p>
+                        </div>
+                        <div class="app-card">
+                            <i class="fas fa-tractor"></i>
+                            <h4>Agriculture</h4>
+                            <p>Weather monitoring, GPS farming, market price information</p>
+                        </div>
+                        <div class="app-card">
+                            <i class="fas fa-bus"></i>
+                            <h4>Transport</h4>
+                            <p>GPS navigation, traffic management, ride-hailing apps</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-shopping-cart"></i> ICT in Business - EPOS</h4>
+                        <p>An <strong>Electronic Point of Sales (EPOS)</strong> is a self-contained, computerized equipment that performs all tasks of a store checkout counter. It allows payments by cash, bank or credit cards, verifies transactions, generates sales receipts, and coordinates inventory data.</p>
+                    </div>
+                    
+                    <div class="activity-box">
+                        <div class="activity-header">
+                            <div class="activity-number">3</div>
+                            <div class="activity-title">Activity: ICT Applications Research</div>
+                        </div>
+                        <p><strong>Instructions:</strong> Research how ICT is used in a specific field of your choice.</p>
+                        <ol class="activity-steps">
+                            <li>Choose one field: Education, Healthcare, Banking, Agriculture, or Transportation</li>
+                            <li>Research at least 5 ways ICT is used in that field</li>
+                            <li>Create a presentation (poster, slides, or video) showing your findings</li>
+                            <li>Include both benefits and challenges of ICT in that field</li>
+                            <li>Present to the class</li>
+                        </ol>
+                    </div>
+                </section>
+                
+                <!-- Section 4: Handling and Maintenance -->
+                <section id="section4" class="section">
+                    <h2><i class="fas fa-cogs"></i> Handling and Maintaining ICT Tools</h2>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-hand-sparkles"></i> Importance of Maintenance</h4>
+                        <p>Taking care of your ICT tools is just as important as taking care of your books. Both internal and external parts of computers and other ICTs need proper care to ensure longevity and optimal performance.</p>
+                    </div>
+                    
+                    <h3>Basic Maintenance Tasks</h3>
+                    <div class="maintenance-grid">
+                        <div class="maintenance-badge"><i class="fas fa-wind"></i> Keep dust away</div>
+                        <div class="maintenance-badge"><i class="fas fa-utensils"></i> Keep food and drinks away</div>
+                        <div class="maintenance-badge"><i class="fas fa-hands-wash"></i> Use clean, dry hands</div>
+                        <div class="maintenance-badge"><i class="fas fa-bolt"></i> Unplug during storms</div>
+                        <div class="maintenance-badge"><i class="fas fa-virus"></i> Use antivirus software</div>
+                        <div class="maintenance-badge"><i class="fas fa-compact-disc"></i> Handle CDs/DVDs by edges</div>
+                        <div class="maintenance-badge"><i class="fas fa-tint"></i> Keep away from liquids</div>
+                        <div class="maintenance-badge"><i class="fas fa-temperature-high"></i> Ensure proper ventilation</div>
+                    </div>
+                    
+                    <h3>Maintenance Tools and Their Functions</h3>
+                    <table class="data-table">
+                        <thead>
+                            <tr><th>Maintenance Tool</th><th>Function</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>Dust blower / Compressed air</strong></span></td>:<span>Removes dust from keyboards, fans, and hard-to-reach areas</span></td></tr>
+                            <tr><td><strong>Soft microfiber cloth</strong></span></td>:<span>Cleans screens and surfaces without scratching</span></td></tr>
+                            <tr><td><strong>Air conditioner / Fan</strong></span></td>:<span>Regulates temperature in computer labs</span></td></tr>
+                            <tr><td><strong>UPS (Uninterruptible Power Supply)</strong></span></td>:<span>Provides backup power during outages</span></span></td></tr>
+                            <tr><td><strong>Surge protector / Power strip</strong></span></td>:<span>Protects against voltage spikes</span></span></span></td></tr>
+                            <tr><td><strong>Antivirus software</strong></span></td>:<span>Protects against malware and viruses</span></span></span></span></span></span></td></tr>
+                            <tr><td><strong>Screen cleaning solution</strong></span></td>:<span>Safely cleans monitors and screens</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></td>
+                        </tbody>
+                    </table>
+                    
+                    <div class="activity-box">
+                        <div class="activity-header">
+                            <div class="activity-number">4</div>
+                            <div class="activity-title">Activity: Computer Cleaning and Maintenance</div>
+                        </div>
+                        <p><strong>Instructions:</strong> Practice cleaning and maintaining a computer system.</p>
+                        <ol class="activity-steps">
+                            <li>Identify a computer that needs cleaning (with teacher permission)</li>
+                            <li>Gather appropriate cleaning tools (soft cloth, dust blower, screen cleaner)</li>
+                            <li>Shut down the computer properly and unplug it</li>
+                            <li>Clean: screen, keyboard, mouse, system unit exterior, desk area</li>
+                            <li>Check cable connections and organization</li>
+                            <li>Write a report of the steps followed and tools used</li>
+                        </ol>
+                    </div>
+                </section>
+                
+                <!-- Section 5: Safety and Security -->
+                <section id="section5" class="section">
+                    <h2><i class="fas fa-shield-alt"></i> ICT Safety Precautions and Security</h2>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-exclamation-triangle"></i> Importance of Safety</h4>
+                        <p>As ICT users, it's important to take precautions when using ICT tools to avoid health problems and ensure equipment longevity. Manufacturers provide user manuals for all ICT equipment with safety guidelines.</p>
+                    </div>
+                    
+                    <h3>Computer Lab Safety Rules</h3>
+                    <ul class="security-tips">
+                        <li><i class="fas fa-ban"></i> <strong>No food or drinks</strong> near computers</li>
+                        <li><i class="fas fa-hand-sparkles"></i> <strong>Wash hands</strong> before using equipment</li>
+                        <li><i class="fas fa-exclamation-triangle"></i> <strong>Report problems</strong> immediately to the teacher</li>
+                        <li><i class="fas fa-power-off"></i> <strong>Follow proper shutdown</strong> procedures</li>
+                        <li><i class="fas fa-broom"></i> <strong>Keep the lab clean</strong> and organized</li>
+                        <li><i class="fas fa-child"></i> <strong>No running</strong> in the computer lab</li>
+                        <li><i class="fas fa-plug"></i> <strong>Don't touch cables</strong> with wet hands</li>
+                        <li><i class="fas fa-laptop"></i> <strong>Handle equipment carefully</strong></li>
+                    </ul>
+                    
+                    <h3>Security Threats and Measures</h3>
+                    <div class="info-box">
+                        <h4><i class="fas fa-lock"></i> Protecting ICT Tools</h4>
+                        <p>ICT tools need protection from risks such as theft, viruses, vandalism, and unauthorized access. Security measures include:</p>
+                        <ul>
+                            <li><strong>Physical security:</strong> Burglar proofing, locked doors, security cameras, cable locks</li>
+                            <li><strong>Electronic security:</strong> Passwords, encryption, antivirus software, firewalls</li>
+                            <li><strong>Network security:</strong> Secure Wi-Fi, access controls, VPNs</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="activity-box">
+                        <div class="activity-header">
+                            <div class="activity-number">5</div>
+                            <div class="activity-title">Activity: Security Audit</div>
+                        </div>
+                        <p><strong>Instructions:</strong> Conduct a security audit of your school's computer facilities.</p>
+                        <ol class="activity-steps">
+                            <li>Walk around the computer lab and identify security measures in place</li>
+                            <li>Note any security gaps or vulnerabilities</li>
+                            <li>Interview the lab technician about security protocols</li>
+                            <li>Create a report with findings and recommendations for improvement</li>
+                            <li>Present your recommendations to the class</li>
+                        </ol>
+                    </div>
+                </section>
+                
+                <!-- Section 6: User Manuals -->
+                <section id="section6" class="section">
+                    <h2><i class="fas fa-book"></i> User Manuals</h2>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-file-alt"></i> What are User Manuals?</h4>
+                        <p>A <strong>user guide</strong> or <strong>user's guide</strong> (commonly known as a manual) is a technical communication document intended to give assistance to people using a particular system. It contains instructions on installing, using, or troubleshooting hardware or software products.</p>
+                    </div>
+                    
+                    <h3>Sections Typically Found in a User Manual</h3>
+                    <ul class="security-tips">
+                        <li><i class="fas fa-play-circle"></i> <strong>Getting Started / Setup</strong> - How to unbox and set up the device</li>
+                        <li><i class="fas fa-list"></i> <strong>Product Overview</strong> - Diagrams and descriptions of parts</li>
+                        <li><i class="fas fa-tools"></i> <strong>Basic Operations</strong> - How to use the main features</li>
+                        <li><i class="fas fa-cog"></i> <strong>Advanced Features</strong> - Detailed functionality</li>
+                        <li><i class="fas fa-exclamation-triangle"></i> <strong>Troubleshooting</strong> - Common problems and solutions</li>
+                        <li><i class="fas fa-shield-alt"></i> <strong>Safety Information</strong> - Warnings and precautions</li>
+                        <li><i class="fas fa-brush"></i> <strong>Maintenance / Care</strong> - How to clean and maintain the device</li>
+                        <li><i class="fas fa-file-contract"></i> <strong>Warranty Information</strong> - Coverage and support contact</li>
+                    </ul>
+                    
+                    <div class="activity-box">
+                        <div class="activity-header">
+                            <div class="activity-number">6</div>
+                            <div class="activity-title">Activity: User Manual Analysis</div>
+                        </div>
+                        <p><strong>Instructions:</strong> Study a user manual for a given ICT tool and summarize its contents.</p>
+                        <ol class="activity-steps">
+                            <li>Obtain a user manual for a device (or find one online)</li>
+                            <li>Identify and list all the sections in the manual</li>
+                            <li>Find and record the safety precautions mentioned</li>
+                            <li>Find and record the maintenance instructions</li>
+                            <li>Write a summary of the key information a new user needs to know</li>
+                            <li>Prepare a 2-minute presentation on what you learned</li>
+                        </ol>
+                    </div>
+                </section>
+                
+                <!-- Section 7: Advantages and Disadvantages of ICT -->
+                <section id="section7" class="section">
+                    <h2><i class="fas fa-chart-line"></i> Advantages and Disadvantages of ICT</h2>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-check-circle"></i> Advantages of Using ICT</h4>
+                        <ul>
+                            <li><strong>Fast communication:</strong> Send messages instantly anywhere in the world</li>
+                            <li><strong>Easy access to information:</strong> Search engines, online databases, digital libraries</li>
+                            <li><strong>Cost-effective:</strong> Reduce paper usage, travel costs, and time</li>
+                            <li><strong>Global connectivity:</strong> Connect with people worldwide, work remotely</li>
+                            <li><strong>Automation:</strong> Reduce manual work, increase efficiency</li>
+                            <li><strong>Education opportunities:</strong> Online courses, e-learning platforms</li>
+                            <li><strong>Entertainment:</strong> Streaming, gaming, social media</li>
+                            <li><strong>Bridges gaps:</strong> Connects people across geographical and cultural barriers</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-exclamation-circle"></i> Disadvantages of Using ICT</h4>
+                        <ul>
+                            <li><strong>Security risks:</strong> Hacking, identity theft, data breaches</li>
+                            <li><strong>Privacy concerns:</strong> Personal data collection and misuse</li>
+                            <li><strong>Health issues:</strong> Eye strain, RSI, back problems, sedentary lifestyle</li>
+                            <li><strong>Digital divide:</strong> Unequal access to technology</li>
+                            <li><strong>Social isolation:</strong> Less face-to-face interaction</li>
+                            <li><strong>Addiction:</strong> Excessive screen time, gaming addiction</li>
+                            <li><strong>Job displacement:</strong> Automation replacing human workers</li>
+                            <li><strong>Misinformation:</strong> Spread of false information online</li>
+                        </ul>
+                    </div>
+                </section>
+                
+                <!-- Integration Activity -->
+                <section id="integration" class="section">
+                    <h2><i class="fas fa-tasks"></i> Activity of Integration</h2>
+                    
+                    <div class="info-box">
+                        <h4><i class="fas fa-chalkboard-teacher"></i> Virtual Classroom Scenario</h4>
+                        <p>ICTs are currently being employed in almost all fields in this modern era. In the area of education, it is possible for a teacher in London to virtually conduct a lesson in a school in Uganda.</p>
+                    </div>
+                    
+                    <div class="activity-box">
+                        <div class="activity-header">
+                            <div class="activity-number">FINAL</div>
+                            <div class="activity-title">Virtual Classroom Project</div>
+                        </div>
+                        <p><strong>Requirements:</strong></p>
+                        <ol class="activity-steps">
+                            <li><strong>Technology Plan:</strong> Identify all the ICT tools needed for a virtual lesson (camera, computer, internet, projector, microphone, speakers, software)</li>
+                            <li><strong>Setup Guide:</strong> Create a step-by-step guide for setting up a virtual classroom</li>
+                            <li><strong>Safety Precautions:</strong> List all safety precautions for each ICT tool used</li>
+                            <li><strong>Troubleshooting:</strong> Create a troubleshooting guide for common technical issues</li>
+                            <li><strong>Cost Analysis:</strong> Research and estimate the cost of setting up one virtual classroom</li>
+                            <li><strong>Presentation:</strong> Present your virtual classroom plan to the class</li>
+                        </ol>
+                    </div>
+                </section>
+                
+                <!-- Quiz Section -->
+                <section id="quiz" class="section">
+                    <h2><i class="fas fa-question-circle"></i> Knowledge Check</h2>
+                    
+                    <div class="quiz-box">
+                        <div class="quiz-question">
+                            1. What does ICT stand for?
+                        </div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false">International Communication Technology</div>
+                            <div class="quiz-option" data-correct="true">Information and Communication Technology</div>
+                            <div class="quiz-option" data-correct="false">Internet Connection Tool</div>
+                            <div class="quiz-option" data-correct="false">Integrated Computer Technology</div>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                    
+                    <div class="quiz-box">
+                        <div class="quiz-question">
+                            2. Which of these is NOT a common ICT tool?
+                        </div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false">Desktop Computer</div>
+                            <div class="quiz-option" data-correct="false">Smartphone</div>
+                            <div class="quiz-option" data-correct="true">Refrigerator</div>
+                            <div class="quiz-option" data-correct="false">Printer</div>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                    
+                    <div class="quiz-box">
+                        <div class="quiz-question">
+                            3. What does EPOS stand for in business ICT?
+                        </div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="true">Electronic Point of Sales</div>
+                            <div class="quiz-option" data-correct="false">Electronic Processing of Systems</div>
+                            <div class="quiz-option" data-correct="false">Equipment Point of Service</div>
+                            <div class="quiz-option" data-correct="false">Electronic Payment of Sales</div>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                    
+                    <div class="quiz-box">
+                        <div class="quiz-question">
+                            4. Which device provides backup power during electricity outages?
+                        </div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false">Surge Protector</div>
+                            <div class="quiz-option" data-correct="true">UPS (Uninterruptible Power Supply)</div>
+                            <div class="quiz-option" data-correct="false">Power Strip</div>
+                            <div class="quiz-option" data-correct="false">Extension Cord</div>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                    
+                    <div class="quiz-box">
+                        <div class="quiz-question">
+                            5. Which of the following is a security threat to ICT tools?
+                        </div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="false">Regular cleaning</div>
+                            <div class="quiz-option" data-correct="false">Using antivirus software</div>
+                            <div class="quiz-option" data-correct="true">Theft</div>
+                            <div class="quiz-option" data-correct="false">Proper shutdown</div>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                    
+                    <div class="quiz-box">
+                        <div class="quiz-question">
+                            6. What is a user manual?
+                        </div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-correct="true">A document with instructions for using a product</div>
+                            <div class="quiz-option" data-correct="false">A warranty card</div>
+                            <div class="quiz-option" data-correct="false">A software program</div>
+                            <div class="quiz-option" data-correct="false">A user account settings page</div>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                </section>
+                
+                <!-- Download PDF Button -->
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button id="downloadPdf" class="btn btn-outline">
+                        <i class="fas fa-download"></i> Download as PDF
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Sidebar -->
+            <aside class="module-sidebar">
+                <!-- Progress Tracker -->
+                <div class="progress-container">
+                    <h3><i class="fas fa-chart-line"></i> Your Progress</h3>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <div class="progress-text">
+                        <span>0% Complete</span>
+                        <span id="progressPercent">0%</span>
+                    </div>
+                </div>
+                
+                <!-- Sidebar Navigation -->
+                <div class="sidebar-nav">
+                    <h3><i class="fas fa-list"></i> Module Sections</h3>
+                    <ul>
+                        <li><a href="#section1"><i class="fas fa-chevron-right"></i> Meaning of ICT</a></li>
+                        <li><a href="#section2"><i class="fas fa-chevron-right"></i> Common ICT Tools</a></li>
+                        <li><a href="#section3"><i class="fas fa-chevron-right"></i> Applications of ICT</a></li>
+                        <li><a href="#section4"><i class="fas fa-chevron-right"></i> Handling & Maintenance</a></li>
+                        <li><a href="#section5"><i class="fas fa-chevron-right"></i> Safety & Security</a></li>
+                        <li><a href="#section6"><i class="fas fa-chevron-right"></i> User Manuals</a></li>
+                        <li><a href="#section7"><i class="fas fa-chevron-right"></i> Advantages & Disadvantages</a></li>
+                        <li><a href="#integration"><i class="fas fa-chevron-right"></i> Final Project</a></li>
+                        <li><a href="#quiz"><i class="fas fa-chevron-right"></i> Knowledge Check</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Time Allocation -->
+                <div class="info-box">
+                    <h4><i class="fas fa-clock"></i> Time Allocation</h4>
+                    <ul style="margin: 0; font-size: 0.85rem;">
+                        <li><strong>Total:</strong> 30 periods</li>
+                        <li>Meaning of ICT: 6 periods</li>
+                        <li>Common ICT Tools: 6 periods</li>
+                        <li>Applications of ICT: 6 periods</li>
+                        <li>Safety & Security: 6 periods</li>
+                        <li>Other sections: 6 periods</li>
+                    </ul>
+                </div>
+                
+                <!-- Quick Reference -->
+                <div class="info-box">
+                    <h4><i class="fas fa-quick"></i> Key Terms</h4>
+                    <ul style="margin: 0; font-size: 0.85rem;">
+                        <li><strong>ICT:</strong> Information and Communication Technology</li>
+                        <li><strong>Hardware:</strong> Physical components</li>
+                        <li><strong>Software:</strong> Programs and instructions</li>
+                        <li><strong>EPOS:</strong> Electronic Point of Sales</li>
+                        <li><strong>UPS:</strong> Uninterruptible Power Supply</li>
+                        <li><strong>Malware:</strong> Malicious software</li>
+                    </ul>
+                </div>
+                
+                <!-- Assessment Info -->
+                <div class="info-box">
+                    <h4><i class="fas fa-clipboard-list"></i> Assessment</h4>
+                    <ul style="margin: 0;">
+                        <li>6 Hands-on Activities</li>
+                        <li>6 Quiz Questions</li>
+                        <li>1 Final Project</li>
+                        <li>Estimated Time: 30 periods</li>
+                    </ul>
+                </div>
+            </aside>
+        </div>
+    </div>
+</main>
+
+<!-- Footer -->
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>ICT Learning Hub</h3>
+                <p>Empowering students with digital skills for the future.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="word-processing.html">Word Processing</a></li>
+                    <li><a href="web-design.html">Web Design</a></li>
+                    <li><a href="intro-to-ict.html">Intro to ICT</a></li>
+                </ul>
+            </div>
+            <div class="footer-modules">
+                <h4>More Modules</h4>
+                <ul>
+                    <li><a href="computer-hardware.html">Hardware</a></li>
+                    <li><a href="system-security.html">Security</a></li>
+                    <li><a href="shorts2.html">Shortcut Quiz</a></li>
+                </ul>
+            </div>
+            <div class="footer-social">
+                <h4>Connect</h4>
+                <div class="social-icons">
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Yiga Gerald. All rights reserved. | ICT Teacher | Digital Learning Creator</p>
+        </div>
+    </div>
+</footer>
+
+<script src="js/modules.js"></script>
+</body>
+</html>
